@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<script>document.documentElement.className='js';</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a1f">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
+<title>Team Picker — Free Random Team Generator (Split a List into Fair Teams) | Pickly</title>
+<meta name="description" content="Free random team generator. Paste a list of names and split them into fair, balanced teams in one tap. Choose number of teams or team size. Perfect for sports, classrooms, and games. No sign-up.">
+<meta name="keywords" content="team picker, random team generator, team generator, split into teams, group generator, random groups, team randomizer, pick teams">
+<link rel="canonical" href="https://picklytools.com/teampicker/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Team Picker — Free Random Team Generator">
+<meta property="og:description" content="Paste names, split into fair random teams in one tap. Free, fun, no sign-up.">
+<meta property="og:url" content="https://picklytools.com/teampicker/">
+<meta property="og:image" content="https://picklytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://picklytools.com/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Team Picker","url":"https://picklytools.com/teampicker/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Split a list of names into fair random teams."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Team Picker","item":"https://picklytools.com/teampicker/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.6.0/confetti.browser.min.js" defer></script>
+<style>
+:root{
+  --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
+  --bd:rgba(255,255,255,.1); --tx:#f4f4fb; --mt:#9a9ab5;
+  --pk:#FF2060; --or:#FF8C00; --yl:#FFD600; --cy:#00E5FF; --pu:#B061FF; --gr:#00E676;
+  --rs:14px; --rl:22px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 12% 8%,rgba(255,214,0,.1),transparent 60%),radial-gradient(ellipse 60% 50% at 88% 92%,rgba(255,140,0,.1),transparent 60%)}
+.wrap{position:relative;z-index:2;max-width:880px;margin:0 auto;padding:0 18px}
+
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,10,31,.72);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:880px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:34px;height:34px}
+.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+
+.head{text-align:center;padding:34px 0 14px}
+.head h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(28px,5.2vw,46px);letter-spacing:-1px;line-height:1.08;margin-bottom:10px}
+.head h1 .g{background:linear-gradient(115deg,var(--yl),var(--or));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.head p{color:var(--mt);font-size:15px;font-weight:600;max-width:500px;margin:0 auto}
+
+.panel{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--rl);padding:20px;margin-top:12px}
+.panel-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.panel-h h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px}
+.count-badge{font-weight:800;font-size:13px;color:var(--yl);background:rgba(255,214,0,.12);border:1px solid rgba(255,214,0,.3);border-radius:100px;padding:4px 12px}
+textarea{width:100%;min-height:150px;background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:var(--rs);color:var(--tx);padding:14px;font-family:'Nunito',sans-serif;font-weight:600;font-size:15px;line-height:1.7;outline:none;resize:vertical}
+textarea:focus{border-color:var(--yl)}
+textarea::placeholder{color:var(--mt)}
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.quick button{font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;padding:7px 13px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--mt);cursor:pointer;transition:all .15s}
+.quick button:hover{background:var(--sfh);color:var(--tx)}
+
+.split-opts{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:16px}
+.seg{display:inline-flex;background:var(--sf);border:1.5px solid var(--bd);border-radius:100px;padding:3px}
+.seg button{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;padding:8px 16px;border-radius:100px;border:none;background:transparent;color:var(--mt);cursor:pointer;transition:all .15s}
+.seg button.on{background:linear-gradient(135deg,var(--or),var(--yl));color:#3a2400}
+.split-opts .field{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:var(--mt)}
+.split-opts input[type=number]{width:74px;background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:10px;color:var(--tx);padding:9px;font-family:'Nunito',sans-serif;font-weight:800;font-size:15px;outline:none;text-align:center}
+.split-opts input:focus{border-color:var(--yl)}
+
+.go-btn{font-family:'Fredoka',sans-serif;font-weight:600;font-size:21px;padding:15px 50px;border-radius:100px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--or),var(--yl));color:#3a2400;box-shadow:0 8px 28px rgba(255,140,0,.4);transition:transform .15s,box-shadow .15s;display:block;margin:20px auto 0}
+.go-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(255,140,0,.55)}
+.go-btn:active{transform:scale(.97)}
+.go-btn:disabled{opacity:.6;cursor:default}
+.err{color:#ff6b8a;font-weight:700;font-size:13px;text-align:center;min-height:18px;margin-top:10px}
+
+/* results */
+.teams{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:8px}
+.team{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--rl);padding:16px;border-top:3px solid var(--tc,var(--yl))}
+.team h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:17px;margin-bottom:12px;display:flex;align-items:center;gap:8px;color:var(--tc,var(--yl))}
+.team h3 .em{font-size:20px}
+.team ul{list-style:none}
+.team li{padding:8px 12px;background:var(--sf);border:1px solid var(--bd);border-radius:10px;margin-bottom:7px;font-weight:700;font-size:14px;animation:slideIn .4s ease both}
+@keyframes slideIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+.team .csize{font-size:12px;font-weight:800;color:var(--mt);margin-bottom:10px}
+
+.result-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+.mini{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;padding:10px 18px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--tx);cursor:pointer;transition:all .15s}
+.mini:hover{background:var(--sfh)}
+.hint-line{color:var(--yl);font-size:13px;font-weight:700;min-height:18px;text-align:center;margin-top:10px}
+.shuffling .team li{animation:flick .3s ease infinite alternate}
+@keyframes flick{from{opacity:.5}to{opacity:1}}
+
+.ad-wrap{max-width:760px;margin:36px auto 0;text-align:center}
+.ad-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(244,244,251,.3);margin-bottom:6px}
+.ad-box{min-height:100px;border:1px dashed var(--bd);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:var(--mt);font-size:13px;font-weight:600;background:rgba(255,255,255,.02)}
+
+.content{margin-top:40px}
+.content h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:24px;margin:30px 0 10px}
+.content h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin:20px 0 8px}
+.content p{color:var(--mt);font-size:15.5px;font-weight:600;margin-bottom:13px}
+.content ul{color:var(--mt);font-size:15.5px;font-weight:600;margin:0 0 13px 22px}.content li{margin-bottom:6px}
+.faq{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.qa{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);overflow:hidden}
+.qa summary{padding:15px 18px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:'+';font-size:22px;color:var(--mt);transition:transform .2s}
+.qa[open] summary::after{transform:rotate(45deg)}
+.qa .a{padding:0 18px 16px;color:var(--mt);font-size:15px;font-weight:600}
+
+footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
+.foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot-col h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
+.foot-col a:hover{color:var(--tx)}
+.foot-brand{max-width:240px}.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
+.copy{text-align:center;color:var(--mt);font-size:13px;font-weight:600;margin-top:30px;padding-top:20px;border-top:1px solid var(--bd)}
+@media(prefers-reduced-motion:reduce){.team li{animation:none!important}body::before{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/">← All tools</a>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <h1>Split into <span class="g">fair teams</span></h1>
+    <p>Paste your list of names, choose how to divide them, and get balanced random teams in one satisfying shuffle.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="panel">
+    <div class="panel-h">
+      <h2>Who's playing?</h2>
+      <span class="count-badge" id="countBadge">0 names</span>
+    </div>
+    <textarea id="names" placeholder="Type or paste one name per line…&#10;&#10;Alex&#10;Sam&#10;Jordan&#10;Taylor&#10;Casey&#10;Riley"></textarea>
+    <div class="quick">
+      <button id="sampleBtn">✨ Use sample names</button>
+      <button id="clearBtn">Clear</button>
+      <button id="dedupeBtn">Remove duplicates</button>
+    </div>
+
+    <div class="split-opts">
+      <div class="seg">
+        <button class="on" id="byTeams" data-by="teams">By # of teams</button>
+        <button id="bySize" data-by="size">By team size</button>
+      </div>
+      <div class="field" id="numField"># of teams <input type="number" id="numTeams" value="2" min="2" max="50"></div>
+      <div class="field" id="sizeField" style="display:none">people per team <input type="number" id="teamSize" value="2" min="1" max="50"></div>
+    </div>
+
+    <button class="go-btn" id="goBtn">🎲 Make teams!</button>
+    <div class="err" id="err"></div>
+  </div>
+
+  <div id="results"></div>
+  <div class="hint-line" id="hintLine"></div>
+
+  <div class="ad-wrap">
+    <div class="ad-lbl">Advertisement</div>
+    <div class="ad-box">Your ad space — plug in Google AdSense here 📢</div>
+  </div>
+
+  <article class="content">
+    <h2>Make fair teams in seconds</h2>
+    <p>Picking teams by hand is slow and always feels a little unfair. This free team picker takes your list of names and splits them into random, balanced groups instantly — no more "you go with them" arguments. It's perfect for PE class, pickup sports, group projects, party games, hackathons, secret santa groups, or any time you need to divide people fairly.</p>
+    <h3>Two ways to split</h3>
+    <ul>
+      <li><strong>By number of teams</strong> — say how many teams you want (2, 3, 4…) and everyone gets distributed as evenly as possible.</li>
+      <li><strong>By team size</strong> — say how many people per team, and the picker creates as many teams as needed.</li>
+    </ul>
+    <h3>Always balanced</h3>
+    <p>When the numbers don't divide evenly, the extra people are spread out one per team so no group is ever more than one person larger than another. The assignment is fully random each time you shuffle, so it's genuinely fair.</p>
+    <h3>Great for</h3>
+    <p>Sports teams and pickup games, classroom group work, trivia nights, work breakout groups, gaming squads, study groups, chores rotation, and party games like charades or Pictionary.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <details class="qa"><summary>How does it keep teams fair?</summary><div class="a">Names are randomly shuffled and then dealt out one by one, so team sizes never differ by more than one person and assignment is completely random.</div></details>
+      <details class="qa"><summary>Can I reshuffle if I don't like the result?</summary><div class="a">Yes — just tap "Shuffle again" for a fresh random split with the same names and settings.</div></details>
+      <details class="qa"><summary>Can I copy or share the teams?</summary><div class="a">Yes. After generating, use Copy to grab the team list as text you can paste into a chat or email.</div></details>
+      <details class="qa"><summary>Is it free?</summary><div class="a">Completely free, no sign-up, supported by unobtrusive ads. See our <a href="/privacy/" style="color:var(--cy)">Privacy Policy</a>.</div></details>
+    </div>
+  </article>
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-col foot-brand">
+      <a class="brand" href="/">
+        <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+          <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="79,21 79,41 63,31" fill="#fff"/>
+          <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+        </svg>
+        <span class="brand-name">Pickly</span>
+      </a>
+      <p>Free, fun online tools to help you decide anything.</p>
+    </div>
+    <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/timezones/">Timezone Finder</a><a href="/coinflip/">Coin Flip</a><a href="/randomnumber/">Random Number</a><a href="/teampicker/">Team Picker</a><a href="/#tools">All tools</a></div>
+    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+  </div>
+  <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div></div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+let splitBy='teams';
+let busy=false;
+let lastTeams=null;
+
+const TEAM_STYLES=[
+  {em:'🔴',c:'#FF2060'},{em:'🔵',c:'#00E5FF'},{em:'🟢',c:'#00E676'},{em:'🟡',c:'#FFD600'},
+  {em:'🟣',c:'#B061FF'},{em:'🟠',c:'#FF8C00'},{em:'⚪',c:'#f4f4fb'},{em:'🟤',c:'#c7841a'},
+  {em:'⭐',c:'#FFD600'},{em:'⚡',c:'#00E5FF'},{em:'🔥',c:'#FF8C00'},{em:'💎',c:'#B061FF'}
+];
+const SAMPLE=['Alex','Sam','Jordan','Taylor','Casey','Riley','Morgan','Jamie','Avery','Quinn','Drew','Skyler'];
+
+function randInt(min,max){const range=max-min+1;if(window.crypto&&crypto.getRandomValues){const m=4294967296,lim=m-(m%range),a=new Uint32Array(1);do{crypto.getRandomValues(a);}while(a[0]>=lim);return min+(a[0]%range);}return min+Math.floor(Math.random()*range);}
+function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=randInt(0,i); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+function parseNames(){
+  return document.getElementById('names').value.split('\n').map(s=>s.trim()).filter(Boolean);
+}
+function updateCount(){
+  const n=parseNames().length;
+  document.getElementById('countBadge').textContent=n+' name'+(n===1?'':'s');
+}
+document.getElementById('names').addEventListener('input',updateCount);
+
+document.getElementById('sampleBtn').addEventListener('click',()=>{ document.getElementById('names').value=SAMPLE.join('\n'); updateCount(); });
+document.getElementById('clearBtn').addEventListener('click',()=>{ document.getElementById('names').value=''; updateCount(); document.getElementById('results').innerHTML=''; });
+document.getElementById('dedupeBtn').addEventListener('click',()=>{
+  const seen=new Set(),out=[];
+  parseNames().forEach(n=>{ const k=n.toLowerCase(); if(!seen.has(k)){seen.add(k);out.push(n);} });
+  document.getElementById('names').value=out.join('\n'); updateCount();
+});
+
+document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.seg button').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  splitBy=b.dataset.by;
+  document.getElementById('numField').style.display=splitBy==='teams'?'flex':'none';
+  document.getElementById('sizeField').style.display=splitBy==='size'?'flex':'none';
+}));
+
+function buildTeams(names){
+  const shuffled=shuffle(names);
+  let numTeams;
+  if(splitBy==='teams'){ numTeams=Math.max(2,Math.min(50,parseInt(document.getElementById('numTeams').value,10)||2)); }
+  else { const size=Math.max(1,Math.min(50,parseInt(document.getElementById('teamSize').value,10)||1)); numTeams=Math.ceil(shuffled.length/size); }
+  const teams=Array.from({length:numTeams},()=>[]);
+  // deal round-robin for balance
+  shuffled.forEach((name,i)=>{ teams[i%numTeams].push(name); });
+  return teams;
+}
+
+function renderTeams(teams,animate){
+  const wrap=document.getElementById('results');
+  wrap.innerHTML='<div class="teams'+(animate?' shuffling':'')+'" id="teamsGrid">'+teams.map((t,i)=>{
+    const st=TEAM_STYLES[i%TEAM_STYLES.length];
+    return `<div class="team" style="--tc:${st.c}"><h3><span class="em">${st.em}</span> Team ${i+1}</h3><div class="csize">${t.length} member${t.length===1?'':'s'}</div><ul>${t.map((n,j)=>`<li style="animation-delay:${j*0.05}s">${esc(n)}</li>`).join('')}</ul></div>`;
+  }).join('')+'</div>'+
+  '<div class="result-actions"><button class="mini" id="reshuffle">🔄 Shuffle again</button><button class="mini" id="copyTeams">📋 Copy teams</button></div>';
+  document.getElementById('reshuffle').onclick=()=>makeTeams(true);
+  document.getElementById('copyTeams').onclick=copyTeams;
+}
+
+function esc(s){ const d=document.createElement('div'); d.appendChild(document.createTextNode(s||'')); return d.innerHTML; }
+
+function copyTeams(){
+  if(!lastTeams) return;
+  const txt=lastTeams.map((t,i)=>`Team ${i+1}:\n`+t.map(n=>'  • '+n).join('\n')).join('\n\n');
+  if(navigator.clipboard) navigator.clipboard.writeText(txt).then(()=>{ const b=document.getElementById('copyTeams'); b.textContent='✓ Copied!'; setTimeout(()=>b.textContent='📋 Copy teams',1600); });
+}
+
+async function makeTeams(isReshuffle){
+  if(busy) return;
+  const err=document.getElementById('err'); err.textContent='';
+  const names=parseNames();
+  if(names.length<2){ err.textContent='Add at least 2 names to make teams.'; return; }
+  const numTeamsWanted=splitBy==='teams'?parseInt(document.getElementById('numTeams').value,10):Math.ceil(names.length/parseInt(document.getElementById('teamSize').value,10));
+  if(splitBy==='teams' && numTeamsWanted>names.length){ err.textContent="You've got more teams than people!"; return; }
+
+  busy=true; document.getElementById('goBtn').disabled=true;
+  // shuffle animation: show a few quick re-deals then settle
+  const frames=isReshuffle?5:7;
+  for(let f=0;f<frames;f++){
+    renderTeams(buildTeams(names),true);
+    await new Promise(r=>setTimeout(r,90));
+  }
+  const finalTeams=buildTeams(names);
+  lastTeams=finalTeams;
+  renderTeams(finalTeams,false);
+  if(typeof confetti==='function'){ confetti({particleCount:90,spread:70,origin:{y:.5},colors:['#FFD600','#FF8C00','#FF2060','#00E5FF','#B061FF','#00E676']}); }
+  const hint=document.getElementById('hintLine'); hint.textContent='✨ '+finalTeams.length+' teams ready! Tap "Shuffle again" for a new mix.'; setTimeout(()=>hint.textContent='',4000);
+  busy=false; document.getElementById('goBtn').disabled=false;
+}
+
+document.getElementById('goBtn').addEventListener('click',()=>makeTeams(false));
+
+updateCount();
+</script>
+</body>
+</html>

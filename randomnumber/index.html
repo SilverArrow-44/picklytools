@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<script>document.documentElement.className='js';</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a1f">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
+<title>Random Number Generator — Free Online RNG (Pick a Number, Range, No Repeats) | Pickly</title>
+<meta name="description" content="Free random number generator. Pick a number in any range, draw multiple unique numbers for raffles, roll dice, or generate a PIN. Fast, fair, animated — no sign-up.">
+<meta name="keywords" content="random number generator, rng, pick a random number, number picker, raffle number generator, random number between, dice roller, random pin generator">
+<link rel="canonical" href="https://picklytools.com/randomnumber/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Random Number Generator — Free Online RNG">
+<meta property="og:description" content="Pick a random number in any range, draw raffle numbers, roll dice. Free, fair, fun.">
+<meta property="og:url" content="https://picklytools.com/randomnumber/">
+<meta property="og:image" content="https://picklytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://picklytools.com/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Random Number Generator","url":"https://picklytools.com/randomnumber/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Generate random numbers in any range, with or without repeats, plus dice and PIN modes."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Random Number Generator","item":"https://picklytools.com/randomnumber/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
+  --bd:rgba(255,255,255,.1); --tx:#f4f4fb; --mt:#9a9ab5;
+  --pk:#FF2060; --or:#FF8C00; --yl:#FFD600; --cy:#00E5FF; --pu:#B061FF; --gr:#00E676;
+  --rs:14px; --rl:22px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 12% 8%,rgba(176,97,255,.13),transparent 60%),radial-gradient(ellipse 60% 50% at 88% 92%,rgba(255,32,96,.1),transparent 60%)}
+.wrap{position:relative;z-index:2;max-width:720px;margin:0 auto;padding:0 18px}
+
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,10,31,.72);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:720px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:34px;height:34px}
+.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+
+.head{text-align:center;padding:34px 0 14px}
+.head h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(28px,5.2vw,46px);letter-spacing:-1px;line-height:1.08;margin-bottom:10px}
+.head h1 .g{background:linear-gradient(115deg,var(--pu),var(--pk));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.head p{color:var(--mt);font-size:15px;font-weight:600;max-width:480px;margin:0 auto}
+
+.modes{display:flex;gap:8px;justify-content:center;margin:18px 0 8px;flex-wrap:wrap}
+.mode{font-weight:800;font-size:13.5px;padding:10px 18px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--mt);cursor:pointer;transition:all .15s}
+.mode:hover{background:var(--sfh);color:var(--tx)}
+.mode.on{background:linear-gradient(135deg,rgba(176,97,255,.24),rgba(255,32,96,.2));border-color:var(--pu);color:#fff}
+
+/* display */
+.display{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--rl);padding:34px 20px;text-align:center;margin-top:10px;min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.display::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(176,97,255,.12),transparent 65%);pointer-events:none}
+.num{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(56px,16vw,120px);line-height:1;background:linear-gradient(135deg,var(--pu),var(--pk) 60%,var(--or));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-variant-numeric:tabular-nums;letter-spacing:-2px}
+.num.rolling{animation:pulse .3s ease infinite alternate}
+@keyframes pulse{from{opacity:.7;transform:scale(.98)}to{opacity:1;transform:scale(1.02)}}
+.multi-nums{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.nball{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fredoka',sans-serif;font-weight:700;font-size:24px;color:#fff;background:radial-gradient(circle at 38% 32%,var(--pu),#7a3fcf);box-shadow:0 6px 18px rgba(176,97,255,.4),inset 0 2px 6px rgba(255,255,255,.3);font-variant-numeric:tabular-nums;animation:pop .4s ease both}
+.nball:nth-child(even){background:radial-gradient(circle at 38% 32%,var(--pk),#c4144a)}
+@keyframes pop{from{opacity:0;transform:scale(.4) translateY(10px)}to{opacity:1;transform:none}}
+.dice-wrap{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.die{width:74px;height:74px;border-radius:16px;background:linear-gradient(145deg,#fff,#d8d8ec);box-shadow:0 8px 22px rgba(0,0,0,.4),inset 0 -4px 8px rgba(0,0,0,.12);display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:11px;gap:3px}
+.die.rolling{animation:shake .35s ease infinite}
+@keyframes shake{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+.pip{width:11px;height:11px;border-radius:50%;background:#2a2a3a;align-self:center;justify-self:center}
+.pip.off{background:transparent}
+.placeholder{color:var(--mt);font-size:15px;font-weight:700}
+.sub{color:var(--mt);font-size:14px;font-weight:700;margin-top:14px}
+
+.controls{margin-top:18px}
+.opts{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center;color:var(--mt);font-weight:700;font-size:14px;margin-bottom:16px}
+.opts .field{display:flex;align-items:center;gap:7px}
+.opts input[type=number]{width:92px;background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:10px;color:var(--tx);padding:9px 11px;font-family:'Nunito',sans-serif;font-weight:800;font-size:15px;outline:none;text-align:center}
+.opts input:focus{border-color:var(--pu)}
+.opts select{background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:10px;color:var(--tx);padding:9px 11px;font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;outline:none;cursor:pointer}
+.opts label.check{display:inline-flex;align-items:center;gap:7px;cursor:pointer;user-select:none}
+.opts input[type=checkbox]{width:18px;height:18px;accent-color:var(--pu);cursor:pointer}
+
+.go-btn{font-family:'Fredoka',sans-serif;font-weight:600;font-size:22px;padding:15px 56px;border-radius:100px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--pu),var(--pk));color:#fff;box-shadow:0 8px 28px rgba(176,97,255,.42);transition:transform .15s,box-shadow .15s;display:block;margin:0 auto}
+.go-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(176,97,255,.55)}
+.go-btn:active{transform:scale(.97)}
+.go-btn:disabled{opacity:.6;cursor:default;transform:none}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.mini{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;padding:9px 16px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--tx);cursor:pointer;transition:all .15s}
+.mini:hover{background:var(--sfh)}
+.err{color:#ff6b8a;font-weight:700;font-size:13px;text-align:center;min-height:18px;margin-top:8px}
+
+.hist{margin-top:22px;text-align:center}
+.hist-title{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mt);margin-bottom:8px}
+.hist-list{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.htag{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:5px 11px;font-weight:800;font-size:13px;color:var(--mt);font-variant-numeric:tabular-nums}
+
+.ad-wrap{max-width:720px;margin:36px auto 0;text-align:center}
+.ad-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(244,244,251,.3);margin-bottom:6px}
+.ad-box{min-height:100px;border:1px dashed var(--bd);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:var(--mt);font-size:13px;font-weight:600;background:rgba(255,255,255,.02)}
+
+.content{margin-top:40px}
+.content h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:24px;margin:30px 0 10px}
+.content h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin:20px 0 8px}
+.content p{color:var(--mt);font-size:15.5px;font-weight:600;margin-bottom:13px}
+.content ul{color:var(--mt);font-size:15.5px;font-weight:600;margin:0 0 13px 22px}.content li{margin-bottom:6px}
+.faq{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.qa{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);overflow:hidden}
+.qa summary{padding:15px 18px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:'+';font-size:22px;color:var(--mt);transition:transform .2s}
+.qa[open] summary::after{transform:rotate(45deg)}
+.qa .a{padding:0 18px 16px;color:var(--mt);font-size:15px;font-weight:600}
+
+footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
+.foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot-col h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
+.foot-col a:hover{color:var(--tx)}
+.foot-brand{max-width:240px}.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
+.copy{text-align:center;color:var(--mt);font-size:13px;font-weight:600;margin-top:30px;padding-top:20px;border-top:1px solid var(--bd)}
+@media(prefers-reduced-motion:reduce){.num.rolling,.die.rolling,.nball{animation:none!important}body::before{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/">← All tools</a>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <h1>Random Number <span class="g">Generator</span></h1>
+    <p>Pick a number in any range, draw a set of unique numbers, or roll some dice. Fast, fair, and oddly satisfying.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="modes" id="modes">
+    <button class="mode on" data-mode="single">🎯 Single number</button>
+    <button class="mode" data-mode="multi">🎟️ Draw several</button>
+    <button class="mode" data-mode="dice">🎲 Dice</button>
+  </div>
+
+  <div class="display" id="display">
+    <div class="placeholder" id="placeholder">Set your range and tap Generate 👇</div>
+  </div>
+  <div class="err" id="err"></div>
+
+  <div class="controls">
+    <div class="opts" id="opts"></div>
+    <button class="go-btn" id="goBtn">Generate</button>
+    <div class="btn-row">
+      <button class="mini" id="copyBtn">📋 Copy</button>
+      <button class="mini" id="soundBtn">🔊 Sound on</button>
+      <button class="mini" id="clearBtn">↺ Clear history</button>
+    </div>
+  </div>
+
+  <div class="hist" id="histWrap" hidden>
+    <div class="hist-title">Recent results</div>
+    <div class="hist-list" id="histList"></div>
+  </div>
+
+  <div class="ad-wrap">
+    <div class="ad-lbl">Advertisement</div>
+    <div class="ad-box">Your ad space — plug in Google AdSense here 📢</div>
+  </div>
+
+  <article class="content">
+    <h2>A free random number generator that's actually fun</h2>
+    <p>Whether you're running a raffle, picking a lucky winner, settling a debate, playing a board game without dice, or teaching probability, this random number generator has you covered. Pick any range, choose how many numbers you want, decide whether repeats are allowed, and get a genuinely random result with a satisfying reveal.</p>
+    <h3>Three modes</h3>
+    <ul>
+      <li><strong>Single number</strong> — one random number between your chosen minimum and maximum.</li>
+      <li><strong>Draw several</strong> — pull a set of numbers at once, with the option of no repeats. Perfect for raffles, lottery-style draws, or picking multiple winners.</li>
+      <li><strong>Dice</strong> — roll 1–6 dice with classic pip faces and a total. Great when you've lost the dice from your board game.</li>
+    </ul>
+    <h3>Is it truly random?</h3>
+    <p>Yes. Results use your browser's cryptographically-strong randomness where available, giving every number in your range an equal chance. Each draw is independent and unbiased.</p>
+    <h3>Common uses</h3>
+    <p>Raffles and giveaways, choosing lottery numbers, picking a winner from numbered entries, random sampling, classroom activities, board and party games, decision-making, and contests on social media.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <details class="qa"><summary>Can I generate numbers without repeats?</summary><div class="a">Yes — in "Draw several" mode, tick "No repeats" to get a set of unique numbers, ideal for raffles and draws.</div></details>
+      <details class="qa"><summary>What range can I use?</summary><div class="a">Any whole-number range you like, including negative numbers, as long as the minimum is below the maximum.</div></details>
+      <details class="qa"><summary>Is it random enough for a raffle?</summary><div class="a">Yes. It uses your browser's secure randomness, giving each number an equal, independent chance — fair for giveaways and contests.</div></details>
+      <details class="qa"><summary>Is it free?</summary><div class="a">Completely free, no sign-up, supported by unobtrusive ads. See our <a href="/privacy/" style="color:var(--cy)">Privacy Policy</a>.</div></details>
+    </div>
+  </article>
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-col foot-brand">
+      <a class="brand" href="/">
+        <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+          <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="79,21 79,41 63,31" fill="#fff"/>
+          <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+        </svg>
+        <span class="brand-name">Pickly</span>
+      </a>
+      <p>Free, fun online tools to help you decide anything.</p>
+    </div>
+    <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/timezones/">Timezone Finder</a><a href="/coinflip/">Coin Flip</a><a href="/randomnumber/">Random Number</a><a href="/#tools">All tools</a></div>
+    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+  </div>
+  <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div></div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+let mode='single';
+let soundOn=true;
+let history=[];
+let busy=false;
+
+/* secure random int in [min,max] inclusive */
+function randInt(min,max){
+  const range=max-min+1;
+  if(window.crypto&&crypto.getRandomValues){
+    // rejection sampling for unbiased result
+    const maxUint=4294967296; const limit=maxUint-(maxUint%range);
+    const a=new Uint32Array(1);
+    do{ crypto.getRandomValues(a); }while(a[0]>=limit);
+    return min+(a[0]%range);
+  }
+  return min+Math.floor(Math.random()*range);
+}
+
+/* ── sound ── */
+let actx=null;
+function tone(freq,when,dur){ if(!soundOn)return; try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); const o=actx.createOscillator(),g=actx.createGain(); o.connect(g);g.connect(actx.destination); o.type='triangle'; o.frequency.value=freq; g.gain.setValueAtTime(0.0001,when); g.gain.exponentialRampToValueAtTime(0.14,when+0.01); g.gain.exponentialRampToValueAtTime(0.0001,when+dur); o.start(when);o.stop(when+dur+0.02);}catch(e){} }
+function tickSound(){ if(!soundOn)return; try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); tone(420+Math.random()*120,actx.currentTime,0.05);}catch(e){} }
+function winSound(){ if(!soundOn)return; try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); const t=actx.currentTime; tone(620,t,0.12); tone(820,t+0.1,0.14);}catch(e){} }
+
+const DICE_PIPS={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
+function dieHTML(v){ let h=''; for(let i=0;i<9;i++) h+='<div class="pip'+(DICE_PIPS[v].includes(i)?'':' off')+'"></div>'; return h; }
+
+function renderOpts(){
+  const o=document.getElementById('opts');
+  if(mode==='single'){
+    o.innerHTML='<div class="field">Min <input type="number" id="min" value="1"></div><div class="field">Max <input type="number" id="max" value="100"></div>';
+  } else if(mode==='multi'){
+    o.innerHTML='<div class="field">Min <input type="number" id="min" value="1"></div><div class="field">Max <input type="number" id="max" value="100"></div><div class="field">How many <input type="number" id="qty" value="5" min="1" max="100"></div><label class="check"><input type="checkbox" id="norep" checked> No repeats</label>';
+  } else {
+    o.innerHTML='<div class="field">How many dice <select id="ndice"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>';
+  }
+}
+
+function setMode(m){
+  mode=m;
+  document.querySelectorAll('.mode').forEach(x=>x.classList.toggle('on',x.dataset.mode===m));
+  renderOpts();
+  document.getElementById('display').innerHTML='<div class="placeholder">'+(m==='dice'?'Tap Roll to throw the dice 🎲':'Set your range and tap Generate 👇')+'</div>';
+  document.getElementById('err').textContent='';
+  document.getElementById('goBtn').textContent=m==='dice'?'Roll':'Generate';
+}
+
+function readRange(){
+  const min=parseInt(document.getElementById('min').value,10);
+  const max=parseInt(document.getElementById('max').value,10);
+  return {min,max};
+}
+
+function pushHistory(text){ history.unshift(text); if(history.length>15)history.pop();
+  const w=document.getElementById('histWrap'),l=document.getElementById('histList');
+  if(!history.length){w.hidden=true;return;} w.hidden=false;
+  l.innerHTML=history.map(h=>`<span class="htag">${h}</span>`).join('');
+}
+
+let lastResultText='';
+
+async function generate(){
+  if(busy) return;
+  const err=document.getElementById('err'); err.textContent='';
+  const disp=document.getElementById('display');
+  const btn=document.getElementById('goBtn');
+
+  if(mode==='single'||mode==='multi'){
+    const {min,max}=readRange();
+    if(isNaN(min)||isNaN(max)){ err.textContent='Please enter a min and max.'; return; }
+    if(min>=max){ err.textContent='Max must be greater than min.'; return; }
+    if(mode==='multi'){
+      let qty=parseInt(document.getElementById('qty').value,10)||1;
+      const norep=document.getElementById('norep').checked;
+      const range=max-min+1;
+      if(norep&&qty>range){ err.textContent=`Only ${range} unique numbers exist in that range.`; return; }
+      if(qty>100)qty=100;
+      busy=true; btn.disabled=true;
+      // roll animation
+      disp.innerHTML='<div class="num rolling" id="roller">'+randInt(min,max)+'</div>';
+      const roller=document.getElementById('roller');
+      await rollAnim(roller,()=>randInt(min,max),900);
+      // final draw
+      let nums=[];
+      if(norep){ const pool=[]; for(let i=min;i<=max;i++)pool.push(i); for(let k=0;k<qty;k++){ const idx=randInt(0,pool.length-1); nums.push(pool.splice(idx,1)[0]); } }
+      else { for(let k=0;k<qty;k++) nums.push(randInt(min,max)); }
+      disp.innerHTML='<div class="multi-nums">'+nums.map((n,i)=>`<div class="nball" style="animation-delay:${i*0.06}s">${n}</div>`).join('')+'</div><div class="sub">'+qty+' number'+(qty>1?'s':'')+(norep?' · no repeats':'')+'</div>';
+      winSound();
+      lastResultText=nums.join(', ');
+      pushHistory(nums.join(', '));
+      busy=false; btn.disabled=false;
+    } else {
+      busy=true; btn.disabled=true;
+      disp.innerHTML='<div class="num rolling" id="roller">0</div>';
+      const roller=document.getElementById('roller');
+      const final=randInt(min,max);
+      await rollAnim(roller,()=>randInt(min,max),1000);
+      roller.classList.remove('rolling'); roller.textContent=final;
+      disp.innerHTML='<div class="num">'+final+'</div><div class="sub">between '+min+' and '+max+'</div>';
+      winSound();
+      lastResultText=String(final);
+      pushHistory(String(final));
+      busy=false; btn.disabled=false;
+    }
+  } else {
+    // dice
+    const n=parseInt(document.getElementById('ndice').value,10);
+    busy=true; btn.disabled=true;
+    disp.innerHTML='<div class="dice-wrap" id="dw">'+Array.from({length:n},()=>'<div class="die rolling">'+dieHTML(1)+'</div>').join('')+'</div>';
+    const dice=[...document.querySelectorAll('#dw .die')];
+    const start=performance.now();
+    await new Promise(res=>{
+      const iv=setInterval(()=>{ dice.forEach(d=>d.innerHTML=dieHTML(randInt(1,6))); tickSound(); if(performance.now()-start>800){clearInterval(iv);res();} },90);
+    });
+    const vals=dice.map(()=>randInt(1,6));
+    dice.forEach((d,i)=>{ d.classList.remove('rolling'); d.innerHTML=dieHTML(vals[i]); });
+    const total=vals.reduce((a,b)=>a+b,0);
+    disp.innerHTML='<div class="dice-wrap">'+vals.map(v=>'<div class="die">'+dieHTML(v)+'</div>').join('')+'</div><div class="sub">Total: '+total+(n>1?' ('+vals.join(' + ')+')':'')+'</div>';
+    winSound();
+    lastResultText=vals.join(', ')+' (total '+total+')';
+    pushHistory(n===1?String(vals[0]):vals.join('+')+'='+total);
+    busy=false; btn.disabled=false;
+  }
+}
+
+function rollAnim(el,gen,dur){
+  return new Promise(res=>{
+    const start=performance.now();
+    const iv=setInterval(()=>{ el.textContent=gen(); tickSound(); if(performance.now()-start>dur){ clearInterval(iv); res(); } },70);
+  });
+}
+
+document.getElementById('goBtn').addEventListener('click',generate);
+document.getElementById('modes').addEventListener('click',e=>{ const b=e.target.closest('.mode'); if(b) setMode(b.dataset.mode); });
+document.getElementById('copyBtn').addEventListener('click',()=>{ if(!lastResultText){return;} if(navigator.clipboard){navigator.clipboard.writeText(lastResultText).then(()=>{const b=document.getElementById('copyBtn');b.textContent='✓ Copied!';setTimeout(()=>b.textContent='📋 Copy',1600);});} });
+document.getElementById('soundBtn').addEventListener('click',e=>{ soundOn=!soundOn; e.target.textContent=soundOn?'🔊 Sound on':'🔇 Sound off'; });
+document.getElementById('clearBtn').addEventListener('click',()=>{ history=[]; document.getElementById('histWrap').hidden=true; });
+
+// allow Enter key to generate
+document.addEventListener('keydown',e=>{ if(e.key==='Enter'&&!busy) generate(); });
+
+// init
+renderOpts();
+</script>
+</body>
+</html>
