@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<script>document.documentElement.className='js';</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a1f">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta property="og:image" content="https://picklytools.com/og-image.png">
+<meta name="twitter:image" content="https://picklytools.com/og-image.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact Us — Pickly">
+<meta property="og:description" content="Send feedback, suggest a tool, or report a bug. We read everything.">
+<meta property="og:url" content="https://picklytools.com/contact/">
+<title>Contact Us — Pickly</title>
+<meta name="description" content="Get in touch with the Pickly team. Send feedback, suggest a new tool, report a bug, or ask a question. We read everything.">
+<link rel="canonical" href="https://picklytools.com/contact/">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/page.css">
+<style>
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:10px}
+  @media(max-width:680px){.contact-grid{grid-template-columns:1fr}}
+  .card{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rl);padding:28px}
+  .card h2{margin-top:0!important}
+  .fb-types{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .fb-type{background:rgba(255,255,255,.04);border:1.5px solid var(--bd);border-radius:100px;color:var(--tx);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:7px 15px;cursor:pointer;transition:all .15s}
+  .fb-type:hover{background:var(--sfh)}
+  .fb-type.on{background:linear-gradient(135deg,rgba(176,97,255,.28),rgba(0,229,255,.2));border-color:var(--pu);color:#fff}
+  .fld{display:block;width:100%;background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:var(--rs);color:var(--tx);font-family:'Nunito',sans-serif;font-size:15px;font-weight:600;padding:12px 15px;outline:none;transition:border-color .2s,background .2s;margin-bottom:12px}
+  .fld:focus{border-color:var(--pu);background:rgba(176,97,255,.06)}
+  .fld::placeholder{color:var(--mt)}
+  textarea.fld{min-height:130px;resize:vertical;line-height:1.5}
+  .hint{font-size:13px;font-weight:700;color:var(--cy);margin-top:8px;min-height:18px}
+  .reasons li{margin-bottom:12px}
+</style>
+</head>
+<body>
+<div class="bg-fx"></div>
+
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#tools">Tools</a><a href="/#faq">FAQ</a><a href="/#about">About</a><a href="/contact/">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head"><div class="wrap"><h1>Get in touch</h1><p class="upd">We read every message — and a lot of our best tools came from user ideas.</p></div></header>
+
+<main class="doc"><div class="wrap">
+  <div class="contact-grid">
+
+    <div class="card">
+      <h2>Send us a message</h2>
+      <p style="margin-bottom:16px">Pick a topic, write your note, and hit send. Your name is optional — no account needed.</p>
+      <div class="fb-types" id="fbTypes">
+        <button class="fb-type on" data-type="Suggestion">💡 Suggest a tool</button>
+        <button class="fb-type" data-type="Feedback">⭐ Feedback</button>
+        <button class="fb-type" data-type="Bug report">🐞 Report a bug</button>
+        <button class="fb-type" data-type="Question">❓ Question</button>
+      </div>
+      <input class="fld" id="nm" type="text" placeholder="Your name (optional)" maxlength="60" autocomplete="off">
+      <textarea class="fld" id="msg" placeholder="What's on your mind?" maxlength="2000"></textarea>
+      <button class="btn btn-primary" id="send">✉️ Send message</button>
+      <div class="hint" id="hint"></div>
+    </div>
+
+    <div class="card">
+      <h2>Other ways to reach us</h2>
+      <p>Prefer email? Write to us directly at:</p>
+      <p style="font-size:18px"><a id="mail" href="#">hello@picklytools.com</a></p>
+      <h3 style="margin-top:24px">What you can tell us</h3>
+      <ul class="reasons">
+        <li><strong>Suggest a tool</strong> — what would make your decisions easier?</li>
+        <li><strong>Feedback</strong> — what do you love, what's annoying?</li>
+        <li><strong>Bug reports</strong> — something not working right?</li>
+        <li><strong>Partnerships &amp; press</strong> — we're happy to chat.</li>
+      </ul>
+      <p style="margin-top:10px">We're a small team, so it may take a few days to reply — but we genuinely read everything.</p>
+    </div>
+
+  </div>
+</div></main>
+
+<footer>
+  <div class="foot-in">
+    <div class="foot-col foot-brand">
+      <a class="brand" href="/">
+        <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+          <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="79,21 79,41 63,31" fill="#fff"/>
+          <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+        </svg>
+        <span class="brand-name">Pickly</span>
+      </a>
+      <p>Free, fun online tools to help you decide anything.</p>
+    </div>
+    <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/timezones/">Timezone Finder</a><a href="/#tools">All tools</a></div>
+    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+  </div>
+  <div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // ↓↓↓ SET YOUR REAL EMAIL HERE ↓↓↓
+  var EMAIL = 'hello@picklytools.com';
+  var mail = document.getElementById('mail');
+  mail.textContent = EMAIL; mail.href = 'mailto:' + EMAIL;
+
+  var type = 'Suggestion';
+  document.querySelectorAll('.fb-type').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.fb-type').forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on'); type = b.dataset.type;
+    });
+  });
+
+  document.getElementById('send').addEventListener('click', function(){
+    var name = document.getElementById('nm').value.trim();
+    var msg = document.getElementById('msg').value.trim();
+    var hint = document.getElementById('hint');
+    if(!msg){ hint.textContent = 'Please write a message first 🙏'; return; }
+    var who = name || 'Anonymous';
+    var subject = encodeURIComponent('[Pickly ' + type + '] from ' + who);
+    var body = encodeURIComponent(msg + '\n\n— ' + who);
+    window.location.href = 'mailto:' + EMAIL + '?subject=' + subject + '&body=' + body;
+    hint.textContent = '✓ Opening your email app…';
+  });
+</script>
+</body>
+</html>

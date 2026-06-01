@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<script>document.documentElement.className='js';</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a1f">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
+<title>Timezone Overlap Finder & Converter — Best Meeting Times for Remote Teams | Pickly</title>
+<meta name="description" content="Free timezone overlap finder for remote teams. Enter everyone's working hours and instantly see the best meeting times that work across all time zones — plus a fast time zone converter. No sign-up.">
+<meta name="keywords" content="timezone overlap, meeting time finder, remote team timezone, time zone converter, world clock meeting planner, best meeting time across timezones, work hours overlap">
+<link rel="canonical" href="https://picklytools.com/timezones/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Timezone Overlap Finder & Converter for Remote Teams">
+<meta property="og:description" content="Find meeting times that work across every time zone. Enter working hours, see the overlap. Free, no sign-up.">
+<meta property="og:url" content="https://picklytools.com/timezones/">
+<meta property="og:image" content="https://picklytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://picklytools.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"WebApplication",
+  "name":"Timezone Overlap Finder & Converter","url":"https://picklytools.com/timezones/",
+  "applicationCategory":"BusinessApplication","operatingSystem":"Any",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+  "description":"Find the best meeting times across multiple time zones and convert times between zones."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},
+    {"@type":"ListItem","position":2,"name":"Timezone Finder","item":"https://picklytools.com/timezones/"}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
+  --bd:rgba(255,255,255,.1); --tx:#f4f4fb; --mt:#9a9ab5;
+  --pk:#FF2060; --or:#FF8C00; --yl:#FFD600; --cy:#00E5FF; --pu:#B061FF; --gr:#00E676;
+  --rs:14px; --rl:22px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 12% 8%,rgba(0,229,255,.12),transparent 60%),radial-gradient(ellipse 60% 50% at 88% 92%,rgba(176,97,255,.12),transparent 60%)}
+.wrap{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* top bar */
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,10,31,.72);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:1080px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:34px;height:34px}
+.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+
+/* header */
+.head{text-align:center;padding:40px 0 24px}
+.head h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(30px,5.5vw,50px);letter-spacing:-1px;line-height:1.08;margin-bottom:12px}
+.head h1 .g{background:linear-gradient(115deg,var(--cy),var(--pu));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.head p{color:var(--mt);font-size:16px;font-weight:600;max-width:560px;margin:0 auto}
+
+/* tabs */
+.tabs{display:flex;gap:8px;justify-content:center;margin:8px 0 30px;flex-wrap:wrap}
+.tab{font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;padding:11px 22px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--mt);cursor:pointer;transition:all .15s}
+.tab:hover{background:var(--sfh);color:var(--tx)}
+.tab.on{background:linear-gradient(135deg,rgba(0,229,255,.2),rgba(176,97,255,.22));border-color:var(--cy);color:#fff}
+
+.view{display:none}
+.view.on{display:block;animation:fade .3s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* panels */
+.panel{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--rl);padding:22px;margin-bottom:18px}
+.panel-h{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.panel-h h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:19px}
+.hint{color:var(--mt);font-size:13px;font-weight:600;margin-bottom:14px}
+
+/* person rows */
+.person{display:grid;grid-template-columns:1fr auto auto auto;gap:10px;align-items:center;background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:12px;margin-bottom:10px}
+@media(max-width:680px){.person{grid-template-columns:1fr 1fr;gap:8px}}
+.person .nm{font-weight:800;font-size:14px;background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:10px;color:var(--tx);padding:9px 11px;font-family:'Nunito',sans-serif;outline:none;width:100%}
+.person .nm:focus{border-color:var(--cy)}
+.tzpick{position:relative}
+.tzpick input{width:100%;font-weight:700;font-size:13px;background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:10px;color:var(--tx);padding:9px 11px;font-family:'Nunito',sans-serif;outline:none;cursor:pointer}
+.tzpick input:focus{border-color:var(--cy)}
+@media(max-width:680px){.tzpick{grid-column:1/3}}
+.hrs{display:flex;align-items:center;gap:6px;font-weight:700;font-size:13px;color:var(--mt)}
+.hrs select{background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:9px;color:var(--tx);padding:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;outline:none;cursor:pointer}
+.hrs select:focus{border-color:var(--cy)}
+.del{background:rgba(255,32,96,.1);border:1px solid rgba(255,32,96,.25);color:#ff6b8a;border-radius:9px;width:34px;height:34px;cursor:pointer;font-size:15px;transition:all .15s;flex-shrink:0}
+.del:hover{background:rgba(255,32,96,.2)}
+@media(max-width:680px){.del{justify-self:end}}
+
+/* dropdown */
+.dd{position:absolute;top:calc(100% + 4px);left:0;right:0;background:#15152e;border:1px solid var(--bd);border-radius:12px;max-height:260px;overflow-y:auto;z-index:40;box-shadow:0 18px 50px rgba(0,0,0,.5);display:none}
+.dd.show{display:block}
+.dd-item{padding:10px 13px;cursor:pointer;font-size:13px;font-weight:600;display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(255,255,255,.04)}
+.dd-item:hover,.dd-item.hi{background:var(--sfh)}
+.dd-item .off{color:var(--mt);font-size:11px;font-weight:700;white-space:nowrap}
+.dd-empty{padding:14px;color:var(--mt);font-size:13px;text-align:center}
+
+.btn{font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;padding:12px 26px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .2s}
+.btn-primary{background:linear-gradient(135deg,var(--cy),var(--pu));color:#fff;box-shadow:0 8px 28px rgba(0,229,255,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,229,255,.42)}
+.btn-ghost{background:var(--sf);color:var(--tx);border:1.5px solid var(--bd)}
+.btn-ghost:hover{background:var(--sfh)}
+.btn-sm{font-size:13px;padding:9px 16px}
+.row-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+
+/* results */
+.results{margin-top:8px}
+.best{background:linear-gradient(135deg,rgba(0,230,118,.12),rgba(0,229,255,.1));border:1px solid rgba(0,230,118,.35);border-radius:var(--rl);padding:20px;margin-bottom:16px;text-align:center}
+.best .lab{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gr);margin-bottom:6px}
+.best .big{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(22px,4vw,32px);margin-bottom:4px}
+.best .sub{color:var(--mt);font-size:14px;font-weight:600}
+.best-actions,.warn-actions{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.live-clock{color:var(--cy);font-size:11px;font-weight:800;font-variant-numeric:tabular-nums}
+.warn{background:linear-gradient(135deg,rgba(255,140,0,.12),rgba(255,214,0,.08));border:1px solid rgba(255,140,0,.35);border-radius:var(--rl);padding:18px;margin-bottom:16px;text-align:center}
+.warn .lab{color:var(--or);font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.warn .big{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(20px,3.6vw,28px);margin-bottom:4px}
+.warn .sub{color:var(--mt);font-size:14px;font-weight:600}
+
+/* timeline grid */
+.tl-wrap{overflow-x:auto;margin-top:14px;border-radius:var(--rs);border:1px solid var(--bd)}
+.tl{min-width:760px}
+.tl-row{display:grid;grid-template-columns:130px 1fr;border-bottom:1px solid rgba(255,255,255,.06)}
+.tl-row:last-child{border-bottom:none}
+.tl-head{background:var(--sf)}
+.tl-name{padding:10px 12px;font-weight:800;font-size:13px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--bd);overflow:hidden}
+.tl-name .tz{color:var(--mt);font-size:11px;font-weight:700}
+.tl-name .now{color:var(--cy);font-size:11px;font-weight:800}
+.tl-cells{display:grid;grid-template-columns:repeat(24,1fr)}
+.cell{height:38px;border-right:1px solid rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:rgba(255,255,255,.35);position:relative}
+.tl-head .cell{height:26px;font-size:10px;color:var(--mt)}
+.cell.work{background:rgba(0,230,118,.22)}
+.cell.sleep{background:rgba(255,32,96,.06)}
+.cell.best-col{box-shadow:inset 0 0 0 2px var(--gr)}
+.cell.good-col{box-shadow:inset 0 0 0 2px rgba(255,214,0,.6)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:12px;font-weight:700;color:var(--mt)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:14px;height:14px;border-radius:4px;display:inline-block}
+
+/* converter */
+.conv-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.conv-from{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:16px}
+.conv-from label{display:block;font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--mt);margin-bottom:8px}
+.conv-inputs{display:flex;gap:10px;flex-wrap:wrap}
+.conv-inputs input[type=time],.conv-inputs input[type=date]{background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:10px;color:var(--tx);padding:10px 12px;font-family:'Nunito',sans-serif;font-weight:700;font-size:15px;outline:none}
+.conv-inputs input:focus{border-color:var(--cy)}
+.conv-result{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:6px}
+.conv-line{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 14px;border-bottom:1px solid rgba(255,255,255,.05)}
+.conv-line:last-child{border-bottom:none}
+.conv-line .city{font-weight:800;font-size:14px}
+.conv-line .city .z{color:var(--mt);font-size:12px;font-weight:700;display:block}
+.conv-line .t{text-align:right}
+.conv-line .t .big{font-family:'Fredoka',sans-serif;font-weight:600;font-size:20px}
+.conv-line .t .d{color:var(--mt);font-size:12px;font-weight:700}
+.conv-line .t .d.next{color:var(--or)}
+.conv-line .t .d.prev{color:var(--cy)}
+
+.add-tz-btn{margin-top:6px}
+.empty{text-align:center;color:var(--mt);font-size:14px;font-weight:600;padding:24px 10px}
+
+/* SEO content */
+.content{margin-top:44px}
+.content h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:26px;margin:34px 0 12px;letter-spacing:-.4px}
+.content h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:19px;margin:22px 0 8px}
+.content p{color:var(--mt);font-size:16px;font-weight:600;margin-bottom:14px}
+.content ul{color:var(--mt);font-size:16px;font-weight:600;margin:0 0 14px 22px}
+.content li{margin-bottom:7px}
+.faq{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.qa{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);overflow:hidden}
+.qa summary{padding:16px 20px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:center}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:'+';font-size:22px;color:var(--mt);transition:transform .2s}
+.qa[open] summary::after{transform:rotate(45deg)}
+.qa .a{padding:0 20px 18px;color:var(--mt);font-size:15px;font-weight:600}
+
+.ad-wrap{max-width:760px;margin:40px auto 0;text-align:center}
+.ad-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(244,244,251,.3);margin-bottom:6px}
+.ad-box{min-height:100px;border:1px dashed var(--bd);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:var(--mt);font-size:13px;font-weight:600;background:rgba(255,255,255,.02)}
+
+footer{border-top:1px solid var(--bd);margin-top:56px;padding:40px 0 50px}
+.foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot-col h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
+.foot-col a:hover{color:var(--tx)}
+.foot-brand{max-width:240px}
+.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
+.copy{text-align:center;color:var(--mt);font-size:13px;font-weight:600;margin-top:32px;padding-top:20px;border-top:1px solid var(--bd)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/">← All tools</a>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <h1>Find a time that works <span class="g">everywhere</span></h1>
+    <p>Add your team across the globe, set each person's working hours, and instantly see the meeting slots that overlap. Plus a quick converter for any time, any zone.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tabs">
+    <button class="tab on" data-view="overlap">🌍 Meeting Overlap Finder</button>
+    <button class="tab" data-view="convert">🔄 Time Converter</button>
+  </div>
+
+  <!-- ============ OVERLAP FINDER ============ -->
+  <section class="view on" id="view-overlap">
+    <div class="panel">
+      <div class="panel-h">
+        <h2>Who's in the meeting?</h2>
+        <button class="btn btn-ghost btn-sm" id="addPerson">+ Add person</button>
+      </div>
+      <p class="hint">Set each person's local working hours. We'll handle daylight saving automatically and find when everyone's free at the same moment.</p>
+      <div id="people"></div>
+      <div class="row-actions">
+        <button class="btn btn-primary" id="findBtn">🔍 Find overlap</button>
+        <button class="btn btn-ghost btn-sm" id="shareBtn">🔗 Share this setup</button>
+      </div>
+      <div class="hint" id="shareHint" style="margin-top:10px;color:var(--cy);min-height:16px"></div>
+    </div>
+
+    <div class="results" id="results"></div>
+  </section>
+
+  <!-- ============ CONVERTER ============ -->
+  <section class="view" id="view-convert">
+    <div class="panel">
+      <div class="conv-from">
+        <label>Convert this time…</label>
+        <div class="conv-inputs">
+          <input type="time" id="convTime">
+          <input type="date" id="convDate">
+          <div class="tzpick" style="min-width:200px;flex:1" id="convFromPick">
+            <input type="text" id="convFromInput" placeholder="From time zone…" readonly>
+            <div class="dd" id="convFromDd"></div>
+          </div>
+        </div>
+      </div>
+      <div style="margin:14px 0 10px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <h2 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:17px">…into these zones</h2>
+        <button class="btn btn-ghost btn-sm" id="convAddTz">+ Add zone</button>
+      </div>
+      <div class="conv-result" id="convResult"></div>
+    </div>
+  </section>
+
+  <!-- AD -->
+  <div class="ad-wrap">
+    <div class="ad-lbl">Advertisement</div>
+    <div class="ad-box">Your ad space — plug in Google AdSense here 📢</div>
+  </div>
+
+  <!-- SEO CONTENT -->
+  <article class="content">
+    <h2>The easiest way to schedule across time zones</h2>
+    <p>If you work on a remote or distributed team, you already know the pain: someone's in London, someone's in San Francisco, someone's in Singapore, and finding an hour that works for all three feels impossible. This free timezone overlap finder does the math for you. Enter each teammate's city and their normal working hours, and it instantly highlights the windows where everyone is awake and on the clock at the same moment — no mental arithmetic, no spreadsheets, no "wait, is that my time or yours?"</p>
+
+    <h3>How the overlap finder works</h3>
+    <p>Behind the scenes, the tool converts everyone's local working hours to a shared universal timeline (UTC), then looks for the hours where all your people overlap. When a perfect overlap exists, you'll see the best meeting window front and center. When no single hour works for everyone — common with very spread-out teams — it falls back to finding the slot that works for the <strong>most</strong> people, so you can still get the largest group together and follow up with the rest.</p>
+
+    <h3>Daylight saving is handled for you</h3>
+    <p>One of the trickiest parts of cross-timezone scheduling is daylight saving time, which starts and ends on different dates in different countries. Because this tool uses your browser's built-in time zone database, it accounts for DST automatically for the date you're planning around — so a meeting that looks good today won't secretly break when the clocks change.</p>
+
+    <h3>Also includes a fast time zone converter</h3>
+    <p>Need to quickly answer "what time is 3pm New York in Tokyo?" — switch to the Converter tab. Pick a time and a starting zone, add as many destination zones as you like, and see them all at once, with clear labels when a time lands on the previous or next day. It's perfect for scheduling a call, catching a live event, or coordinating a handoff between regions.</p>
+
+    <h2>Tips for scheduling across time zones</h2>
+    <ul>
+      <li><strong>Aim for the edges of the workday.</strong> Early morning for one region is often late afternoon for another — those edges are where overlaps usually hide.</li>
+      <li><strong>Rotate the pain.</strong> If one teammate always takes the late call, switch it up so the inconvenience is shared fairly.</li>
+      <li><strong>Record what you can.</strong> When a true overlap is impossible, record the meeting so people in the off-hours can catch up asynchronously.</li>
+      <li><strong>Share the link.</strong> Use the "Share this setup" button to send your team the exact configuration so everyone sees the same windows.</li>
+    </ul>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <details class="qa"><summary>Is this timezone finder free?</summary><div class="a">Yes, completely free with no sign-up. Add as many people and zones as you need.</div></details>
+      <details class="qa"><summary>Does it handle daylight saving time?</summary><div class="a">Yes. It uses your browser's official time zone database, which knows each region's DST rules, so the times shown are correct for the date you're planning around.</div></details>
+      <details class="qa"><summary>What if no time works for everyone?</summary><div class="a">The tool automatically finds the slot that works for the most people, and shows how many are available, so you can still gather the largest possible group.</div></details>
+      <details class="qa"><summary>Can I save or share my team setup?</summary><div class="a">Yes. Your setup is remembered in your browser for next time, and the "Share this setup" button creates a link you can send to teammates so they see the same overlap.</div></details>
+      <details class="qa"><summary>Is my data private?</summary><div class="a">Everything runs in your browser. Your team list isn't sent to or stored on any server. See our <a href="/privacy/" style="color:var(--cy)">Privacy Policy</a> for details.</div></details>
+    </div>
+  </article>
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-col foot-brand">
+      <a class="brand" href="/">
+        <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+          <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="79,21 79,41 63,31" fill="#fff"/>
+          <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+        </svg>
+        <span class="brand-name">Pickly</span>
+      </a>
+      <p>Free, fun online tools to help you decide anything.</p>
+    </div>
+    <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/timezones/">Timezone Finder</a><a href="/#tools">All tools</a></div>
+    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+  </div>
+  <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div></div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   TIMEZONE DATA — curated common zones (IANA names).
+   Offsets are computed live via Intl, so DST is always correct.
+═══════════════════════════════════════════════════════════ */
+/* Popular zones get friendly multi-city labels and sit at the top of the list. */
+const POPULAR = [
+  ["Pacific/Honolulu","Honolulu · Hawaii"],["America/Anchorage","Anchorage · Alaska"],
+  ["America/Los_Angeles","Los Angeles · Seattle · SF · Vancouver"],["America/Denver","Denver · Salt Lake City"],
+  ["America/Phoenix","Phoenix · Arizona"],["America/Chicago","Chicago · Dallas · Mexico City"],
+  ["America/New_York","New York · Toronto · Miami"],["America/Halifax","Halifax · Atlantic Canada"],
+  ["America/Sao_Paulo","São Paulo · Rio"],["America/Argentina/Buenos_Aires","Buenos Aires"],
+  ["America/Bogota","Bogotá · Lima · Quito"],["America/Santiago","Santiago"],["America/Mexico_City","Mexico City"],
+  ["Atlantic/Reykjavik","Reykjavik"],["Europe/London","London · Dublin · Lisbon"],
+  ["Europe/Paris","Paris · Berlin · Madrid · Rome · Amsterdam"],["Europe/Athens","Athens · Helsinki · Bucharest"],
+  ["Europe/Kyiv","Kyiv"],["Europe/Moscow","Moscow"],["Europe/Istanbul","Istanbul"],
+  ["Africa/Lagos","Lagos · Accra · West Africa"],["Africa/Cairo","Cairo"],
+  ["Africa/Johannesburg","Johannesburg · Cape Town"],["Africa/Nairobi","Nairobi · East Africa"],
+  ["Asia/Jerusalem","Tel Aviv · Jerusalem"],["Asia/Riyadh","Riyadh · Kuwait · Qatar"],
+  ["Asia/Tehran","Tehran"],["Asia/Dubai","Dubai · Abu Dhabi"],["Asia/Karachi","Karachi · Islamabad"],
+  ["Asia/Kolkata","India (Mumbai · Delhi · Bengaluru)"],["Asia/Kathmandu","Kathmandu"],
+  ["Asia/Dhaka","Dhaka"],["Asia/Almaty","Almaty · Tashkent"],
+  ["Asia/Bangkok","Bangkok · Jakarta · Hanoi"],["Asia/Shanghai","China (Beijing · Shanghai)"],
+  ["Asia/Hong_Kong","Hong Kong"],["Asia/Singapore","Singapore · Kuala Lumpur"],
+  ["Asia/Manila","Manila"],["Asia/Tokyo","Tokyo · Seoul"],["Asia/Seoul","Seoul"],
+  ["Australia/Perth","Perth"],["Australia/Adelaide","Adelaide"],
+  ["Australia/Sydney","Sydney · Melbourne · Brisbane"],["Pacific/Auckland","Auckland · Wellington"],
+  ["Pacific/Fiji","Fiji"],["UTC","UTC"]
+];
+
+/* Turn an IANA name into a readable label, e.g. "Africa/Addis_Ababa" -> "Addis Ababa (Africa)" */
+function autoLabel(tz){
+  const parts = tz.split('/');
+  const city = parts[parts.length-1].replace(/_/g,' ');
+  const region = parts.length>1 ? parts[0].replace(/_/g,' ') : '';
+  return region && region!=='Etc' ? `${city} (${region})` : city;
+}
+
+/* Country / keyword aliases so people can search by COUNTRY, not just city.
+   Maps an IANA zone to extra searchable words. */
+const ALIASES = {
+  "America/New_York":"usa united states america eastern est edt new york nyc boston atlanta miami philadelphia washington dc charlotte detroit",
+  "America/Chicago":"usa united states central cst chicago houston dallas austin san antonio nashville new orleans memphis kansas city milwaukee minneapolis",
+  "America/Denver":"usa united states mountain mst denver salt lake city albuquerque boise",
+  "America/Los_Angeles":"usa united states pacific pst pdt california los angeles san francisco sf seattle portland san diego sacramento san jose las vegas",
+  "America/Phoenix":"usa arizona phoenix tucson",
+  "America/Toronto":"canada toronto ottawa montreal quebec","America/Vancouver":"canada vancouver calgary edmonton",
+  "America/Halifax":"canada halifax atlantic","America/Sao_Paulo":"brazil brasil sao paulo rio de janeiro",
+  "America/Argentina/Buenos_Aires":"argentina buenos aires cordoba",
+  "America/Lima":"peru lima","America/Bogota":"colombia bogota medellin cali","America/Santiago":"chile santiago",
+  "America/Mexico_City":"mexico mexico city guadalajara monterrey","America/Caracas":"venezuela caracas",
+  "Atlantic/Reykjavik":"iceland reykjavik",
+  "Europe/London":"uk united kingdom england britain gb ireland london manchester birmingham leeds glasgow edinburgh liverpool bristol",
+  "Europe/Dublin":"ireland dublin cork",
+  "Europe/Paris":"france paris lyon marseille toulouse nice bordeaux lille",
+  "Europe/Berlin":"germany berlin munich munchen frankfurt hamburg cologne koln stuttgart dusseldorf leipzig",
+  "Europe/Madrid":"spain madrid barcelona valencia seville sevilla bilbao malaga zaragoza",
+  "Europe/Rome":"italy rome roma milan milano naples napoli turin torino bologna florence firenze venice venezia genoa",
+  "Europe/Amsterdam":"netherlands holland amsterdam rotterdam the hague utrecht eindhoven",
+  "Europe/Brussels":"belgium brussels antwerp ghent","Europe/Zurich":"switzerland zurich geneva basel bern lausanne",
+  "Europe/Vienna":"austria vienna wien salzburg graz","Europe/Stockholm":"sweden stockholm gothenburg malmo",
+  "Europe/Oslo":"norway oslo bergen","Europe/Copenhagen":"denmark copenhagen aarhus",
+  "Europe/Helsinki":"finland helsinki espoo","Europe/Warsaw":"poland warsaw krakow cracow wroclaw gdansk",
+  "Europe/Prague":"czech czechia prague brno","Europe/Athens":"greece athens thessaloniki",
+  "Europe/Lisbon":"portugal lisbon porto","Europe/Kyiv":"ukraine kyiv kiev","Europe/Kiev":"ukraine kyiv kiev",
+  "Europe/Moscow":"russia moscow st petersburg saint petersburg","Europe/Istanbul":"turkey turkiye istanbul ankara izmir",
+  "Europe/Bucharest":"romania bucharest","Europe/Budapest":"hungary budapest","Europe/Belgrade":"serbia belgrade",
+  "Europe/Madrid ":"spain","Europe/Sofia":"bulgaria sofia","Europe/Zagreb":"croatia zagreb",
+  "Africa/Lagos":"nigeria west africa lagos abuja accra ghana","Africa/Accra":"ghana accra",
+  "Africa/Cairo":"egypt cairo alexandria giza",
+  "Africa/Nairobi":"kenya east africa nairobi mombasa","Africa/Johannesburg":"south africa johannesburg cape town durban pretoria",
+  "Africa/Casablanca":"morocco casablanca rabat marrakech","Africa/Addis_Ababa":"ethiopia addis ababa",
+  "Africa/Algiers":"algeria algiers","Africa/Tunis":"tunisia tunis","Africa/Dar_es_Salaam":"tanzania dar es salaam",
+  "Asia/Jerusalem":"israel jerusalem tel aviv haifa","Asia/Tel_Aviv":"israel tel aviv",
+  "Asia/Riyadh":"saudi arabia kuwait qatar bahrain riyadh jeddah mecca doha kuwait city",
+  "Asia/Dubai":"uae united arab emirates dubai abu dhabi sharjah muscat oman",
+  "Asia/Tehran":"iran tehran","Asia/Baghdad":"iraq baghdad",
+  "Asia/Karachi":"pakistan karachi lahore islamabad rawalpindi",
+  "Asia/Kolkata":"india bharat mumbai delhi new delhi bengaluru bangalore hyderabad chennai kolkata calcutta pune ahmedabad jaipur",
+  "Asia/Calcutta":"india mumbai delhi bengaluru bangalore",
+  "Asia/Kathmandu":"nepal kathmandu","Asia/Dhaka":"bangladesh dhaka chittagong","Asia/Colombo":"sri lanka colombo",
+  "Asia/Almaty":"kazakhstan almaty astana","Asia/Tashkent":"uzbekistan tashkent",
+  "Asia/Bangkok":"thailand bangkok phuket chiang mai",
+  "Asia/Jakarta":"indonesia jakarta surabaya bandung bali denpasar",
+  "Asia/Ho_Chi_Minh":"vietnam ho chi minh saigon hanoi","Asia/Saigon":"vietnam saigon ho chi minh hanoi",
+  "Asia/Manila":"philippines manila quezon cebu davao",
+  "Asia/Kuala_Lumpur":"malaysia kuala lumpur johor","Asia/Singapore":"singapore",
+  "Asia/Shanghai":"china prc beijing shanghai guangzhou shenzhen chengdu wuhan tianjin chongqing",
+  "Asia/Hong_Kong":"hong kong","Asia/Taipei":"taiwan taipei kaohsiung",
+  "Asia/Tokyo":"japan tokyo osaka yokohama nagoya sapporo kyoto kobe fukuoka",
+  "Asia/Seoul":"south korea seoul busan incheon daegu","Asia/Yangon":"myanmar burma yangon",
+  "Australia/Sydney":"australia nsw sydney canberra newcastle","Australia/Melbourne":"australia melbourne",
+  "Australia/Perth":"australia perth","Australia/Brisbane":"australia queensland brisbane gold coast",
+  "Australia/Adelaide":"australia adelaide",
+  "Pacific/Auckland":"new zealand nz auckland wellington christchurch","Pacific/Fiji":"fiji suva",
+  "Pacific/Honolulu":"usa hawaii honolulu"
+};
+
+/* Build the COMPLETE zone list: popular ones first, then every other IANA zone
+   the browser knows about, so no country/region is ever missing. */
+const ZONES = (function(){
+  const list = POPULAR.slice();
+  const have = new Set(POPULAR.map(z=>z[0]));
+  let all = [];
+  try{ all = (Intl.supportedValuesOf ? Intl.supportedValuesOf('timeZone') : []); }catch(e){ all = []; }
+  all.sort();
+  all.forEach(tz=>{ if(!have.has(tz) && !/^Etc\//.test(tz)){ list.push([tz, autoLabel(tz)]); have.add(tz); } });
+  return list;
+})();
+
+/* Get a zone's current UTC offset in minutes for a given date (DST-aware) */
+function offsetMinutes(tz, date){
+  try{
+    const dtf = new Intl.DateTimeFormat('en-US',{timeZone:tz,hour12:false,
+      year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    const parts = dtf.formatToParts(date).reduce((a,p)=>{a[p.type]=p.value;return a},{});
+    let h = parseInt(parts.hour,10); if(h===24) h=0;
+    const asUTC = Date.UTC(+parts.year,+parts.month-1,+parts.day,h,+parts.minute,+parts.second);
+    return Math.round((asUTC - date.getTime())/60000);
+  }catch(e){ return 0; }
+}
+function fmtOffset(min){
+  const s = min<0?'-':'+'; min=Math.abs(min);
+  const h=Math.floor(min/60), m=min%60;
+  return 'UTC'+s+h+(m?(':'+String(m).padStart(2,'0')):'');
+}
+function zoneLabel(tz){ const z=ZONES.find(z=>z[0]===tz); return z?z[1]:tz.replace(/_/g,' ').split('/').pop(); }
+function detectZone(){ try{ return Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){ return 'UTC'; } }
+
+/* Find which alias word matched the query, to show "Milan — Rome zone" */
+function matchedAlias(tz, q){
+  const full = (ALIASES[tz]||'');
+  // Check two-word phrases first (e.g. "cape town", "new delhi", "gold coast")
+  const twoWord = full.match(/[a-z]+ [a-z]+/g)||[];
+  const phraseHit = twoWord.find(p=>p===q);
+  if(phraseHit) return phraseHit;
+  // Otherwise the single word that best matches the query
+  const words = full.split(' ');
+  return words.find(w=>w===q) || words.find(w=>w.startsWith(q)) || '';
+}
+function titleCase(s){ return s.replace(/\b[a-z]/g,c=>c.toUpperCase()); }
+
+/* ── Searchable timezone dropdown component ── */
+function makeTzPicker(inputEl, ddEl, onPick, initial){
+  let hi=-1, filtered=ZONES.slice();
+  function render(q){
+    q=(q||'').toLowerCase().trim();
+    const matches = q
+      ? ZONES.filter(z=>z[1].toLowerCase().includes(q)||z[0].toLowerCase().includes(q)||((ALIASES[z[0]]||'').includes(q)))
+      : POPULAR; // no query → show curated popular zones only
+    filtered = matches.slice(0, 60); // cap for performance
+    if(!filtered.length){ ddEl.innerHTML='<div class="dd-empty">No matching zone — try a city or country name</div>'; return; }
+    const now=new Date();
+    let html = filtered.map((z,i)=>{
+      let label = z[1];
+      // If the match came only from an alias (the typed city isn't in the visible label),
+      // show "Searched City — Zone" so it's clear which place they picked.
+      if(q && !z[1].toLowerCase().includes(q) && !z[0].toLowerCase().includes(q)){
+        const matchedWord = matchedAlias(z[0], q);
+        if(matchedWord) label = titleCase(matchedWord)+' — '+z[1];
+      }
+      return `<div class="dd-item${i===hi?' hi':''}" data-tz="${z[0]}"><span>${label}</span><span class="off">${fmtOffset(offsetMinutes(z[0],now))}</span></div>`;
+    }).join('');
+    if(!q) html += '<div class="dd-empty">Type a city or country to search all '+ZONES.length+' zones…</div>';
+    else if(matches.length>filtered.length) html += '<div class="dd-empty">+'+(matches.length-filtered.length)+' more — keep typing to narrow</div>';
+    ddEl.innerHTML = html;
+    [...ddEl.children].forEach(el=>{ if(el.dataset.tz) el.onclick=()=>{ choose(el.dataset.tz); }; });
+  }
+  function choose(tz){ inputEl.value=zoneLabel(tz); inputEl.dataset.tz=tz; ddEl.classList.remove('show'); onPick&&onPick(tz); }
+  inputEl.removeAttribute('readonly');
+  inputEl.addEventListener('focus',()=>{ inputEl.select&&inputEl.select(); hi=-1; render(inputEl.value===zoneLabel(inputEl.dataset.tz)?'':inputEl.value); ddEl.classList.add('show'); });
+  inputEl.addEventListener('input',()=>{ hi=-1; render(inputEl.value); ddEl.classList.add('show'); });
+  inputEl.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'){e.preventDefault();hi=Math.min(hi+1,filtered.length-1);render(inputEl.value);}
+    else if(e.key==='ArrowUp'){e.preventDefault();hi=Math.max(hi-1,0);render(inputEl.value);}
+    else if(e.key==='Enter'){e.preventDefault();if(filtered[hi])choose(filtered[hi][0]);else if(filtered[0])choose(filtered[0][0]);}
+    else if(e.key==='Escape'){ddEl.classList.remove('show');}
+  });
+  document.addEventListener('click',e=>{ if(!inputEl.contains(e.target)&&!ddEl.contains(e.target)) ddEl.classList.remove('show'); });
+  if(initial){ inputEl.value=zoneLabel(initial); inputEl.dataset.tz=initial; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   OVERLAP FINDER
+═══════════════════════════════════════════════════════════ */
+let people = [];
+const HOURS = [];
+for(let h=0;h<24;h++){ HOURS.push(h); }
+function hourLabel(h){ const ap=h<12?'am':'pm'; let hh=h%12; if(hh===0)hh=12; return hh+ap; }
+
+function personRow(p, idx){
+  const div=document.createElement('div');
+  div.className='person';
+  const hrOpts=HOURS.map(h=>`<option value="${h}">${hourLabel(h)}</option>`).join('');
+  div.innerHTML=`
+    <input class="nm" type="text" placeholder="Name (optional)" value="${p.name||''}" maxlength="24">
+    <div class="tzpick"><input type="text" placeholder="Time zone…"><div class="dd"></div></div>
+    <div class="hrs"><select class="start">${hrOpts}</select><span>to</span><select class="end">${hrOpts}</select></div>
+    <button class="del" title="Remove">✕</button>`;
+  const nm=div.querySelector('.nm');
+  const tzIn=div.querySelector('.tzpick input'), tzDd=div.querySelector('.dd');
+  const start=div.querySelector('.start'), end=div.querySelector('.end');
+  start.value=p.start; end.value=p.end;
+  nm.addEventListener('input',()=>{ p.name=nm.value; persist(); });
+  start.addEventListener('change',()=>{ p.start=+start.value; persist(); });
+  end.addEventListener('change',()=>{ p.end=+end.value; persist(); });
+  makeTzPicker(tzIn,tzDd,(tz)=>{ p.tz=tz; persist(); }, p.tz);
+  div.querySelector('.del').addEventListener('click',()=>{ people.splice(idx,1); renderPeople(); persist(); });
+  return div;
+}
+function renderPeople(){
+  const wrap=document.getElementById('people'); wrap.innerHTML='';
+  people.forEach((p,i)=>wrap.appendChild(personRow(p,i)));
+}
+function addPerson(tz){
+  people.push({name:'', tz:tz||detectZone(), start:9, end:17});
+  renderPeople(); persist();
+}
+
+/* Build a 24-slot UTC availability map for a person.
+   Returns boolean[24] where index = UTC hour they're working. */
+function utcAvailability(p, baseDate){
+  const off = offsetMinutes(p.tz, baseDate)/60; // hours east of UTC
+  const avail = new Array(24).fill(false);
+  // local hours [start, end). Handle overnight shifts (end<=start means wrap).
+  let s=p.start, e=p.end;
+  const localHours=[];
+  if(e>s){ for(let h=s;h<e;h++) localHours.push(h); }
+  else { for(let h=s;h<24;h++) localHours.push(h); for(let h=0;h<e;h++) localHours.push(h); }
+  localHours.forEach(lh=>{
+    let u = Math.round(lh - off); u=((u%24)+24)%24; avail[u]=true;
+  });
+  return avail;
+}
+
+function findOverlap(){
+  const res=document.getElementById('results');
+  const valid=people.filter(p=>p.tz && p.end!==p.start);
+  if(valid.length<2){ res.innerHTML='<div class="empty">Add at least 2 people with time zones to find an overlap.</div>'; return; }
+  const base=new Date();
+  // Count availability per UTC hour
+  const maps=valid.map(p=>utcAvailability(p,base));
+  const counts=new Array(24).fill(0);
+  for(let u=0;u<24;u++){ maps.forEach(m=>{ if(m[u]) counts[u]++; }); }
+  const maxCount=Math.max(...counts);
+  const everyone=maxCount===valid.length;
+  // Find contiguous best windows at maxCount
+  const bestHours=[]; for(let u=0;u<24;u++) if(counts[u]===maxCount) bestHours.push(u);
+
+  // Build a readable window (group consecutive UTC hours, convert to each person's local)
+  function localTime(utcHour, tz){
+    const off=offsetMinutes(tz,base)/60; let h=Math.round(utcHour+off); h=((h%24)+24)%24; return h;
+  }
+  // pick the longest consecutive run among bestHours for the headline
+  function longestRun(hours){
+    const set=new Set(hours); let best=[],cur=[];
+    for(let u=0;u<48;u++){ const hh=u%24; if(set.has(hh)){cur.push(hh);} else {if(cur.length>best.length)best=cur.slice();cur=[];} }
+    if(cur.length>best.length)best=cur.slice();
+    return best.slice(0,12);
+  }
+  const run=longestRun(bestHours);
+  const headStart=run[0], headEndExcl=(run[run.length-1]+1)%24;
+
+  // Comfort score: how humane is this slot for everyone? (penalise very early/late local hours)
+  function comfortFor(utcHour){
+    let score=0;
+    valid.forEach(p=>{
+      const lh=localTime(utcHour,p.tz);
+      // ideal 9-17; ok 8-19; rough otherwise
+      if(lh>=10&&lh<=16) score+=2;
+      else if(lh>=8&&lh<=18) score+=1;
+      else if(lh>=7&&lh<20) score+=0;
+      else score-=1;
+    });
+    return score;
+  }
+  const comfort=comfortFor(headStart);
+  const maxComfort=valid.length*2;
+  let comfortLabel, comfortEmoji;
+  const ratio=comfort/maxComfort;
+  if(ratio>=0.75){ comfortLabel='Great hour for everyone'; comfortEmoji='😄'; }
+  else if(ratio>=0.4){ comfortLabel='Reasonable for most'; comfortEmoji='🙂'; }
+  else if(ratio>=0){ comfortLabel='Workable, but early/late for some'; comfortEmoji='😐'; }
+  else { comfortLabel='Tough hour — someone\'s up early or late'; comfortEmoji='😬'; }
+
+  let html='';
+  if(everyone){
+    html+=`<div class="best"><div class="lab">✓ Works for everyone (${valid.length})</div>`+
+      `<div class="big">${describeWindow(headStart,headEndExcl,valid,base,localTime)}</div>`+
+      `<div class="sub">${comfortEmoji} ${comfortLabel} · ${run.length} hour${run.length>1?'s':''} of overlap.</div>`+
+      `<div class="best-actions"><button class="btn btn-primary btn-sm" id="calBtn">📅 Add to calendar</button><button class="btn btn-ghost btn-sm" id="copyBtn">📋 Copy times</button></div></div>`;
+  } else {
+    html+=`<div class="warn"><div class="lab">⚠ No time works for all ${valid.length}</div>`+
+      `<div class="big">Best slot fits ${maxCount} of ${valid.length}</div>`+
+      `<div class="sub">${describeWindow(headStart,headEndExcl,valid,base,localTime)} — your largest possible group.</div>`+
+      `<div class="best-actions"><button class="btn btn-primary btn-sm" id="calBtn">📅 Add to calendar</button><button class="btn btn-ghost btn-sm" id="copyBtn">📋 Copy times</button></div></div>`;
+  }
+
+  // Timeline grid
+  html+=renderTimeline(valid,maps,base,counts,maxCount);
+  res.innerHTML=html;
+
+  // Wire up calendar + copy for the headline slot
+  const calBtn=document.getElementById('calBtn'), copyBtn=document.getElementById('copyBtn');
+  if(calBtn) calBtn.onclick=()=>downloadICS(headStart,headEndExcl,valid,base);
+  if(copyBtn) copyBtn.onclick=()=>{
+    const txt='Meeting time:\n'+valid.map(p=>{const nm=p.name||zoneLabel(p.tz).split('·')[0].trim();return '• '+nm+' ('+zoneLabel(p.tz).split('·')[0].trim()+'): '+hourLabel(localTime(headStart,p.tz))+'–'+hourLabel(localTime(headEndExcl,p.tz));}).join('\n');
+    navigator.clipboard&&navigator.clipboard.writeText(txt).then(()=>{copyBtn.textContent='✓ Copied!';setTimeout(()=>copyBtn.textContent='📋 Copy times',2000);});
+  };
+}
+
+/* Build & download an .ics calendar file for the chosen UTC window, next occurrence */
+function downloadICS(utcStart, utcEndExcl, valid, base){
+  // next date this UTC hour occurs
+  const now=new Date();
+  const dt=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate(),utcStart,0,0));
+  if(dt.getTime()<=now.getTime()) dt.setUTCDate(dt.getUTCDate()+1);
+  let durH=(utcEndExcl-utcStart+24)%24; if(durH===0)durH=1; if(durH>2)durH=1; // default 1h meeting
+  const end=new Date(dt.getTime()+durH*3600000);
+  function fmt(d){ return d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+'T'+pad(d.getUTCHours())+pad(d.getUTCMinutes())+'00Z'; }
+  function pad(n){return String(n).padStart(2,'0');}
+  const who=valid.map(p=>(p.name||zoneLabel(p.tz).split('·')[0].trim())).join(', ');
+  const desc='Meeting across time zones for: '+who+'\\nFound with Pickly — picklytools.com/timezones';
+  const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Pickly//Timezone Finder//EN','BEGIN:VEVENT',
+    'UID:'+Date.now()+'@picklytools.com','DTSTAMP:'+fmt(new Date()),'DTSTART:'+fmt(dt),'DTEND:'+fmt(end),
+    'SUMMARY:Team meeting (cross-timezone)','DESCRIPTION:'+desc,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+  const blob=new Blob([ics],{type:'text/calendar'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='meeting.ics'; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+
+function describeWindow(s,eExcl,valid,base,localTime){
+  // Show window in first 2 people's local times
+  const parts=valid.slice(0,3).map(p=>{
+    const ls=localTime(s,p.tz), le=localTime(eExcl,p.tz);
+    const nm=p.name||zoneLabel(p.tz).split('·')[0].trim();
+    return `${nm}: ${hourLabel(ls)}–${hourLabel(le)}`;
+  });
+  return parts.join('  •  ');
+}
+
+function renderTimeline(valid,maps,base,counts,maxCount){
+  let h='<div class="tl-wrap"><div class="tl">';
+  // header row: UTC hours 0-23 shown as each person? Better: show columns as UTC, label by first person's local? 
+  // We'll label columns by UTC hour for a shared reference.
+  h+='<div class="tl-row tl-head"><div class="tl-name">UTC hour →<span class="tz">columns are UTC</span></div><div class="tl-cells">';
+  for(let u=0;u<24;u++){ h+=`<div class="cell">${u}</div>`; }
+  h+='</div></div>';
+  valid.forEach((p,pi)=>{
+    const off=offsetMinutes(p.tz,base);
+    const nm=p.name||zoneLabel(p.tz).split('·')[0].trim();
+    h+=`<div class="tl-row"><div class="tl-name">${esc(nm)}<span class="tz">${esc(zoneLabel(p.tz).split('·')[0].trim())} · ${fmtOffset(off)}</span><span class="live-clock" data-tz="${esc(p.tz)}">·</span></div><div class="tl-cells">`;
+    for(let u=0;u<24;u++){
+      const work=maps[pi][u];
+      const isBest=counts[u]===maxCount;
+      const cls='cell '+(work?'work':'sleep')+(isBest&&work?' '+(maxCount===valid.length?'best-col':'good-col'):'');
+      // local hour label inside cell
+      let lh=Math.round(u+off/60); lh=((lh%24)+24)%24;
+      h+=`<div class="${cls}">${work?hourLabel(lh):''}</div>`;
+    }
+    h+='</div></div>';
+  });
+  h+='</div></div>';
+  h+='<div class="legend"><span><i class="sw" style="background:rgba(0,230,118,.5)"></i> Working hours</span>'+
+     '<span><i class="sw" style="box-shadow:inset 0 0 0 2px var(--gr)"></i> Best (all available)</span>'+
+     '<span><i class="sw" style="box-shadow:inset 0 0 0 2px rgba(255,214,0,.8)"></i> Best partial overlap</span>'+
+     '<span style="color:var(--mt)">Each cell shows that person\'s local time</span></div>';
+  return h;
+}
+
+function esc(s){ const d=document.createElement('div'); d.appendChild(document.createTextNode(s||'')); return d.innerHTML; }
+
+/* persistence + share */
+function persist(){ try{ localStorage.setItem('pickly_tz', JSON.stringify(people)); }catch(e){} }
+function loadPersisted(){
+  try{ const r=localStorage.getItem('pickly_tz'); if(r){ const a=JSON.parse(r); if(Array.isArray(a)&&a.length){ people=a; return true; } } }catch(e){}
+  return false;
+}
+function buildShare(){
+  const data=people.map(p=>({n:p.name,z:p.tz,s:p.start,e:p.end}));
+  const b64=btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+  return location.origin+location.pathname+'#team='+b64;
+}
+function loadShare(){
+  const m=location.hash.match(/team=([^&]+)/); if(!m) return false;
+  try{ const arr=JSON.parse(decodeURIComponent(escape(atob(m[1]))));
+    if(Array.isArray(arr)&&arr.length){ people=arr.map(p=>({name:p.n||'',tz:p.z,start:+p.s,end:+p.e})); return true; } }catch(e){}
+  return false;
+}
+
+document.getElementById('addPerson').addEventListener('click',()=>addPerson());
+document.getElementById('findBtn').addEventListener('click',findOverlap);
+document.getElementById('shareBtn').addEventListener('click',async()=>{
+  if(people.length<1)return;
+  const url=buildShare(); const hint=document.getElementById('shareHint');
+  if(navigator.share){ try{ await navigator.share({title:'Our team timezones',url}); return; }catch(e){} }
+  try{ await navigator.clipboard.writeText(url); hint.textContent='✓ Link copied — send it to your team!'; setTimeout(()=>hint.textContent='',4000);}catch(e){ prompt('Copy link:',url); }
+});
+
+/* ═══════════════════════════════════════════════════════════
+   CONVERTER
+═══════════════════════════════════════════════════════════ */
+let convFrom=detectZone();
+let convZones=[];
+
+function renderConv(){
+  const t=document.getElementById('convTime').value||'12:00';
+  const d=document.getElementById('convDate').value;
+  const [hh,mm]=t.split(':').map(Number);
+  let base;
+  if(d){ const [Y,M,D]=d.split('-').map(Number); base=new Date(Date.UTC(Y,M-1,D,hh,mm)); }
+  else { const now=new Date(); base=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate(),hh,mm)); }
+  // base currently treats hh:mm as if UTC; adjust so it represents the FROM zone's wall time
+  const fromOff=offsetMinutes(convFrom, base);
+  const trueInstant=new Date(base.getTime()-fromOff*60000);
+  const out=document.getElementById('convResult');
+  const all=[convFrom,...convZones];
+  const baseDayRef=dayOf(trueInstant,convFrom);
+  out.innerHTML=all.map((tz,i)=>{
+    const parts=new Intl.DateTimeFormat('en-US',{timeZone:tz,hour:'numeric',minute:'2-digit',hour12:true,weekday:'short',month:'short',day:'numeric'}).formatToParts(trueInstant).reduce((a,p)=>{a[p.type]=p.value;return a},{});
+    const time=`${parts.hour}:${parts.minute} ${parts.dayperiod}`;
+    const daydiff=dayOf(trueInstant,tz)-baseDayRef;
+    const dcls=daydiff>0?'next':(daydiff<0?'prev':'');
+    const dtxt=daydiff>0?'next day':(daydiff<0?'prev day':'');
+    const delBtn=i===0?'':`<button class="del" data-i="${i-1}" title="Remove" style="margin-left:10px">✕</button>`;
+    return `<div class="conv-line"><div class="city">${i===0?'★ ':''}${esc(zoneLabel(tz))}<span class="z">${fmtOffset(offsetMinutes(tz,trueInstant))}</span></div>`+
+      `<div style="display:flex;align-items:center"><div class="t"><div class="big">${time}</div><div class="d ${dcls}">${parts.weekday}, ${parts.month} ${parts.day}${dtxt?' · '+dtxt:''}</div></div>${delBtn}</div></div>`;
+  }).join('');
+  out.querySelectorAll('.del').forEach(b=>b.onclick=()=>{ convZones.splice(+b.dataset.i,1); renderConv(); });
+}
+function dayOf(instant,tz){
+  const p=new Intl.DateTimeFormat('en-CA',{timeZone:tz,year:'numeric',month:'2-digit',day:'2-digit'}).format(instant);
+  return Math.floor(new Date(p+'T00:00:00Z').getTime()/86400000);
+}
+
+makeTzPicker(document.getElementById('convFromInput'),document.getElementById('convFromDd'),(tz)=>{convFrom=tz;renderConv();},convFrom);
+document.getElementById('convTime').addEventListener('input',renderConv);
+document.getElementById('convDate').addEventListener('input',renderConv);
+document.getElementById('convAddTz').addEventListener('click',()=>{
+  // add a temporary picker via prompt-like inline: simplest is to add a common zone not already present
+  const pick=document.createElement('div'); pick.className='tzpick'; pick.style.cssText='margin:8px;position:relative';
+  pick.innerHTML='<input type="text" placeholder="Add a zone…"><div class="dd"></div>';
+  document.getElementById('convResult').appendChild(pick);
+  const inp=pick.querySelector('input'), dd=pick.querySelector('.dd');
+  makeTzPicker(inp,dd,(tz)=>{ if(!convZones.includes(tz)&&tz!==convFrom)convZones.push(tz); pick.remove(); renderConv(); });
+  inp.focus();
+});
+
+/* ═══════════════════════════════════════════════════════════
+   TABS + INIT
+═══════════════════════════════════════════════════════════ */
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));
+    t.classList.add('on');
+    document.getElementById('view-'+t.dataset.view).classList.add('on');
+  });
+});
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+// init converter defaults
+(function(){
+  const now=new Date();
+  document.getElementById('convTime').value=String(now.getHours()).padStart(2,'0')+':00';
+  document.getElementById('convDate').value=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+  convZones=['America/New_York','Europe/London','Asia/Tokyo'].filter(z=>z!==convFrom);
+  renderConv();
+})();
+
+// init overlap: shared link > saved > sensible default
+if(loadShare()){ renderPeople(); }
+else if(loadPersisted()){ renderPeople(); }
+else {
+  const home=detectZone();
+  people=[{name:'You',tz:home,start:9,end:17},
+          {name:'',tz:home==='America/New_York'?'Europe/London':'America/New_York',start:9,end:17}];
+  renderPeople();
+}
+findOverlap();
+
+// Live clocks — update every second so each person's current local time is always fresh
+function tickClocks(){
+  const now=new Date();
+  document.querySelectorAll('.live-clock').forEach(el=>{
+    const tz=el.getAttribute('data-tz'); if(!tz)return;
+    try{
+      const t=new Intl.DateTimeFormat('en-US',{timeZone:tz,hour:'numeric',minute:'2-digit',hour12:true}).format(now);
+      const hr=parseInt(new Intl.DateTimeFormat('en-US',{timeZone:tz,hour:'numeric',hour12:false}).format(now),10);
+      const moon = (hr>=22||hr<7)?' 🌙':(hr>=18?' 🌆':'');
+      el.textContent='🕐 now '+t+moon;
+    }catch(e){ el.textContent=''; }
+  });
+}
+tickClocks();
+setInterval(tickClocks, 1000);
+</script>
+</body>
+</html>
