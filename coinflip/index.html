@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<script>document.documentElement.className='js';</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a1f">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
+<title>Coin Flip — Free Online Heads or Tails (Flip 1 to 100 Coins) | Pickly</title>
+<meta name="description" content="Flip a virtual coin online, free. Heads or tails in one tap — flip a single coin, many at once, or run a best-of series. Fair, fun, animated, no sign-up.">
+<meta name="keywords" content="coin flip, flip a coin, heads or tails, coin toss, virtual coin, online coin flip, random coin, best of three coin flip">
+<link rel="canonical" href="https://picklytools.com/coinflip/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coin Flip — Free Online Heads or Tails">
+<meta property="og:description" content="Flip a coin online — one, many, or best-of-series. Fair, fun, animated. Free, no sign-up.">
+<meta property="og:url" content="https://picklytools.com/coinflip/">
+<meta property="og:image" content="https://picklytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://picklytools.com/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Coin Flip","url":"https://picklytools.com/coinflip/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Flip a virtual coin online — single, multiple, or best-of-series."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Coin Flip","item":"https://picklytools.com/coinflip/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
+  --bd:rgba(255,255,255,.1); --tx:#f4f4fb; --mt:#9a9ab5;
+  --pk:#FF2060; --or:#FF8C00; --yl:#FFD600; --cy:#00E5FF; --pu:#B061FF; --gr:#00E676;
+  --gold1:#FFE08A; --gold2:#FFB22E; --gold3:#C7841A;
+  --rs:14px; --rl:22px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 12% 8%,rgba(255,214,0,.1),transparent 60%),radial-gradient(ellipse 60% 50% at 88% 92%,rgba(255,140,0,.1),transparent 60%)}
+.wrap{position:relative;z-index:2;max-width:760px;margin:0 auto;padding:0 20px}
+
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,10,31,.72);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:760px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:34px;height:34px}
+.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+
+.head{text-align:center;padding:34px 0 16px}
+.head h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(30px,5.5vw,48px);letter-spacing:-1px;line-height:1.08;margin-bottom:10px}
+.head h1 .g{background:linear-gradient(115deg,var(--gold1),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.head p{color:var(--mt);font-size:15px;font-weight:600;max-width:480px;margin:0 auto}
+
+/* mode tabs */
+.modes{display:flex;gap:8px;justify-content:center;margin:18px 0 8px;flex-wrap:wrap}
+.mode{font-weight:800;font-size:13.5px;padding:10px 18px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--mt);cursor:pointer;transition:all .15s}
+.mode:hover{background:var(--sfh);color:var(--tx)}
+.mode.on{background:linear-gradient(135deg,rgba(255,214,0,.22),rgba(255,140,0,.22));border-color:var(--gold2);color:#fff}
+
+/* stage */
+.stage{display:flex;flex-direction:column;align-items:center;padding:24px 0 8px;min-height:260px;justify-content:center}
+.coins{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;perspective:900px}
+
+/* a coin */
+.coin{width:120px;height:120px;position:relative;transform-style:preserve-3d;transition:transform .1s}
+.coin.sm{width:64px;height:64px}
+.coin .face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;display:flex;align-items:center;justify-content:center;font-family:'Fredoka',sans-serif;font-weight:700;
+  box-shadow:0 8px 26px rgba(0,0,0,.45), inset 0 3px 8px rgba(255,255,255,.5), inset 0 -6px 12px rgba(0,0,0,.35);
+  background:radial-gradient(circle at 38% 32%,var(--gold1),var(--gold2) 62%,var(--gold3));
+  border:3px solid rgba(255,255,255,.35);color:#7a4d0a;}
+.coin .heads{font-size:34px}
+.coin.sm .heads{font-size:20px}
+.coin .tails{transform:rotateY(180deg);font-size:30px}
+.coin.sm .tails{font-size:18px}
+.coin .label{font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.coin.flipping{animation:flip var(--dur,1.4s) ease-out}
+@keyframes flip{
+  0%{transform:rotateY(0) translateY(0)}
+  15%{transform:translateY(-90px) rotateY(540deg)}
+  50%{transform:translateY(-120px) rotateY(1080deg)}
+  85%{transform:translateY(-40px)}
+  100%{transform:translateY(0) rotateY(var(--end))}
+}
+.coin.show-tails{transform:rotateY(180deg)}
+
+/* result */
+.result{text-align:center;margin-top:20px;min-height:80px}
+.result .big{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(30px,7vw,52px);background:linear-gradient(135deg,var(--gold1),var(--or));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2}
+.result .sub{color:var(--mt);font-size:15px;font-weight:700;margin-top:4px}
+.result .tally{display:inline-flex;gap:18px;margin-top:10px;font-weight:800;font-size:15px}
+.result .tally .h{color:var(--gold2)}.result .tally .t{color:var(--cy)}
+
+.controls{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:6px}
+.flip-btn{font-family:'Fredoka',sans-serif;font-weight:600;font-size:22px;padding:15px 52px;border-radius:100px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--gold2),var(--or));color:#3a2400;box-shadow:0 8px 28px rgba(255,140,0,.42);transition:transform .15s,box-shadow .15s}
+.flip-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(255,140,0,.55)}
+.flip-btn:active{transform:scale(.97)}
+.flip-btn:disabled{opacity:.6;cursor:default;transform:none}
+
+.opts{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;color:var(--mt);font-weight:700;font-size:14px}
+.opts select,.opts input{background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:10px;color:var(--tx);padding:8px 12px;font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;outline:none;cursor:pointer}
+.opts select:focus,.opts input:focus{border-color:var(--gold2)}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.mini{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;padding:9px 16px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--tx);cursor:pointer;transition:all .15s}
+.mini:hover{background:var(--sfh)}
+
+/* history */
+.hist{margin-top:24px;text-align:center}
+.hist-title{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mt);margin-bottom:8px}
+.hist-chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.chip{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;border:2px solid}
+.chip.h{background:rgba(255,178,46,.18);border-color:var(--gold2);color:var(--gold1)}
+.chip.t{background:rgba(0,229,255,.14);border-color:var(--cy);color:var(--cy)}
+
+/* series progress */
+.series-bar{display:flex;gap:8px;justify-content:center;align-items:center;margin-top:6px;flex-wrap:wrap}
+.series-dot{width:14px;height:14px;border-radius:50%;background:var(--sf);border:1.5px solid var(--bd)}
+.series-dot.h{background:var(--gold2);border-color:var(--gold2)}
+.series-dot.t{background:var(--cy);border-color:var(--cy)}
+.series-win{font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;margin-top:8px}
+
+.ad-wrap{max-width:760px;margin:36px auto 0;text-align:center}
+.ad-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(244,244,251,.3);margin-bottom:6px}
+.ad-box{min-height:100px;border:1px dashed var(--bd);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:var(--mt);font-size:13px;font-weight:600;background:rgba(255,255,255,.02)}
+
+.content{margin-top:40px}
+.content h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:24px;margin:30px 0 10px}
+.content h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin:20px 0 8px}
+.content p{color:var(--mt);font-size:15.5px;font-weight:600;margin-bottom:13px}
+.content ul{color:var(--mt);font-size:15.5px;font-weight:600;margin:0 0 13px 22px}
+.content li{margin-bottom:6px}
+.faq{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.qa{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);overflow:hidden}
+.qa summary{padding:15px 18px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:'+';font-size:22px;color:var(--mt);transition:transform .2s}
+.qa[open] summary::after{transform:rotate(45deg)}
+.qa .a{padding:0 18px 16px;color:var(--mt);font-size:15px;font-weight:600}
+
+footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
+.foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot-col h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
+.foot-col a:hover{color:var(--tx)}
+.foot-brand{max-width:240px}.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
+.copy{text-align:center;color:var(--mt);font-size:13px;font-weight:600;margin-top:30px;padding-top:20px;border-top:1px solid var(--bd)}
+@media(prefers-reduced-motion:reduce){.coin.flipping{animation-duration:.3s!important}body::before{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/">← All tools</a>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <h1>Flip a coin. <span class="g">Heads or tails?</span></h1>
+    <p>One tap to settle it. Flip a single coin, a whole handful at once, or run a best-of series to decide for real.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="modes" id="modes">
+    <button class="mode on" data-mode="single">🪙 Single flip</button>
+    <button class="mode" data-mode="multi">🎰 Multi-flip</button>
+    <button class="mode" data-mode="series">🏆 Best of series</button>
+  </div>
+
+  <div class="stage">
+    <div class="coins" id="coins"></div>
+    <div class="result" id="result"></div>
+  </div>
+
+  <div class="controls">
+    <div class="opts" id="opts"></div>
+    <button class="flip-btn" id="flipBtn">Flip!</button>
+    <div class="btn-row">
+      <button class="mini" id="soundBtn">🔊 Sound on</button>
+      <button class="mini" id="resetBtn">↺ Reset stats</button>
+    </div>
+  </div>
+
+  <div class="hist" id="histWrap" hidden>
+    <div class="hist-title">Recent flips</div>
+    <div class="hist-chips" id="histChips"></div>
+  </div>
+
+  <div class="ad-wrap">
+    <div class="ad-lbl">Advertisement</div>
+    <div class="ad-box">Your ad space — plug in Google AdSense here 📢</div>
+  </div>
+
+  <article class="content">
+    <h2>A better way to flip a coin online</h2>
+    <p>Sometimes a decision just needs a coin. This free online coin flipper gives you a fair 50/50 toss with a satisfying flip animation — no physical coin required. But we didn't stop at a single coin: Pickly's flipper has three modes so it fits whatever you're deciding.</p>
+    <h3>Three ways to flip</h3>
+    <ul>
+      <li><strong>Single flip</strong> — the classic. One coin, heads or tails, settled instantly.</li>
+      <li><strong>Multi-flip</strong> — toss up to 100 coins at once and see the heads/tails tally. Great for probability demos, classrooms, or just for fun.</li>
+      <li><strong>Best of series</strong> — best of 3, 5, or 7. The flipper tracks each round and declares an overall winner, perfect for truly settling who picks the restaurant.</li>
+    </ul>
+    <h3>Is it really fair?</h3>
+    <p>Yes. Every flip uses your browser's built-in randomness, giving a genuine 50% chance of heads and 50% of tails on each toss. Each flip is independent, so streaks of the same result are completely normal and expected — just like a real coin.</p>
+    <h3>Why people use a coin flip</h3>
+    <p>Settling friendly disagreements, choosing who goes first in a game, making a quick yes/no call, teaching probability, breaking a tie, or just adding a little fun to an everyday choice. Whatever the reason, it's one tap away — on your phone, tablet, or computer.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <details class="qa"><summary>Is this coin flip truly random?</summary><div class="a">Yes — each flip uses your browser's secure randomness for a genuine 50/50 outcome. Past flips never affect future ones.</div></details>
+      <details class="qa"><summary>Can I flip more than one coin?</summary><div class="a">Yes. Switch to Multi-flip to toss up to 100 coins at once and see the full heads/tails tally, or Best of series for a tracked best-of-3, 5, or 7.</div></details>
+      <details class="qa"><summary>Does it work on my phone?</summary><div class="a">Absolutely — it's built mobile-first and works in any modern browser. You can even add Pickly to your home screen.</div></details>
+      <details class="qa"><summary>Is it free?</summary><div class="a">Completely free, no sign-up, supported by unobtrusive ads. See our <a href="/privacy/" style="color:var(--cy)">Privacy Policy</a> for details.</div></details>
+    </div>
+  </article>
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-col foot-brand">
+      <a class="brand" href="/">
+        <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+          <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="79,21 79,41 63,31" fill="#fff"/>
+          <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+        </svg>
+        <span class="brand-name">Pickly</span>
+      </a>
+      <p>Free, fun online tools to help you decide anything.</p>
+    </div>
+    <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/timezones/">Timezone Finder</a><a href="/coinflip/">Coin Flip</a><a href="/#tools">All tools</a></div>
+    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+  </div>
+  <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div></div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+let mode='single';
+let soundOn=true;
+let stats={h:0,t:0};
+let history=[];          // recent results, max 24
+let series={target:3,h:0,t:0,rounds:[]};
+let flipping=false;
+
+/* secure 50/50 */
+function coin(){ if(window.crypto&&crypto.getRandomValues){ const a=new Uint8Array(1); crypto.getRandomValues(a); return a[0]&1?'H':'T'; } return Math.random()<0.5?'H':'T'; }
+
+/* ── Web Audio flip sound ── */
+let actx=null;
+function ping(when, freq){
+  if(!soundOn) return;
+  try{
+    actx=actx||new (window.AudioContext||window.webkitAudioContext)();
+    const o=actx.createOscillator(), g=actx.createGain();
+    o.connect(g); g.connect(actx.destination);
+    o.frequency.value=freq; o.type='triangle';
+    g.gain.setValueAtTime(0.0001,when); g.gain.exponentialRampToValueAtTime(0.16,when+0.01); g.gain.exponentialRampToValueAtTime(0.0001,when+0.12);
+    o.start(when); o.stop(when+0.13);
+  }catch(e){}
+}
+function flipSound(){
+  if(!soundOn) return;
+  try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); const t=actx.currentTime;
+    for(let i=0;i<5;i++) ping(t+i*0.12, 380+i*40);
+  }catch(e){}
+}
+function dingSound(){ if(!soundOn)return; try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); const t=actx.currentTime; ping(t,720); ping(t+0.09,960);}catch(e){} }
+
+function coinEl(small){
+  const d=document.createElement('div');
+  d.className='coin'+(small?' sm':'');
+  d.innerHTML='<div class="face heads"><div><div>👑</div><div class="label">Heads</div></div></div>'+
+              '<div class="face tails"><div><div>⭐</div><div class="label">Tails</div></div></div>';
+  return d;
+}
+
+function flipCoinEl(el, result, dur){
+  return new Promise(res=>{
+    el.style.setProperty('--dur', dur+'ms');
+    // end rotation: even multiple of 180 for heads, odd for tails (plus spins)
+    const spins=4;
+    const end=(spins*360)+(result==='T'?180:0);
+    el.style.setProperty('--end', end+'deg');
+    el.classList.remove('flipping','show-tails'); void el.offsetWidth;
+    el.classList.add('flipping');
+    setTimeout(()=>{
+      el.classList.remove('flipping');
+      el.style.transform='rotateY('+(result==='T'?180:0)+'deg)';
+      res();
+    }, dur);
+  });
+}
+
+function pushHistory(r){ history.unshift(r); if(history.length>24) history.pop(); renderHistory(); }
+function renderHistory(){
+  const wrap=document.getElementById('histWrap'), chips=document.getElementById('histChips');
+  if(!history.length){ wrap.hidden=true; return; }
+  wrap.hidden=false;
+  chips.innerHTML=history.map(r=>`<div class="chip ${r==='H'?'h':'t'}">${r}</div>`).join('');
+}
+
+function renderOpts(){
+  const o=document.getElementById('opts');
+  if(mode==='single'){ o.innerHTML=''; }
+  else if(mode==='multi'){ o.innerHTML='How many coins? <select id="count"><option>2</option><option>3</option><option>5</option><option selected>10</option><option>25</option><option>50</option><option>100</option></select>'; }
+  else { o.innerHTML='Best of <select id="target"><option selected>3</option><option>5</option><option>7</option></select>'; }
+}
+
+async function doFlip(){
+  if(flipping) return; flipping=true;
+  const btn=document.getElementById('flipBtn'); btn.disabled=true;
+  const coins=document.getElementById('coins'), result=document.getElementById('result');
+  flipSound();
+
+  if(mode==='single'){
+    coins.innerHTML=''; const c=coinEl(false); coins.appendChild(c);
+    const r=coin(); await flipCoinEl(c,r,1400);
+    stats[r==='H'?'h':'t']++; pushHistory(r); dingSound();
+    result.innerHTML=`<div class="big">${r==='H'?'👑 Heads!':'⭐ Tails!'}</div>`+
+      `<div class="tally"><span class="h">Heads ${stats.h}</span><span class="t">Tails ${stats.t}</span></div>`;
+  }
+  else if(mode==='multi'){
+    const n=+document.getElementById('count').value;
+    coins.innerHTML=''; const els=[]; const small=n>4;
+    for(let i=0;i<n;i++){ const c=coinEl(small); coins.appendChild(c); els.push(c); }
+    const results=els.map(()=>coin());
+    await Promise.all(els.map((c,i)=>flipCoinEl(c,results[i],1100+Math.random()*700)));
+    const hh=results.filter(r=>r==='H').length, tt=n-hh;
+    results.forEach(r=>{stats[r==='H'?'h':'t']++;}); dingSound();
+    result.innerHTML=`<div class="big">${hh} Heads · ${tt} Tails</div>`+
+      `<div class="sub">${hh===tt?'A perfect tie!':(hh>tt?'👑 Heads wins this round':'⭐ Tails wins this round')}</div>`;
+  }
+  else { // series
+    const c=document.getElementById('coins'); 
+    const r=coin();
+    c.innerHTML=''; const ce=coinEl(false); c.appendChild(ce);
+    await flipCoinEl(ce,r,1400);
+    series[r==='H'?'h':'t']++; series.rounds.push(r); stats[r==='H'?'h':'t']++; pushHistory(r);
+    const need=Math.floor(series.target/2)+1;
+    const dots=series.rounds.map(x=>`<div class="series-dot ${x==='H'?'h':'t'}"></div>`).join('');
+    let inner=`<div class="big">${r==='H'?'👑 Heads':'⭐ Tails'}</div>`+
+      `<div class="tally"><span class="h">Heads ${series.h}</span><span class="t">Tails ${series.t}</span></div>`+
+      `<div class="series-bar">${dots}</div>`;
+    if(series.h>=need||series.t>=need){
+      const winner=series.h>=need?'Heads 👑':'Tails ⭐';
+      inner+=`<div class="series-win">🏆 ${winner} wins the series!</div>`;
+      dingSound(); setTimeout(dingSound,160);
+      series={target:series.target,h:0,t:0,rounds:[]}; // reset for next series
+    } else { dingSound(); }
+    result.innerHTML=inner;
+  }
+  btn.disabled=false; flipping=false;
+}
+
+document.getElementById('flipBtn').addEventListener('click',doFlip);
+document.getElementById('modes').addEventListener('click',e=>{
+  const b=e.target.closest('.mode'); if(!b) return;
+  document.querySelectorAll('.mode').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  mode=b.dataset.mode; renderOpts();
+  document.getElementById('coins').innerHTML=''; document.getElementById('result').innerHTML='';
+  if(mode==='series') series={target:3,h:0,t:0,rounds:[]};
+  // place an idle coin for single/series
+  if(mode!=='multi'){ const c=coinEl(false); document.getElementById('coins').appendChild(c); }
+  // wire target select for series
+  setTimeout(()=>{ const tg=document.getElementById('target'); if(tg) tg.addEventListener('change',()=>{series={target:+tg.value,h:0,t:0,rounds:[]};document.getElementById('result').innerHTML='';}); },0);
+});
+document.getElementById('soundBtn').addEventListener('click',e=>{ soundOn=!soundOn; e.target.textContent=soundOn?'🔊 Sound on':'🔇 Sound off'; });
+document.getElementById('resetBtn').addEventListener('click',()=>{ stats={h:0,t:0}; history=[]; series={target:series.target,h:0,t:0,rounds:[]}; renderHistory(); document.getElementById('result').innerHTML=''; });
+
+// init
+renderOpts();
+(function(){ const c=coinEl(false); document.getElementById('coins').appendChild(c); })();
+</script>
+</body>
+</html>

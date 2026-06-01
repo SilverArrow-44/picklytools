@@ -306,10 +306,10 @@ footer{border-top:1px solid var(--bd);margin-top:70px;padding:48px 0 60px}
 
     <span class="eyebrow"><span class="dot"></span> 100% Free · No sign-up</span>
     <h1>Can't decide<br><span class="cycle-wrap"><span class="cycle" id="cyc">dinner?</span></span><br><span class="grad">Let Pickly decide.</span></h1>
-    <p>Pickly is a growing collection of fast, fun little tools that help you decide anything and get quick answers — no apps, no accounts, no fuss.</p>
+    <p>Pickly is a free collection of fast, fun tools that help you make decisions and get quick answers — spin a wheel, find the best meeting time across time zones, and more. No apps, no accounts, no fuss.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="/spinit/">🎡 Try the Spinner</a>
-      <a class="btn btn-ghost" href="#tools">Browse all tools</a>
+      <a class="btn btn-primary" href="#tools">✨ Browse free tools</a>
+      <a class="btn btn-ghost" href="/spinit/">🎡 Try the Spinner</a>
     </div>
 
     <div class="stats">
@@ -353,12 +353,12 @@ footer{border-top:1px solid var(--bd);margin-top:70px;padding:48px 0 60px}
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal soon" href="#" style="--glow:#00E676;--edge:#00E676;--icbg:linear-gradient(135deg,rgba(0,230,118,.2),rgba(0,229,255,.18))">
-        <span class="badge">Soon</span>
+      <a class="tool reveal" href="/coinflip/" style="--glow:#FFD600;--edge:#FFD600;--icbg:linear-gradient(135deg,rgba(255,214,0,.22),rgba(255,140,0,.2))">
+        <span class="badge live">● Live</span>
         <div class="tool-ic">🪙</div>
         <h3>Coin Flip</h3>
-        <p>Heads or tails, instantly. A clean, animated coin toss for those simple yes/no, this-or-that moments.</p>
-        <span class="go">Coming soon</span>
+        <p>Heads or tails, instantly. Flip one coin, a whole handful at once, or run a best-of series — with a satisfying animated toss.</p>
+        <span class="go">Open tool →</span>
       </a>
 
       <a class="tool reveal soon" href="#" style="--glow:#B061FF;--edge:#B061FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.22),rgba(255,32,96,.16))">
@@ -447,8 +447,11 @@ footer{border-top:1px solid var(--bd);margin-top:70px;padding:48px 0 60px}
   <div class="wrap">
     <div class="cta-banner reveal">
       <h2>Ready to decide?</h2>
-      <p>Start with our most popular tool — the decision spinner.</p>
-      <a class="btn btn-primary" href="/spinit/">🎡 Spin the wheel</a>
+      <p>Two free tools live now — a decision spinner and a timezone overlap finder for remote teams. More coming soon.</p>
+      <div class="cta-row" style="justify-content:center;margin-top:0">
+        <a class="btn btn-primary" href="/spinit/">🎡 Decision Spinner</a>
+        <a class="btn btn-ghost" href="/timezones/">🌍 Timezone Finder</a>
+      </div>
     </div>
   </div>
 </section>
@@ -472,7 +475,7 @@ footer{border-top:1px solid var(--bd);margin-top:70px;padding:48px 0 60px}
       <h5>Tools</h5>
       <a href="/spinit/">Decision Spinner</a>
       <a href="/timezones/">Timezone Finder</a>
-      <a href="#tools">Coin Flip</a>
+      <a href="/coinflip/">Coin Flip</a>
       <a href="#tools">Team Picker</a>
     </div>
     <div class="foot-col">
@@ -499,7 +502,7 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
 
 // Hero word cycle — reinforces "decide anything"
 (function(){
-  var words=['dinner?','a movie?','who goes first?','where to go?','a winner?','what to do?','a team?'];
+  var words=['dinner?','a movie?','who goes first?','where to go?','a winner?','what to do?','a meeting time?','a team?','a name?'];
   var el=document.getElementById('cyc'); if(!el) return;
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   var i=0;

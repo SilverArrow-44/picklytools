@@ -148,6 +148,27 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .sw{width:14px;height:14px;border-radius:4px;display:inline-block}
 
+/* World Clock (draggable) */
+.wc-rows{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.wc-row{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:10px 12px;display:grid;grid-template-columns:150px 1fr auto;gap:12px;align-items:center}
+@media(max-width:680px){.wc-row{grid-template-columns:1fr;gap:8px}}
+.wc-loc{min-width:0}
+.wc-loc .city{font-weight:800;font-size:14px;display:flex;align-items:center;gap:6px}
+.wc-loc .meta{color:var(--mt);font-size:11px;font-weight:700}
+.wc-loc .sel{color:var(--cy);font-size:15px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:2px}
+.wc-strip{display:grid;grid-template-columns:repeat(24,1fr);height:46px;border-radius:8px;overflow:hidden;border:1px solid var(--bd);cursor:pointer;user-select:none;touch-action:pan-y}
+.wc-cell{display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;border-right:1px solid rgba(0,0,0,.18);position:relative;transition:filter .1s}
+.wc-cell:last-child{border-right:none}
+.wc-cell.night{background:#1a1a38;color:rgba(255,255,255,.4)}
+.wc-cell.dawn{background:#3a3a6e;color:rgba(255,255,255,.6)}
+.wc-cell.day{background:rgba(0,230,118,.22);color:#cfe}
+.wc-cell.work{background:rgba(0,230,118,.34);color:#eafff3}
+.wc-cell.sel{box-shadow:inset 0 0 0 2px var(--cy);filter:brightness(1.25);z-index:2}
+.wc-cell.nowline::after{content:'';position:absolute;top:0;bottom:0;left:0;width:2px;background:var(--or)}
+.wc-del{background:rgba(255,32,96,.1);border:1px solid rgba(255,32,96,.25);color:#ff6b8a;border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:13px;flex-shrink:0}
+.wc-del:hover{background:rgba(255,32,96,.2)}
+.wc-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+
 /* converter */
 .conv-grid{display:grid;grid-template-columns:1fr;gap:14px}
 .conv-from{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:16px}
@@ -227,6 +248,7 @@ footer{border-top:1px solid var(--bd);margin-top:56px;padding:40px 0 50px}
 <div class="wrap">
   <div class="tabs">
     <button class="tab on" data-view="overlap">🌍 Meeting Overlap Finder</button>
+    <button class="tab" data-view="clock">🕐 World Clock</button>
     <button class="tab" data-view="convert">🔄 Time Converter</button>
   </div>
 
@@ -247,6 +269,24 @@ footer{border-top:1px solid var(--bd);margin-top:56px;padding:40px 0 50px}
     </div>
 
     <div class="results" id="results"></div>
+  </section>
+
+  <!-- ============ WORLD CLOCK (draggable, worldtimebuddy-style) ============ -->
+  <section class="view" id="view-clock">
+    <div class="panel">
+      <div class="panel-h">
+        <h2>World Clock — drag to explore</h2>
+        <button class="btn btn-ghost btn-sm" id="wcAdd">+ Add location</button>
+      </div>
+      <p class="hint">Each row is a full day. <strong>Click or drag across the hours</strong> to pick a time and instantly see it everywhere. Green = daytime, dark = night. Your current time is marked with a line.</p>
+      <div id="wcRows" class="wc-rows"></div>
+      <div class="wc-actions">
+        <button class="btn btn-ghost btn-sm" id="wcNow">↺ Reset to now</button>
+        <button class="btn btn-ghost btn-sm" id="wc12">Show 24-hour</button>
+        <button class="btn btn-primary btn-sm" id="wcShare">🔗 Share this view</button>
+      </div>
+      <div class="hint" id="wcHint" style="margin-top:8px;color:var(--cy);min-height:16px"></div>
+    </div>
   </section>
 
   <!-- ============ CONVERTER ============ -->
@@ -324,7 +364,7 @@ footer{border-top:1px solid var(--bd);margin-top:56px;padding:40px 0 50px}
       </a>
       <p>Free, fun online tools to help you decide anything.</p>
     </div>
-    <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/timezones/">Timezone Finder</a><a href="/#tools">All tools</a></div>
+    <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/timezones/">Timezone Finder</a><a href="/coinflip/">Coin Flip</a><a href="/#tools">All tools</a></div>
     <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
     <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
   </div>
@@ -780,6 +820,121 @@ document.getElementById('convAddTz').addEventListener('click',()=>{
 });
 
 /* ═══════════════════════════════════════════════════════════
+   WORLD CLOCK — draggable hour strips (worldtimebuddy-style)
+═══════════════════════════════════════════════════════════ */
+let wcZones = [];
+let wcSelUTC = null;     // selected UTC hour (0-23), null = follow "now"
+let wc24 = false;        // 12h default
+let wcDragging = false;
+
+function wcInit(){
+  if(loadWcShare()) {} // populated from link
+  else {
+    // seed from overlap people if available, else sensible defaults
+    if(people && people.length) wcZones = [...new Set(people.map(p=>p.tz).filter(Boolean))];
+    if(!wcZones.length){ const home=detectZone(); wcZones=[home, home==='America/New_York'?'Europe/London':'America/New_York','Asia/Tokyo']; }
+  }
+  renderWc();
+}
+
+function wcFmt(h){
+  if(wc24) return String(h).padStart(2,'0')+':00';
+  const ap=h<12?'am':'pm'; let hh=h%12; if(hh===0)hh=12; return hh+ap;
+}
+function wcLocalHour(utcHour, tz, base){ const o=offsetMinutes(tz,base)/60; let h=Math.round(utcHour+o); return ((h%24)+24)%24; }
+
+function renderWc(){
+  const wrap=document.getElementById('wcRows'); if(!wrap) return;
+  const base=new Date();
+  const nowUTC=base.getUTCHours();
+  const selUTC = wcSelUTC==null ? nowUTC : wcSelUTC;
+  wrap.innerHTML = wcZones.map((tz,idx)=>{
+    const off=offsetMinutes(tz,base);
+    const localSel=wcLocalHour(selUTC,tz,base);
+    const localNow=wcLocalHour(nowUTC,tz,base);
+    const city=zoneLabel(tz).split('·')[0].trim();
+    let cells='';
+    for(let u=0;u<24;u++){
+      const lh=wcLocalHour(u,tz,base);
+      let cls='wc-cell ';
+      if(lh>=9&&lh<17) cls+='work';
+      else if(lh>=7&&lh<20) cls+='day';
+      else if(lh===6||lh===20||lh===21) cls+='dawn';
+      else cls+='night';
+      if(u===selUTC) cls+=' sel';
+      if(u===nowUTC) cls+=' nowline';
+      cells+=`<div class="${cls}" data-u="${u}">${wcFmt(lh)}</div>`;
+    }
+    // day offset label for selected
+    const dd = dayDiffLabel(selUTC, tz, base);
+    return `<div class="wc-row">
+      <div class="wc-loc">
+        <div class="city">${esc(city)}</div>
+        <div class="meta">${esc(zoneLabel(tz))} · ${fmtOffset(off)}</div>
+        <div class="sel">${wcFmt(localSel)}${dd?' · '+dd:''}</div>
+      </div>
+      <div class="wc-strip" data-idx="${idx}">${cells}</div>
+      <button class="wc-del" data-idx="${idx}" title="Remove">✕</button>
+    </div>`;
+  }).join('');
+
+  // wire strips: click + drag to select a UTC hour
+  wrap.querySelectorAll('.wc-strip').forEach(strip=>{
+    const pick=(e)=>{
+      const t=(e.touches&&e.touches[0])||e;
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      if(el&&el.dataset&&el.dataset.u!==undefined){ wcSelUTC=+el.dataset.u; renderWc(); }
+    };
+    strip.addEventListener('mousedown',e=>{wcDragging=true;pick(e);e.preventDefault();});
+    strip.addEventListener('touchstart',e=>{wcDragging=true;pick(e);},{passive:true});
+  });
+  wrap.querySelectorAll('.wc-del').forEach(b=>b.onclick=()=>{ wcZones.splice(+b.dataset.idx,1); renderWc(); });
+}
+
+// global drag listeners (attached once)
+document.addEventListener('mousemove',e=>{ if(wcDragging){ const el=document.elementFromPoint(e.clientX,e.clientY); if(el&&el.dataset&&el.dataset.u!==undefined){ wcSelUTC=+el.dataset.u; renderWc(); } } });
+document.addEventListener('touchmove',e=>{ if(wcDragging){ const t=e.touches[0]; const el=document.elementFromPoint(t.clientX,t.clientY); if(el&&el.dataset&&el.dataset.u!==undefined){ wcSelUTC=+el.dataset.u; renderWc(); } } },{passive:true});
+document.addEventListener('mouseup',()=>{wcDragging=false;});
+document.addEventListener('touchend',()=>{wcDragging=false;});
+
+function dayDiffLabel(utcHour, tz, base){
+  // compare the calendar day of the selected instant in this tz vs UTC reference day
+  const nowUTC=base.getUTCHours();
+  const localH=wcLocalHour(utcHour,tz,base);
+  const off=offsetMinutes(tz,base)/60;
+  const raw=utcHour+off;
+  if(raw>=24) return 'next day';
+  if(raw<0) return 'prev day';
+  return '';
+}
+
+document.getElementById('wcAdd').addEventListener('click',()=>{
+  const pick=document.createElement('div'); pick.className='tzpick'; pick.style.cssText='margin:8px 0;position:relative';
+  pick.innerHTML='<input type="text" placeholder="Add a city or country…"><div class="dd"></div>';
+  document.getElementById('wcRows').appendChild(pick);
+  const inp=pick.querySelector('input'), dd=pick.querySelector('.dd');
+  makeTzPicker(inp,dd,(tz)=>{ if(!wcZones.includes(tz)) wcZones.push(tz); pick.remove(); renderWc(); });
+  inp.focus();
+});
+document.getElementById('wcNow').addEventListener('click',()=>{ wcSelUTC=null; renderWc(); });
+document.getElementById('wc12').addEventListener('click',(e)=>{ wc24=!wc24; e.target.textContent=wc24?'Show 12-hour':'Show 24-hour'; renderWc(); });
+document.getElementById('wcShare').addEventListener('click',async()=>{
+  const data={z:wcZones,s:wcSelUTC,h:wc24?1:0};
+  const b64=btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+  const url=location.origin+location.pathname+'#clock='+b64;
+  const hint=document.getElementById('wcHint');
+  if(navigator.share){ try{ await navigator.share({title:'World clock',url}); return; }catch(e){} }
+  try{ await navigator.clipboard.writeText(url); hint.textContent='✓ Link copied!'; setTimeout(()=>hint.textContent='',3500);}catch(e){ prompt('Copy link:',url); }
+});
+function loadWcShare(){
+  const m=location.hash.match(/clock=([^&]+)/); if(!m) return false;
+  try{ const d=JSON.parse(decodeURIComponent(escape(atob(m[1])))); if(d&&Array.isArray(d.z)&&d.z.length){ wcZones=d.z; wcSelUTC=(d.s==null?null:+d.s); wc24=!!d.h; return true; } }catch(e){}
+  return false;
+}
+// refresh clock 'now' line every minute
+setInterval(()=>{ if(document.getElementById('view-clock').classList.contains('on')&&wcSelUTC==null) renderWc(); },60000);
+
+/* ═══════════════════════════════════════════════════════════
    TABS + INIT
 ═══════════════════════════════════════════════════════════ */
 document.querySelectorAll('.tab').forEach(t=>{
@@ -788,8 +943,12 @@ document.querySelectorAll('.tab').forEach(t=>{
     document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));
     t.classList.add('on');
     document.getElementById('view-'+t.dataset.view).classList.add('on');
+    if(t.dataset.view==='clock') renderWc(); // ensure fresh render when shown
   });
 });
+function switchTab(view){
+  const t=document.querySelector('.tab[data-view="'+view+'"]'); if(t) t.click();
+}
 document.getElementById('yr').textContent=new Date().getFullYear();
 
 // init converter defaults
@@ -827,6 +986,10 @@ function tickClocks(){
 }
 tickClocks();
 setInterval(tickClocks, 1000);
+
+// Initialize World Clock; if opened via a #clock= link, switch to that tab
+wcInit();
+if(location.hash.indexOf('clock=')>-1) switchTab('clock');
 </script>
 </body>
 </html>
