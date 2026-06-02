@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.className='js';</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0a0a1f">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/favicon.svg">
 <link rel="manifest" href="/manifest.webmanifest">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://picklytools.com/og-image.png">
 <meta property="og:image" content="https://picklytools.com/og-image.png">
 <meta name="twitter:image" content="https://picklytools.com/og-image.png">
-<title>SpinIt — Free Random Picker Wheel & Decision Spinner | Pickly</title>
-<meta name="description" content="SpinIt is a free random picker wheel. Spin to choose a winner, pick what to eat, decide who goes first, or run a giveaway. Add your own options or use ready-made categories — no sign-up.">
+<title>Random Name Picker Wheel — Free Spinner | Pickly</title>
+<meta name="description" content="Spin a free random picker wheel to choose a name, pick what to eat, or settle who goes first. Add your own options or use presets. No sign-up needed.">
 <meta name="keywords" content="random picker wheel, name picker, decision spinner, wheel of names, random name selector, spinner wheel, picker wheel">
 <link rel="canonical" href="https://picklytools.com/spinit/">
 <meta property="og:type" content="website">
@@ -1122,7 +1125,7 @@ if (adCloseBtn) adCloseBtn.addEventListener('click', () => {
    FEEDBACK
    ↓↓↓ REPLACE with the email address where you want feedback sent ↓↓↓
 ═══════════════════════════════════════════════════════════ */
-const FEEDBACK_EMAIL = 'flinkstopllc@gmail.com';
+const FEEDBACK_EMAIL = 'picklytools@gmail.com';
 let fbType = 'Suggestion';
 
 document.getElementById('fbBtn').addEventListener('click', () => {
@@ -1241,5 +1244,24 @@ render();
 // Redraw once the web font has loaded so label metrics/sizing are exact
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => drawWheel());
 </script>
+
+<footer style='text-align:center;padding:18px;border-top:1px solid rgba(255,255,255,.1);margin-top:20px;position:relative;z-index:2'>
+  <div style='display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font-size:13px;font-weight:600;margin-bottom:8px'>
+    <a href='/' style='color:#9a9ab5;text-decoration:none'>← All Pickly tools</a>
+    <a href='/coinflip/' style='color:#9a9ab5;text-decoration:none'>Coin Flip</a>
+    <a href='/timezones/' style='color:#9a9ab5;text-decoration:none'>Timezone Planner</a>
+    <a href='/randomnumber/' style='color:#9a9ab5;text-decoration:none'>Random Number</a>
+    <a href='/teampicker/' style='color:#9a9ab5;text-decoration:none'>Team Picker</a>
+    <a href='/whattoeat/' style='color:#9a9ab5;text-decoration:none'>What to Eat?</a>
+    <a href='/magic8ball/' style='color:#9a9ab5;text-decoration:none'>Magic 8 Ball</a>
+    <a href='/wouldyourather/' style='color:#9a9ab5;text-decoration:none'>Would You Rather</a>
+    <a href='/rockpaperscissors/' style='color:#9a9ab5;text-decoration:none'>Rock Paper Scissors</a>
+    <a href='/truthordare/' style='color:#9a9ab5;text-decoration:none'>Truth or Dare</a>
+    <a href='/neverhaveiever/' style='color:#9a9ab5;text-decoration:none'>Never Have I Ever</a>
+    <a href='/slotmachine/' style='color:#9a9ab5;text-decoration:none'>Slot Machine</a>
+  </div>
+  <div style='color:rgba(154,154,181,.6);font-size:12px'>© <span id="yr2"></span> Pickly · <a href="/privacy/" style="color:rgba(154,154,181,.6)">Privacy</a> · <a href="/terms/" style="color:rgba(154,154,181,.6)">Terms</a></div>
+</footer>
+<script>var y=document.getElementById("yr2");if(y)y.textContent=new Date().getFullYear();</script>
 </body>
 </html>

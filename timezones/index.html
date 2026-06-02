@@ -1,397 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
+<script>document.documentElement.className='js';</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#09091F">
+<meta name="theme-color" content="#0a0a1f">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/favicon.svg">
 <link rel="manifest" href="/manifest.webmanifest">
-<title>World Clock & Meeting Time Finder | Pickly</title>
-<meta name="description" content="Compare time zones at a glance. Add cities, see everyone's local time on a visual grid, and find the perfect meeting time. Free, no sign-up.">
-<meta name="keywords" content="world clock, meeting time finder, time zone converter, best time to meet, remote team scheduling">
+<title>Find Best Meeting Time Across Time Zones | Pickly</title>
+<meta name="description" content="Free timezone meeting planner for remote teams. Add everyone's city, see working hours overlap, drag to pick a time, and add it to your calendar instantly.">
+<meta name="keywords" content="meeting time finder, time zone meeting planner, best time to meet across time zones, world clock meeting, remote team scheduling, time zone converter">
 <link rel="canonical" href="https://picklytools.com/timezones/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="World Clock & Meeting Time Finder">
-<meta property="og:description" content="Add cities, see everyone's local time on a visual grid, find the perfect meeting hour.">
+<meta property="og:title" content="Meeting Time Finder — Best Time to Meet Across Time Zones">
+<meta property="og:description" content="Add people and their cities, see the best meeting time in everyone's local time. Free, no sign-up.">
 <meta property="og:url" content="https://picklytools.com/timezones/">
 <meta property="og:image" content="https://picklytools.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://picklytools.com/og-image.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"World Clock & Meeting Time Finder","url":"https://picklytools.com/timezones/","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Compare time zones visually and find the best meeting time across cities."}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Meeting Time Finder","url":"https://picklytools.com/timezones/","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Find the best meeting time across multiple time zones, shown in everyone's local time."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Meeting Time Finder","item":"https://picklytools.com/timezones/"}]}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#09091F;
-  --sf:rgba(255,255,255,.04);
-  --sfh:rgba(255,255,255,.08);
-  --bd:rgba(255,255,255,.1);
-  --bdb:rgba(255,255,255,.2);
-  --tx:#F2F2FF;
-  --mt:rgba(242,242,255,.44);
-  --pk:#FF2060;
-  --or:#FF8C00;
-  --yl:#FFD600;
-  --cy:#00E5FF;
-  --gr:#00E676;
-  --pu:#B061FF;
-  --r:16px;--rs:10px;
+  --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
+  --bd:rgba(255,255,255,.1); --tx:#f4f4fb; --mt:#9a9ab5;
+  --pk:#FF2060; --or:#FF8C00; --yl:#FFD600; --cy:#00E5FF; --pu:#B061FF; --gr:#00E676;
+  --rs:14px; --rl:22px;
 }
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  font-family:'Nunito',sans-serif;
-  background:var(--bg);color:var(--tx);
-  min-height:100vh;overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-  line-height:1.5;
-}
-body::before{
-  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 70% 55% at 12% 8%,rgba(0,229,255,.1) 0%,transparent 60%),
-    radial-gradient(ellipse 60% 50% at 88% 92%,rgba(176,97,255,.1) 0%,transparent 60%),
-    radial-gradient(ellipse 50% 40% at 55% 48%,rgba(255,32,96,.05) 0%,transparent 60%);
-  animation:bgPulse 20s ease-in-out infinite alternate;
-}
-@keyframes bgPulse{0%{opacity:.7;transform:scale(1)}100%{opacity:1;transform:scale(1.08)}}
-.app{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:0 20px 72px}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 12% 8%,rgba(0,229,255,.1),transparent 60%),radial-gradient(ellipse 60% 50% at 88% 92%,rgba(176,97,255,.1),transparent 60%)}
+.wrap{position:relative;z-index:2;max-width:820px;margin:0 auto;padding:0 20px}
 
-/* ── TOPBAR ── */
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 0 0;margin-bottom:32px}
-.brand{display:flex;align-items:center;gap:8px;text-decoration:none}
-.brand-mark{width:32px;height:32px}
-.brand-name{
-  font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.3px;
-  background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.back{
-  color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;
-  padding:8px 14px;border:1px solid var(--bd);border-radius:100px;
-  background:var(--sf);transition:all .15s;letter-spacing:.3px;
-}
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,10,31,.72);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:820px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:34px;height:34px}
+.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
 .back:hover{color:var(--tx);background:var(--sfh)}
 
-/* ── HERO ── */
-.hero{text-align:center;margin-bottom:32px}
-.hero h1{
-  font-family:'Fredoka',sans-serif;font-weight:700;
-  font-size:clamp(28px,5vw,50px);letter-spacing:-1px;line-height:1.1;margin-bottom:10px;
-}
-.hero h1 .g{
-  background:linear-gradient(115deg,var(--cy),var(--pu));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.hero p{color:var(--mt);font-size:15px;font-weight:600;max-width:480px;margin:0 auto}
+.head{text-align:center;padding:34px 0 14px}
+.head h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(28px,5vw,46px);letter-spacing:-1px;line-height:1.08;margin-bottom:10px}
+.head h1 .g{background:linear-gradient(115deg,var(--cy),var(--pu));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.head p{color:var(--mt);font-size:15px;font-weight:600;max-width:520px;margin:0 auto}
 
-/* ── ADD LOCATION BAR ── */
-.add-bar{
-  position:relative;
-  background:var(--sf);border:1.5px solid var(--bd);border-radius:var(--r);
-  padding:12px 14px;margin-bottom:16px;
-  display:flex;align-items:center;gap:10px;
-  backdrop-filter:blur(14px);
-  transition:border-color .2s;
-}
-.add-bar:focus-within{border-color:var(--cy)}
-.add-icon{
-  font-size:22px;width:36px;height:36px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(0,229,255,.12);border-radius:10px;color:var(--cy);
-}
-.add-bar input{
-  flex:1;background:transparent;border:none;outline:none;
-  color:var(--tx);font-family:'Nunito',sans-serif;
-  font-size:15px;font-weight:700;
-}
-.add-bar input::placeholder{color:var(--mt);font-weight:600}
-.search-dd{
-  position:absolute;top:calc(100% + 6px);left:0;right:0;
-  background:#12122e;border:1px solid var(--bd);border-radius:var(--r);
-  max-height:290px;overflow-y:auto;z-index:50;
-  box-shadow:0 20px 60px rgba(0,0,0,.65);
-  display:none;
-}
-.search-dd.show{display:block}
-.search-dd::-webkit-scrollbar{width:3px}
-.search-dd::-webkit-scrollbar-thumb{background:var(--bd);border-radius:2px}
-.dd-item{
-  padding:11px 14px;cursor:pointer;font-size:13px;font-weight:700;
-  display:flex;justify-content:space-between;gap:12px;align-items:center;
-  border-bottom:1px solid rgba(255,255,255,.04);transition:background .1s;
-}
-.dd-item:last-child{border-bottom:none}
+/* step labels */
+.step{display:flex;align-items:center;gap:10px;margin:26px 0 12px}
+.step .num{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--cy),var(--pu));color:#06121a;font-family:'Fredoka',sans-serif;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:19px}
+
+/* people list */
+.person{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:12px;margin-bottom:10px;display:flex;gap:10px;align-items:center}
+.person .pic{font-size:22px;flex-shrink:0;width:30px;text-align:center}
+.person .fields{flex:1;display:grid;grid-template-columns:1fr 1.4fr;gap:8px;min-width:0}
+@media(max-width:560px){.person .fields{grid-template-columns:1fr}}
+.person input.nm{background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:10px;color:var(--tx);padding:10px 12px;font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;outline:none;width:100%}
+.person input.nm:focus{border-color:var(--cy)}
+.tzpick{position:relative;min-width:0}
+.tzpick input{width:100%;font-weight:700;font-size:14px;background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:10px;color:var(--tx);padding:10px 12px;font-family:'Nunito',sans-serif;outline:none;cursor:pointer}
+.tzpick input:focus{border-color:var(--cy)}
+.person .now{font-size:11px;font-weight:800;color:var(--cy);white-space:nowrap;flex-shrink:0;font-variant-numeric:tabular-nums}
+.person .del{background:rgba(255,32,96,.1);border:1px solid rgba(255,32,96,.25);color:#ff6b8a;border-radius:9px;width:32px;height:32px;cursor:pointer;font-size:14px;flex-shrink:0}
+.person .del:hover{background:rgba(255,32,96,.2)}
+.dd{position:absolute;top:calc(100% + 4px);left:0;right:0;background:#15152e;border:1px solid var(--bd);border-radius:12px;max-height:260px;overflow-y:auto;z-index:40;box-shadow:0 18px 50px rgba(0,0,0,.5);display:none}
+.dd.show{display:block}
+.dd-item{padding:10px 13px;cursor:pointer;font-size:13px;font-weight:600;display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(255,255,255,.04)}
 .dd-item:hover,.dd-item.hi{background:var(--sfh)}
-.dd-item .off{color:var(--mt);font-size:11px;font-weight:800;white-space:nowrap;flex-shrink:0}
-.dd-empty{padding:14px;color:var(--mt);font-size:13px;text-align:center;font-weight:600}
+.dd-item .off{color:var(--mt);font-size:11px;font-weight:700;white-space:nowrap}
+.dd-empty{padding:14px;color:var(--mt);font-size:13px;text-align:center}
 
-/* ── WORKING HOURS ── */
-.hours-bar{
-  background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);
-  padding:10px 14px;margin-bottom:16px;
-  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-}
-.hours-bar label{font-size:13px;font-weight:700;color:var(--mt)}
-.hours-bar select{
-  background:rgba(255,255,255,.06);border:1.5px solid var(--bd);
-  border-radius:9px;color:var(--tx);padding:7px 10px;
-  font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;outline:none;cursor:pointer;
-}
-.hours-bar select:focus{border-color:var(--cy)}
+.addbtn{width:100%;background:var(--sf);border:1.5px dashed var(--bd);border-radius:var(--rs);color:var(--mt);font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;padding:12px;cursor:pointer;transition:all .15s}
+.addbtn:hover{background:var(--sfh);color:var(--tx);border-color:var(--cy)}
 
-/* ── GRID CARD ── */
-.grid-card{
-  background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);
-  overflow:hidden;margin-bottom:16px;
-  backdrop-filter:blur(14px);
-}
-.grid-scroll{overflow-x:auto;overflow-y:visible}
-.grid-scroll::-webkit-scrollbar{height:4px}
-.grid-scroll::-webkit-scrollbar-thumb{background:var(--bd);border-radius:2px}
+/* working hours */
+.hours{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:14px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hours label{font-weight:700;font-size:14px;color:var(--mt)}
+.hours select{background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:10px;color:var(--tx);padding:9px 12px;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;outline:none;cursor:pointer}
+.hours select:focus{border-color:var(--cy)}
 
-/* TABLE */
-.grid-table{
-  border-collapse:collapse;
-  width:100%;
-  table-layout:fixed;
-  min-width:640px;
-}
+/* THE ANSWER */
+.answer{margin-top:26px;border-radius:var(--rl);padding:24px;text-align:center;animation:pop .4s ease}
+@keyframes pop{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+.answer.good{background:linear-gradient(135deg,rgba(0,230,118,.14),rgba(0,229,255,.1));border:1px solid rgba(0,230,118,.4)}
+.answer.partial{background:linear-gradient(135deg,rgba(255,140,0,.14),rgba(255,214,0,.08));border:1px solid rgba(255,140,0,.4)}
+.answer.none{background:linear-gradient(135deg,rgba(255,32,96,.12),rgba(176,97,255,.08));border:1px solid rgba(255,32,96,.35)}
+.answer .tag{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.answer.good .tag{color:var(--gr)}.answer.partial .tag{color:var(--or)}.answer.none .tag{color:var(--pk)}
+.answer .headline{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(22px,4vw,32px);line-height:1.2;margin-bottom:6px}
+.answer .mood{font-size:14px;font-weight:700;color:var(--mt);margin-bottom:14px}
+.answer-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 
-/* sticky left col */
-.grid-table .c-loc{
-  width:180px;min-width:160px;
-  position:sticky;left:0;z-index:4;
-  background:rgba(9,9,31,.97);
-  border-right:1px solid var(--bd);
-  padding:0;
-}
-/* hour col */
-.grid-table .c-hr{
-  width:36px;padding:0;
-  border-right:1px solid rgba(255,255,255,.04);
-  vertical-align:top;
-  cursor:pointer;
-}
-.grid-table .c-hr:last-child{border-right:none}
+.btn{font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;padding:11px 22px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .2s}
+.btn-primary{background:linear-gradient(135deg,var(--cy),var(--pu));color:#06121a;box-shadow:0 8px 28px rgba(0,229,255,.3)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{background:var(--sf);color:var(--tx);border:1.5px solid var(--bd)}
+.btn-ghost:hover{background:var(--sfh)}
+.btn-sm{font-size:13px;padding:9px 16px}
 
-/* RULER ROW */
-.ruler-loc-cell{
-  padding:10px 14px;
-  font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--mt);
-  display:flex;align-items:center;
-}
-.ruler-hr{
-  display:block;text-align:center;
-  padding:9px 0 8px;
-  font-size:10px;font-weight:800;color:var(--mt);
-  user-select:none;line-height:1;
-}
+/* per-person result rows (plain language, each in THEIR time) */
+.rows{margin-top:18px;display:flex;flex-direction:column;gap:8px}
+.prow{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:12px 14px;display:flex;align-items:center;gap:12px}
+.prow .who{flex:1;min-width:0}
+.prow .who .nm{font-weight:800;font-size:14px}
+.prow .who .cy{color:var(--mt);font-size:12px;font-weight:700}
+.prow .their-time{text-align:right;flex-shrink:0}
+.prow .their-time .t{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px}
+.prow .their-time .lab{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.prow.ok .their-time .lab{color:var(--gr)}
+.prow.meh .their-time .lab{color:var(--or)}
+.prow.bad .their-time .lab{color:var(--pk)}
+.prow .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.prow.ok .dot{background:var(--gr)}.prow.meh .dot{background:var(--or)}.prow.bad .dot{background:var(--pk)}
 
-/* LOCATION ROWS */
-.loc-cell{padding:0}
-.loc-inner{
-  padding:10px 12px;display:flex;align-items:center;gap:9px;
-  min-height:58px;
-}
-.loc-pic{
-  font-size:18px;flex-shrink:0;
-  width:32px;height:32px;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.06);border-radius:9px;
-}
-.loc-details{flex:1;min-width:0}
-.loc-name{font-weight:800;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3}
-.loc-time{
-  font-size:12px;font-weight:700;color:var(--cy);
-  font-variant-numeric:tabular-nums;line-height:1.3;
-}
-.loc-del{
-  flex-shrink:0;background:rgba(255,32,96,.1);
-  border:1px solid rgba(255,32,96,.2);color:rgba(255,107,138,.65);
-  border-radius:8px;width:26px;height:26px;cursor:pointer;font-size:11px;
-  display:flex;align-items:center;justify-content:center;transition:all .15s;
-}
-.loc-del:hover{background:rgba(255,32,96,.25);color:#ff6b8a}
+/* alternative times */
+.alts{margin-top:16px}
+.alts-title{font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--mt);margin-bottom:8px}
+.alt-chips{display:flex;gap:8px;flex-wrap:wrap}
+.alt-chip{background:var(--sf);border:1.5px solid var(--bd);border-radius:100px;padding:8px 14px;font-weight:800;font-size:13px;color:var(--tx);cursor:pointer;transition:all .15s}
+.alt-chip:hover{background:var(--sfh);border-color:var(--cy)}
+.alt-chip.on{background:linear-gradient(135deg,rgba(0,229,255,.2),rgba(176,97,255,.2));border-color:var(--cy)}
 
-/* HOUR CELLS */
-.hr-cell{
-  height:58px;position:relative;
-  display:flex;align-items:center;justify-content:center;
-  transition:background .12s;
-}
-.hr-cell .tl{
-  font-size:10px;font-weight:800;color:#fff;
-  opacity:0;transition:opacity .12s;
-  position:absolute;pointer-events:none;
-  white-space:nowrap;
-}
+.ad-wrap{max-width:760px;margin:38px auto 0;text-align:center}
+.ad-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(244,244,251,.3);margin-bottom:6px}
+.ad-box{min-height:100px;border:1px dashed var(--bd);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:var(--mt);font-size:13px;font-weight:600;background:rgba(255,255,255,.02)}
 
-/* color by local hour */
-.hr-cell.day  {background:rgba(0,230,118,.13)}
-.hr-cell.eve  {background:rgba(255,140,0,.10)}
-.hr-cell.night{background:rgba(255,255,255,.018)}
+.content{margin-top:40px}
+.content h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:24px;margin:30px 0 10px}
+.content h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin:20px 0 8px}
+.content p{color:var(--mt);font-size:15.5px;font-weight:600;margin-bottom:13px}
+.content ul{color:var(--mt);font-size:15.5px;font-weight:600;margin:0 0 13px 22px}
+.content li{margin-bottom:6px}
+.faq{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.qa{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);overflow:hidden}
+.qa summary{padding:15px 18px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:'+';font-size:22px;color:var(--mt);transition:transform .2s}
+.qa[open] summary::after{transform:rotate(45deg)}
+.qa .a{padding:0 18px 16px;color:var(--mt);font-size:15px;font-weight:600}
 
-/* NOW column */
-.c-hr.is-now{border-left:1.5px solid rgba(0,229,255,.45);border-right:1.5px solid rgba(0,229,255,.15)!important}
-.c-hr.is-now .ruler-hr{color:var(--cy);font-weight:900}
-.c-hr.is-now .hr-cell{background:rgba(0,229,255,.11)!important}
-
-/* BEST column */
-.c-hr.is-best{border-left:1.5px solid rgba(0,230,118,.5);border-right:1.5px solid rgba(0,230,118,.15)!important}
-.c-hr.is-best .ruler-hr{color:var(--gr);font-weight:900}
-.c-hr.is-best .hr-cell{background:rgba(0,230,118,.18)!important}
-
-/* HOVER + SELECTED column */
-.c-hr.col-hi .ruler-hr{color:var(--cy)}
-.c-hr.col-hi .hr-cell{background:rgba(0,229,255,.18)!important}
-.c-hr.col-hi .hr-cell .tl{opacity:1}
-.c-hr.is-sel .ruler-hr{color:var(--cy);font-weight:900}
-.c-hr.is-sel .hr-cell{background:rgba(0,229,255,.22)!important}
-.c-hr.is-sel .hr-cell .tl{opacity:1}
-
-/* row separators */
-.grid-table tr+tr .c-loc,
-.grid-table tr+tr .c-hr{border-top:1px solid rgba(255,255,255,.05)}
-
-/* EMPTY STATE */
-.grid-empty{padding:44px 20px;text-align:center}
-.grid-empty .em-icon{font-size:40px;display:block;margin-bottom:12px}
-.grid-empty p{color:var(--mt);font-size:14px;font-weight:700}
-
-/* LEGEND */
-.legend{
-  padding:9px 14px;border-top:1px solid rgba(255,255,255,.05);
-  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
-}
-.leg-item{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:800;color:var(--mt)}
-.leg-dot{width:10px;height:10px;border-radius:3px;display:inline-block;flex-shrink:0}
-.leg-hint{margin-left:auto;font-size:11px;font-weight:700;color:rgba(0,229,255,.5)}
-
-/* ── RESULT CARD ── */
-.result-card{
-  border-radius:var(--r);padding:20px 22px;
-  margin-bottom:16px;display:none;
-  animation:rcPop .4s cubic-bezier(.34,1.56,.64,1);
-}
-@keyframes rcPop{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
-.result-card.show{display:block}
-.result-card.good{
-  background:linear-gradient(135deg,rgba(0,230,118,.13),rgba(0,229,255,.08));
-  border:1px solid rgba(0,230,118,.38);
-}
-.result-card.partial{
-  background:linear-gradient(135deg,rgba(255,140,0,.13),rgba(255,214,0,.07));
-  border:1px solid rgba(255,140,0,.38);
-}
-.result-card.none{
-  background:linear-gradient(135deg,rgba(255,32,96,.11),rgba(176,97,255,.08));
-  border:1px solid rgba(255,32,96,.3);
-}
-.rc-tag{font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
-.result-card.good .rc-tag{color:var(--gr)}
-.result-card.partial .rc-tag{color:var(--or)}
-.result-card.none .rc-tag{color:var(--pk)}
-.rc-headline{
-  font-family:'Fredoka',sans-serif;font-weight:700;
-  font-size:clamp(20px,3.5vw,30px);line-height:1.2;margin-bottom:4px;
-}
-.rc-sub{font-size:13px;font-weight:700;color:var(--mt);margin-bottom:14px}
-.rc-pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
-.rc-pill{
-  background:rgba(255,255,255,.06);border:1px solid var(--bd);
-  border-radius:100px;padding:6px 13px;
-  font-size:13px;font-weight:800;
-  display:flex;align-items:center;gap:6px;
-}
-.rc-pill .pt{font-variant-numeric:tabular-nums}
-.rc-pill .pw{color:var(--mt);font-size:12px}
-.rc-actions{display:flex;gap:8px;flex-wrap:wrap}
-.rbtn{
-  font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;
-  padding:10px 18px;border-radius:100px;border:none;cursor:pointer;
-  display:inline-flex;align-items:center;gap:6px;transition:all .15s;
-}
-.rbtn-pri{
-  background:linear-gradient(135deg,var(--cy),var(--pu));
-  color:#040a12;box-shadow:0 6px 24px rgba(0,229,255,.28);
-}
-.rbtn-pri:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,229,255,.38)}
-.rbtn-ghost{background:var(--sf);color:var(--tx);border:1.5px solid var(--bd)!important}
-.rbtn-ghost:hover{background:var(--sfh);transform:translateY(-1px)}
-
-/* ── CONVERTER ── */
-.conv{
-  background:var(--sf);border:1px solid var(--bd);
-  border-radius:var(--r);overflow:hidden;margin-bottom:16px;
-  backdrop-filter:blur(14px);
-}
-.conv summary{
-  padding:14px 18px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:16px;
-  cursor:pointer;list-style:none;
-  display:flex;justify-content:space-between;align-items:center;
-}
+/* secondary converter (collapsed, optional) */
+.conv{margin-top:30px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--rl);overflow:hidden}
+.conv summary{padding:16px 20px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:17px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
 .conv summary::-webkit-details-marker{display:none}
-.conv summary::after{content:'+';font-size:22px;color:var(--mt);line-height:1}
+.conv summary::after{content:'+';font-size:24px;color:var(--mt)}
 .conv[open] summary::after{content:'−'}
-.conv-body{padding:0 18px 18px}
-.conv-inputs{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
-.conv-inputs label{font-size:13px;font-weight:700;color:var(--mt)}
-.conv-inputs input[type=time]{
-  background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:10px;
-  color:var(--tx);padding:9px 12px;
-  font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;outline:none;
-}
-.conv-inputs input[type=time]:focus{border-color:var(--cy)}
-.conv-line{
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);
-}
+.conv-body{padding:0 20px 20px}
+.conv-inputs{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.conv-inputs input[type=time]{background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:10px;color:var(--tx);padding:10px 12px;font-family:'Nunito',sans-serif;font-weight:700;font-size:15px;outline:none}
+.conv-line{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.06)}
 .conv-line:last-child{border-bottom:none}
-.conv-line .cn{font-weight:800;font-size:14px}
-.conv-line .cn .cz{color:var(--mt);font-size:11px;font-weight:700;display:block}
-.conv-line .ct{text-align:right}
-.conv-line .ct .big{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px}
-.conv-line .ct .d{color:var(--mt);font-size:11px;font-weight:700}
-.conv-line .ct .d.next{color:var(--or)}.conv-line .ct .d.prev{color:var(--cy)}
+.conv-line .city{font-weight:800;font-size:14px}
+.conv-line .city .z{color:var(--mt);font-size:12px;font-weight:700;display:block}
+.conv-line .t{text-align:right}.conv-line .t .big{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px}
+.conv-line .t .d{color:var(--mt);font-size:11px;font-weight:700}.conv-line .t .d.next{color:var(--or)}.conv-line .t .d.prev{color:var(--cy)}
 
-/* ── FOOTER ── */
-footer{border-top:1px solid var(--bd);margin-top:48px;padding:32px 0 48px}
+footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 .foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .foot-col h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
 .foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
 .foot-col a:hover{color:var(--tx)}
-.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
-.copy{text-align:center;color:var(--mt);font-size:13px;font-weight:600;margin-top:24px;padding-top:16px;border-top:1px solid var(--bd)}
-
-@media(max-width:620px){
-  .grid-table .c-loc{width:148px}
-  .grid-table .c-hr{width:32px}
-  .grid-table{min-width:520px}
-  .hero h1{font-size:26px}
-  .leg-hint{display:none}
-}
-@media(prefers-reduced-motion:reduce){body::before,*{animation:none!important;transition:none!important}}
+.foot-brand{max-width:240px}.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
+.copy{text-align:center;color:var(--mt);font-size:13px;font-weight:600;margin-top:30px;padding-top:20px;border-top:1px solid var(--bd)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
 <body>
-<div class="app">
 
-  <!-- Topbar -->
-  <nav class="topbar">
+<div class="topbar">
+  <div class="topbar-in">
     <a class="brand" href="/">
       <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="bm" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#FF2D6E"/>
-            <stop offset="52%" stop-color="#FF7A2F"/>
-            <stop offset="100%" stop-color="#FFC628"/>
-          </linearGradient>
-        </defs>
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
         <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
         <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
         <polygon points="79,21 79,41 63,31" fill="#fff"/>
@@ -400,66 +189,74 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:32px 0 48px}
       <span class="brand-name">Pickly</span>
     </a>
     <a class="back" href="/">← All tools</a>
-  </nav>
-
-  <!-- Hero -->
-  <div class="hero">
-    <h1>World Clock &<br><span class="g">Meeting Planner</span></h1>
-    <p>Add cities to compare times at a glance. See when everyone is free and find the best meeting hour — automatically.</p>
   </div>
+</div>
 
-  <!-- Add location -->
-  <div class="add-bar" id="addBar">
-    <div class="add-icon">＋</div>
-    <input id="searchInp" type="text" placeholder="Add a city or country… Tokyo, Paris, India, UTC" autocomplete="off" spellcheck="false">
-    <div class="search-dd" id="searchDd"></div>
+<header class="head">
+  <div class="wrap">
+    <h1>What's the best time to <span class="g">meet?</span></h1>
+    <p>Add everyone and where they are. We'll show you the best time to meet — in each person's own local time. No math, no UTC, no confusion.</p>
   </div>
+</header>
 
-  <!-- Working hours -->
-  <div class="hours-bar">
-    <label>Show availability</label>
+<div class="wrap">
+
+  <div class="step"><span class="num">1</span><h2>Who's in the meeting?</h2></div>
+  <div id="people"></div>
+  <button class="addbtn" id="addPerson">+ Add another person</button>
+
+  <div class="step"><span class="num">2</span><h2>When can they usually meet?</h2></div>
+  <div class="hours">
+    <label>Everyone's available roughly</label>
     <select id="startH"></select>
     <label>to</label>
     <select id="endH"></select>
-    <label style="margin-left:auto;font-size:11px;color:rgba(242,242,255,.3)">Working hours per location</label>
   </div>
 
-  <!-- Grid -->
-  <div class="grid-card" id="gridCard">
-    <div class="grid-scroll" id="gridScroll">
-      <table class="grid-table" id="gridTable">
-        <tbody id="gridBody"></tbody>
-      </table>
-    </div>
-    <div class="legend">
-      <div class="leg-item"><span class="leg-dot" style="background:rgba(0,230,118,.55)"></span>Business hours</div>
-      <div class="leg-item"><span class="leg-dot" style="background:rgba(255,140,0,.55)"></span>Early / late</div>
-      <div class="leg-item"><span class="leg-dot" style="background:rgba(255,255,255,.12)"></span>Night</div>
-      <span class="leg-hint">Hover to compare · Click to pin a time</span>
-    </div>
-  </div>
+  <div class="step"><span class="num">3</span><h2>Your best time to meet</h2></div>
+  <div id="answer"></div>
+  <div class="rows" id="rows"></div>
+  <div class="alts" id="alts"></div>
 
-  <!-- Result -->
-  <div class="result-card" id="resultCard"></div>
-
-  <!-- Converter -->
-  <details class="conv" id="convDet">
-    <summary>🔄 Quick time converter</summary>
+  <!-- optional converter -->
+  <details class="conv">
+    <summary>🔄 Just need to convert one time? Tap here</summary>
     <div class="conv-body">
+      <p style="color:var(--mt);font-weight:600;font-size:14px;margin-bottom:12px">Pick a time in the first person's zone and see it for everyone else.</p>
       <div class="conv-inputs">
-        <label>Convert:</label>
+        <label style="font-weight:700;color:var(--mt);font-size:14px">Time:</label>
         <input type="time" id="convTime">
-        <span style="font-size:13px;font-weight:600;color:var(--mt)" id="convFromLbl"></span>
       </div>
       <div id="convResult"></div>
     </div>
   </details>
 
-</div><!-- /app -->
+  <div class="ad-wrap"><div class="ad-lbl">Advertisement</div><div class="ad-box">Your ad space — plug in Google AdSense here 📢</div></div>
+
+  <article class="content">
+    <h2>The simplest way to schedule across time zones</h2>
+    <p>Coordinating a meeting when people are spread across cities and countries is genuinely hard — but it shouldn't require a spreadsheet or mental arithmetic. This tool keeps it simple: tell it who's meeting and where they are, and it shows you the best time to meet, written out in each person's own local time. No UTC, no "is that my time or yours?"</p>
+    <h3>How it works</h3>
+    <p>Add each person and pick their city (you can search by city or country — "Milan", "Vietnam", "Tokyo" all work). Set the hours everyone's generally available, and the tool finds the time that lands inside the most people's day. If a time works for everyone, great — you'll see it front and center. If your team is spread too far for a perfect overlap, it shows you the next-best options and how many people each one suits.</p>
+    <h3>It handles daylight saving automatically</h3>
+    <p>Time zones shift with daylight saving on different dates around the world. This tool uses your device's official time zone data, so the times it shows are correct for today — no manual adjusting.</p>
+    <h3>Built for remote teams and global friends</h3>
+    <p>Whether you're scheduling a standup across three continents, a call with an overseas client, or a game night with friends abroad, the goal is the same: find a time that works, fast, without anyone doing time-zone math in their head.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <details class="qa"><summary>How do I use it?</summary><div class="a">Add each person and their city, set the hours everyone's roughly free, and read the answer at the top — it's shown in everyone's local time. That's it.</div></details>
+      <details class="qa"><summary>What if no time works for everyone?</summary><div class="a">It automatically shows the best available time and how many people it suits, plus alternative times you can tap to compare.</div></details>
+      <details class="qa"><summary>Can I search by country?</summary><div class="a">Yes — type a city or a country ("Milan", "Germany", "Vietnam", "Tokyo") and it finds the right zone.</div></details>
+      <details class="qa"><summary>Does it handle daylight saving?</summary><div class="a">Yes, automatically, using your device's official time zone database.</div></details>
+      <details class="qa"><summary>Is my data private?</summary><div class="a">Everything runs in your browser; nothing is sent to a server. See our <a href="/privacy/" style="color:var(--cy)">Privacy Policy</a>.</div></details>
+    </div>
+  </article>
+</div>
 
 <footer>
-  <div class="app foot-in">
-    <div class="foot-col foot-brand" style="max-width:220px">
+  <div class="wrap foot-in">
+    <div class="foot-col foot-brand">
       <a class="brand" href="/">
         <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
@@ -471,28 +268,19 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:32px 0 48px}
       </a>
       <p>Free, fun online tools to help you decide anything.</p>
     </div>
-    <div class="foot-col">
-      <h5>Tools</h5>
-      <a href="/spinit/">Decision Spinner</a>
-      <a href="/timezones/">World Clock</a>
-      <a href="/coinflip/">Coin Flip</a>
-      <a href="/#tools">All tools</a>
-    </div>
-    <div class="foot-col">
-      <h5>Legal</h5>
-      <a href="/privacy/">Privacy Policy</a>
-      <a href="/terms/">Terms of Use</a>
-      <a href="/contact/">Contact</a>
-    </div>
+        <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/timezones/">Timezone Planner</a><a href="/randomnumber/">Random Number</a><a href="/teampicker/">Team Picker</a><a href="/whattoeat/">What to Eat?</a></div>
+    <div class="foot-col"><h5>Games</h5><a href="/magic8ball/">Magic 8 Ball</a><a href="/wouldyourather/">Would You Rather</a><a href="/rockpaperscissors/">Rock Paper Scissors</a><a href="/truthordare/">Truth or Dare</a><a href="/neverhaveiever/">Never Have I Ever</a><a href="/slotmachine/">Slot Machine</a></div>
+    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
   </div>
-  <div class="app"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div></div>
+  <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div></div>
 </footer>
 
 <script>
-/* ═══════════════════════════════════════════════════
-   TIMEZONE ENGINE
-═══════════════════════════════════════════════════ */
-const POPULAR=[
+/* ════════════════════════════════════════════════════════════════
+   TIMEZONE ENGINE (data + math + searchable picker) — proven/tested
+════════════════════════════════════════════════════════════════ */
+const POPULAR = [
   ["Pacific/Honolulu","Honolulu · Hawaii"],["America/Anchorage","Anchorage · Alaska"],
   ["America/Los_Angeles","Los Angeles · Seattle · SF · Vancouver"],["America/Denver","Denver · Salt Lake City"],
   ["America/Phoenix","Phoenix · Arizona"],["America/Chicago","Chicago · Dallas · Mexico City"],
@@ -510,19 +298,29 @@ const POPULAR=[
   ["Asia/Dhaka","Dhaka"],["Asia/Almaty","Almaty · Tashkent"],
   ["Asia/Bangkok","Bangkok · Jakarta · Hanoi"],["Asia/Shanghai","China (Beijing · Shanghai)"],
   ["Asia/Hong_Kong","Hong Kong"],["Asia/Singapore","Singapore · Kuala Lumpur"],
-  ["Asia/Manila","Manila"],["Asia/Tokyo","Tokyo"],["Asia/Seoul","Seoul"],
+  ["Asia/Manila","Manila"],["Asia/Tokyo","Tokyo · Seoul"],["Asia/Seoul","Seoul"],
   ["Australia/Perth","Perth"],["Australia/Adelaide","Adelaide"],
   ["Australia/Sydney","Sydney · Melbourne · Brisbane"],["Pacific/Auckland","Auckland · Wellington"],
   ["Pacific/Fiji","Fiji"],["UTC","UTC"]
 ];
 
-const ALIASES={
+/* Turn an IANA name into a readable label, e.g. "Africa/Addis_Ababa" -> "Addis Ababa (Africa)" */
+function autoLabel(tz){
+  const parts = tz.split('/');
+  const city = parts[parts.length-1].replace(/_/g,' ');
+  const region = parts.length>1 ? parts[0].replace(/_/g,' ') : '';
+  return region && region!=='Etc' ? `${city} (${region})` : city;
+}
+
+/* Country / keyword aliases so people can search by COUNTRY, not just city.
+   Maps an IANA zone to extra searchable words. */
+const ALIASES = {
   "America/New_York":"usa united states america eastern est edt new york nyc boston atlanta miami philadelphia washington dc charlotte detroit",
   "America/Chicago":"usa united states central cst chicago houston dallas austin san antonio nashville new orleans memphis kansas city milwaukee minneapolis",
   "America/Denver":"usa united states mountain mst denver salt lake city albuquerque boise",
   "America/Los_Angeles":"usa united states pacific pst pdt california los angeles san francisco sf seattle portland san diego sacramento san jose las vegas",
   "America/Phoenix":"usa arizona phoenix tucson",
-  "America/Toronto":"canada toronto ottawa","America/Vancouver":"canada vancouver calgary edmonton",
+  "America/Toronto":"canada toronto ottawa montreal quebec","America/Vancouver":"canada vancouver calgary edmonton",
   "America/Halifax":"canada halifax atlantic","America/Sao_Paulo":"brazil brasil sao paulo rio de janeiro",
   "America/Argentina/Buenos_Aires":"argentina buenos aires cordoba",
   "America/Lima":"peru lima","America/Bogota":"colombia bogota medellin cali","America/Santiago":"chile santiago",
@@ -533,480 +331,325 @@ const ALIASES={
   "Europe/Paris":"france paris lyon marseille toulouse nice bordeaux lille",
   "Europe/Berlin":"germany berlin munich munchen frankfurt hamburg cologne koln stuttgart dusseldorf leipzig",
   "Europe/Madrid":"spain madrid barcelona valencia seville sevilla bilbao malaga zaragoza",
-  "Europe/Rome":"italy rome roma milan milano naples napoli turin torino bologna florence firenze venice venezia",
-  "Europe/Amsterdam":"netherlands holland amsterdam rotterdam the hague",
-  "Europe/Brussels":"belgium brussels antwerp ghent","Europe/Zurich":"switzerland zurich geneva bern",
-  "Europe/Vienna":"austria vienna wien","Europe/Stockholm":"sweden stockholm gothenburg",
-  "Europe/Oslo":"norway oslo bergen","Europe/Copenhagen":"denmark copenhagen",
-  "Europe/Helsinki":"finland helsinki","Europe/Warsaw":"poland warsaw krakow wroclaw",
-  "Europe/Prague":"czech czechia prague","Europe/Athens":"greece athens",
-  "Europe/Lisbon":"portugal lisbon porto","Europe/Kyiv":"ukraine kyiv kiev",
-  "Europe/Moscow":"russia moscow saint petersburg","Europe/Istanbul":"turkey turkiye istanbul ankara",
-  "Europe/Bucharest":"romania bucharest","Europe/Budapest":"hungary budapest",
-  "Africa/Lagos":"nigeria west africa lagos abuja accra ghana",
-  "Africa/Cairo":"egypt cairo","Africa/Nairobi":"kenya east africa nairobi",
-  "Africa/Johannesburg":"south africa johannesburg cape town durban",
-  "Africa/Casablanca":"morocco casablanca marrakech",
-  "Asia/Jerusalem":"israel jerusalem tel aviv","Asia/Riyadh":"saudi arabia kuwait qatar bahrain riyadh jeddah doha",
-  "Asia/Dubai":"uae united arab emirates dubai abu dhabi muscat oman",
-  "Asia/Tehran":"iran tehran","Asia/Karachi":"pakistan karachi lahore islamabad",
-  "Asia/Kolkata":"india bharat mumbai delhi new delhi bengaluru bangalore hyderabad chennai kolkata pune ahmedabad jaipur",
-  "Asia/Kathmandu":"nepal kathmandu","Asia/Dhaka":"bangladesh dhaka",
-  "Asia/Bangkok":"thailand bangkok phuket","Asia/Jakarta":"indonesia jakarta bali denpasar",
-  "Asia/Ho_Chi_Minh":"vietnam ho chi minh saigon hanoi",
-  "Asia/Manila":"philippines manila quezon cebu","Asia/Kuala_Lumpur":"malaysia kuala lumpur",
-  "Asia/Singapore":"singapore","Asia/Shanghai":"china prc beijing shanghai guangzhou shenzhen",
-  "Asia/Hong_Kong":"hong kong","Asia/Taipei":"taiwan taipei",
-  "Asia/Tokyo":"japan tokyo osaka yokohama kyoto","Asia/Seoul":"south korea seoul busan",
-  "Australia/Sydney":"australia nsw sydney canberra","Australia/Melbourne":"australia melbourne",
+  "Europe/Rome":"italy rome roma milan milano naples napoli turin torino bologna florence firenze venice venezia genoa",
+  "Europe/Amsterdam":"netherlands holland amsterdam rotterdam the hague utrecht eindhoven",
+  "Europe/Brussels":"belgium brussels antwerp ghent","Europe/Zurich":"switzerland zurich geneva basel bern lausanne",
+  "Europe/Vienna":"austria vienna wien salzburg graz","Europe/Stockholm":"sweden stockholm gothenburg malmo",
+  "Europe/Oslo":"norway oslo bergen","Europe/Copenhagen":"denmark copenhagen aarhus",
+  "Europe/Helsinki":"finland helsinki espoo","Europe/Warsaw":"poland warsaw krakow cracow wroclaw gdansk",
+  "Europe/Prague":"czech czechia prague brno","Europe/Athens":"greece athens thessaloniki",
+  "Europe/Lisbon":"portugal lisbon porto","Europe/Kyiv":"ukraine kyiv kiev","Europe/Kiev":"ukraine kyiv kiev",
+  "Europe/Moscow":"russia moscow st petersburg saint petersburg","Europe/Istanbul":"turkey turkiye istanbul ankara izmir",
+  "Europe/Bucharest":"romania bucharest","Europe/Budapest":"hungary budapest","Europe/Belgrade":"serbia belgrade",
+  "Europe/Madrid ":"spain","Europe/Sofia":"bulgaria sofia","Europe/Zagreb":"croatia zagreb",
+  "Africa/Lagos":"nigeria west africa lagos abuja accra ghana","Africa/Accra":"ghana accra",
+  "Africa/Cairo":"egypt cairo alexandria giza",
+  "Africa/Nairobi":"kenya east africa nairobi mombasa","Africa/Johannesburg":"south africa johannesburg cape town durban pretoria",
+  "Africa/Casablanca":"morocco casablanca rabat marrakech","Africa/Addis_Ababa":"ethiopia addis ababa",
+  "Africa/Algiers":"algeria algiers","Africa/Tunis":"tunisia tunis","Africa/Dar_es_Salaam":"tanzania dar es salaam",
+  "Asia/Jerusalem":"israel jerusalem tel aviv haifa","Asia/Tel_Aviv":"israel tel aviv",
+  "Asia/Riyadh":"saudi arabia kuwait qatar bahrain riyadh jeddah mecca doha kuwait city",
+  "Asia/Dubai":"uae united arab emirates dubai abu dhabi sharjah muscat oman",
+  "Asia/Tehran":"iran tehran","Asia/Baghdad":"iraq baghdad",
+  "Asia/Karachi":"pakistan karachi lahore islamabad rawalpindi",
+  "Asia/Kolkata":"india bharat mumbai delhi new delhi bengaluru bangalore hyderabad chennai kolkata calcutta pune ahmedabad jaipur",
+  "Asia/Calcutta":"india mumbai delhi bengaluru bangalore",
+  "Asia/Kathmandu":"nepal kathmandu","Asia/Dhaka":"bangladesh dhaka chittagong","Asia/Colombo":"sri lanka colombo",
+  "Asia/Almaty":"kazakhstan almaty astana","Asia/Tashkent":"uzbekistan tashkent",
+  "Asia/Bangkok":"thailand bangkok phuket chiang mai",
+  "Asia/Jakarta":"indonesia jakarta surabaya bandung bali denpasar",
+  "Asia/Ho_Chi_Minh":"vietnam ho chi minh saigon hanoi","Asia/Saigon":"vietnam saigon ho chi minh hanoi",
+  "Asia/Manila":"philippines manila quezon cebu davao",
+  "Asia/Kuala_Lumpur":"malaysia kuala lumpur johor","Asia/Singapore":"singapore",
+  "Asia/Shanghai":"china prc beijing shanghai guangzhou shenzhen chengdu wuhan tianjin chongqing",
+  "Asia/Hong_Kong":"hong kong","Asia/Taipei":"taiwan taipei kaohsiung",
+  "Asia/Tokyo":"japan tokyo osaka yokohama nagoya sapporo kyoto kobe fukuoka",
+  "Asia/Seoul":"south korea seoul busan incheon daegu","Asia/Yangon":"myanmar burma yangon",
+  "Australia/Sydney":"australia nsw sydney canberra newcastle","Australia/Melbourne":"australia melbourne",
   "Australia/Perth":"australia perth","Australia/Brisbane":"australia queensland brisbane gold coast",
   "Australia/Adelaide":"australia adelaide",
-  "Pacific/Auckland":"new zealand nz auckland wellington","Pacific/Honolulu":"usa hawaii honolulu"
+  "Pacific/Auckland":"new zealand nz auckland wellington christchurch","Pacific/Fiji":"fiji suva",
+  "Pacific/Honolulu":"usa hawaii honolulu"
 };
 
-function autoLabel(tz){
-  const p=tz.split('/'); const city=p[p.length-1].replace(/_/g,' ');
-  const region=p.length>1?p[0].replace(/_/g,' '):'';
-  return region&&region!=='Etc'?`${city} (${region})`:city;
-}
-const ZONES=(function(){
-  const list=POPULAR.slice(); const have=new Set(POPULAR.map(z=>z[0]));
-  let all=[]; try{all=Intl.supportedValuesOf?Intl.supportedValuesOf('timeZone'):[];}catch(e){all=[];}
-  all.sort(); all.forEach(tz=>{if(!have.has(tz)&&!/^Etc\//.test(tz)){list.push([tz,autoLabel(tz)]);have.add(tz);}});
+/* Build the COMPLETE zone list: popular ones first, then every other IANA zone
+   the browser knows about, so no country/region is ever missing. */
+const ZONES = (function(){
+  const list = POPULAR.slice();
+  const have = new Set(POPULAR.map(z=>z[0]));
+  let all = [];
+  try{ all = (Intl.supportedValuesOf ? Intl.supportedValuesOf('timeZone') : []); }catch(e){ all = []; }
+  all.sort();
+  all.forEach(tz=>{ if(!have.has(tz) && !/^Etc\//.test(tz)){ list.push([tz, autoLabel(tz)]); have.add(tz); } });
   return list;
 })();
 
-function offsetMinutes(tz,date){
+/* Get a zone's current UTC offset in minutes for a given date (DST-aware) */
+function offsetMinutes(tz, date){
   try{
-    const dtf=new Intl.DateTimeFormat('en-US',{timeZone:tz,hour12:false,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'});
-    const parts=dtf.formatToParts(date).reduce((a,p)=>{a[p.type]=p.value;return a},{});
-    let h=parseInt(parts.hour,10); if(h===24)h=0;
-    const asUTC=Date.UTC(+parts.year,+parts.month-1,+parts.day,h,+parts.minute,+parts.second);
-    return Math.round((asUTC-date.getTime())/60000);
-  }catch(e){return 0;}
+    const dtf = new Intl.DateTimeFormat('en-US',{timeZone:tz,hour12:false,
+      year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    const parts = dtf.formatToParts(date).reduce((a,p)=>{a[p.type]=p.value;return a},{});
+    let h = parseInt(parts.hour,10); if(h===24) h=0;
+    const asUTC = Date.UTC(+parts.year,+parts.month-1,+parts.day,h,+parts.minute,+parts.second);
+    return Math.round((asUTC - date.getTime())/60000);
+  }catch(e){ return 0; }
 }
 function fmtOffset(min){
-  const s=min<0?'-':'+'; min=Math.abs(min);
-  const h=Math.floor(min/60),m=min%60;
+  const s = min<0?'-':'+'; min=Math.abs(min);
+  const h=Math.floor(min/60), m=min%60;
   return 'UTC'+s+h+(m?(':'+String(m).padStart(2,'0')):'');
 }
-function zoneLabel(tz){const z=ZONES.find(z=>z[0]===tz);return z?z[1]:tz.replace(/_/g,' ').split('/').pop();}
-function detectZone(){try{return Intl.DateTimeFormat().resolvedOptions().timeZone;}catch(e){return 'UTC';}}
-function matchedAlias(tz,q){
-  const full=(ALIASES[tz]||'');
-  const two=full.match(/[a-z]+ [a-z]+/g)||[];
-  const ph=two.find(p=>p===q); if(ph)return ph;
-  const words=full.split(' ');
-  return words.find(w=>w===q)||words.find(w=>w.startsWith(q))||'';
-}
-function titleCase(s){return s.replace(/\b[a-z]/g,c=>c.toUpperCase());}
+function zoneLabel(tz){ const z=ZONES.find(z=>z[0]===tz); return z?z[1]:tz.replace(/_/g,' ').split('/').pop(); }
+function detectZone(){ try{ return Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){ return 'UTC'; } }
 
-/* ═══════════════════════════════════════════════════
-   APP STATE
-═══════════════════════════════════════════════════ */
-const PICS=['🌆','🌃','🏙️','🌇','🌉','🗼','🏯','🗽','🌁','🌄'];
-let locations=[];   // [{tz}]
+/* Find which alias word matched the query, to show "Milan — Rome zone" */
+function matchedAlias(tz, q){
+  const full = (ALIASES[tz]||'');
+  // Check two-word phrases first (e.g. "cape town", "new delhi", "gold coast")
+  const twoWord = full.match(/[a-z]+ [a-z]+/g)||[];
+  const phraseHit = twoWord.find(p=>p===q);
+  if(phraseHit) return phraseHit;
+  // Otherwise the single word that best matches the query
+  const words = full.split(' ');
+  return words.find(w=>w===q) || words.find(w=>w.startsWith(q)) || '';
+}
+function titleCase(s){ return s.replace(/\b[a-z]/g,c=>c.toUpperCase()); }
+
+/* ── Searchable timezone dropdown component ── */
+function makeTzPicker(inputEl, ddEl, onPick, initial){
+  let hi=-1, filtered=ZONES.slice();
+  function render(q){
+    q=(q||'').toLowerCase().trim();
+    const matches = q
+      ? ZONES.filter(z=>z[1].toLowerCase().includes(q)||z[0].toLowerCase().includes(q)||((ALIASES[z[0]]||'').includes(q)))
+      : POPULAR; // no query → show curated popular zones only
+    filtered = matches.slice(0, 60); // cap for performance
+    if(!filtered.length){ ddEl.innerHTML='<div class="dd-empty">No matching zone — try a city or country name</div>'; return; }
+    const now=new Date();
+    let html = filtered.map((z,i)=>{
+      let label = z[1];
+      // If the match came only from an alias (the typed city isn't in the visible label),
+      // show "Searched City — Zone" so it's clear which place they picked.
+      if(q && !z[1].toLowerCase().includes(q) && !z[0].toLowerCase().includes(q)){
+        const matchedWord = matchedAlias(z[0], q);
+        if(matchedWord) label = titleCase(matchedWord)+' — '+z[1];
+      }
+      return `<div class="dd-item${i===hi?' hi':''}" data-tz="${z[0]}"><span>${label}</span><span class="off">${fmtOffset(offsetMinutes(z[0],now))}</span></div>`;
+    }).join('');
+    if(!q) html += '<div class="dd-empty">Type a city or country to search all '+ZONES.length+' zones…</div>';
+    else if(matches.length>filtered.length) html += '<div class="dd-empty">+'+(matches.length-filtered.length)+' more — keep typing to narrow</div>';
+    ddEl.innerHTML = html;
+    [...ddEl.children].forEach(el=>{ if(el.dataset.tz) el.onclick=()=>{ choose(el.dataset.tz); }; });
+  }
+  function choose(tz){ inputEl.value=zoneLabel(tz); inputEl.dataset.tz=tz; ddEl.classList.remove('show'); onPick&&onPick(tz); }
+  inputEl.removeAttribute('readonly');
+  inputEl.addEventListener('focus',()=>{ inputEl.select&&inputEl.select(); hi=-1; render(inputEl.value===zoneLabel(inputEl.dataset.tz)?'':inputEl.value); ddEl.classList.add('show'); });
+  inputEl.addEventListener('input',()=>{ hi=-1; render(inputEl.value); ddEl.classList.add('show'); });
+  inputEl.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'){e.preventDefault();hi=Math.min(hi+1,filtered.length-1);render(inputEl.value);}
+    else if(e.key==='ArrowUp'){e.preventDefault();hi=Math.max(hi-1,0);render(inputEl.value);}
+    else if(e.key==='Enter'){e.preventDefault();if(filtered[hi])choose(filtered[hi][0]);else if(filtered[0])choose(filtered[0][0]);}
+    else if(e.key==='Escape'){ddEl.classList.remove('show');}
+  });
+  document.addEventListener('click',e=>{ if(!inputEl.contains(e.target)&&!ddEl.contains(e.target)) ddEl.classList.remove('show'); });
+  if(initial){ inputEl.value=zoneLabel(initial); inputEl.dataset.tz=initial; }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   APP — single guided flow
+════════════════════════════════════════════════════════════════ */
+const PICS=['🧑‍💻','👩‍💼','🧑‍🎨','👨‍🔬','👩‍🚀','🧑‍🏫','👨‍💻','👩‍🎤','🧑‍🌾','👨‍🍳'];
+let people=[];        // {name, tz}
 let workStart=9, workEnd=18;
-let selCol=null;    // pinned UTC hour index (0-23)
+let chosenUTC=null;   // currently highlighted answer hour (UTC)
 
-/* ═══════════════════════════════════════════════════
-   HELPERS
-═══════════════════════════════════════════════════ */
-function esc(s){const d=document.createElement('div');d.appendChild(document.createTextNode(s||''));return d.innerHTML;}
-function cityOf(tz){return zoneLabel(tz).split('·')[0].trim();}
-function localHour(utcHr,tz,base){const o=offsetMinutes(tz,base)/60;let h=Math.round(utcHr+o);return((h%24)+24)%24;}
-function hourLbl(h){const ap=h<12?'am':'pm';let hh=h%12;if(hh===0)hh=12;return hh+ap;}
-function cellCls(lh){
-  if(lh>=9&&lh<18)return'day';
-  if((lh>=7&&lh<9)||(lh>=18&&lh<21))return'eve';
-  return'night';
-}
-function fmtNow(tz,now){
-  try{return new Intl.DateTimeFormat('en-US',{timeZone:tz,hour:'numeric',minute:'2-digit',hour12:true}).format(now);}
-  catch(e){return'—';}
-}
+function hourLabel(h){ const ap=h<12?'am':'pm'; let hh=h%12; if(hh===0)hh=12; return hh+ap; }
+function hourLabelMin(h,m){ const ap=h<12?'am':'pm'; let hh=h%12; if(hh===0)hh=12; return hh+(m?':'+String(m).padStart(2,'0'):'')+ap; }
+function localHour(utcHour, tz, base){ const o=offsetMinutes(tz,base)/60; let h=Math.round(utcHour+o); return ((h%24)+24)%24; }
 
-/* ═══════════════════════════════════════════════════
-   BEST TIME LOGIC
-═══════════════════════════════════════════════════ */
-function utcAvail(tz,base){
+/* fill hour selects */
+(function(){
+  const s=document.getElementById('startH'), e=document.getElementById('endH');
+  for(let h=0;h<24;h++){ s.add(new Option(hourLabel(h),h)); e.add(new Option(hourLabel(h),h)); }
+  s.value=workStart; e.value=workEnd;
+  s.onchange=()=>{ workStart=+s.value; persist(); compute(); };
+  e.onchange=()=>{ workEnd=+e.value; persist(); compute(); };
+})();
+
+function personRow(p, idx){
+  const div=document.createElement('div'); div.className='person';
+  div.innerHTML=`<div class="pic">${PICS[idx%PICS.length]}</div>
+    <div class="fields">
+      <input class="nm" type="text" placeholder="Name (optional)" value="${esc(p.name||'')}" maxlength="24">
+      <div class="tzpick"><input type="text" placeholder="City or country…"><div class="dd"></div></div>
+    </div>
+    <span class="now" data-tz="${esc(p.tz||'')}">·</span>
+    <button class="del" title="Remove">✕</button>`;
+  const nm=div.querySelector('.nm');
+  nm.addEventListener('input',()=>{ p.name=nm.value; persist(); compute(); });
+  const tzIn=div.querySelector('.tzpick input'), tzDd=div.querySelector('.dd');
+  makeTzPicker(tzIn,tzDd,(tz)=>{ p.tz=tz; div.querySelector('.now').setAttribute('data-tz',tz); persist(); compute(); tickNow(); }, p.tz);
+  div.querySelector('.del').addEventListener('click',()=>{ if(people.length<=1)return; people.splice(idx,1); renderPeople(); persist(); compute(); });
+  return div;
+}
+function renderPeople(){ const w=document.getElementById('people'); w.innerHTML=''; people.forEach((p,i)=>w.appendChild(personRow(p,i))); tickNow(); }
+function addPerson(tz){ people.push({name:'',tz:tz||detectZone()}); renderPeople(); persist(); compute(); }
+
+function esc(s){ const d=document.createElement('div'); d.appendChild(document.createTextNode(s||'')); return d.innerHTML; }
+
+/* working hours -> UTC availability (handles overnight + DST) */
+function utcAvail(tz, base){
   const off=offsetMinutes(tz,base)/60, a=new Array(24).fill(false), L=[];
-  let s=workStart,e=workEnd;
-  if(e>s){for(let h=s;h<e;h++)L.push(h);}else{for(let h=s;h<24;h++)L.push(h);for(let h=0;h<e;h++)L.push(h);}
-  L.forEach(lh=>{let u=Math.round(lh-off);u=((u%24)+24)%24;a[u]=true;});
+  let s=workStart, e=workEnd;
+  if(e>s){ for(let h=s;h<e;h++) L.push(h); } else { for(let h=s;h<24;h++) L.push(h); for(let h=0;h<e;h++) L.push(h); }
+  L.forEach(lh=>{ let u=Math.round(lh-off); u=((u%24)+24)%24; a[u]=true; });
   return a;
 }
-function comfortAt(u,locs,base){
-  let s=0;
-  locs.forEach(l=>{const lh=localHour(u,l.tz,base);if(lh>=10&&lh<=16)s+=2;else if(lh>=8&&lh<=18)s+=1;else if(lh>=7&&lh<20)s+=0;else s-=2;});
-  return s;
+/* comfort: how good is utcHour for everyone (10-16 great, 8-18 ok) */
+function comfortAt(utcHour, valid, base){
+  let s=0; valid.forEach(p=>{ const lh=localHour(utcHour,p.tz,base); if(lh>=10&&lh<=16)s+=2; else if(lh>=8&&lh<=18)s+=1; else if(lh>=7&&lh<20)s+=0; else s-=2; }); return s;
 }
-function computeBest(){
-  if(locations.length<1)return null;
+
+function compute(){
+  const valid=people.filter(p=>p.tz);
+  const ans=document.getElementById('answer'), rows=document.getElementById('rows'), alts=document.getElementById('alts');
+  if(valid.length<1){ ans.innerHTML=''; rows.innerHTML=''; alts.innerHTML=''; return; }
   const base=new Date();
-  const maps=locations.map(l=>utcAvail(l.tz,base));
+  const maps=valid.map(p=>utcAvail(p.tz,base));
   const counts=new Array(24).fill(0);
-  for(let u=0;u<24;u++)maps.forEach(m=>{if(m[u])counts[u]++;});
-  const maxC=Math.max(...counts);
-  let bh=[];for(let u=0;u<24;u++)if(counts[u]===maxC)bh.push(u);
-  bh.sort((a,b)=>comfortAt(b,locations,base)-comfortAt(a,locations,base));
-  return bh[0]??null;
-}
+  for(let u=0;u<24;u++) maps.forEach(m=>{ if(m[u])counts[u]++; });
+  const maxCount=Math.max(...counts);
+  const everyone=maxCount===valid.length;
+  // among hours with maxCount, pick the most comfortable
+  let bestHours=[]; for(let u=0;u<24;u++) if(counts[u]===maxCount) bestHours.push(u);
+  bestHours.sort((a,b)=>comfortAt(b,valid,base)-comfortAt(a,valid,base));
+  const best=bestHours[0];
+  chosenUTC = chosenUTC==null ? best : chosenUTC;
 
-/* ═══════════════════════════════════════════════════
-   GRID RENDER
-═══════════════════════════════════════════════════ */
-function renderGrid(){
-  const tbody=document.getElementById('gridBody');
-  const nowUtc=new Date().getUTCHours();
-  const best=computeBest();
-  const base=new Date();
-
-  if(!locations.length){
-    tbody.innerHTML=`<tr><td class="c-loc" colspan="25"><div class="grid-empty"><span class="em-icon">🌍</span><p>Add a city above to start comparing times</p></div></td></tr>`;
-    document.getElementById('resultCard').classList.remove('show');
-    return;
-  }
-
-  let html='';
-
-  /* ── RULER ROW ── */
-  html+='<tr>';
-  html+=`<td class="c-loc"><div class="ruler-loc-cell">Locations</div></td>`;
-  for(let u=0;u<24;u++){
-    const isNow=u===nowUtc;
-    const isBest=best!==null&&u===best;
-    const isSel=selCol===u;
-    let cls='c-hr';
-    if(isNow)cls+=' is-now';
-    if(isBest&&!isNow)cls+=' is-best';
-    if(isSel)cls+=' is-sel';
-    // Label based on first location's local time for this UTC hour
-    const lh=locations.length?localHour(u,locations[0].tz,base):u;
-    const h=lh%12||12; const ap=lh<12?'a':'p';
-    const lbl=isNow?`${h}${ap}▾`:`${h}${ap}`;
-    html+=`<td class="${cls}" data-ucol="${u}"><div class="ruler-hr">${lbl}</div></td>`;
-  }
-  html+='</tr>';
-
-  /* ── LOCATION ROWS ── */
-  locations.forEach((loc,idx)=>{
-    const name=cityOf(loc.tz);
-    const pic=PICS[idx%PICS.length];
-    const nowStr=fmtNow(loc.tz,base);
-    const off=fmtOffset(offsetMinutes(loc.tz,base));
-    const isNight=(()=>{try{const hr=+new Intl.DateTimeFormat('en-US',{timeZone:loc.tz,hour:'numeric',hour12:false}).format(base);return hr>=22||hr<7;}catch(e){return false;}})();
-
-    html+='<tr>';
-    html+=`<td class="c-loc loc-cell">
-      <div class="loc-inner">
-        <span class="loc-pic">${pic}</span>
-        <div class="loc-details">
-          <div class="loc-name" title="${esc(loc.tz)}">${esc(name)}</div>
-          <div class="loc-time" data-tz="${esc(loc.tz)}">${nowStr}${isNight?' 🌙':''} <span style="color:var(--mt);font-weight:700">${off}</span></div>
-        </div>
-        <button class="loc-del" onclick="removeLoc(${idx})" title="Remove">✕</button>
-      </div>
-    </td>`;
-
-    for(let u=0;u<24;u++){
-      const lh=localHour(u,loc.tz,base);
-      const ccls=cellCls(lh);
-      const isNow=u===nowUtc;
-      const isBest=best!==null&&u===best;
-      const isSel=selCol===u;
-      let tdcls='c-hr';
-      if(isNow)tdcls+=' is-now';
-      if(isBest&&!isNow)tdcls+=' is-best';
-      if(isSel)tdcls+=' is-sel';
-      const tl=hourLbl(lh);
-      html+=`<td class="${tdcls}" data-ucol="${u}">
-        <div class="hr-cell ${ccls}"><span class="tl">${tl}</span></div>
-      </td>`;
-    }
-    html+='</tr>';
-  });
-
-  tbody.innerHTML=html;
-  attachEvents();
-  renderResult(best,base);
-  autoScrollNow(nowUtc);
-}
-
-function autoScrollNow(nowUtc){
-  const scroll=document.getElementById('gridScroll');
-  const table=document.getElementById('gridTable');
-  // each hour col is ~36px; loc col is ~180px
-  const colW=36, locW=180;
-  const target=locW+nowUtc*colW - scroll.offsetWidth/2 + colW/2;
-  if(target>0) scroll.scrollLeft=Math.max(0,target);
-}
-
-/* ═══════════════════════════════════════════════════
-   HOVER / CLICK EVENTS
-═══════════════════════════════════════════════════ */
-function attachEvents(){
-  const table=document.getElementById('gridTable');
-  if(!table)return;
-
-  function setHighlight(col){
-    table.querySelectorAll('.c-hr').forEach(td=>{
-      td.classList.toggle('col-hi', +td.dataset.ucol===col);
+  // headline in plain language using first 1-2 people
+  function meetingPhrase(utcHour){
+    return valid.map(p=>{
+      const nm=p.name||cityOf(p.tz);
+      return `${hourLabel(localHour(utcHour,p.tz,base))} for ${esc(nm)}`;
     });
   }
-  function clearHighlight(){
-    table.querySelectorAll('.c-hr').forEach(td=>td.classList.remove('col-hi'));
-  }
+  const comfort=comfortAt(chosenUTC,valid,base), maxC=valid.length*2, ratio=comfort/maxC;
+  let mood = ratio>=0.75?'😄 Great hour for everyone' : ratio>=0.4?'🙂 Works well for most' : ratio>=0?'😐 A bit early or late for some' : '😬 Tough — someone\'s up early or late';
 
-  table.querySelectorAll('[data-ucol]').forEach(td=>{
-    td.addEventListener('mouseenter',()=>setHighlight(+td.dataset.ucol));
-    td.addEventListener('click',()=>{
-      const col=+td.dataset.ucol;
-      selCol=(selCol===col)?null:col;
-      renderGrid();
-    });
-  });
-  table.addEventListener('mouseleave',clearHighlight);
-}
+  let cls = everyone ? 'good' : (maxCount>=Math.ceil(valid.length/2) ? 'partial':'none');
+  let tag = everyone ? `✓ Works for all ${valid.length}` : `Best option — works for ${maxCount} of ${valid.length}`;
+  // headline: show first person's time big, rest in rows
+  const lead=valid[0];
+  const leadTime=hourLabel(localHour(chosenUTC,lead.tz,base));
+  let headline = valid.length===1
+    ? `${leadTime} in ${esc(cityOf(lead.tz))}`
+    : `${leadTime} ${esc(cityOf(lead.tz))} time`;
 
-/* ═══════════════════════════════════════════════════
-   RESULT CARD
-═══════════════════════════════════════════════════ */
-function renderResult(best,base){
-  const card=document.getElementById('resultCard');
-  if(locations.length<2||best===null){card.classList.remove('show');return;}
+  ans.className='answer '+cls;
+  ans.innerHTML=`<div class="tag">${tag}</div><div class="headline">${headline}</div><div class="mood">${mood}</div>`+
+    `<div class="answer-actions"><button class="btn btn-primary btn-sm" id="calBtn">📅 Add to calendar</button><button class="btn btn-ghost btn-sm" id="copyBtn">📋 Copy all times</button><button class="btn btn-ghost btn-sm" id="shareBtn">🔗 Share</button></div>`;
 
-  const maps=locations.map(l=>utcAvail(l.tz,base));
-  const counts=new Array(24).fill(0);
-  for(let u=0;u<24;u++)maps.forEach(m=>{if(m[u])counts[u]++;});
-  const maxC=counts[best];
-  const everyone=maxC===locations.length;
-
-  let cls=everyone?'good':(maxC>=Math.ceil(locations.length/2)?'partial':'none');
-  let tag=everyone?`✓ Works for all ${locations.length} locations`:`Best option — works for ${maxC} of ${locations.length}`;
-
-  const lead=locations[0];
-  const leadH=localHour(best,lead.tz,base);
-  const leadCity=cityOf(lead.tz);
-
-  const pills=locations.map((l,i)=>{
-    const lh=localHour(best,l.tz,base);
-    const q=(lh>=9&&lh<=17)?'ok':((lh>=7&&lh<=20)?'meh':'bad');
-    const col=q==='ok'?'var(--gr)':q==='meh'?'var(--or)':'var(--pk)';
-    return `<div class="rc-pill">
-      <span>${PICS[i%PICS.length]}</span>
-      <span class="pt" style="color:${col}">${hourLbl(lh)}</span>
-      <span class="pw">${esc(cityOf(l.tz))}</span>
-    </div>`;
+  // per-person rows in THEIR local time
+  rows.innerHTML=valid.map(p=>{
+    const lh=localHour(chosenUTC,p.tz,base);
+    const q = (lh>=10&&lh<=16)?'ok':((lh>=8&&lh<=18)?'meh':'bad');
+    const qlab = q==='ok'?'Good time':(q==='meh'?'Workable':'Off hours');
+    const nm=p.name||cityOf(p.tz);
+    return `<div class="prow ${q}"><span class="dot"></span><div class="who"><div class="nm">${esc(nm)}</div><div class="cy">${esc(cityOf(p.tz))} · ${fmtOffset(offsetMinutes(p.tz,base))}</div></div>`+
+      `<div class="their-time"><div class="t">${hourLabel(lh)}</div><div class="lab">${qlab}</div></div></div>`;
   }).join('');
 
-  card.className=`result-card show ${cls}`;
-  card.innerHTML=`
-    <div class="rc-tag">${tag}</div>
-    <div class="rc-headline">${hourLbl(leadH)} ${esc(leadCity)} time</div>
-    <div class="rc-sub">Best overlap · ${hourLbl(workStart)}–${hourLbl(workEnd)} working hours</div>
-    <div class="rc-pills">${pills}</div>
-    <div class="rc-actions">
-      <button class="rbtn rbtn-pri" onclick="doCalendar(${best})">📅 Add to Calendar</button>
-      <button class="rbtn rbtn-ghost" id="copyBtn" onclick="doCopy(${best})">📋 Copy Times</button>
-      <button class="rbtn rbtn-ghost" onclick="doShare()">🔗 Share</button>
-    </div>`;
+  // alternative times (other good slots), tap to switch
+  const altHours=bestHours.slice(0,6);
+  if(altHours.length>1){
+    alts.innerHTML='<div class="alts-title">Other options (tap to compare)</div><div class="alt-chips">'+
+      altHours.map(u=>`<button class="alt-chip${u===chosenUTC?' on':''}" data-u="${u}">${hourLabel(localHour(u,lead.tz,base))} ${esc(cityOf(lead.tz))}</button>`).join('')+'</div>';
+    alts.querySelectorAll('.alt-chip').forEach(c=>c.onclick=()=>{ chosenUTC=+c.dataset.u; compute(); });
+  } else alts.innerHTML='';
+
+  document.getElementById('calBtn').onclick=()=>downloadICS(chosenUTC,valid,base);
+  document.getElementById('copyBtn').onclick=(e)=>{
+    const txt='Best meeting time:\n'+valid.map(p=>'• '+(p.name||cityOf(p.tz))+': '+hourLabel(localHour(chosenUTC,p.tz,base))+' ('+cityOf(p.tz)+')').join('\n')+'\n\nFound with Pickly — picklytools.com/timezones';
+    navigator.clipboard&&navigator.clipboard.writeText(txt).then(()=>{e.target.textContent='✓ Copied!';setTimeout(()=>e.target.textContent='📋 Copy all times',2000);});
+  };
+  document.getElementById('shareBtn').onclick=doShare;
 }
 
-/* ═══════════════════════════════════════════════════
-   LOCATION MANAGEMENT
-═══════════════════════════════════════════════════ */
-function addLocation(tz){
-  if(locations.find(l=>l.tz===tz))return;
-  locations.push({tz});
-  renderGrid();
-  persist();
+function cityOf(tz){ return zoneLabel(tz).split('·')[0].trim(); }
+
+function downloadICS(utcHour, valid, base){
+  const now=new Date();
+  const dt=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate(),utcHour,0,0));
+  if(dt.getTime()<=now.getTime()) dt.setUTCDate(dt.getUTCDate()+1);
+  const end=new Date(dt.getTime()+3600000);
+  const pad=n=>String(n).padStart(2,'0');
+  const f=d=>d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+'T'+pad(d.getUTCHours())+pad(d.getUTCMinutes())+'00Z';
+  const who=valid.map(p=>(p.name||cityOf(p.tz))).join(', ');
+  const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Pickly//EN','BEGIN:VEVENT','UID:'+Date.now()+'@picklytools.com','DTSTAMP:'+f(new Date()),'DTSTART:'+f(dt),'DTEND:'+f(end),'SUMMARY:Team meeting','DESCRIPTION:Across time zones for '+who+'. Found with Pickly.','END:VEVENT','END:VCALENDAR'].join('\r\n');
+  const b=new Blob([ics],{type:'text/calendar'}); const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download='meeting.ics'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1000);
 }
-function removeLoc(idx){
-  locations.splice(idx,1);
-  renderGrid();
-  persist();
+
+/* persistence + share */
+function persist(){ try{ localStorage.setItem('pickly_tz2', JSON.stringify({people,workStart,workEnd})); }catch(e){} }
+function loadPersist(){ try{ const r=JSON.parse(localStorage.getItem('pickly_tz2')); if(r&&Array.isArray(r.people)&&r.people.length){ people=r.people; workStart=r.workStart??9; workEnd=r.workEnd??18; return true; } }catch(e){} return false; }
+function doShare(e){
+  const data={p:people.map(p=>({n:p.name,z:p.tz})),s:workStart,e:workEnd};
+  const url=location.origin+location.pathname+'#team='+btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+  if(navigator.share){ navigator.share({title:'Best time to meet',url}).catch(()=>{}); return; }
+  navigator.clipboard&&navigator.clipboard.writeText(url).then(()=>{ if(e&&e.target){e.target.textContent='✓ Link copied!';setTimeout(()=>e.target.textContent='🔗 Share',2000);} });
+}
+function loadShare(){
+  const m=location.hash.match(/team=([^&]+)/); if(!m) return false;
+  try{ const d=JSON.parse(decodeURIComponent(escape(atob(m[1])))); if(d&&Array.isArray(d.p)){ people=d.p.map(x=>({name:x.n||'',tz:x.z})); workStart=d.s??9; workEnd=d.e??18; return true; } }catch(e){}
+  return false;
 }
 
-/* ═══════════════════════════════════════════════════
-   SEARCH DROPDOWN
-═══════════════════════════════════════════════════ */
-(function initSearch(){
-  const inp=document.getElementById('searchInp');
-  const dd=document.getElementById('searchDd');
-  let hi=-1, filtered=[];
-
-  function renderDd(q){
-    q=(q||'').toLowerCase().trim();
-    const matches=q
-      ?ZONES.filter(z=>z[1].toLowerCase().includes(q)||z[0].toLowerCase().includes(q)||((ALIASES[z[0]]||'').includes(q)))
-      :POPULAR;
-    filtered=matches.slice(0,60);
-    if(!filtered.length){dd.innerHTML='<div class="dd-empty">No zones found — try a city or country name</div>';return;}
-    const now=new Date();
-    let html=filtered.map((z,i)=>{
-      let lbl=z[1];
-      if(q&&!z[1].toLowerCase().includes(q)&&!z[0].toLowerCase().includes(q)){
-        const mw=matchedAlias(z[0],q); if(mw)lbl=titleCase(mw)+' — '+z[1];
-      }
-      return `<div class="dd-item${i===hi?' hi':''}" data-tz="${z[0]}"><span>${lbl}</span><span class="off">${fmtOffset(offsetMinutes(z[0],now))}</span></div>`;
-    }).join('');
-    if(!q)html+='<div class="dd-empty">Type a city or country to search all '+ZONES.length+' zones…</div>';
-    dd.innerHTML=html;
-    dd.querySelectorAll('[data-tz]').forEach(el=>{
-      el.addEventListener('click',()=>{addLocation(el.dataset.tz);inp.value='';dd.classList.remove('show');inp.blur();});
-    });
-  }
-
-  inp.addEventListener('focus',()=>{hi=-1;renderDd(inp.value);dd.classList.add('show');});
-  inp.addEventListener('input',()=>{hi=-1;renderDd(inp.value);dd.classList.add('show');});
-  inp.addEventListener('keydown',e=>{
-    if(e.key==='ArrowDown'){e.preventDefault();hi=Math.min(hi+1,filtered.length-1);renderDd(inp.value);}
-    else if(e.key==='ArrowUp'){e.preventDefault();hi=Math.max(hi-1,0);renderDd(inp.value);}
-    else if(e.key==='Enter'){e.preventDefault();const t=filtered[hi]||filtered[0];if(t){addLocation(t[0]);inp.value='';dd.classList.remove('show');}}
-    else if(e.key==='Escape'){dd.classList.remove('show');}
-  });
-  document.addEventListener('click',e=>{if(!document.getElementById('addBar').contains(e.target))dd.classList.remove('show');});
-})();
-
-/* ═══════════════════════════════════════════════════
-   WORKING HOURS SELECTS
-═══════════════════════════════════════════════════ */
-(function(){
-  const s=document.getElementById('startH'),e=document.getElementById('endH');
-  for(let h=0;h<24;h++){s.add(new Option(hourLbl(h),h));e.add(new Option(hourLbl(h),h));}
-  s.value=workStart;e.value=workEnd;
-  s.onchange=()=>{workStart=+s.value;persist();renderGrid();};
-  e.onchange=()=>{workEnd=+e.value;persist();renderGrid();};
-})();
-
-/* ═══════════════════════════════════════════════════
-   LIVE CLOCK
-═══════════════════════════════════════════════════ */
+/* live "now" time per person */
 function tickNow(){
   const now=new Date();
-  document.querySelectorAll('.loc-time[data-tz]').forEach(el=>{
-    const tz=el.getAttribute('data-tz');if(!tz)return;
+  document.querySelectorAll('.person .now').forEach(el=>{
+    const tz=el.getAttribute('data-tz'); if(!tz){el.textContent='';return;}
     try{
       const t=new Intl.DateTimeFormat('en-US',{timeZone:tz,hour:'numeric',minute:'2-digit',hour12:true}).format(now);
       const hr=+new Intl.DateTimeFormat('en-US',{timeZone:tz,hour:'numeric',hour12:false}).format(now);
-      const off=fmtOffset(offsetMinutes(tz,now));
-      el.innerHTML=`${t}${(hr>=22||hr<7)?' 🌙':''} <span style="color:var(--mt);font-weight:700">${off}</span>`;
-    }catch(e){}
+      el.textContent='now '+t+((hr>=22||hr<7)?' 🌙':'');
+    }catch(e){ el.textContent=''; }
   });
 }
 
-/* ═══════════════════════════════════════════════════
-   CONVERTER
-═══════════════════════════════════════════════════ */
+/* ── optional converter ── */
 function renderConv(){
-  if(!locations.length)return;
+  const valid=people.filter(p=>p.tz); if(valid.length<1) return;
   const t=document.getElementById('convTime').value||'12:00';
   const [hh,mm]=t.split(':').map(Number);
   const now=new Date();
-  const fromTz=locations[0].tz;
-  const lbl=document.getElementById('convFromLbl');
-  if(lbl)lbl.textContent='in '+cityOf(fromTz);
+  const fromTz=valid[0].tz;
+  // build instant: hh:mm wall time in fromTz today
   let base=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate(),hh,mm));
   const fromOff=offsetMinutes(fromTz,base);
   const instant=new Date(base.getTime()-fromOff*60000);
   const refDay=dayOf(instant,fromTz);
-  document.getElementById('convResult').innerHTML=locations.map((l,i)=>{
-    const parts=new Intl.DateTimeFormat('en-US',{timeZone:l.tz,hour:'numeric',minute:'2-digit',hour12:true,weekday:'short'}).formatToParts(instant).reduce((a,x)=>{a[x.type]=x.value;return a},{});
-    const dd=dayOf(instant,l.tz)-refDay;
-    const dcls=dd>0?'next':dd<0?'prev':'';
-    const dtxt=dd>0?'next day':dd<0?'prev day':parts.weekday;
-    return `<div class="conv-line">
-      <div class="cn">${i===0?'★ ':''}${esc(cityOf(l.tz))}<span class="cz">${fmtOffset(offsetMinutes(l.tz,instant))}</span></div>
-      <div class="ct"><div class="big">${parts.hour}:${parts.minute} ${parts.dayperiod}</div><div class="d ${dcls}">${dtxt}</div></div>
-    </div>`;
+  document.getElementById('convResult').innerHTML=valid.map((p,i)=>{
+    const parts=new Intl.DateTimeFormat('en-US',{timeZone:p.tz,hour:'numeric',minute:'2-digit',hour12:true,weekday:'short'}).formatToParts(instant).reduce((a,x)=>{a[x.type]=x.value;return a},{});
+    const dd=dayOf(instant,p.tz)-refDay; const dcls=dd>0?'next':(dd<0?'prev':''); const dtxt=dd>0?'next day':(dd<0?'prev day':parts.weekday);
+    return `<div class="conv-line"><div class="city">${i===0?'★ ':''}${esc(cityOf(p.tz))}<span class="z">${fmtOffset(offsetMinutes(p.tz,instant))}</span></div><div class="t"><div class="big">${parts.hour}:${parts.minute} ${parts.dayperiod}</div><div class="d ${dcls}">${dtxt}</div></div></div>`;
   }).join('');
 }
-function dayOf(instant,tz){
-  const p=new Intl.DateTimeFormat('en-CA',{timeZone:tz,year:'numeric',month:'2-digit',day:'2-digit'}).format(instant);
-  return Math.floor(new Date(p+'T00:00:00Z').getTime()/86400000);
-}
+function dayOf(instant,tz){ const p=new Intl.DateTimeFormat('en-CA',{timeZone:tz,year:'numeric',month:'2-digit',day:'2-digit'}).format(instant); return Math.floor(new Date(p+'T00:00:00Z').getTime()/86400000); }
 document.getElementById('convTime').addEventListener('input',renderConv);
-document.getElementById('convDet').addEventListener('toggle',function(){
-  if(this.open){const n=new Date();document.getElementById('convTime').value=String(n.getHours()).padStart(2,'0')+':00';renderConv();}
-});
+document.querySelector('.conv').addEventListener('toggle',function(){ if(this.open){ const now=new Date(); document.getElementById('convTime').value=String(now.getHours()).padStart(2,'0')+':00'; renderConv(); } });
 
-/* ═══════════════════════════════════════════════════
-   SHARE / EXPORT / COPY
-═══════════════════════════════════════════════════ */
-function doCalendar(utcHour){
-  const now=new Date();
-  const dt=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate(),utcHour,0,0));
-  if(dt.getTime()<=now.getTime())dt.setUTCDate(dt.getUTCDate()+1);
-  const end=new Date(dt.getTime()+3600000);
-  const pad=n=>String(n).padStart(2,'0');
-  const f=d=>d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+'T'+pad(d.getUTCHours())+pad(d.getUTCMinutes())+'00Z';
-  const who=locations.map(l=>cityOf(l.tz)).join(', ');
-  const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Pickly//EN','BEGIN:VEVENT',
-    'UID:'+Date.now()+'@picklytools.com','DTSTAMP:'+f(new Date()),'DTSTART:'+f(dt),'DTEND:'+f(end),
-    'SUMMARY:Team meeting','DESCRIPTION:With '+who+'. Found with Pickly — picklytools.com/timezones',
-    'END:VEVENT','END:VCALENDAR'].join('\r\n');
-  const b=new Blob([ics],{type:'text/calendar'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='meeting.ics';a.click();
-  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-}
-function doCopy(bestUtc){
-  const base=new Date();
-  const txt='Best meeting time:\n'+locations.map(l=>'• '+cityOf(l.tz)+': '+hourLbl(localHour(bestUtc,l.tz,base))).join('\n')+'\n\nFound with Pickly — picklytools.com/timezones';
-  const btn=document.getElementById('copyBtn');
-  navigator.clipboard&&navigator.clipboard.writeText(txt).then(()=>{
-    if(btn){btn.textContent='✓ Copied!';setTimeout(()=>btn.textContent='📋 Copy Times',2000);}
-  });
-}
-function doShare(){
-  const data={p:locations.map(l=>({z:l.tz})),s:workStart,e:workEnd};
-  const url=location.origin+location.pathname+'#team='+btoa(unescape(encodeURIComponent(JSON.stringify(data))));
-  if(navigator.share){navigator.share({title:'Meeting time — Pickly',url}).catch(()=>{});return;}
-  navigator.clipboard&&navigator.clipboard.writeText(url);
-}
-
-/* ═══════════════════════════════════════════════════
-   PERSIST & INIT
-═══════════════════════════════════════════════════ */
-function persist(){
-  try{localStorage.setItem('pickly_tz3',JSON.stringify({locations,workStart,workEnd}));}catch(e){}
-}
-function loadPersist(){
-  try{
-    const r=JSON.parse(localStorage.getItem('pickly_tz3'));
-    if(r&&Array.isArray(r.locations)&&r.locations.length){
-      locations=r.locations;workStart=r.workStart??9;workEnd=r.workEnd??18;return true;
-    }
-  }catch(e){}
-  return false;
-}
-function loadShare(){
-  const m=location.hash.match(/team=([^&]+)/);if(!m)return false;
-  try{
-    const d=JSON.parse(decodeURIComponent(escape(atob(m[1]))));
-    if(d&&Array.isArray(d.p)){locations=d.p.map(x=>({tz:x.z}));workStart=d.s??9;workEnd=d.e??18;return true;}
-  }catch(e){}
-  return false;
-}
-
+/* init */
+document.getElementById('addPerson').addEventListener('click',()=>addPerson());
 document.getElementById('yr').textContent=new Date().getFullYear();
 
 if(loadShare()){}
 else if(loadPersist()){}
-else{
-  const home=detectZone();
-  locations=[
-    {tz:home},
-    {tz:home==='America/New_York'?'Europe/London':'America/New_York'}
-  ];
-}
-document.getElementById('startH').value=workStart;
-document.getElementById('endH').value=workEnd;
-renderGrid();
-tickNow();
-setInterval(tickNow,30000);
-// Refresh grid every hour so "now" column stays accurate
-setInterval(renderGrid,60*60*1000);
+else { const home=detectZone(); people=[{name:'You',tz:home},{name:'',tz:home==='America/New_York'?'Europe/London':'America/New_York'}]; }
+document.getElementById('startH').value=workStart; document.getElementById('endH').value=workEnd;
+renderPeople(); compute();
+tickNow(); setInterval(tickNow,1000*30);
 </script>
 </body>
 </html>
