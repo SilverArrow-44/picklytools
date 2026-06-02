@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<script>document.documentElement.className='js';</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a1f">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
+<title>Slot Machine — Free Online Slots for Fun (Spin the Reels, No Money) | Pickly</title>
+<meta name="description" content="Play a free online slot machine just for fun — spin three fruit reels, match symbols, and win virtual coins with confetti. No money, no sign-up, pure entertainment.">
+<meta name="keywords" content="slot machine, free slot machine, online slots, fruit machine, spin the reels, slot game for fun, virtual slot machine">
+<link rel="canonical" href="https://picklytools.com/slotmachine/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Slot Machine — Free Online Slots for Fun">
+<meta property="og:description" content="Spin three fruit reels and win virtual coins. Just for fun, no money. Free, no sign-up.">
+<meta property="og:url" content="https://picklytools.com/slotmachine/">
+<meta property="og:image" content="https://picklytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://picklytools.com/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Slot Machine (for fun)","url":"https://picklytools.com/slotmachine/","applicationCategory":"GameApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A for-fun slot machine with virtual coins — no real money."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Slot Machine","item":"https://picklytools.com/slotmachine/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.6.0/confetti.browser.min.js" defer></script>
+<style>
+:root{
+  --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
+  --bd:rgba(255,255,255,.1); --tx:#f4f4fb; --mt:#9a9ab5;
+  --pk:#FF2060; --or:#FF8C00; --yl:#FFD600; --cy:#00E5FF; --pu:#B061FF; --gr:#00E676;
+  --gold1:#FFE08A; --gold2:#FFB22E; --gold3:#C7841A;
+  --rs:14px; --rl:22px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 12% 8%,rgba(255,214,0,.13),transparent 60%),radial-gradient(ellipse 60% 50% at 88% 92%,rgba(255,32,96,.1),transparent 60%)}
+.wrap{position:relative;z-index:2;max-width:600px;margin:0 auto;padding:0 18px}
+
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,10,31,.72);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:600px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:34px;height:34px}
+.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+
+.head{text-align:center;padding:28px 0 6px}
+.head h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(26px,5vw,42px);letter-spacing:-1px;line-height:1.08;margin-bottom:6px}
+.head h1 .g{background:linear-gradient(115deg,var(--gold1),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.head p{color:var(--mt);font-size:14px;font-weight:600;max-width:420px;margin:0 auto}
+
+.machine{background:linear-gradient(160deg,#2a1840,#1a1030);border:2px solid rgba(255,178,46,.4);border-radius:26px;padding:22px;margin:20px auto 0;max-width:440px;box-shadow:0 18px 50px rgba(0,0,0,.5),inset 0 2px 10px rgba(255,255,255,.08)}
+.coins-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.coins{font-family:'Fredoka',sans-serif;font-weight:700;font-size:18px;color:var(--gold1)}
+.bet{font-weight:800;font-size:13px;color:var(--mt)}
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;background:#0a0a16;border-radius:16px;padding:14px;box-shadow:inset 0 4px 16px rgba(0,0,0,.7)}
+.reel{height:104px;border-radius:12px;background:linear-gradient(180deg,#fff,#e6e6f0);overflow:hidden;position:relative;box-shadow:inset 0 -6px 12px rgba(0,0,0,.15)}
+.reel .strip{position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;align-items:center}
+.reel .sym{height:104px;display:flex;align-items:center;justify-content:center;font-size:58px;flex-shrink:0}
+.reel.win{box-shadow:inset 0 -6px 12px rgba(0,0,0,.15),0 0 0 3px var(--gold2),0 0 18px rgba(255,178,46,.7)}
+.payline{position:absolute;left:8px;right:8px;top:50%;height:2px;background:rgba(255,32,96,.5);transform:translateY(-1px);z-index:5;pointer-events:none}
+
+.result{text-align:center;min-height:30px;margin:16px 0 4px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:20px}
+.result.win{color:var(--gold1)}.result.jackpot{color:var(--gr)}.result.lose{color:var(--mt)}
+
+.lever-row{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap}
+.spin-btn{font-family:'Fredoka',sans-serif;font-weight:600;font-size:22px;padding:15px 50px;border-radius:100px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--gold2),var(--or));color:#3a2400;box-shadow:0 8px 28px rgba(255,140,0,.45);transition:transform .15s,box-shadow .15s}
+.spin-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(255,140,0,.6)}
+.spin-btn:active{transform:scale(.96)}
+.spin-btn:disabled{opacity:.6;cursor:default}
+.betctl{display:inline-flex;align-items:center;gap:8px;background:var(--sf);border:1.5px solid var(--bd);border-radius:100px;padding:6px}
+.betctl button{width:30px;height:30px;border-radius:50%;border:none;background:var(--sfh);color:var(--tx);font-weight:800;font-size:16px;cursor:pointer}
+.betctl span{font-weight:800;font-size:14px;min-width:54px;text-align:center}
+
+.controls{text-align:center;margin-top:16px}
+.mini{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;padding:9px 16px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--tx);cursor:pointer;margin:12px 5px 0}
+.mini:hover{background:var(--sfh)}
+.paytable{max-width:440px;margin:18px auto 0;background:var(--bg2);border:1px solid var(--bd);border-radius:var(--rs);padding:14px 18px}
+.paytable h4{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:8px;color:var(--gold1)}
+.paytable .pt{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--mt);padding:3px 0}
+.disclaimer{text-align:center;color:var(--mt);font-size:12px;font-weight:700;margin-top:14px;opacity:.8}
+
+.ad-wrap{max-width:600px;margin:32px auto 0;text-align:center}
+.ad-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(244,244,251,.3);margin-bottom:6px}
+.ad-box{min-height:100px;border:1px dashed var(--bd);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:var(--mt);font-size:13px;font-weight:600;background:rgba(255,255,255,.02)}
+
+.content{margin-top:40px}
+.content h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:24px;margin:30px 0 10px}
+.content h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin:20px 0 8px}
+.content p{color:var(--mt);font-size:15.5px;font-weight:600;margin-bottom:13px}
+.content ul{color:var(--mt);font-size:15.5px;font-weight:600;margin:0 0 13px 22px}.content li{margin-bottom:6px}
+.faq{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.qa{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);overflow:hidden}
+.qa summary{padding:15px 18px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:'+';font-size:22px;color:var(--mt);transition:transform .2s}
+.qa[open] summary::after{transform:rotate(45deg)}
+.qa .a{padding:0 18px 16px;color:var(--mt);font-size:15px;font-weight:600}
+
+footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
+.foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot-col h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
+.foot-col a:hover{color:var(--tx)}
+.foot-brand{max-width:240px}.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
+.copy{text-align:center;color:var(--mt);font-size:13px;font-weight:600;margin-top:30px;padding-top:20px;border-top:1px solid var(--bd)}
+@media(prefers-reduced-motion:reduce){.reel .strip{transition:none!important}body::before{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/">← All tools</a>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <h1>Slot <span class="g">Machine</span></h1>
+    <p>Spin the reels, match the fruit, win virtual coins. Just for fun — no real money, ever.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="machine">
+    <div class="coins-row">
+      <div class="coins">🪙 <span id="coins">100</span> coins</div>
+      <div class="bet">Bet: <span id="betLabel">5</span></div>
+    </div>
+    <div class="reels" id="reels">
+      <div class="reel"><div class="strip" id="s0"></div></div>
+      <div class="reel"><div class="strip" id="s1"></div></div>
+      <div class="reel"><div class="strip" id="s2"></div></div>
+      <div class="payline"></div>
+    </div>
+    <div class="result lose" id="result">Spin to play!</div>
+    <div class="lever-row">
+      <div class="betctl"><button id="betDown">−</button><span id="betVal">5</span><button id="betUp">+</button></div>
+      <button class="spin-btn" id="spinBtn">🎰 SPIN</button>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="mini" id="soundBtn">🔊 Sound on</button>
+    <button class="mini" id="resetBtn">↺ Reset coins</button>
+  </div>
+
+  <div class="paytable">
+    <h4>💰 Payouts (per coin bet)</h4>
+    <div class="pt"><span>7️⃣ 7️⃣ 7️⃣ — Jackpot!</span><span>×50</span></div>
+    <div class="pt"><span>💎 💎 💎</span><span>×20</span></div>
+    <div class="pt"><span>⭐ ⭐ ⭐</span><span>×12</span></div>
+    <div class="pt"><span>🔔 🔔 🔔</span><span>×8</span></div>
+    <div class="pt"><span>Any three fruit match</span><span>×5</span></div>
+    <div class="pt"><span>Two matching symbols</span><span>×2</span></div>
+  </div>
+
+  <p class="disclaimer">🎮 For entertainment only. No real money, no gambling, no purchases — just pretend coins for fun.</p>
+
+  <div class="ad-wrap">
+    <div class="ad-lbl">Advertisement</div>
+    <div class="ad-box">Your ad space — plug in Google AdSense here 📢</div>
+  </div>
+
+  <article class="content">
+    <h2>A free slot machine, purely for fun</h2>
+    <p>Get the thrill of spinning reels without spending a cent. This free online slot machine is built purely for entertainment — you start with virtual coins, place a pretend bet, pull the spin, and watch three reels of classic fruit and lucky symbols whirl into place. Match symbols on the payline to win virtual coins, with confetti for the big wins. There's no real money involved, nothing to buy, and no sign-up.</p>
+    <h3>How to play</h3>
+    <ul>
+      <li><strong>Set your bet</strong> with the − and + buttons (it just uses your virtual coins).</li>
+      <li><strong>Tap SPIN</strong> and watch the three reels roll.</li>
+      <li><strong>Match symbols</strong> on the center line to win — three 7️⃣s is the jackpot.</li>
+      <li>Run low? Hit "Reset coins" to top back up to 100. It's all pretend!</li>
+    </ul>
+    <h3>Just for fun — no gambling</h3>
+    <p>This is a toy, not a casino. The coins have no value, can't be bought or cashed out, and there's no way to deposit money. It's the simple, nostalgic fun of pulling a slot lever, minus any risk.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <details class="qa"><summary>Can I win real money?</summary><div class="a">No — this is purely for fun. The coins are virtual, have no value, and there's nothing to buy or cash out. It's entertainment only.</div></details>
+      <details class="qa"><summary>What happens if I run out of coins?</summary><div class="a">Just tap "Reset coins" to refill to 100. Since it's all pretend, you can play forever.</div></details>
+      <details class="qa"><summary>How do the payouts work?</summary><div class="a">Three matching symbols on the center line pay out per the paytable, multiplied by your bet. Three 7s is the jackpot at ×50.</div></details>
+      <details class="qa"><summary>Is it free?</summary><div class="a">Completely free, no sign-up, supported by unobtrusive ads. See our <a href="/privacy/" style="color:var(--cy)">Privacy Policy</a>.</div></details>
+    </div>
+  </article>
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-col foot-brand">
+      <a class="brand" href="/">
+        <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+          <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="79,21 79,41 63,31" fill="#fff"/>
+          <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+        </svg>
+        <span class="brand-name">Pickly</span>
+      </a>
+      <p>Free, fun online tools to help you decide anything.</p>
+    </div>
+    <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/slotmachine/">Slot Machine</a><a href="/#tools">All tools</a></div>
+    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+  </div>
+  <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div></div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+const SYMBOLS=['🍒','🍋','🍊','🍉','🔔','⭐','💎','7️⃣'];
+const WEIGHTS=[22,20,18,15,12,8,4,2]; // rarer = better payout
+const PAY={'7️⃣':50,'💎':20,'⭐':12,'🔔':8}; // three-of-a-kind multipliers; fruit handled separately
+const FRUIT=['🍒','🍋','🍊','🍉'];
+
+let coins=100, bet=5, busy=false, soundOn=true;
+const BETS=[1,5,10,25];
+
+function randInt(n){ if(window.crypto&&crypto.getRandomValues){const m=4294967296,lim=m-(m%n),a=new Uint32Array(1);do{crypto.getRandomValues(a);}while(a[0]>=lim);return a[0]%n;} return Math.floor(Math.random()*n); }
+function weightedSym(){
+  const total=WEIGHTS.reduce((a,b)=>a+b,0);
+  let r=randInt(total);
+  for(let i=0;i<SYMBOLS.length;i++){ if(r<WEIGHTS[i]) return SYMBOLS[i]; r-=WEIGHTS[i]; }
+  return SYMBOLS[0];
+}
+
+let actx=null;
+function tone(f,t,d,type){ if(!soundOn)return; try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();const o=actx.createOscillator(),g=actx.createGain();o.connect(g);g.connect(actx.destination);o.type=type||'square';o.frequency.value=f;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.08,t+0.01);g.gain.exponentialRampToValueAtTime(0.0001,t+d);o.start(t);o.stop(t+d+0.02);}catch(e){} }
+function spinSound(){ if(!soundOn)return; try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();const t=actx.currentTime;for(let i=0;i<10;i++)tone(200+i*8,t+i*0.06,0.04,'square');}catch(e){} }
+function winSound(big){ if(!soundOn)return; try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();const t=actx.currentTime;const notes=big?[523,659,784,1047]:[523,784];notes.forEach((n,i)=>tone(n,t+i*0.1,0.16,'triangle'));}catch(e){} }
+
+function buildStrip(el, finalSym){
+  // build a column of random symbols ending on finalSym
+  let html='';
+  for(let i=0;i<20;i++) html+=`<div class="sym">${SYMBOLS[randInt(SYMBOLS.length)]}</div>`;
+  html+=`<div class="sym">${finalSym}</div>`;
+  el.innerHTML=html;
+  el.style.transition='none';
+  el.style.transform='translateY(0)';
+}
+
+function evaluate(a,b,c){
+  if(a===b&&b===c){
+    if(PAY[a]) return {mult:PAY[a], label:a==='7️⃣'?'🎉 JACKPOT! 7-7-7':'Three '+a+'!', jackpot:a==='7️⃣'};
+    if(FRUIT.includes(a)) return {mult:5, label:'Three '+a+'! Fruit match', jackpot:false};
+    return {mult:5,label:'Three of a kind!',jackpot:false};
+  }
+  if(a===b||b===c||a===c) return {mult:2,label:'Two match — small win',jackpot:false};
+  return {mult:0,label:'No match — spin again',jackpot:false};
+}
+
+async function spin(){
+  if(busy) return;
+  if(coins<bet){ document.getElementById('result').textContent='Not enough coins — tap Reset!'; document.getElementById('result').className='result lose'; return; }
+  busy=true; document.getElementById('spinBtn').disabled=true;
+  coins-=bet; updateCoins();
+  document.getElementById('result').textContent='Spinning…'; document.getElementById('result').className='result lose';
+  document.querySelectorAll('.reel').forEach(r=>r.classList.remove('win'));
+  spinSound();
+
+  const finals=[weightedSym(),weightedSym(),weightedSym()];
+  const strips=[document.getElementById('s0'),document.getElementById('s1'),document.getElementById('s2')];
+  strips.forEach((s,i)=>buildStrip(s,finals[i]));
+  // animate each reel stopping at staggered times
+  await Promise.all(strips.map((s,i)=>new Promise(res=>{
+    const symCount=21, symH=104;
+    const dist=(symCount-1)*symH; // land on last sym (finalSym)
+    // force reflow then animate
+    void s.offsetWidth;
+    const dur=900+i*450;
+    s.style.transition='transform '+dur+'ms cubic-bezier(.15,.7,.2,1)';
+    s.style.transform='translateY(-'+dist+'px)';
+    setTimeout(res,dur+30);
+  })));
+
+  const r=evaluate(finals[0],finals[1],finals[2]);
+  const res=document.getElementById('result');
+  if(r.mult>0){
+    const won=bet*r.mult;
+    coins+=won; updateCoins();
+    res.textContent=r.label+'  +'+won+' 🪙';
+    res.className='result '+(r.jackpot?'jackpot':'win');
+    document.querySelectorAll('.reel').forEach(rl=>rl.classList.add('win'));
+    winSound(r.jackpot||r.mult>=12);
+    if((r.jackpot||r.mult>=12)&&typeof confetti==='function'){ confetti({particleCount:r.jackpot?180:110,spread:r.jackpot?100:75,origin:{y:.5},colors:['#FFE08A','#FFB22E','#FF8C00','#FF2060','#00E676']}); }
+  } else {
+    res.textContent=r.label; res.className='result lose';
+  }
+  busy=false; document.getElementById('spinBtn').disabled=false;
+}
+
+function updateCoins(){ document.getElementById('coins').textContent=coins; }
+function updateBet(){ document.getElementById('betVal').textContent=bet; document.getElementById('betLabel').textContent=bet; }
+
+document.getElementById('spinBtn').addEventListener('click',spin);
+document.getElementById('betUp').addEventListener('click',()=>{ const i=BETS.indexOf(bet); if(i<BETS.length-1){bet=BETS[i+1];updateBet();} });
+document.getElementById('betDown').addEventListener('click',()=>{ const i=BETS.indexOf(bet); if(i>0){bet=BETS[i-1];updateBet();} });
+document.getElementById('soundBtn').addEventListener('click',e=>{ soundOn=!soundOn; e.target.textContent=soundOn?'🔊 Sound on':'🔇 Sound off'; });
+document.getElementById('resetBtn').addEventListener('click',()=>{ coins=100; updateCoins(); document.getElementById('result').textContent='Coins refilled — spin to play!'; document.getElementById('result').className='result lose'; });
+
+// init reels with a static symbol each
+['s0','s1','s2'].forEach(id=>{ document.getElementById(id).innerHTML='<div class="sym">🍒</div>'; });
+updateBet();
+</script>
+</body>
+</html>

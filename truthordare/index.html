@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<script>document.documentElement.className='js';</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a1f">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
+<title>Truth or Dare — Free Online Party Game (Family, Friends & Spicy) | Pickly</title>
+<meta name="description" content="Play Truth or Dare online free. Hundreds of truths and dares across family, friends, and spicy modes. Perfect for parties, sleepovers, and date night. No sign-up.">
+<meta name="keywords" content="truth or dare, truth or dare online, truth or dare questions, dares, truth questions, party game, truth or dare generator">
+<link rel="canonical" href="https://picklytools.com/truthordare/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Truth or Dare — Free Online Party Game">
+<meta property="og:description" content="Hundreds of truths and dares — family, friends, and spicy modes. Free, fun, no sign-up.">
+<meta property="og:url" content="https://picklytools.com/truthordare/">
+<meta property="og:image" content="https://picklytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://picklytools.com/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Truth or Dare","url":"https://picklytools.com/truthordare/","applicationCategory":"GameApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A Truth or Dare party game with family, friends, and spicy modes."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Truth or Dare","item":"https://picklytools.com/truthordare/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
+  --bd:rgba(255,255,255,.1); --tx:#f4f4fb; --mt:#9a9ab5;
+  --pk:#FF2060; --or:#FF8C00; --yl:#FFD600; --cy:#00E5FF; --pu:#B061FF; --gr:#00E676;
+  --rs:14px; --rl:22px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 12% 8%,rgba(176,97,255,.13),transparent 60%),radial-gradient(ellipse 60% 50% at 88% 92%,rgba(255,32,96,.12),transparent 60%)}
+.wrap{position:relative;z-index:2;max-width:640px;margin:0 auto;padding:0 18px}
+
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,10,31,.72);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:640px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:34px;height:34px}
+.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+
+.head{text-align:center;padding:30px 0 8px}
+.head h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(28px,5.2vw,46px);letter-spacing:-1px;line-height:1.08;margin-bottom:8px}
+.head h1 .g{background:linear-gradient(115deg,var(--pu),var(--pk));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.head p{color:var(--mt);font-size:15px;font-weight:600;max-width:420px;margin:0 auto}
+
+.modes{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:16px 0 6px}
+.mode{font-weight:800;font-size:13px;padding:9px 16px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--mt);cursor:pointer;transition:all .15s}
+.mode:hover{background:var(--sfh);color:var(--tx)}
+.mode.on{background:linear-gradient(135deg,rgba(176,97,255,.24),rgba(255,32,96,.2));border-color:var(--pu);color:#fff}
+.mode-note{text-align:center;color:var(--mt);font-size:12.5px;font-weight:700;margin:4px 0 0}
+
+/* card with flip */
+.card-wrap{perspective:1200px;margin:22px auto 0;max-width:420px}
+.card{position:relative;width:100%;min-height:230px;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,.2,.2,1)}
+.card.flipped{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--rl);padding:30px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--bd)}
+.front{background:linear-gradient(145deg,var(--bg2),#1a1a3e)}
+.front .qmark{font-size:64px;margin-bottom:8px}
+.front .ftext{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;color:var(--mt)}
+.back{transform:rotateY(180deg);background:linear-gradient(145deg,rgba(176,97,255,.16),rgba(255,32,96,.12))}
+.back .badge{font-family:'Fredoka',sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:100px;margin-bottom:14px}
+.back .badge.truth{background:rgba(0,229,255,.18);color:var(--cy);border:1px solid rgba(0,229,255,.4)}
+.back .badge.dare{background:rgba(255,140,0,.18);color:var(--or);border:1px solid rgba(255,140,0,.4)}
+.back .prompt{font-family:'Fredoka',sans-serif;font-weight:500;font-size:20px;line-height:1.35}
+
+.choose{display:flex;gap:14px;justify-content:center;margin-top:22px}
+.big-btn{font-family:'Fredoka',sans-serif;font-weight:600;font-size:22px;padding:16px 38px;border-radius:100px;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;color:#fff}
+.big-btn.truth{background:linear-gradient(135deg,var(--cy),#0090c0);box-shadow:0 8px 26px rgba(0,229,255,.36)}
+.big-btn.dare{background:linear-gradient(135deg,var(--or),var(--pk));box-shadow:0 8px 26px rgba(255,140,0,.36)}
+.big-btn:hover{transform:translateY(-3px)}
+.big-btn:active{transform:scale(.96)}
+.big-btn:disabled{opacity:.6}
+
+.next-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px;min-height:44px}
+.mini{font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;padding:11px 20px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--tx);cursor:pointer}
+.mini:hover{background:var(--sfh)}
+
+.ad-wrap{max-width:640px;margin:34px auto 0;text-align:center}
+.ad-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(244,244,251,.3);margin-bottom:6px}
+.ad-box{min-height:100px;border:1px dashed var(--bd);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:var(--mt);font-size:13px;font-weight:600;background:rgba(255,255,255,.02)}
+
+.content{margin-top:40px}
+.content h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:24px;margin:30px 0 10px}
+.content h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin:20px 0 8px}
+.content p{color:var(--mt);font-size:15.5px;font-weight:600;margin-bottom:13px}
+.content ul{color:var(--mt);font-size:15.5px;font-weight:600;margin:0 0 13px 22px}.content li{margin-bottom:6px}
+.faq{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.qa{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);overflow:hidden}
+.qa summary{padding:15px 18px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:'+';font-size:22px;color:var(--mt);transition:transform .2s}
+.qa[open] summary::after{transform:rotate(45deg)}
+.qa .a{padding:0 18px 16px;color:var(--mt);font-size:15px;font-weight:600}
+
+footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
+.foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot-col h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
+.foot-col a:hover{color:var(--tx)}
+.foot-brand{max-width:240px}.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
+.copy{text-align:center;color:var(--mt);font-size:13px;font-weight:600;margin-top:30px;padding-top:20px;border-top:1px solid var(--bd)}
+@media(prefers-reduced-motion:reduce){.card{transition:none}body::before{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/">← All tools</a>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <h1>Truth or <span class="g">Dare</span></h1>
+    <p>The ultimate party game. Pick your poison and let the card decide your fate.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="modes" id="modes">
+    <button class="mode on" data-mode="family">👨‍👩‍👧 Family</button>
+    <button class="mode" data-mode="friends">🎉 Friends</button>
+    <button class="mode" data-mode="spicy">🌶️ Spicy</button>
+  </div>
+  <p class="mode-note" id="modeNote">Clean, all-ages fun.</p>
+
+  <div class="card-wrap">
+    <div class="card" id="card">
+      <div class="face front">
+        <div class="qmark">🎭</div>
+        <div class="ftext">Choose Truth or Dare to flip the card</div>
+      </div>
+      <div class="face back">
+        <div class="badge" id="badge">Truth</div>
+        <div class="prompt" id="prompt"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="choose">
+    <button class="big-btn truth" id="truthBtn">🤔 Truth</button>
+    <button class="big-btn dare" id="dareBtn">🔥 Dare</button>
+  </div>
+
+  <div class="next-row" id="nextRow"></div>
+
+  <div class="ad-wrap">
+    <div class="ad-lbl">Advertisement</div>
+    <div class="ad-box">Your ad space — plug in Google AdSense here 📢</div>
+  </div>
+
+  <article class="content">
+    <h2>The classic party game, online and free</h2>
+    <p>Truth or Dare is the party game everyone knows — and this free online version keeps it stocked with hundreds of fresh prompts so you never run out. Pick a mode to match your crowd, choose Truth or Dare, and the card flips to reveal your challenge. It's perfect for sleepovers, road trips, parties, ice-breakers, and date nights.</p>
+    <h3>Three modes for any crowd</h3>
+    <ul>
+      <li><strong>👨‍👩‍👧 Family</strong> — clean, all-ages truths and dares that are safe for kids and grandparents alike.</li>
+      <li><strong>🎉 Friends</strong> — funnier, bolder, and a little embarrassing — the classic teen-and-up experience.</li>
+      <li><strong>🌶️ Spicy</strong> — flirtier, more daring prompts for adults and couples (18+).</li>
+    </ul>
+    <h3>How to play</h3>
+    <p>Gather your group and take turns. On your turn, pick Truth or Dare and tap the matching button — the card flips to reveal your prompt. Do the dare or answer the truth honestly, then pass to the next player and tap "Next player." That's it. No setup, no cards to lose, endless prompts.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <details class="qa"><summary>Is it suitable for kids?</summary><div class="a">Yes — use Family mode for clean, all-ages prompts. Friends and Spicy modes are for older players; Spicy is intended for adults (18+).</div></details>
+      <details class="qa"><summary>How many prompts are there?</summary><div class="a">Hundreds across the three modes, shuffled so you won't repeat one until you've worked through the set.</div></details>
+      <details class="qa"><summary>Can we play in a big group?</summary><div class="a">Definitely — just pass the device around or put it on a screen. There's no player limit.</div></details>
+      <details class="qa"><summary>Is it free?</summary><div class="a">Completely free, no sign-up, supported by unobtrusive ads. See our <a href="/privacy/" style="color:var(--cy)">Privacy Policy</a>.</div></details>
+    </div>
+  </article>
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-col foot-brand">
+      <a class="brand" href="/">
+        <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+          <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="79,21 79,41 63,31" fill="#fff"/>
+          <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+        </svg>
+        <span class="brand-name">Pickly</span>
+      </a>
+      <p>Free, fun online tools to help you decide anything.</p>
+    </div>
+    <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/truthordare/">Truth or Dare</a><a href="/#tools">All tools</a></div>
+    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+  </div>
+  <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div></div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+const DATA={
+  family:{
+    note:'Clean, all-ages fun.',
+    truths:["What's your all-time favorite movie?","If you could have any superpower, what would it be?","What's the best gift you've ever received?","Who is your role model and why?","What's your favorite thing to do on a weekend?","If you could visit anywhere in the world, where would you go?","What's the funniest thing that's ever happened to you?","What's your favorite food of all time?","What's a talent you wish you had?","If you could be any animal, which would you be?","What's your dream job?","What's the best book you've ever read?","What's your favorite holiday and why?","What's something you're really proud of?","If you could meet any historical figure, who would it be?","What's your favorite childhood memory?","What's the best advice you've ever gotten?","If you won a million dollars, what's the first thing you'd buy?","What's your favorite season and why?","What three things would you take to a desert island?"],
+    dares:["Do your best animal impression.","Sing the chorus of your favorite song.","Talk in an accent for the next 3 rounds.","Do 10 jumping jacks.","Do your best dance move.","Balance a spoon on your nose for 10 seconds.","Speak in rhymes until your next turn.","Do your best impression of a celebrity.","Make up a short rap about the person on your left.","Hop on one foot around the room.","Pretend to be a news reporter for 30 seconds.","Do your best robot impression.","Try to lick your elbow.","Tell a joke and make someone laugh.","Walk like a penguin to the door and back.","Do your best superhero pose and hold it.","Pretend you're swimming for 20 seconds.","Say the alphabet backwards.","Give a 30-second speech about your favorite snack.","Do your best impression of a cartoon character."]
+  },
+  friends:{
+    note:'Funnier and a little embarrassing. Teens & up.',
+    truths:["What's the most embarrassing thing you've done in public?","Who was your first crush?","What's a secret you've never told your parents?","What's the most childish thing you still do?","What's the worst lie you've ever told?","Have you ever pretended to be sick to skip something?","What's the most embarrassing thing in your search history?","What's your biggest fear?","Who in this room would you swap lives with?","What's the cringiest thing you've posted online?","What's your most useless talent?","What's the longest you've gone without showering?","What's a weird habit you have?","Have you ever stalked someone on social media?","What's the worst date you've ever been on?","What's something you've done that you'd never tell your boss?","Who's your secret celebrity crush?","What's the most embarrassing nickname you've had?","What's the biggest lie you've told to get out of trouble?","What's the most trouble you've ever been in?"],
+    dares:["Text the 5th person in your contacts 'I know your secret'.","Let someone post anything on your social media.","Do your best impression of someone in the room.","Speak in a baby voice until your next turn.","Let the group give you a new hairstyle.","Do 20 push-ups (or try to).","Call a friend and sing happy birthday — it's not their birthday.","Eat a spoonful of a condiment of the group's choice.","Show the last 5 photos in your camera roll.","Let someone draw on your face.","Do an impression of your favorite teacher or boss.","Wear your shoes on your hands for 2 rounds.","Talk without closing your mouth for 1 minute.","Let the person to your right tickle you for 10 seconds.","Post an embarrassing status and leave it for 10 minutes.","Do your best catwalk across the room.","Try to do a magic trick on the spot.","Imitate a TikTok dance.","Let the group pick your profile picture for a day.","Do your best evil villain laugh."]
+  },
+  spicy:{
+    note:'Flirtier and bolder — for adults (18+).',
+    truths:["Who in this room would you go on a date with?","What's your biggest turn-on?","What's the most romantic thing you've ever done?","Have you ever had a crush on a friend's partner?","What's your ideal first date?","What's the boldest thing you've done to get someone's attention?","What's a relationship dealbreaker for you?","Who was your best kiss?","What's the most spontaneous romantic thing you've done?","What's something you find irresistibly attractive?","Have you ever sent a risky text?","What's your favorite compliment to receive?","What's the most embarrassing thing that's happened on a date?","What's your type, honestly?","What's a secret crush you've never admitted?","Have you ever re-read old messages from an ex?","What's the cheesiest pickup line that would actually work on you?","What's the most flirtatious thing you've done in public?","Who's the last person you stalked online?","What's your guilty-pleasure romance movie?"],
+    dares:["Text your crush something flirty.","Do your most seductive catwalk.","Let someone in the room give you a nickname for the night.","Whisper something flirty to the person on your right.","Send a winky-face to the last person you texted.","Do your best slow-dance for 20 seconds.","Give a genuine compliment to everyone in the room.","Re-enact a romantic movie scene.","Let the group pick an emoji to text your crush.","Do your best impression of a romance-novel narrator.","Serenade the person across from you.","Hold hands with the person next to you for 2 rounds.","Show the last flirty text you sent.","Do your best 'smolder' look at the camera.","Describe your dream date in vivid detail.","Let someone scroll your DMs for 10 seconds.","Give your best pickup line to the group.","Slow-motion hair flip on repeat for 15 seconds.","Pretend to propose to the person on your left.","Wink at everyone in the room, one by one."]
+  }
+};
+
+let mode='family', busy=false;
+let queues={truth:[],dare:[]};
+
+function randInt(n){ if(window.crypto&&crypto.getRandomValues){const m=4294967296,lim=m-(m%n),a=new Uint32Array(1);do{crypto.getRandomValues(a);}while(a[0]>=lim);return a[0]%n;} return Math.floor(Math.random()*n); }
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=randInt(i+1);[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+function rebuildQueues(){
+  queues.truth=shuffle(DATA[mode].truths);
+  queues.dare=shuffle(DATA[mode].dares);
+}
+function nextPrompt(type){
+  if(!queues[type].length) queues[type]=shuffle(DATA[mode][type+'s']);
+  return queues[type].pop();
+}
+
+const card=document.getElementById('card');
+
+function reveal(type){
+  if(busy) return; busy=true;
+  document.getElementById('truthBtn').disabled=true; document.getElementById('dareBtn').disabled=true;
+  // if already flipped, flip back first then flip out new
+  const doFlip=()=>{
+    const p=nextPrompt(type);
+    const badge=document.getElementById('badge'), prompt=document.getElementById('prompt');
+    badge.textContent= type==='truth'?'Truth':'Dare';
+    badge.className='badge '+type;
+    prompt.textContent=p;
+    card.classList.add('flipped');
+    document.getElementById('nextRow').innerHTML='<button class="mini" id="nextBtn">🔄 Next player</button>';
+    document.getElementById('nextBtn').onclick=resetCard;
+    busy=false;
+  };
+  if(card.classList.contains('flipped')){
+    card.classList.remove('flipped');
+    setTimeout(doFlip,600);
+  } else doFlip();
+}
+function resetCard(){
+  card.classList.remove('flipped');
+  document.getElementById('nextRow').innerHTML='';
+  document.getElementById('truthBtn').disabled=false; document.getElementById('dareBtn').disabled=false;
+}
+
+document.getElementById('truthBtn').addEventListener('click',()=>reveal('truth'));
+document.getElementById('dareBtn').addEventListener('click',()=>reveal('dare'));
+document.getElementById('modes').addEventListener('click',e=>{
+  const b=e.target.closest('.mode'); if(!b) return;
+  document.querySelectorAll('.mode').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  mode=b.dataset.mode;
+  document.getElementById('modeNote').textContent=DATA[mode].note;
+  rebuildQueues(); resetCard();
+});
+
+rebuildQueues();
+</script>
+</body>
+</html>
