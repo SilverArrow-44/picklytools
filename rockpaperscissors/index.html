@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<script>document.documentElement.className='js';</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a1f">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
+<title>Rock Paper Scissors — Play Free Online vs Computer (Best of 3) | Pickly</title>
+<meta name="description" content="Play Rock Paper Scissors online against the computer, free. Single round or best-of-3 and best-of-5 modes, with score tracking and fun animations. No sign-up.">
+<meta name="keywords" content="rock paper scissors, rock paper scissors online, play rock paper scissors, rps game, rock paper scissors vs computer, best of 3">
+<link rel="canonical" href="https://picklytools.com/rockpaperscissors/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rock Paper Scissors — Play Free Online vs Computer">
+<meta property="og:description" content="Play Rock Paper Scissors vs the computer. Best-of-3 and best-of-5. Free, fun, no sign-up.">
+<meta property="og:url" content="https://picklytools.com/rockpaperscissors/">
+<meta property="og:image" content="https://picklytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://picklytools.com/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Rock Paper Scissors","url":"https://picklytools.com/rockpaperscissors/","applicationCategory":"GameApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Play Rock Paper Scissors against the computer."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Rock Paper Scissors","item":"https://picklytools.com/rockpaperscissors/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.6.0/confetti.browser.min.js" defer></script>
+<style>
+:root{
+  --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
+  --bd:rgba(255,255,255,.1); --tx:#f4f4fb; --mt:#9a9ab5;
+  --pk:#FF2060; --or:#FF8C00; --yl:#FFD600; --cy:#00E5FF; --pu:#B061FF; --gr:#00E676;
+  --rs:14px; --rl:22px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 12% 8%,rgba(0,229,255,.12),transparent 60%),radial-gradient(ellipse 60% 50% at 88% 92%,rgba(255,140,0,.1),transparent 60%)}
+.wrap{position:relative;z-index:2;max-width:680px;margin:0 auto;padding:0 18px}
+
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,10,31,.72);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:680px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:34px;height:34px}
+.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+
+.head{text-align:center;padding:30px 0 8px}
+.head h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(26px,5vw,42px);letter-spacing:-1px;line-height:1.08;margin-bottom:8px}
+.head h1 .g{background:linear-gradient(115deg,var(--cy),var(--or));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.head p{color:var(--mt);font-size:15px;font-weight:600;max-width:420px;margin:0 auto}
+
+.modes{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:16px 0 6px}
+.mode{font-weight:800;font-size:13px;padding:9px 16px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--mt);cursor:pointer;transition:all .15s}
+.mode:hover{background:var(--sfh);color:var(--tx)}
+.mode.on{background:linear-gradient(135deg,rgba(0,229,255,.2),rgba(255,140,0,.2));border-color:var(--cy);color:#fff}
+
+.scoreboard{display:flex;justify-content:center;gap:30px;margin:18px 0 8px;align-items:center}
+.score{text-align:center}
+.score .lab{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--mt)}
+.score .val{font-family:'Fredoka',sans-serif;font-weight:700;font-size:40px;line-height:1}
+.score.you .val{color:var(--cy)}.score.cpu .val{color:var(--or)}
+.score-sep{font-family:'Fredoka',sans-serif;font-weight:700;font-size:24px;color:var(--mt)}
+.target-note{text-align:center;color:var(--mt);font-size:13px;font-weight:700;margin-bottom:6px}
+
+.arena{display:flex;justify-content:center;align-items:center;gap:20px;padding:18px 0;min-height:150px}
+.hand{width:120px;height:120px;border-radius:50%;background:var(--bg2);border:2px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:62px}
+.hand.you{border-color:rgba(0,229,255,.4)}
+.hand.cpu{border-color:rgba(255,140,0,.4)}
+.hand.shake{animation:rps .4s ease}
+@keyframes rps{0%,100%{transform:translateY(0)}25%{transform:translateY(-16px)}50%{transform:translateY(0)}75%{transform:translateY(-9px)}}
+.hand.win{box-shadow:0 0 0 3px var(--gr);border-color:var(--gr)}
+.arena .vs{font-family:'Fredoka',sans-serif;font-weight:700;color:var(--mt);font-size:18px}
+
+.round-result{text-align:center;font-family:'Fredoka',sans-serif;font-weight:600;font-size:22px;min-height:30px;margin-bottom:6px}
+.round-result.win{color:var(--gr)}.round-result.lose{color:var(--pk)}.round-result.tie{color:var(--yl)}
+
+.choices{display:flex;justify-content:center;gap:14px;margin-top:10px}
+.choice{width:88px;height:88px;border-radius:var(--rl);background:var(--bg2);border:2px solid var(--bd);cursor:pointer;font-size:42px;display:flex;align-items:center;justify-content:center;transition:transform .15s,border-color .15s}
+.choice:hover{transform:translateY(-4px);border-color:var(--cy)}
+.choice:active{transform:scale(.95)}
+.choice .lab{position:absolute}
+.choice.dim{opacity:.4;pointer-events:none}
+
+.game-over{text-align:center;margin-top:18px}
+.game-over .big{font-family:'Fredoka',sans-serif;font-weight:700;font-size:30px;margin-bottom:10px}
+.game-over .big.won{background:linear-gradient(135deg,var(--gr),var(--cy));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.game-over .big.lost{color:var(--pk)}
+.btn{font-family:'Fredoka',sans-serif;font-weight:600;font-size:17px;padding:13px 32px;border-radius:100px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--cy),var(--or));color:#06121a;box-shadow:0 8px 24px rgba(0,229,255,.32);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.hint{text-align:center;color:var(--mt);font-size:14px;font-weight:700;margin-top:6px;min-height:20px}
+.soundbtn{display:block;margin:14px auto 0;font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;padding:9px 16px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--tx);cursor:pointer}
+
+.ad-wrap{max-width:680px;margin:34px auto 0;text-align:center}
+.ad-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(244,244,251,.3);margin-bottom:6px}
+.ad-box{min-height:100px;border:1px dashed var(--bd);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:var(--mt);font-size:13px;font-weight:600;background:rgba(255,255,255,.02)}
+
+.content{margin-top:40px}
+.content h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:24px;margin:30px 0 10px}
+.content h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin:20px 0 8px}
+.content p{color:var(--mt);font-size:15.5px;font-weight:600;margin-bottom:13px}
+.content ul{color:var(--mt);font-size:15.5px;font-weight:600;margin:0 0 13px 22px}.content li{margin-bottom:6px}
+.faq{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.qa{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);overflow:hidden}
+.qa summary{padding:15px 18px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:'+';font-size:22px;color:var(--mt);transition:transform .2s}
+.qa[open] summary::after{transform:rotate(45deg)}
+.qa .a{padding:0 18px 16px;color:var(--mt);font-size:15px;font-weight:600}
+
+footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
+.foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot-col h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
+.foot-col a:hover{color:var(--tx)}
+.foot-brand{max-width:240px}.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
+.copy{text-align:center;color:var(--mt);font-size:13px;font-weight:600;margin-top:30px;padding-top:20px;border-top:1px solid var(--bd)}
+@media(prefers-reduced-motion:reduce){.hand.shake{animation:none!important}body::before{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/">← All tools</a>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <h1>Rock Paper <span class="g">Scissors</span></h1>
+    <p>Take on the computer. Pick your move and may the best hand win.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="modes" id="modes">
+    <button class="mode" data-target="1">Single round</button>
+    <button class="mode on" data-target="2">Best of 3</button>
+    <button class="mode" data-target="3">Best of 5</button>
+  </div>
+
+  <div class="target-note" id="targetNote"></div>
+  <div class="scoreboard">
+    <div class="score you"><div class="lab">You</div><div class="val" id="youScore">0</div></div>
+    <div class="score-sep">:</div>
+    <div class="score cpu"><div class="lab">Computer</div><div class="val" id="cpuScore">0</div></div>
+  </div>
+
+  <div class="arena">
+    <div class="hand you" id="youHand">✊</div>
+    <div class="vs">vs</div>
+    <div class="hand cpu" id="cpuHand">✊</div>
+  </div>
+
+  <div class="round-result" id="roundResult"></div>
+
+  <div class="choices" id="choices">
+    <div class="choice" data-move="rock" title="Rock">✊</div>
+    <div class="choice" data-move="paper" title="Paper">✋</div>
+    <div class="choice" data-move="scissors" title="Scissors">✌️</div>
+  </div>
+  <div class="hint" id="hint">Pick rock, paper, or scissors 👆</div>
+
+  <div class="game-over" id="gameOver" style="display:none"></div>
+  <button class="soundbtn" id="soundBtn">🔊 Sound on</button>
+
+  <div class="ad-wrap">
+    <div class="ad-lbl">Advertisement</div>
+    <div class="ad-box">Your ad space — plug in Google AdSense here 📢</div>
+  </div>
+
+  <article class="content">
+    <h2>Play Rock Paper Scissors online, free</h2>
+    <p>Rock Paper Scissors is the classic hand game that settles arguments, decides who goes first, and kills boredom in seconds. This free online version lets you play against the computer any time — no opponent needed. Choose a single round for a quick decision, or go best-of-3 or best-of-5 for a proper match with score tracking and a winner.</p>
+    <h3>The rules (in case you need them)</h3>
+    <ul>
+      <li><strong>Rock</strong> ✊ crushes <strong>scissors</strong>.</li>
+      <li><strong>Paper</strong> ✋ covers <strong>rock</strong>.</li>
+      <li><strong>Scissors</strong> ✌️ cut <strong>paper</strong>.</li>
+      <li>Same move on both sides? It's a tie — play it again.</li>
+    </ul>
+    <h3>Is the computer fair?</h3>
+    <p>Yes — the computer picks its move completely at random using your browser's secure randomness, with no peeking at your choice. Every round is a genuine 1-in-3, so it's as fair as a real game (maybe fairer — no cheating with a late switch!).</p>
+    <h3>Why we love it</h3>
+    <p>It's the fastest fair way to settle a two-person decision, a great quick game for kids, and weirdly satisfying as a best-of series. Use it to decide chores, who pays, who drives, or just to pass the time.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <details class="qa"><summary>Does the computer cheat?</summary><div class="a">No. It chooses rock, paper, or scissors at random before you, with no knowledge of your pick. It's completely fair.</div></details>
+      <details class="qa"><summary>What's best-of-3?</summary><div class="a">First player to win 2 rounds takes the match. Best-of-5 means first to 3. Ties don't count toward either score — you just replay.</div></details>
+      <details class="qa"><summary>Can I play with a friend?</summary><div class="a">This version is you vs the computer. For two humans, try our Coin Flip or Spinner to decide who goes first!</div></details>
+      <details class="qa"><summary>Is it free?</summary><div class="a">Completely free, no sign-up, supported by unobtrusive ads. See our <a href="/privacy/" style="color:var(--cy)">Privacy Policy</a>.</div></details>
+    </div>
+  </article>
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-col foot-brand">
+      <a class="brand" href="/">
+        <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+          <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="79,21 79,41 63,31" fill="#fff"/>
+          <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+        </svg>
+        <span class="brand-name">Pickly</span>
+      </a>
+      <p>Free, fun online tools to help you decide anything.</p>
+    </div>
+    <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/rockpaperscissors/">Rock Paper Scissors</a><a href="/#tools">All tools</a></div>
+    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+  </div>
+  <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div></div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+const EMO={rock:'✊',paper:'✋',scissors:'✌️'};
+const BEATS={rock:'scissors',paper:'rock',scissors:'paper'};
+let target=2, youScore=0, cpuScore=0, busy=false, over=false, soundOn=true;
+
+function randInt(n){ if(window.crypto&&crypto.getRandomValues){const m=4294967296,lim=m-(m%n),a=new Uint32Array(1);do{crypto.getRandomValues(a);}while(a[0]>=lim);return a[0]%n;} return Math.floor(Math.random()*n); }
+
+let actx=null;
+function tone(f,t,d,type){ if(!soundOn)return; try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();const o=actx.createOscillator(),g=actx.createGain();o.connect(g);g.connect(actx.destination);o.type=type||'triangle';o.frequency.value=f;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.13,t+0.01);g.gain.exponentialRampToValueAtTime(0.0001,t+d);o.start(t);o.stop(t+d+0.02);}catch(e){} }
+function countSound(){ if(!soundOn)return; try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();const t=actx.currentTime;for(let i=0;i<3;i++)tone(300,t+i*0.13,0.06);}catch(e){} }
+function resultSound(kind){ if(!soundOn)return; try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();const t=actx.currentTime;if(kind==='win'){tone(523,t,0.1);tone(784,t+0.1,0.16);}else if(kind==='lose'){tone(300,t,0.12);tone(200,t+0.1,0.18);}else{tone(440,t,0.1);}}catch(e){} }
+
+function setTargetNote(){
+  const need=target===1?1:(target===2?2:3);
+  document.getElementById('targetNote').textContent=target===1?'Single round — winner takes all':'First to '+need+' wins the match';
+}
+
+function reset(){
+  youScore=0;cpuScore=0;over=false;
+  document.getElementById('youScore').textContent='0';
+  document.getElementById('cpuScore').textContent='0';
+  document.getElementById('youHand').textContent='✊';
+  document.getElementById('cpuHand').textContent='✊';
+  document.getElementById('youHand').classList.remove('win');
+  document.getElementById('cpuHand').classList.remove('win');
+  document.getElementById('roundResult').textContent='';
+  document.getElementById('roundResult').className='round-result';
+  document.getElementById('gameOver').style.display='none';
+  document.getElementById('choices').style.display='flex';
+  document.getElementById('hint').textContent='Pick rock, paper, or scissors 👆';
+  setTargetNote();
+}
+
+async function play(move){
+  if(busy||over) return; busy=true;
+  document.getElementById('hint').textContent='';
+  const youH=document.getElementById('youHand'), cpuH=document.getElementById('cpuHand');
+  youH.classList.remove('win'); cpuH.classList.remove('win');
+  document.getElementById('roundResult').textContent='';
+  // shake animation + countdown
+  countSound();
+  youH.textContent='✊'; cpuH.textContent='✊';
+  youH.classList.remove('shake'); cpuH.classList.remove('shake'); void youH.offsetWidth;
+  youH.classList.add('shake'); cpuH.classList.add('shake');
+  await new Promise(r=>setTimeout(r,520));
+  const cpu=['rock','paper','scissors'][randInt(3)];
+  youH.textContent=EMO[move]; cpuH.textContent=EMO[cpu];
+  // decide
+  let res;
+  if(move===cpu) res='tie';
+  else if(BEATS[move]===cpu) res='win';
+  else res='lose';
+  const rr=document.getElementById('roundResult');
+  if(res==='tie'){ rr.textContent="🤝 Tie! Go again."; rr.className='round-result tie'; resultSound('tie'); }
+  else if(res==='win'){ youScore++; youH.classList.add('win'); rr.textContent='✓ You win this round!'; rr.className='round-result win'; resultSound('win'); document.getElementById('youScore').textContent=youScore; }
+  else { cpuScore++; cpuH.classList.add('win'); rr.textContent='✗ Computer wins this round.'; rr.className='round-result lose'; resultSound('lose'); document.getElementById('cpuScore').textContent=cpuScore; }
+  // check match end
+  const need=target===1?1:(target===2?2:3);
+  if(youScore>=need||cpuScore>=need){
+    over=true;
+    const won=youScore>need-1 && youScore>cpuScore;
+    const go=document.getElementById('gameOver');
+    go.innerHTML='<div class="big '+(won?'won':'lost')+'">'+(won?'🏆 You won the match!':'🤖 Computer wins the match')+'</div><button class="btn" id="againBtn">Play again</button>';
+    go.style.display='block';
+    document.getElementById('choices').style.display='none';
+    document.getElementById('againBtn').onclick=reset;
+    if(won&&typeof confetti==='function'){ confetti({particleCount:120,spread:75,origin:{y:.5},colors:['#00E676','#00E5FF','#FFD600','#FF8C00']}); }
+  }
+  busy=false;
+}
+
+document.getElementById('choices').addEventListener('click',e=>{ const c=e.target.closest('.choice'); if(c) play(c.dataset.move); });
+document.getElementById('modes').addEventListener('click',e=>{ const m=e.target.closest('.mode'); if(!m)return; document.querySelectorAll('.mode').forEach(x=>x.classList.remove('on')); m.classList.add('on'); target=+m.dataset.target; reset(); });
+document.getElementById('soundBtn').addEventListener('click',e=>{ soundOn=!soundOn; e.target.textContent=soundOn?'🔊 Sound on':'🔇 Sound off'; });
+
+setTargetNote();
+</script>
+</body>
+</html>

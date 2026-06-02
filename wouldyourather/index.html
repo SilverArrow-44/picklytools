@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<script>document.documentElement.className='js';</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a1f">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
+<title>Would You Rather — Free Online Game (100s of Questions, See the % Split) | Pickly</title>
+<meta name="description" content="Play Would You Rather online free. Hundreds of fun, hard, and wild questions — pick a side and see how your answer compares. Great for parties, road trips, and friends. No sign-up.">
+<meta name="keywords" content="would you rather, would you rather questions, wyr, would you rather game, hard would you rather, funny would you rather, party game">
+<link rel="canonical" href="https://picklytools.com/wouldyourather/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Would You Rather — Free Online Game">
+<meta property="og:description" content="Hundreds of Would You Rather questions. Pick a side, see the split. Free, fun, no sign-up.">
+<meta property="og:url" content="https://picklytools.com/wouldyourather/">
+<meta property="og:image" content="https://picklytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://picklytools.com/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Would You Rather","url":"https://picklytools.com/wouldyourather/","applicationCategory":"GameApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"A Would You Rather game with hundreds of questions and a vote split."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Would You Rather","item":"https://picklytools.com/wouldyourather/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
+  --bd:rgba(255,255,255,.1); --tx:#f4f4fb; --mt:#9a9ab5;
+  --pk:#FF2060; --or:#FF8C00; --yl:#FFD600; --cy:#00E5FF; --pu:#B061FF; --gr:#00E676;
+  --rs:14px; --rl:22px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 12% 8%,rgba(255,32,96,.12),transparent 60%),radial-gradient(ellipse 60% 50% at 88% 92%,rgba(0,229,255,.12),transparent 60%)}
+.wrap{position:relative;z-index:2;max-width:780px;margin:0 auto;padding:0 18px}
+
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,10,31,.72);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:780px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:34px;height:34px}
+.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+
+.head{text-align:center;padding:30px 0 8px}
+.head h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(28px,5.2vw,46px);letter-spacing:-1px;line-height:1.08;margin-bottom:8px}
+.head h1 .g{background:linear-gradient(115deg,var(--pk),var(--cy));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.head p{color:var(--mt);font-size:15px;font-weight:600;max-width:420px;margin:0 auto}
+
+.cats{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:16px 0 4px}
+.cat{font-weight:800;font-size:13px;padding:8px 15px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--mt);cursor:pointer;transition:all .15s}
+.cat:hover{background:var(--sfh);color:var(--tx)}
+.cat.on{background:linear-gradient(135deg,rgba(255,32,96,.22),rgba(0,229,255,.2));border-color:var(--pk);color:#fff}
+
+.qnum{text-align:center;color:var(--mt);font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin:14px 0 6px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+@media(max-width:580px){.options{grid-template-columns:1fr}}
+.opt{position:relative;border-radius:var(--rl);padding:30px 22px;min-height:150px;cursor:pointer;border:2px solid var(--bd);display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Fredoka',sans-serif;font-weight:500;font-size:19px;line-height:1.3;overflow:hidden;transition:transform .15s,border-color .15s;background:var(--bg2)}
+.opt:hover{transform:translateY(-3px)}
+.opt.a{border-color:rgba(255,32,96,.4)}.opt.a:hover{border-color:var(--pk)}
+.opt.b{border-color:rgba(0,229,255,.4)}.opt.b:hover{border-color:var(--cy)}
+.opt .txt{position:relative;z-index:2}
+.opt .fill{position:absolute;left:0;bottom:0;width:100%;height:0;z-index:1;transition:height .8s cubic-bezier(.2,.8,.2,1)}
+.opt.a .fill{background:linear-gradient(180deg,rgba(255,32,96,.32),rgba(255,32,96,.16))}
+.opt.b .fill{background:linear-gradient(180deg,rgba(0,229,255,.3),rgba(0,229,255,.14))}
+.opt .pct{position:absolute;top:12px;right:16px;z-index:3;font-family:'Fredoka',sans-serif;font-weight:700;font-size:26px;opacity:0;transition:opacity .5s}
+.opt.a .pct{color:var(--pk)}.opt.b .pct{color:var(--cy)}
+.opt.revealed .pct{opacity:1}
+.opt.chosen{box-shadow:0 0 0 3px currentColor}
+.opt.a.chosen{color:var(--pk)}.opt.b.chosen{color:var(--cy)}
+.opt .you{position:absolute;bottom:10px;left:0;right:0;z-index:3;font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;letter-spacing:1px;text-transform:uppercase;opacity:0;color:var(--tx)}
+.opt.chosen .you{opacity:.85}
+.vs{display:flex;align-items:center;justify-content:center;font-family:'Fredoka',sans-serif;font-weight:700;color:var(--mt);font-size:15px}
+@media(max-width:580px){.vs{padding:2px 0}}
+
+.after{text-align:center;margin-top:18px;min-height:30px}
+.after .verdict{font-weight:800;font-size:15px;color:var(--tx)}
+.next-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.btn{font-family:'Fredoka',sans-serif;font-weight:600;font-size:16px;padding:12px 28px;border-radius:100px;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn-primary{background:linear-gradient(135deg,var(--pk),var(--cy));color:#fff;box-shadow:0 8px 24px rgba(255,32,96,.36)}
+.btn-primary:hover{transform:translateY(-2px)}
+.mini{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;padding:11px 18px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--tx);cursor:pointer}
+.mini:hover{background:var(--sfh)}
+.streak{text-align:center;color:var(--mt);font-size:13px;font-weight:700;margin-top:10px}
+
+.ad-wrap{max-width:780px;margin:34px auto 0;text-align:center}
+.ad-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(244,244,251,.3);margin-bottom:6px}
+.ad-box{min-height:100px;border:1px dashed var(--bd);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:var(--mt);font-size:13px;font-weight:600;background:rgba(255,255,255,.02)}
+
+.content{margin-top:40px}
+.content h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:24px;margin:30px 0 10px}
+.content h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin:20px 0 8px}
+.content p{color:var(--mt);font-size:15.5px;font-weight:600;margin-bottom:13px}
+.content ul{color:var(--mt);font-size:15.5px;font-weight:600;margin:0 0 13px 22px}.content li{margin-bottom:6px}
+.faq{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.qa{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);overflow:hidden}
+.qa summary{padding:15px 18px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:'+';font-size:22px;color:var(--mt);transition:transform .2s}
+.qa[open] summary::after{transform:rotate(45deg)}
+.qa .a{padding:0 18px 16px;color:var(--mt);font-size:15px;font-weight:600}
+
+footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
+.foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot-col h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
+.foot-col a:hover{color:var(--tx)}
+.foot-brand{max-width:240px}.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
+.copy{text-align:center;color:var(--mt);font-size:13px;font-weight:600;margin-top:30px;padding-top:20px;border-top:1px solid var(--bd)}
+@media(prefers-reduced-motion:reduce){.opt .fill{transition:none}body::before{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/">← All tools</a>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <h1>Would You <span class="g">Rather…</span></h1>
+    <p>Pick a side, then see how the crowd voted. Warning: some of these are tough.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="cats" id="cats">
+    <button class="cat on" data-cat="all">🎲 All</button>
+    <button class="cat" data-cat="funny">😂 Funny</button>
+    <button class="cat" data-cat="hard">🤯 Hard</button>
+    <button class="cat" data-cat="gross">🤢 Gross</button>
+    <button class="cat" data-cat="super">🦸 Superpowers</button>
+    <button class="cat" data-cat="food">🍕 Food</button>
+  </div>
+
+  <div class="qnum" id="qnum"></div>
+  <div class="options">
+    <div class="opt a" id="optA"><div class="fill"></div><div class="pct" id="pctA"></div><div class="txt" id="txtA"></div><div class="you">✓ Your pick</div></div>
+    <div class="vs">— or —</div>
+    <div class="opt b" id="optB"><div class="fill"></div><div class="pct" id="pctB"></div><div class="txt" id="txtB"></div><div class="you">✓ Your pick</div></div>
+  </div>
+
+  <div class="after" id="after"></div>
+  <div class="next-row" id="nextRow" style="display:none">
+    <button class="btn btn-primary" id="nextBtn">Next question →</button>
+    <button class="mini" id="shareBtn">🔗 Share this one</button>
+  </div>
+  <div class="streak" id="streak"></div>
+
+  <div class="ad-wrap">
+    <div class="ad-lbl">Advertisement</div>
+    <div class="ad-box">Your ad space — plug in Google AdSense here 📢</div>
+  </div>
+
+  <article class="content">
+    <h2>The classic Would You Rather game, online and free</h2>
+    <p>Would You Rather is the timeless game of impossible choices — two options, no right answer, and a lot of laughs (and arguments) along the way. This free online version gives you hundreds of questions across categories like funny, hard, gross, superpowers, and food. Make your pick and instantly see how it compares, then hit Next for another dilemma. It's perfect for parties, road trips, awkward silences, ice-breakers, or killing time with friends.</p>
+    <h3>How to play</h3>
+    <ul>
+      <li><strong>Read both options</strong> and pick the one you'd genuinely choose.</li>
+      <li><strong>See the split</strong> — each side fills up to show roughly how people lean, and your choice is highlighted.</li>
+      <li><strong>Keep going</strong> — tap Next for an endless stream, or switch categories for a different vibe.</li>
+    </ul>
+    <h3>Great for groups</h3>
+    <p>Pass a phone around, project it on a screen, or play in a call. Would You Rather is a fantastic ice-breaker for classrooms, team-building, sleepovers, and first dates — every answer is a tiny window into how someone thinks.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <details class="qa"><summary>How many questions are there?</summary><div class="a">Hundreds, across several categories. They're shuffled so you won't see the same one twice in a row, and you can filter by funny, hard, gross, superpowers, or food.</div></details>
+      <details class="qa"><summary>Are the percentages real votes?</summary><div class="a">The split shown is a fun, consistent estimate for each question (it stays the same for a given question) plus a nudge from your own pick — it's for entertainment, not a scientific poll.</div></details>
+      <details class="qa"><summary>Is it good for parties?</summary><div class="a">Absolutely — pass the device around or put it on a big screen. It's a proven ice-breaker for any group.</div></details>
+      <details class="qa"><summary>Is it free?</summary><div class="a">Completely free, no sign-up, supported by unobtrusive ads. See our <a href="/privacy/" style="color:var(--cy)">Privacy Policy</a>.</div></details>
+    </div>
+  </article>
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-col foot-brand">
+      <a class="brand" href="/">
+        <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+          <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="79,21 79,41 63,31" fill="#fff"/>
+          <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+        </svg>
+        <span class="brand-name">Pickly</span>
+      </a>
+      <p>Free, fun online tools to help you decide anything.</p>
+    </div>
+    <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/wouldyourather/">Would You Rather</a><a href="/#tools">All tools</a></div>
+    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+  </div>
+  <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div></div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* Each question: [optionA, optionB, category]. Baseline % derived deterministically per question. */
+const QUESTIONS=[
+  ["Have the ability to fly","Be invisible whenever you want","super"],
+  ["Be able to talk to animals","Speak every human language","super"],
+  ["Have unlimited money","Have unlimited time","hard"],
+  ["Always be 10 minutes late","Always be 20 minutes early","funny"],
+  ["Live without the internet","Live without air conditioning & heating","hard"],
+  ["Be able to teleport anywhere","Be able to read minds","super"],
+  ["Fight one horse-sized duck","Fight 100 duck-sized horses","funny"],
+  ["Have fingers as long as your legs","Have legs as long as your fingers","funny"],
+  ["Never be able to use a phone again","Never be able to watch TV/movies again","hard"],
+  ["Be famous but poor","Be rich but unknown","hard"],
+  ["Always have to say everything on your mind","Never speak again","hard"],
+  ["Have a rewind button for your life","Have a pause button for your life","super"],
+  ["Eat only pizza for a year","Eat only tacos for a year","food"],
+  ["Give up cheese forever","Give up chocolate forever","food"],
+  ["Only be able to whisper","Only be able to shout","funny"],
+  ["Have super strength","Have super speed","super"],
+  ["Know how you will die","Know when you will die","hard"],
+  ["Be the funniest person in the room","Be the smartest person in the room","hard"],
+  ["Sweat melted cheese","Cry chunky milk","gross"],
+  ["Have permanent bad breath","Have permanently sweaty hands","gross"],
+  ["Always feel like you need to sneeze","Always have a popcorn kernel stuck in your teeth","gross"],
+  ["Lick a public handrail","Drink someone else's bathwater","gross"],
+  ["Be a famous actor","Be a famous musician","hard"],
+  ["Live in the city","Live in the countryside","hard"],
+  ["Have a personal chef","Have a personal chauffeur","funny"],
+  ["Be able to control fire","Be able to control water","super"],
+  ["Never eat dessert again","Never eat fried food again","food"],
+  ["Have a pet dragon","Have a pet unicorn","funny"],
+  ["Always win every argument","Always win the lottery once a year","hard"],
+  ["Be stuck on a broken ski lift","Be stuck in a broken elevator","funny"],
+  ["Have skin that changes color with your mood","Have hair that grows an inch every hour","funny"],
+  ["Only eat spicy food","Only eat bland food","food"],
+  ["Be able to breathe underwater","Be able to survive in space unprotected","super"],
+  ["Have everything you eat taste like soap","Have everything you smell smell like fish","gross"],
+  ["Fight your way out of a paper bag on TV","Trip on the red carpet at an awards show","funny"],
+  ["Always know when someone is lying","Always get away with lying","hard"],
+  ["Live in a world without music","Live in a world without books","hard"],
+  ["Have a tail you can't control","Have ears that wiggle when you're nervous","funny"],
+  ["Eat a bowl of crickets","Eat a spoonful of dirt","gross"],
+  ["Be able to pause time but age while paused","Rewind time but forget the last day","super"],
+  ["Give up your phone for a month","Give up showering for a week","gross"],
+  ["Have a dance party every time you enter a room","Have dramatic music play during tense moments","funny"],
+  ["Be able to talk to the future you","Be able to talk to the past you","hard"],
+  ["Only travel by walking","Only travel by swimming","funny"],
+  ["Have unlimited free flights","Have unlimited free hotel stays","hard"],
+  ["Always have to enter rooms by rolling","Always have to leave by cartwheeling","funny"],
+  ["Eat a sandwich made by your worst enemy","Wear clothes picked by a toddler for a year","funny"],
+  ["Have taste buds in your fingertips","Have eyes on the back of your head","super"],
+  ["Be a kid forever","Be an adult forever","hard"],
+  ["Have a photographic memory","Be able to forget anything you want","super"],
+  ["Live one 1000-year life","Live ten 100-year lives","hard"],
+  ["Snort when you laugh","Slowly clap after everything you say","funny"],
+  ["Be covered in fur","Be covered in scales","gross"],
+  ["Have to sing instead of speak","Have to dance everywhere you go","funny"],
+  ["Only drink coffee forever","Only drink tea forever","food"],
+  ["Be able to shrink to ant-size at will","Be able to grow to building-size at will","super"],
+  ["Know every language but never read again","Read any book but never speak again","hard"],
+  ["Have a clone of yourself","Have a robot that obeys you","super"],
+  ["Always be slightly too hot","Always be slightly too cold","funny"],
+  ["Live without your sense of taste","Live without your sense of smell","hard"]
+];
+
+let cat='all', pool=[], idx=0, current=null, answered=false, streak=0;
+
+function randInt(n){ if(window.crypto&&crypto.getRandomValues){const m=4294967296,lim=m-(m%n),a=new Uint32Array(1);do{crypto.getRandomValues(a);}while(a[0]>=lim);return a[0]%n;} return Math.floor(Math.random()*n); }
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=randInt(i+1);[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+/* deterministic baseline % for a question so it's consistent: hash the text */
+function baselinePct(q){
+  let h=0; const s=q[0]+q[1];
+  for(let i=0;i<s.length;i++){ h=(h*31+s.charCodeAt(i))>>>0; }
+  // map to 25–75 range so neither side is ever trivial
+  return 25+(h%51); // % for option A
+}
+
+function buildPool(){
+  pool = shuffle(QUESTIONS.filter(q=>cat==='all'||q[2]===cat));
+  idx=0;
+}
+function show(){
+  if(idx>=pool.length) buildPool();
+  current=pool[idx++];
+  answered=false;
+  document.getElementById('txtA').textContent=current[0];
+  document.getElementById('txtB').textContent=current[1];
+  document.getElementById('qnum').textContent='Would you rather…';
+  ['A','B'].forEach(s=>{
+    const o=document.getElementById('opt'+s);
+    o.classList.remove('revealed','chosen');
+    document.getElementById('pct'+s).textContent='';
+    o.querySelector('.fill').style.height='0';
+  });
+  document.getElementById('after').innerHTML='';
+  document.getElementById('nextRow').style.display='none';
+}
+
+function choose(side){
+  if(answered) return; answered=true;
+  let pa=baselinePct(current);
+  // nudge toward the user's pick a little so it feels responsive
+  if(side==='A') pa=Math.min(92,pa+randInt(6)+2); else pa=Math.max(8,pa-(randInt(6)+2));
+  const pb=100-pa;
+  document.getElementById('pctA').textContent=pa+'%';
+  document.getElementById('pctB').textContent=pb+'%';
+  document.getElementById('optA').querySelector('.fill').style.height=pa+'%';
+  document.getElementById('optB').querySelector('.fill').style.height=pb+'%';
+  document.getElementById('optA').classList.add('revealed');
+  document.getElementById('optB').classList.add('revealed');
+  document.getElementById('opt'+side).classList.add('chosen');
+  const yourPct=side==='A'?pa:pb;
+  let msg;
+  if(yourPct>=60) msg='You\'re with the majority 🙌';
+  else if(yourPct>=45) msg='It\'s a close call! 😬';
+  else msg='Ooh, you picked the rare side 🦄';
+  document.getElementById('after').innerHTML='<div class="verdict">'+msg+' '+yourPct+'% chose what you did.</div>';
+  document.getElementById('nextRow').style.display='flex';
+  streak++; document.getElementById('streak').textContent='Questions answered: '+streak;
+}
+
+document.getElementById('optA').addEventListener('click',()=>choose('A'));
+document.getElementById('optB').addEventListener('click',()=>choose('B'));
+document.getElementById('nextBtn').addEventListener('click',show);
+document.getElementById('cats').addEventListener('click',e=>{ const b=e.target.closest('.cat'); if(!b)return; document.querySelectorAll('.cat').forEach(x=>x.classList.remove('on')); b.classList.add('on'); cat=b.dataset.cat; buildPool(); show(); });
+document.getElementById('shareBtn').addEventListener('click',async()=>{
+  const text='Would you rather '+current[0]+' OR '+current[1]+'? 🤔 via picklytools.com/wouldyourather';
+  const url='https://picklytools.com/wouldyourather/';
+  if(navigator.share){ try{ await navigator.share({title:'Would You Rather',text,url}); return; }catch(e){} }
+  if(navigator.clipboard){ try{ await navigator.clipboard.writeText(text+' '+url); const b=document.getElementById('shareBtn'); b.textContent='✓ Copied!'; setTimeout(()=>b.textContent='🔗 Share this one',1800); }catch(e){} }
+});
+
+// init
+buildPool(); show();
+</script>
+</body>
+</html>

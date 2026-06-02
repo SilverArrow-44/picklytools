@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<script>document.documentElement.className='js';</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a1f">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
+<title>Magic 8 Ball — Free Online Magic 8 Ball (Ask a Yes or No Question) | Pickly</title>
+<meta name="description" content="Ask the Magic 8 Ball any yes/no question and shake for an answer. Free online Magic 8 Ball with all 20 classic answers, fun animation, and sound. No sign-up.">
+<meta name="keywords" content="magic 8 ball, magic eight ball, online 8 ball, ask the magic 8 ball, yes or no, fortune teller, magic 8 ball answers">
+<link rel="canonical" href="https://picklytools.com/magic8ball/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Magic 8 Ball — Free Online Yes/No Answers">
+<meta property="og:description" content="Ask any question and shake the Magic 8 Ball for an answer. Free, fun, no sign-up.">
+<meta property="og:url" content="https://picklytools.com/magic8ball/">
+<meta property="og:image" content="https://picklytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://picklytools.com/og-image.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Magic 8 Ball","url":"https://picklytools.com/magic8ball/","applicationCategory":"GameApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Ask a yes/no question and get a classic Magic 8 Ball answer."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Magic 8 Ball","item":"https://picklytools.com/magic8ball/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
+  --bd:rgba(255,255,255,.1); --tx:#f4f4fb; --mt:#9a9ab5;
+  --pk:#FF2060; --or:#FF8C00; --yl:#FFD600; --cy:#00E5FF; --pu:#B061FF; --gr:#00E676;
+  --rs:14px; --rl:22px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 12% 8%,rgba(176,97,255,.14),transparent 60%),radial-gradient(ellipse 60% 50% at 88% 92%,rgba(0,229,255,.1),transparent 60%)}
+.wrap{position:relative;z-index:2;max-width:680px;margin:0 auto;padding:0 18px}
+
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,10,31,.72);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:680px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:34px;height:34px}
+.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+
+.head{text-align:center;padding:34px 0 14px}
+.head h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(28px,5.2vw,46px);letter-spacing:-1px;line-height:1.08;margin-bottom:10px}
+.head h1 .g{background:linear-gradient(115deg,var(--pu),var(--cy));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.head p{color:var(--mt);font-size:15px;font-weight:600;max-width:460px;margin:0 auto}
+
+.ask{display:flex;gap:10px;max-width:480px;margin:18px auto 0}
+.ask input{flex:1;background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:100px;color:var(--tx);padding:13px 20px;font-family:'Nunito',sans-serif;font-weight:700;font-size:15px;outline:none}
+.ask input:focus{border-color:var(--pu)}
+.ask input::placeholder{color:var(--mt)}
+
+.stage{display:flex;flex-direction:column;align-items:center;padding:30px 0 8px}
+.ball{width:240px;height:240px;border-radius:50%;position:relative;cursor:pointer;user-select:none;
+  background:radial-gradient(circle at 35% 28%,#3a3a55 0%,#16161f 45%,#000 100%);
+  box-shadow:0 22px 50px rgba(0,0,0,.6), inset 0 -18px 40px rgba(0,0,0,.8), inset 0 12px 28px rgba(255,255,255,.12);
+  display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.ball:active{transform:scale(.97)}
+.ball.shaking{animation:shake .5s ease}
+@keyframes shake{0%,100%{transform:rotate(0)}15%{transform:rotate(-9deg) translateX(-8px)}30%{transform:rotate(8deg) translateX(8px)}45%{transform:rotate(-7deg) translateY(-6px)}60%{transform:rotate(6deg) translateX(-5px)}75%{transform:rotate(-4deg)}}
+.ball .gloss{position:absolute;top:24px;left:42px;width:64px;height:42px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.5),transparent 70%);filter:blur(2px);pointer-events:none}
+.window{width:118px;height:118px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#1a1a44,#0a0a22);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 4px 16px rgba(0,0,0,.9);position:relative;overflow:hidden}
+.tri{width:0;height:0;border-left:54px solid transparent;border-right:54px solid transparent;border-top:92px solid rgba(60,80,200,.55);position:absolute;top:14px;display:flex;align-items:flex-start;justify-content:center;filter:drop-shadow(0 0 8px rgba(80,100,255,.4))}
+.answer{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;color:#bcd0ff;text-shadow:0 0 10px rgba(120,150,255,.7);opacity:0;transition:opacity .4s;line-height:1.25}
+.answer.show{opacity:1}
+.eight{font-family:'Fredoka',sans-serif;font-weight:700;font-size:60px;color:#fff;opacity:1;transition:opacity .3s}
+.eight.hide{opacity:0}
+
+.hint{color:var(--mt);font-size:14px;font-weight:700;text-align:center;margin-top:20px;min-height:20px}
+.verdict{font-family:'Fredoka',sans-serif;font-weight:600;font-size:20px;text-align:center;margin-top:8px;min-height:26px}
+.verdict.yes{color:var(--gr)}.verdict.no{color:var(--pk)}.verdict.maybe{color:var(--yl)}
+.controls{text-align:center;margin-top:18px}
+.shake-btn{font-family:'Fredoka',sans-serif;font-weight:600;font-size:20px;padding:14px 44px;border-radius:100px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--pu),var(--cy));color:#fff;box-shadow:0 8px 28px rgba(176,97,255,.42);transition:transform .15s,box-shadow .15s}
+.shake-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(176,97,255,.55)}
+.shake-btn:active{transform:scale(.97)}
+.shake-btn:disabled{opacity:.6;cursor:default}
+.mini{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;padding:9px 16px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--tx);cursor:pointer;margin-top:12px}
+.mini:hover{background:var(--sfh)}
+
+.ad-wrap{max-width:680px;margin:36px auto 0;text-align:center}
+.ad-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(244,244,251,.3);margin-bottom:6px}
+.ad-box{min-height:100px;border:1px dashed var(--bd);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:var(--mt);font-size:13px;font-weight:600;background:rgba(255,255,255,.02)}
+
+.content{margin-top:40px}
+.content h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:24px;margin:30px 0 10px}
+.content h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin:20px 0 8px}
+.content p{color:var(--mt);font-size:15.5px;font-weight:600;margin-bottom:13px}
+.content ul{color:var(--mt);font-size:15.5px;font-weight:600;margin:0 0 13px 22px}.content li{margin-bottom:6px}
+.faq{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.qa{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);overflow:hidden}
+.qa summary{padding:15px 18px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:'+';font-size:22px;color:var(--mt);transition:transform .2s}
+.qa[open] summary::after{transform:rotate(45deg)}
+.qa .a{padding:0 18px 16px;color:var(--mt);font-size:15px;font-weight:600}
+
+footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
+.foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot-col h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
+.foot-col a:hover{color:var(--tx)}
+.foot-brand{max-width:240px}.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
+.copy{text-align:center;color:var(--mt);font-size:13px;font-weight:600;margin-top:30px;padding-top:20px;border-top:1px solid var(--bd)}
+@media(prefers-reduced-motion:reduce){.ball.shaking{animation:none!important}body::before{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/">← All tools</a>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <h1>Magic <span class="g">8 Ball</span></h1>
+    <p>Ask any yes-or-no question, then shake the ball and let fate reveal your answer.</p>
+    <div class="ask">
+      <input type="text" id="q" placeholder="Ask a yes/no question…" maxlength="120">
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stage">
+    <div class="ball" id="ball">
+      <div class="gloss"></div>
+      <div class="window">
+        <div class="eight" id="eight">8</div>
+        <div class="tri" id="tri" style="display:none"></div>
+        <div class="answer" id="answer"></div>
+      </div>
+    </div>
+    <div class="verdict" id="verdict"></div>
+    <div class="hint" id="hint">Tap the ball or the button to shake 🎱</div>
+  </div>
+
+  <div class="controls">
+    <button class="shake-btn" id="shakeBtn">🎱 Shake the ball</button><br>
+    <button class="mini" id="soundBtn">🔊 Sound on</button>
+  </div>
+
+  <div class="ad-wrap">
+    <div class="ad-lbl">Advertisement</div>
+    <div class="ad-box">Your ad space — plug in Google AdSense here 📢</div>
+  </div>
+
+  <article class="content">
+    <h2>The classic Magic 8 Ball, now online</h2>
+    <p>The Magic 8 Ball has been answering life's big (and small) questions since 1950. This free online version brings the whole experience to your screen — think of a yes-or-no question, give the ball a shake, and watch your fortune float up from the murky blue depths. All 20 of the classic answers are here, from a confident "It is certain" to an ominous "Outlook not so good."</p>
+    <h3>How to use it</h3>
+    <ul>
+      <li><strong>Think of a yes/no question</strong> — type it in the box if you like, or just hold it in your mind.</li>
+      <li><strong>Shake the ball</strong> by tapping it or pressing the button.</li>
+      <li><strong>Read your answer</strong> as it surfaces, color-coded green for positive, red for negative, and yellow for "ask again later."</li>
+    </ul>
+    <h3>The 20 classic answers</h3>
+    <p>The traditional Magic 8 Ball has ten positive answers, five non-committal ones, and five negative ones — the same mix used here, so the odds lean slightly optimistic, just like the original toy.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <details class="qa"><summary>Is the Magic 8 Ball random?</summary><div class="a">Yes — each shake picks one of the 20 classic answers at random using your browser's secure randomness. It's for fun, not real fortune-telling!</div></details>
+      <details class="qa"><summary>Do I have to type my question?</summary><div class="a">No, typing is optional. You can just think of your question and shake. The box is there if you'd like to keep track of what you asked.</div></details>
+      <details class="qa"><summary>What questions work best?</summary><div class="a">Yes-or-no questions: "Will it rain tomorrow?", "Should I order pizza?", "Does my crush like me?" The ball only speaks in yes/no/maybe.</div></details>
+      <details class="qa"><summary>Is it free?</summary><div class="a">Completely free, no sign-up, supported by unobtrusive ads. See our <a href="/privacy/" style="color:var(--cy)">Privacy Policy</a>.</div></details>
+    </div>
+  </article>
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-col foot-brand">
+      <a class="brand" href="/">
+        <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+          <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="79,21 79,41 63,31" fill="#fff"/>
+          <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+        </svg>
+        <span class="brand-name">Pickly</span>
+      </a>
+      <p>Free, fun online tools to help you decide anything.</p>
+    </div>
+    <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/magic8ball/">Magic 8 Ball</a><a href="/#tools">All tools</a></div>
+    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+  </div>
+  <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div></div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+const ANSWERS=[
+  // positive (10)
+  {t:'It is certain',k:'yes'},{t:'It is decidedly so',k:'yes'},{t:'Without a doubt',k:'yes'},
+  {t:'Yes — definitely',k:'yes'},{t:'You may rely on it',k:'yes'},{t:'As I see it, yes',k:'yes'},
+  {t:'Most likely',k:'yes'},{t:'Outlook good',k:'yes'},{t:'Yes',k:'yes'},{t:'Signs point to yes',k:'yes'},
+  // non-committal (5)
+  {t:'Reply hazy, try again',k:'maybe'},{t:'Ask again later',k:'maybe'},{t:'Better not tell you now',k:'maybe'},
+  {t:'Cannot predict now',k:'maybe'},{t:'Concentrate and ask again',k:'maybe'},
+  // negative (5)
+  {t:"Don't count on it",k:'no'},{t:'My reply is no',k:'no'},{t:'My sources say no',k:'no'},
+  {t:'Outlook not so good',k:'no'},{t:'Very doubtful',k:'no'}
+];
+
+let soundOn=true, busy=false;
+function randInt(n){ if(window.crypto&&crypto.getRandomValues){const m=4294967296,lim=m-(m%n),a=new Uint32Array(1);do{crypto.getRandomValues(a);}while(a[0]>=lim);return a[0]%n;} return Math.floor(Math.random()*n); }
+
+let actx=null;
+function shakeSound(){ if(!soundOn)return; try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); const t=actx.currentTime;
+  for(let i=0;i<6;i++){ const o=actx.createOscillator(),g=actx.createGain(); o.connect(g);g.connect(actx.destination); o.type='sine'; o.frequency.value=120+Math.random()*80; const w=t+i*0.07; g.gain.setValueAtTime(0.0001,w);g.gain.exponentialRampToValueAtTime(0.1,w+0.01);g.gain.exponentialRampToValueAtTime(0.0001,w+0.06); o.start(w);o.stop(w+0.07);} }catch(e){} }
+function revealSound(){ if(!soundOn)return; try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); const t=actx.currentTime; const o=actx.createOscillator(),g=actx.createGain(); o.connect(g);g.connect(actx.destination);o.type='triangle';o.frequency.setValueAtTime(300,t);o.frequency.exponentialRampToValueAtTime(600,t+0.3);g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.12,t+0.05);g.gain.exponentialRampToValueAtTime(0.0001,t+0.5);o.start(t);o.stop(t+0.5);}catch(e){} }
+
+const ball=document.getElementById('ball'),eight=document.getElementById('eight'),tri=document.getElementById('tri'),answer=document.getElementById('answer'),verdict=document.getElementById('verdict'),hint=document.getElementById('hint');
+
+function shake(){
+  if(busy) return; busy=true;
+  document.getElementById('shakeBtn').disabled=true;
+  hint.textContent=''; verdict.textContent=''; verdict.className='verdict';
+  answer.classList.remove('show'); 
+  eight.classList.remove('hide'); tri.style.display='none';
+  shakeSound();
+  ball.classList.remove('shaking'); void ball.offsetWidth; ball.classList.add('shaking');
+  setTimeout(()=>{
+    eight.classList.add('hide');
+    setTimeout(()=>{
+      const a=ANSWERS[randInt(ANSWERS.length)];
+      tri.style.display='block';
+      answer.textContent=a.t; answer.classList.add('show');
+      verdict.textContent = a.k==='yes'?'✓ Yes!' : a.k==='no'?'✗ No' : '🤔 Hmm…';
+      verdict.className='verdict '+a.k;
+      revealSound();
+      const q=document.getElementById('q').value.trim();
+      hint.textContent = q ? '“'+q+'”' : 'Ask another, or shake again 🎱';
+      busy=false; document.getElementById('shakeBtn').disabled=false;
+    },300);
+  },500);
+}
+
+ball.addEventListener('click',shake);
+document.getElementById('shakeBtn').addEventListener('click',shake);
+document.getElementById('q').addEventListener('keydown',e=>{ if(e.key==='Enter') shake(); });
+document.getElementById('soundBtn').addEventListener('click',e=>{ soundOn=!soundOn; e.target.textContent=soundOn?'🔊 Sound on':'🔇 Sound off'; });
+</script>
+</body>
+</html>
