@@ -25,7 +25,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Rock Paper Scissors","item":"https://picklytools.com/rockpaperscissors/"}]}
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js" defer></script>
+
 <style>
 :root{
   --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
@@ -112,7 +112,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 
 footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 .foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.foot-col h5{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-col .foot-h5{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
 .foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
 .foot-col a:hover{color:var(--tx)}
 .foot-brand{max-width:240px}.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
@@ -121,6 +121,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 
 @font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
 @font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
+.foot-h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px;color:var(--tx)}
 </style>
 <style id="fonts">
 @font-face{font-family:'Fredoka';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/fredoka-400.woff2') format('woff2')}
@@ -130,6 +131,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 @font-face{font-family:'Nunito';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/nunito-700.woff2') format('woff2')}
 @font-face{font-family:'Nunito';font-style:normal;font-weight:800;font-display:swap;src:url('/fonts/nunito-800.woff2') format('woff2')}
 </style>
+<script>window._confettiSrc="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js",window._loadConfetti=function(n){if(window.confetti)n&&n();else{var t=document.createElement("script");t.src=window._confettiSrc,t.onload=function(){n&&n()},document.head.appendChild(t)}};</script>
 </head>
 <body>
 
@@ -147,6 +149,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
     </a>
     <a class="back" href="/">← All tools</a>
   </div>
+<main>
 </div>
 
 <header class="head">
@@ -218,6 +221,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
   </article>
 </div>
 
+</main>
 <footer>
   <div class="wrap foot-in">
     <div class="foot-col foot-brand">
@@ -232,92 +236,14 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
       </a>
       <p>Free, fun online tools to help you decide anything.</p>
     </div>
-        <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/timezones/">Timezone Planner</a><a href="/randomnumber/">Random Number</a><a href="/teampicker/">Team Picker</a><a href="/whattoeat/">What to Eat?</a></div>
-    <div class="foot-col"><h5>Games</h5><a href="/magic8ball/">Magic 8 Ball</a><a href="/wouldyourather/">Would You Rather</a><a href="/rockpaperscissors/">Rock Paper Scissors</a><a href="/truthordare/">Truth or Dare</a><a href="/neverhaveiever/">Never Have I Ever</a><a href="/slotmachine/">Slot Machine</a></div>
-    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
-    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+        <div class="foot-col"><p class="foot-h5">Tools</p><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/timezones/">Timezone Planner</a><a href="/randomnumber/">Random Number</a><a href="/teampicker/">Team Picker</a><a href="/whattoeat/">What to Eat?</a></div>
+    <div class="foot-col"><p class="foot-h5">Games</p><a href="/magic8ball/">Magic 8 Ball</a><a href="/wouldyourather/">Would You Rather</a><a href="/rockpaperscissors/">Rock Paper Scissors</a><a href="/truthordare/">Truth or Dare</a><a href="/neverhaveiever/">Never Have I Ever</a><a href="/slotmachine/">Slot Machine</a></div>
+    <div class="foot-col"><p class="foot-h5">Site</p><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><p class="foot-h5">Legal</p><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
   </div>
   <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div></div>
 </footer>
 
-<script>
-document.getElementById('yr').textContent=new Date().getFullYear();
-
-const EMO={rock:'✊',paper:'✋',scissors:'✌️'};
-const BEATS={rock:'scissors',paper:'rock',scissors:'paper'};
-let target=2, youScore=0, cpuScore=0, busy=false, over=false, soundOn=true;
-
-function randInt(n){ if(window.crypto&&crypto.getRandomValues){const m=4294967296,lim=m-(m%n),a=new Uint32Array(1);do{crypto.getRandomValues(a);}while(a[0]>=lim);return a[0]%n;} return Math.floor(Math.random()*n); }
-
-let actx=null;
-function tone(f,t,d,type){ if(!soundOn)return; try{actx=actx||(function(){try{return new AudioContext()}catch(e){return null}})();const o=actx.createOscillator(),g=actx.createGain();o.connect(g);g.connect(actx.destination);o.type=type||'triangle';o.frequency.value=f;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.13,t+0.01);g.gain.exponentialRampToValueAtTime(0.0001,t+d);o.start(t);o.stop(t+d+0.02);}catch(e){} }
-function countSound(){ if(!soundOn)return; try{actx=actx||(function(){try{return new AudioContext()}catch(e){return null}})();const t=actx.currentTime;for(let i=0;i<3;i++)tone(300,t+i*0.13,0.06);}catch(e){} }
-function resultSound(kind){ if(!soundOn)return; try{actx=actx||(function(){try{return new AudioContext()}catch(e){return null}})();const t=actx.currentTime;if(kind==='win'){tone(523,t,0.1);tone(784,t+0.1,0.16);}else if(kind==='lose'){tone(300,t,0.12);tone(200,t+0.1,0.18);}else{tone(440,t,0.1);}}catch(e){} }
-
-function setTargetNote(){
-  const need=target===1?1:(target===2?2:3);
-  document.getElementById('targetNote').textContent=target===1?'Single round — winner takes all':'First to '+need+' wins the match';
-}
-
-function reset(){
-  youScore=0;cpuScore=0;over=false;
-  document.getElementById('youScore').textContent='0';
-  document.getElementById('cpuScore').textContent='0';
-  document.getElementById('youHand').textContent='✊';
-  document.getElementById('cpuHand').textContent='✊';
-  document.getElementById('youHand').classList.remove('win');
-  document.getElementById('cpuHand').classList.remove('win');
-  document.getElementById('roundResult').textContent='';
-  document.getElementById('roundResult').className='round-result';
-  document.getElementById('gameOver').style.display='none';
-  document.getElementById('choices').style.display='flex';
-  document.getElementById('hint').textContent='Pick rock, paper, or scissors 👆';
-  setTargetNote();
-}
-
-async function play(move){
-  if(busy||over) return; busy=true;
-  document.getElementById('hint').textContent='';
-  const youH=document.getElementById('youHand'), cpuH=document.getElementById('cpuHand');
-  youH.classList.remove('win'); cpuH.classList.remove('win');
-  document.getElementById('roundResult').textContent='';
-  // shake animation + countdown
-  countSound();
-  youH.textContent='✊'; cpuH.textContent='✊';
-  youH.classList.remove('shake'); cpuH.classList.remove('shake'); void youH.offsetWidth;
-  youH.classList.add('shake'); cpuH.classList.add('shake');
-  await new Promise(r=>setTimeout(r,520));
-  const cpu=['rock','paper','scissors'][randInt(3)];
-  youH.textContent=EMO[move]; cpuH.textContent=EMO[cpu];
-  // decide
-  let res;
-  if(move===cpu) res='tie';
-  else if(BEATS[move]===cpu) res='win';
-  else res='lose';
-  const rr=document.getElementById('roundResult');
-  if(res==='tie'){ rr.textContent="🤝 Tie! Go again."; rr.className='round-result tie'; resultSound('tie'); }
-  else if(res==='win'){ youScore++; youH.classList.add('win'); rr.textContent='✓ You win this round!'; rr.className='round-result win'; resultSound('win'); document.getElementById('youScore').textContent=youScore; }
-  else { cpuScore++; cpuH.classList.add('win'); rr.textContent='✗ Computer wins this round.'; rr.className='round-result lose'; resultSound('lose'); document.getElementById('cpuScore').textContent=cpuScore; }
-  // check match end
-  const need=target===1?1:(target===2?2:3);
-  if(youScore>=need||cpuScore>=need){
-    over=true;
-    const won=youScore>need-1 && youScore>cpuScore;
-    const go=document.getElementById('gameOver');
-    go.innerHTML='<div class="big '+(won?'won':'lost')+'">'+(won?'🏆 You won the match!':'🤖 Computer wins the match')+'</div><button class="btn" id="againBtn">Play again</button>';
-    go.style.display='block';
-    document.getElementById('choices').style.display='none';
-    document.getElementById('againBtn').onclick=reset;
-    if(won&&typeof confetti==='function'){ confetti({particleCount:120,spread:75,origin:{y:.5},colors:['#00E676','#00E5FF','#FFD600','#FF8C00']}); }
-  }
-  busy=false;
-}
-
-document.getElementById('choices').addEventListener('click',e=>{ const c=e.target.closest('.choice'); if(c) play(c.dataset.move); });
-document.getElementById('modes').addEventListener('click',e=>{ const m=e.target.closest('.mode'); if(!m)return; document.querySelectorAll('.mode').forEach(x=>x.classList.remove('on')); m.classList.add('on'); target=+m.dataset.target; reset(); });
-document.getElementById('soundBtn').addEventListener('click',e=>{ soundOn=!soundOn; e.target.textContent=soundOn?'🔊 Sound on':'🔇 Sound off'; });
-
-setTargetNote();
-</script>
+<script>document.getElementById("yr").textContent=(new Date).getFullYear();const EMO={rock:"✊",paper:"✋",scissors:"✌️"},BEATS={rock:"scissors",paper:"rock",scissors:"paper"};let target=2,youScore=0,cpuScore=0,busy=!1,over=!1,soundOn=!0;function randInt(t){if(window.crypto&&crypto.getRandomValues){const e=4294967296,n=e-e%t,o=new Uint32Array(1);do{crypto.getRandomValues(o)}while(o[0]>=n);return o[0]%t}return Math.floor(Math.random()*t)}let actx=null;function tone(t,e,n,o){if(soundOn){try{if(!actx)return}catch(t){return}try{actx=actx||function(){try{return new AudioContext}catch(t){return null}}();const c=actx.createOscillator(),r=actx.createGain();c.connect(r),r.connect(actx.destination),c.type=o||"triangle",c.frequency.value=t,r.gain.setValueAtTime(1e-4,e),r.gain.exponentialRampToValueAtTime(.13,e+.01),r.gain.exponentialRampToValueAtTime(1e-4,e+n),c.start(e),c.stop(e+n+.02)}catch(t){}}}function countSound(){if(soundOn){try{if(!actx)return}catch(t){return}try{if(actx=actx||function(){try{return new AudioContext}catch(t){return null}}(),!actx)return;const t=actx.currentTime;for(let e=0;e<3;e++)tone(300,t+.13*e,.06)}catch(t){}}}function resultSound(t){if(soundOn){try{if(!actx)return}catch(t){return}try{if(actx=actx||function(){try{return new AudioContext}catch(t){return null}}(),!actx)return;const e=actx.currentTime;"win"===t?(tone(523,e,.1),tone(784,e+.1,.16)):"lose"===t?(tone(300,e,.12),tone(200,e+.1,.18)):tone(440,e,.1)}catch(t){}}}function setTargetNote(){const t=1===target?1:2===target?2:3;document.getElementById("targetNote").textContent=1===target?"Single round — winner takes all":"First to "+t+" wins the match"}function reset(){youScore=0,cpuScore=0,over=!1,document.getElementById("youScore").textContent="0",document.getElementById("cpuScore").textContent="0",document.getElementById("youHand").textContent="✊",document.getElementById("cpuHand").textContent="✊",document.getElementById("youHand").classList.remove("win"),document.getElementById("cpuHand").classList.remove("win"),document.getElementById("roundResult").textContent="",document.getElementById("roundResult").className="round-result",document.getElementById("gameOver").style.display="none",document.getElementById("choices").style.display="flex",document.getElementById("hint").textContent="Pick rock, paper, or scissors 👆",setTargetNote()}async function play(t){if(busy||over)return;busy=!0,document.getElementById("hint").textContent="";const e=document.getElementById("youHand"),n=document.getElementById("cpuHand");e.classList.remove("win"),n.classList.remove("win"),document.getElementById("roundResult").textContent="",countSound(),e.textContent="✊",n.textContent="✊",e.classList.remove("shake"),n.classList.remove("shake"),e.offsetWidth,e.classList.add("shake"),n.classList.add("shake"),await new Promise(t=>setTimeout(t,520));const o=["rock","paper","scissors"][randInt(3)];let c;e.textContent=EMO[t],n.textContent=EMO[o],c=t===o?"tie":BEATS[t]===o?"win":"lose";const r=document.getElementById("roundResult");"tie"===c?(r.textContent="🤝 Tie! Go again.",r.className="round-result tie",resultSound("tie")):"win"===c?(youScore++,e.classList.add("win"),r.textContent="✓ You win this round!",r.className="round-result win",resultSound("win"),document.getElementById("youScore").textContent=youScore):(cpuScore++,n.classList.add("win"),r.textContent="✗ Computer wins this round.",r.className="round-result lose",resultSound("lose"),document.getElementById("cpuScore").textContent=cpuScore);const s=1===target?1:2===target?2:3;if(youScore>=s||cpuScore>=s){over=!0;const t=youScore>s-1&&youScore>cpuScore,e=document.getElementById("gameOver");e.innerHTML='<div class="big '+(t?"won":"lost")+'">'+(t?"🏆 You won the match!":"🤖 Computer wins the match")+'</div><button class="btn" id="againBtn">Play again</button>',e.style.display="block",document.getElementById("choices").style.display="none",document.getElementById("againBtn").onclick=reset,t&&"function"==typeof confetti&&confetti({particleCount:120,spread:75,origin:{y:.5},colors:["#00E676","#00E5FF","#FFD600","#FF8C00"]})}busy=!1}document.getElementById("choices").addEventListener("click",t=>{const e=t.target.closest(".choice");e&&play(e.dataset.move)}),document.getElementById("modes").addEventListener("click",t=>{const e=t.target.closest(".mode");e&&(document.querySelectorAll(".mode").forEach(t=>t.classList.remove("on")),e.classList.add("on"),target=+e.dataset.target,reset())}),document.getElementById("soundBtn").addEventListener("click",t=>{soundOn=!soundOn,t.target.textContent=soundOn?"🔊 Sound on":"🔇 Sound off"}),setTargetNote();</script>
 </body>
 </html>

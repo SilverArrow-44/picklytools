@@ -102,7 +102,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 
 footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 .foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.foot-col h5{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-col .foot-h5{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
 .foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
 .foot-col a:hover{color:var(--tx)}
 .foot-brand{max-width:240px}.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
@@ -111,6 +111,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 
 @font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
 @font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
+.foot-h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px;color:var(--tx)}
 </style>
 <style id="fonts">
 @font-face{font-family:'Fredoka';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/fredoka-400.woff2') format('woff2')}
@@ -137,6 +138,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
     </a>
     <a class="back" href="/">← All tools</a>
   </div>
+<main>
 </div>
 
 <header class="head">
@@ -195,6 +197,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
   </article>
 </div>
 
+</main>
 <footer>
   <div class="wrap foot-in">
     <div class="foot-col foot-brand">
@@ -209,68 +212,14 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
       </a>
       <p>Free, fun online tools to help you decide anything.</p>
     </div>
-        <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/timezones/">Timezone Planner</a><a href="/randomnumber/">Random Number</a><a href="/teampicker/">Team Picker</a><a href="/whattoeat/">What to Eat?</a></div>
-    <div class="foot-col"><h5>Games</h5><a href="/magic8ball/">Magic 8 Ball</a><a href="/wouldyourather/">Would You Rather</a><a href="/rockpaperscissors/">Rock Paper Scissors</a><a href="/truthordare/">Truth or Dare</a><a href="/neverhaveiever/">Never Have I Ever</a><a href="/slotmachine/">Slot Machine</a></div>
-    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
-    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+        <div class="foot-col"><p class="foot-h5">Tools</p><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/timezones/">Timezone Planner</a><a href="/randomnumber/">Random Number</a><a href="/teampicker/">Team Picker</a><a href="/whattoeat/">What to Eat?</a></div>
+    <div class="foot-col"><p class="foot-h5">Games</p><a href="/magic8ball/">Magic 8 Ball</a><a href="/wouldyourather/">Would You Rather</a><a href="/rockpaperscissors/">Rock Paper Scissors</a><a href="/truthordare/">Truth or Dare</a><a href="/neverhaveiever/">Never Have I Ever</a><a href="/slotmachine/">Slot Machine</a></div>
+    <div class="foot-col"><p class="foot-h5">Site</p><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><p class="foot-h5">Legal</p><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
   </div>
   <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div></div>
 </footer>
 
-<script>
-document.getElementById('yr').textContent=new Date().getFullYear();
-
-const ANSWERS=[
-  // positive (10)
-  {t:'It is certain',k:'yes'},{t:'It is decidedly so',k:'yes'},{t:'Without a doubt',k:'yes'},
-  {t:'Yes — definitely',k:'yes'},{t:'You may rely on it',k:'yes'},{t:'As I see it, yes',k:'yes'},
-  {t:'Most likely',k:'yes'},{t:'Outlook good',k:'yes'},{t:'Yes',k:'yes'},{t:'Signs point to yes',k:'yes'},
-  // non-committal (5)
-  {t:'Reply hazy, try again',k:'maybe'},{t:'Ask again later',k:'maybe'},{t:'Better not tell you now',k:'maybe'},
-  {t:'Cannot predict now',k:'maybe'},{t:'Concentrate and ask again',k:'maybe'},
-  // negative (5)
-  {t:"Don't count on it",k:'no'},{t:'My reply is no',k:'no'},{t:'My sources say no',k:'no'},
-  {t:'Outlook not so good',k:'no'},{t:'Very doubtful',k:'no'}
-];
-
-let soundOn=true, busy=false;
-function randInt(n){ if(window.crypto&&crypto.getRandomValues){const m=4294967296,lim=m-(m%n),a=new Uint32Array(1);do{crypto.getRandomValues(a);}while(a[0]>=lim);return a[0]%n;} return Math.floor(Math.random()*n); }
-
-let actx=null;
-function shakeSound(){ if(!soundOn)return; try{ actx=actx||(function(){try{return new AudioContext()}catch(e){return null}})(); const t=actx.currentTime;
-  for(let i=0;i<6;i++){ const o=actx.createOscillator(),g=actx.createGain(); o.connect(g);g.connect(actx.destination); o.type='sine'; o.frequency.value=120+Math.random()*80; const w=t+i*0.07; g.gain.setValueAtTime(0.0001,w);g.gain.exponentialRampToValueAtTime(0.1,w+0.01);g.gain.exponentialRampToValueAtTime(0.0001,w+0.06); o.start(w);o.stop(w+0.07);} }catch(e){} }
-function revealSound(){ if(!soundOn)return; try{ actx=actx||(function(){try{return new AudioContext()}catch(e){return null}})(); const t=actx.currentTime; const o=actx.createOscillator(),g=actx.createGain(); o.connect(g);g.connect(actx.destination);o.type='triangle';o.frequency.setValueAtTime(300,t);o.frequency.exponentialRampToValueAtTime(600,t+0.3);g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.12,t+0.05);g.gain.exponentialRampToValueAtTime(0.0001,t+0.5);o.start(t);o.stop(t+0.5);}catch(e){} }
-
-const ball=document.getElementById('ball'),eight=document.getElementById('eight'),tri=document.getElementById('tri'),answer=document.getElementById('answer'),verdict=document.getElementById('verdict'),hint=document.getElementById('hint');
-
-function shake(){
-  if(busy) return; busy=true;
-  document.getElementById('shakeBtn').disabled=true;
-  hint.textContent=''; verdict.textContent=''; verdict.className='verdict';
-  answer.classList.remove('show'); 
-  eight.classList.remove('hide'); tri.style.display='none';
-  shakeSound();
-  ball.classList.remove('shaking'); void ball.offsetWidth; ball.classList.add('shaking');
-  setTimeout(()=>{
-    eight.classList.add('hide');
-    setTimeout(()=>{
-      const a=ANSWERS[randInt(ANSWERS.length)];
-      tri.style.display='block';
-      answer.textContent=a.t; answer.classList.add('show');
-      verdict.textContent = a.k==='yes'?'✓ Yes!' : a.k==='no'?'✗ No' : '🤔 Hmm…';
-      verdict.className='verdict '+a.k;
-      revealSound();
-      const q=document.getElementById('q').value.trim();
-      hint.textContent = q ? '“'+q+'”' : 'Ask another, or shake again 🎱';
-      busy=false; document.getElementById('shakeBtn').disabled=false;
-    },300);
-  },500);
-}
-
-ball.addEventListener('click',shake);
-document.getElementById('shakeBtn').addEventListener('click',shake);
-document.getElementById('q').addEventListener('keydown',e=>{ if(e.key==='Enter') shake(); });
-document.getElementById('soundBtn').addEventListener('click',e=>{ soundOn=!soundOn; e.target.textContent=soundOn?'🔊 Sound on':'🔇 Sound off'; });
-</script>
+<script>document.getElementById("yr").textContent=(new Date).getFullYear();const ANSWERS=[{t:"It is certain",k:"yes"},{t:"It is decidedly so",k:"yes"},{t:"Without a doubt",k:"yes"},{t:"Yes — definitely",k:"yes"},{t:"You may rely on it",k:"yes"},{t:"As I see it, yes",k:"yes"},{t:"Most likely",k:"yes"},{t:"Outlook good",k:"yes"},{t:"Yes",k:"yes"},{t:"Signs point to yes",k:"yes"},{t:"Reply hazy, try again",k:"maybe"},{t:"Ask again later",k:"maybe"},{t:"Better not tell you now",k:"maybe"},{t:"Cannot predict now",k:"maybe"},{t:"Concentrate and ask again",k:"maybe"},{t:"Don't count on it",k:"no"},{t:"My reply is no",k:"no"},{t:"My sources say no",k:"no"},{t:"Outlook not so good",k:"no"},{t:"Very doubtful",k:"no"}];let soundOn=!0,busy=!1;function randInt(t){if(window.crypto&&crypto.getRandomValues){const e=4294967296,n=e-e%t,a=new Uint32Array(1);do{crypto.getRandomValues(a)}while(a[0]>=n);return a[0]%t}return Math.floor(Math.random()*t)}let actx=null;function shakeSound(){if(soundOn){try{if(!actx)return}catch(t){return}try{if(actx=actx||function(){try{return new AudioContext}catch(t){return null}}(),!actx)return;const t=actx.currentTime;for(let e=0;e<6;e++){const n=actx.createOscillator(),a=actx.createGain();n.connect(a),a.connect(actx.destination),n.type="sine",n.frequency.value=120+80*Math.random();const o=t+.07*e;a.gain.setValueAtTime(1e-4,o),a.gain.exponentialRampToValueAtTime(.1,o+.01),a.gain.exponentialRampToValueAtTime(1e-4,o+.06),n.start(o),n.stop(o+.07)}}catch(t){}}}function revealSound(){if(soundOn){try{if(!actx)return}catch(t){return}try{if(actx=actx||function(){try{return new AudioContext}catch(t){return null}}(),!actx)return;const t=actx.currentTime,e=actx.createOscillator(),n=actx.createGain();e.connect(n),n.connect(actx.destination),e.type="triangle",e.frequency.setValueAtTime(300,t),e.frequency.exponentialRampToValueAtTime(600,t+.3),n.gain.setValueAtTime(1e-4,t),n.gain.exponentialRampToValueAtTime(.12,t+.05),n.gain.exponentialRampToValueAtTime(1e-4,t+.5),e.start(t),e.stop(t+.5)}catch(t){}}}const ball=document.getElementById("ball"),eight=document.getElementById("eight"),tri=document.getElementById("tri"),answer=document.getElementById("answer"),verdict=document.getElementById("verdict"),hint=document.getElementById("hint");function shake(){busy||(busy=!0,document.getElementById("shakeBtn").disabled=!0,hint.textContent="",verdict.textContent="",verdict.className="verdict",answer.classList.remove("show"),eight.classList.remove("hide"),tri.style.display="none",shakeSound(),ball.classList.remove("shaking"),ball.offsetWidth,ball.classList.add("shaking"),setTimeout(()=>{eight.classList.add("hide"),setTimeout(()=>{const t=ANSWERS[randInt(ANSWERS.length)];tri.style.display="block",answer.textContent=t.t,answer.classList.add("show"),verdict.textContent="yes"===t.k?"✓ Yes!":"no"===t.k?"✗ No":"🤔 Hmm…",verdict.className="verdict "+t.k,revealSound();const e=document.getElementById("q").value.trim();hint.textContent=e?"“"+e+"”":"Ask another, or shake again 🎱",busy=!1,document.getElementById("shakeBtn").disabled=!1},300)},500))}ball.addEventListener("click",shake),document.getElementById("shakeBtn").addEventListener("click",shake),document.getElementById("q").addEventListener("keydown",t=>{"Enter"===t.key&&shake()}),document.getElementById("soundBtn").addEventListener("click",t=>{soundOn=!soundOn,t.target.textContent=soundOn?"🔊 Sound on":"🔇 Sound off"});</script>
 </body>
 </html>

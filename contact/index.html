@@ -38,6 +38,7 @@
 
 @font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
 @font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
+.foot-h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px;color:var(--tx)}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contact Pickly","url":"https://picklytools.com/contact/","description":"Contact the Pickly team to suggest a tool, send feedback, or report a bug.","isPartOf":{"@type":"WebSite","name":"Pickly","url":"https://picklytools.com/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://picklytools.com/contact/"}]}</script>
@@ -122,41 +123,14 @@
       </a>
       <p>Free, fun online tools to help you decide anything.</p>
     </div>
-        <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/timezones/">Timezone Planner</a><a href="/randomnumber/">Random Number</a><a href="/teampicker/">Team Picker</a><a href="/whattoeat/">What to Eat?</a></div>
-    <div class="foot-col"><h5>Games</h5><a href="/magic8ball/">Magic 8 Ball</a><a href="/wouldyourather/">Would You Rather</a><a href="/rockpaperscissors/">Rock Paper Scissors</a><a href="/truthordare/">Truth or Dare</a><a href="/neverhaveiever/">Never Have I Ever</a><a href="/slotmachine/">Slot Machine</a></div>
-    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
-    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+        <div class="foot-col"><p class="foot-h5">Tools</p><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/timezones/">Timezone Planner</a><a href="/randomnumber/">Random Number</a><a href="/teampicker/">Team Picker</a><a href="/whattoeat/">What to Eat?</a></div>
+    <div class="foot-col"><p class="foot-h5">Games</p><a href="/magic8ball/">Magic 8 Ball</a><a href="/wouldyourather/">Would You Rather</a><a href="/rockpaperscissors/">Rock Paper Scissors</a><a href="/truthordare/">Truth or Dare</a><a href="/neverhaveiever/">Never Have I Ever</a><a href="/slotmachine/">Slot Machine</a></div>
+    <div class="foot-col"><p class="foot-h5">Site</p><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><p class="foot-h5">Legal</p><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
   </div>
   <div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div>
 </footer>
 
-<script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
-
-  // ↓↓↓ SET YOUR REAL EMAIL HERE ↓↓↓
-  var EMAIL = 'picklytools@gmail.com';
-  var mail = document.getElementById('mail');
-  mail.textContent = EMAIL; mail.href = 'mailto:' + EMAIL;
-
-  var type = 'Suggestion';
-  document.querySelectorAll('.fb-type').forEach(function(b){
-    b.addEventListener('click', function(){
-      document.querySelectorAll('.fb-type').forEach(function(x){x.classList.remove('on')});
-      b.classList.add('on'); type = b.dataset.type;
-    });
-  });
-
-  document.getElementById('send').addEventListener('click', function(){
-    var name = document.getElementById('nm').value.trim();
-    var msg = document.getElementById('msg').value.trim();
-    var hint = document.getElementById('hint');
-    if(!msg){ hint.textContent = 'Please write a message first 🙏'; return; }
-    var who = name || 'Anonymous';
-    var subject = encodeURIComponent('[Pickly ' + type + '] from ' + who);
-    var body = encodeURIComponent(msg + '\n\n— ' + who);
-    window.location.href = 'mailto:' + EMAIL + '?subject=' + subject + '&body=' + body;
-    hint.textContent = '✓ Opening your email app…';
-  });
-</script>
+<script>document.getElementById("yr").textContent=(new Date).getFullYear();var EMAIL="picklytools@gmail.com",mail=document.getElementById("mail");mail.textContent=EMAIL,mail.href="mailto:"+EMAIL;var type="Suggestion";document.querySelectorAll(".fb-type").forEach(function(e){e.addEventListener("click",function(){document.querySelectorAll(".fb-type").forEach(function(e){e.classList.remove("on")}),e.classList.add("on"),type=e.dataset.type})}),document.getElementById("send").addEventListener("click",function(){var e=document.getElementById("nm").value.trim(),t=document.getElementById("msg").value.trim(),n=document.getElementById("hint");if(t){var o=e||"Anonymous",l=encodeURIComponent("[Pickly "+type+"] from "+o),m=encodeURIComponent(t+"\n\n— "+o);window.location.href="mailto:"+EMAIL+"?subject="+l+"&body="+m,n.textContent="✓ Opening your email app…"}else n.textContent="Please write a message first 🙏"});</script>
 </body>
 </html>

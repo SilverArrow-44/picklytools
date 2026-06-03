@@ -90,7 +90,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 
 footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 .foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.foot-col h5{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-col .foot-h5{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
 .foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
 .foot-col a:hover{color:var(--tx)}
 .foot-brand{max-width:240px}.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
@@ -99,6 +99,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 
 @font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
 @font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
+.foot-h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px;color:var(--tx)}
 </style>
 <style id="fonts">
 @font-face{font-family:'Fredoka';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/fredoka-400.woff2') format('woff2')}
@@ -125,6 +126,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
     </a>
     <a class="back" href="/">← All tools</a>
   </div>
+<main>
 </div>
 
 <header class="head">
@@ -185,6 +187,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
   </article>
 </div>
 
+</main>
 <footer>
   <div class="wrap foot-in">
     <div class="foot-col foot-brand">
@@ -199,49 +202,14 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
       </a>
       <p>Free, fun online tools to help you decide anything.</p>
     </div>
-        <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/timezones/">Timezone Planner</a><a href="/randomnumber/">Random Number</a><a href="/teampicker/">Team Picker</a><a href="/whattoeat/">What to Eat?</a></div>
-    <div class="foot-col"><h5>Games</h5><a href="/magic8ball/">Magic 8 Ball</a><a href="/wouldyourather/">Would You Rather</a><a href="/rockpaperscissors/">Rock Paper Scissors</a><a href="/truthordare/">Truth or Dare</a><a href="/neverhaveiever/">Never Have I Ever</a><a href="/slotmachine/">Slot Machine</a></div>
-    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
-    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+        <div class="foot-col"><p class="foot-h5">Tools</p><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/timezones/">Timezone Planner</a><a href="/randomnumber/">Random Number</a><a href="/teampicker/">Team Picker</a><a href="/whattoeat/">What to Eat?</a></div>
+    <div class="foot-col"><p class="foot-h5">Games</p><a href="/magic8ball/">Magic 8 Ball</a><a href="/wouldyourather/">Would You Rather</a><a href="/rockpaperscissors/">Rock Paper Scissors</a><a href="/truthordare/">Truth or Dare</a><a href="/neverhaveiever/">Never Have I Ever</a><a href="/slotmachine/">Slot Machine</a></div>
+    <div class="foot-col"><p class="foot-h5">Site</p><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><p class="foot-h5">Legal</p><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
   </div>
   <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div></div>
 </footer>
 
-<script>
-document.getElementById('yr').textContent=new Date().getFullYear();
-
-const DATA={
-  clean:{note:'Friendly and all-ages.',items:["been on TV","broken a bone","met a celebrity","gone camping for a week","ridden a horse","sung karaoke in public","won a trophy or medal","traveled to another country","gone skinny on a roller coaster and screamed the whole way","stayed up all night reading a book","learned to play an instrument","gone fishing","baked a cake from scratch","run a 5k","planted a garden","gotten lost in a new city","been to a concert","ridden in a hot air balloon","gone a whole day without my phone","learned a magic trick","kept a New Year's resolution","caught a fish","been horseback riding","milked a cow","seen a shooting star","gone snorkeling","grown my own vegetables","written a poem","done a cartwheel","slept under the stars","ridden a bike with no hands","made a snowman","flown a kite","been to a museum sleepover","gone a month without soda","learned to whistle","read an entire series of books","gone ice skating","built a sandcastle","watched the sunrise on purpose"]},
-  party:{note:'Bolder and funnier. Teens & up.',items:["fallen asleep in class or a meeting","sent a text to the wrong person","laughed so hard I cried in public","pretended to know someone I didn't","ghosted someone","stalked an ex on social media","binged an entire series in one day","lied about my age","eaten food off the floor","forgotten someone's name right after meeting them","sung in the shower at the top of my lungs","danced when no one was watching","tripped in public and played it cool","re-gifted a present","pretended to be busy to avoid plans","laughed at the wrong moment","accidentally liked an old photo while stalking","worn the same clothes two days in a row","talked to myself out loud","pretended a text didn't send to avoid replying","eaten an entire pizza by myself","stayed in pajamas all day","screenshotted a conversation to share it","faked being sick to skip something","gotten caught singing in the car","forgotten why I walked into a room","laughed at my own joke before finishing it","pretended to understand something I didn't","used my phone flashlight to find my phone","said 'you too' at the wrong time","ignored my alarm and overslept","made a typo that changed everything","stalked my own profile to see how it looks","practiced an argument in the shower","clicked 'skip ad' a hundred times"]},
-  spicy:{note:'Daring and flirtier — for adults (18+).',items:["had a crush on a friend's partner","sent a flirty text I regretted","kissed someone on a first date","had a crush on a coworker","gone on a blind date","re-read old messages from an ex","had a celebrity crush I'd never admit","flirted to get out of a ticket or trouble","dated two people at once","told a white lie to impress a date","kept an ex's hoodie","slid into someone's DMs","had a crush on a teacher or boss","pretended to like something to impress someone","gone on a date just for the free meal","gotten back with an ex","had a summer fling","been caught staring at someone","fallen for someone way too fast","sent a risky text and immediately panicked","had a crush on someone in this room","kissed someone whose name I forgot","stalked a date online before meeting","lied about my relationship status","had a 'talking stage' that went nowhere","made the first move","regretted a drunk text","matched with someone I knew in real life","gone on a date I booked just out of boredom","had butterflies over a single text"]}
-};
-
-let mode='clean', queue=[], count=0;
-function randInt(n){ if(window.crypto&&crypto.getRandomValues){const m=4294967296,lim=m-(m%n),a=new Uint32Array(1);do{crypto.getRandomValues(a);}while(a[0]>=lim);return a[0]%n;} return Math.floor(Math.random()*n); }
-function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=randInt(i+1);[a[i],a[j]]=[a[j],a[i]];}return a;}
-
-function rebuild(){ queue=shuffle(DATA[mode].items); }
-function next(){
-  if(!queue.length) rebuild();
-  const item=queue.pop();
-  const t=document.getElementById('text');
-  t.classList.add('swap');
-  setTimeout(()=>{ t.textContent=item; t.classList.remove('swap'); },200);
-  count++;
-  document.getElementById('counter').textContent='Prompt #'+count;
-}
-
-document.getElementById('nextBtn').addEventListener('click',next);
-document.getElementById('card').addEventListener('click',next);
-document.getElementById('resetBtn').addEventListener('click',()=>{ rebuild(); count=0; document.getElementById('counter').textContent=''; document.getElementById('text').textContent='Tap to start 👆'; });
-document.getElementById('modes').addEventListener('click',e=>{
-  const b=e.target.closest('.mode'); if(!b)return;
-  document.querySelectorAll('.mode').forEach(x=>x.classList.remove('on')); b.classList.add('on');
-  mode=b.dataset.mode; document.getElementById('modeNote').textContent=DATA[mode].note;
-  rebuild(); count=0; document.getElementById('counter').textContent=''; document.getElementById('text').textContent='Tap to start 👆';
-});
-
-rebuild();
-</script>
+<script>document.getElementById("yr").textContent=(new Date).getFullYear();const DATA={clean:{note:"Friendly and all-ages.",items:["been on TV","broken a bone","met a celebrity","gone camping for a week","ridden a horse","sung karaoke in public","won a trophy or medal","traveled to another country","gone skinny on a roller coaster and screamed the whole way","stayed up all night reading a book","learned to play an instrument","gone fishing","baked a cake from scratch","run a 5k","planted a garden","gotten lost in a new city","been to a concert","ridden in a hot air balloon","gone a whole day without my phone","learned a magic trick","kept a New Year's resolution","caught a fish","been horseback riding","milked a cow","seen a shooting star","gone snorkeling","grown my own vegetables","written a poem","done a cartwheel","slept under the stars","ridden a bike with no hands","made a snowman","flown a kite","been to a museum sleepover","gone a month without soda","learned to whistle","read an entire series of books","gone ice skating","built a sandcastle","watched the sunrise on purpose"]},party:{note:"Bolder and funnier. Teens & up.",items:["fallen asleep in class or a meeting","sent a text to the wrong person","laughed so hard I cried in public","pretended to know someone I didn't","ghosted someone","stalked an ex on social media","binged an entire series in one day","lied about my age","eaten food off the floor","forgotten someone's name right after meeting them","sung in the shower at the top of my lungs","danced when no one was watching","tripped in public and played it cool","re-gifted a present","pretended to be busy to avoid plans","laughed at the wrong moment","accidentally liked an old photo while stalking","worn the same clothes two days in a row","talked to myself out loud","pretended a text didn't send to avoid replying","eaten an entire pizza by myself","stayed in pajamas all day","screenshotted a conversation to share it","faked being sick to skip something","gotten caught singing in the car","forgotten why I walked into a room","laughed at my own joke before finishing it","pretended to understand something I didn't","used my phone flashlight to find my phone","said 'you too' at the wrong time","ignored my alarm and overslept","made a typo that changed everything","stalked my own profile to see how it looks","practiced an argument in the shower","clicked 'skip ad' a hundred times"]},spicy:{note:"Daring and flirtier — for adults (18+).",items:["had a crush on a friend's partner","sent a flirty text I regretted","kissed someone on a first date","had a crush on a coworker","gone on a blind date","re-read old messages from an ex","had a celebrity crush I'd never admit","flirted to get out of a ticket or trouble","dated two people at once","told a white lie to impress a date","kept an ex's hoodie","slid into someone's DMs","had a crush on a teacher or boss","pretended to like something to impress someone","gone on a date just for the free meal","gotten back with an ex","had a summer fling","been caught staring at someone","fallen for someone way too fast","sent a risky text and immediately panicked","had a crush on someone in this room","kissed someone whose name I forgot","stalked a date online before meeting","lied about my relationship status","had a 'talking stage' that went nowhere","made the first move","regretted a drunk text","matched with someone I knew in real life","gone on a date I booked just out of boredom","had butterflies over a single text"]}};let mode="clean",queue=[],count=0;function randInt(e){if(window.crypto&&crypto.getRandomValues){const t=4294967296,n=t-t%e,o=new Uint32Array(1);do{crypto.getRandomValues(o)}while(o[0]>=n);return o[0]%e}return Math.floor(Math.random()*e)}function shuffle(e){for(let t=(e=e.slice()).length-1;t>0;t--){const n=randInt(t+1);[e[t],e[n]]=[e[n],e[t]]}return e}function rebuild(){queue=shuffle(DATA[mode].items)}function next(){queue.length||rebuild();const e=queue.pop(),t=document.getElementById("text");t.classList.add("swap"),setTimeout(()=>{t.textContent=e,t.classList.remove("swap")},200),count++,document.getElementById("counter").textContent="Prompt #"+count}document.getElementById("nextBtn").addEventListener("click",next),document.getElementById("card").addEventListener("click",next),document.getElementById("resetBtn").addEventListener("click",()=>{rebuild(),count=0,document.getElementById("counter").textContent="",document.getElementById("text").textContent="Tap to start 👆"}),document.getElementById("modes").addEventListener("click",e=>{const t=e.target.closest(".mode");t&&(document.querySelectorAll(".mode").forEach(e=>e.classList.remove("on")),t.classList.add("on"),mode=t.dataset.mode,document.getElementById("modeNote").textContent=DATA[mode].note,rebuild(),count=0,document.getElementById("counter").textContent="",document.getElementById("text").textContent="Tap to start 👆")}),rebuild();</script>
 </body>
 </html>

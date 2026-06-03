@@ -139,7 +139,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 
 footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 .foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.foot-col h5{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-col .foot-h5{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
 .foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
 .foot-col a:hover{color:var(--tx)}
 .foot-brand{max-width:240px}.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
@@ -148,6 +148,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 
 @font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
 @font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
+.foot-h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px;color:var(--tx)}
 </style>
 <style id="fonts">
 @font-face{font-family:'Fredoka';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/fredoka-400.woff2') format('woff2')}
@@ -174,6 +175,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
     </a>
     <a class="back" href="/">← All tools</a>
   </div>
+<main>
 </div>
 
 <header class="head">
@@ -238,6 +240,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
   </article>
 </div>
 
+</main>
 <footer>
   <div class="wrap foot-in">
     <div class="foot-col foot-brand">
@@ -252,152 +255,14 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
       </a>
       <p>Free, fun online tools to help you decide anything.</p>
     </div>
-        <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/timezones/">Timezone Planner</a><a href="/randomnumber/">Random Number</a><a href="/teampicker/">Team Picker</a><a href="/whattoeat/">What to Eat?</a></div>
-    <div class="foot-col"><h5>Games</h5><a href="/magic8ball/">Magic 8 Ball</a><a href="/wouldyourather/">Would You Rather</a><a href="/rockpaperscissors/">Rock Paper Scissors</a><a href="/truthordare/">Truth or Dare</a><a href="/neverhaveiever/">Never Have I Ever</a><a href="/slotmachine/">Slot Machine</a></div>
-    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
-    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+        <div class="foot-col"><p class="foot-h5">Tools</p><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/timezones/">Timezone Planner</a><a href="/randomnumber/">Random Number</a><a href="/teampicker/">Team Picker</a><a href="/whattoeat/">What to Eat?</a></div>
+    <div class="foot-col"><p class="foot-h5">Games</p><a href="/magic8ball/">Magic 8 Ball</a><a href="/wouldyourather/">Would You Rather</a><a href="/rockpaperscissors/">Rock Paper Scissors</a><a href="/truthordare/">Truth or Dare</a><a href="/neverhaveiever/">Never Have I Ever</a><a href="/slotmachine/">Slot Machine</a></div>
+    <div class="foot-col"><p class="foot-h5">Site</p><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><p class="foot-h5">Legal</p><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
   </div>
   <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div></div>
 </footer>
 
-<script>
-document.getElementById('yr').textContent=new Date().getFullYear();
-
-let mode='single';
-let soundOn=true;
-let stats={h:0,t:0};
-let history=[];          // recent results, max 24
-let series={target:3,h:0,t:0,rounds:[]};
-let flipping=false;
-
-/* secure 50/50 */
-function coin(){ if(window.crypto&&crypto.getRandomValues){ const a=new Uint8Array(1); crypto.getRandomValues(a); return a[0]&1?'H':'T'; } return Math.random()<0.5?'H':'T'; }
-
-/* ── Web Audio flip sound ── */
-let actx=null;
-function ping(when, freq){
-  if(!soundOn) return;
-  try{
-    actx=actx||(function(){try{return new AudioContext()}catch(e){return null}})();
-    const o=actx.createOscillator(), g=actx.createGain();
-    o.connect(g); g.connect(actx.destination);
-    o.frequency.value=freq; o.type='triangle';
-    g.gain.setValueAtTime(0.0001,when); g.gain.exponentialRampToValueAtTime(0.16,when+0.01); g.gain.exponentialRampToValueAtTime(0.0001,when+0.12);
-    o.start(when); o.stop(when+0.13);
-  }catch(e){}
-}
-function flipSound(){
-  if(!soundOn) return;
-  try{ actx=actx||(function(){try{return new AudioContext()}catch(e){return null}})(); const t=actx.currentTime;
-    for(let i=0;i<5;i++) ping(t+i*0.12, 380+i*40);
-  }catch(e){}
-}
-function dingSound(){ if(!soundOn)return; try{ actx=actx||(function(){try{return new AudioContext()}catch(e){return null}})(); const t=actx.currentTime; ping(t,720); ping(t+0.09,960);}catch(e){} }
-
-function coinEl(small){
-  const d=document.createElement('div');
-  d.className='coin'+(small?' sm':'');
-  d.innerHTML='<div class="face heads"><div><div>👑</div><div class="label">Heads</div></div></div>'+
-              '<div class="face tails"><div><div>⭐</div><div class="label">Tails</div></div></div>';
-  return d;
-}
-
-function flipCoinEl(el, result, dur){
-  return new Promise(res=>{
-    el.style.setProperty('--dur', dur+'ms');
-    // end rotation: even multiple of 180 for heads, odd for tails (plus spins)
-    const spins=4;
-    const end=(spins*360)+(result==='T'?180:0);
-    el.style.setProperty('--end', end+'deg');
-    el.classList.remove('flipping','show-tails'); void el.offsetWidth;
-    el.classList.add('flipping');
-    setTimeout(()=>{
-      el.classList.remove('flipping');
-      el.style.transform='rotateY('+(result==='T'?180:0)+'deg)';
-      res();
-    }, dur);
-  });
-}
-
-function pushHistory(r){ history.unshift(r); if(history.length>24) history.pop(); renderHistory(); }
-function renderHistory(){
-  const wrap=document.getElementById('histWrap'), chips=document.getElementById('histChips');
-  if(!history.length){ wrap.hidden=true; return; }
-  wrap.hidden=false;
-  chips.innerHTML=history.map(r=>`<div class="chip ${r==='H'?'h':'t'}">${r}</div>`).join('');
-}
-
-function renderOpts(){
-  const o=document.getElementById('opts');
-  if(mode==='single'){ o.innerHTML=''; }
-  else if(mode==='multi'){ o.innerHTML='How many coins? <select id="count"><option>2</option><option>3</option><option>5</option><option selected>10</option><option>25</option><option>50</option><option>100</option></select>'; }
-  else { o.innerHTML='Best of <select id="target"><option selected>3</option><option>5</option><option>7</option></select>'; }
-}
-
-async function doFlip(){
-  if(flipping) return; flipping=true;
-  const btn=document.getElementById('flipBtn'); btn.disabled=true;
-  const coins=document.getElementById('coins'), result=document.getElementById('result');
-  flipSound();
-
-  if(mode==='single'){
-    coins.innerHTML=''; const c=coinEl(false); coins.appendChild(c);
-    const r=coin(); await flipCoinEl(c,r,1400);
-    stats[r==='H'?'h':'t']++; pushHistory(r); dingSound();
-    result.innerHTML=`<div class="big">${r==='H'?'👑 Heads!':'⭐ Tails!'}</div>`+
-      `<div class="tally"><span class="h">Heads ${stats.h}</span><span class="t">Tails ${stats.t}</span></div>`;
-  }
-  else if(mode==='multi'){
-    const n=+document.getElementById('count').value;
-    coins.innerHTML=''; const els=[]; const small=n>4;
-    for(let i=0;i<n;i++){ const c=coinEl(small); coins.appendChild(c); els.push(c); }
-    const results=els.map(()=>coin());
-    await Promise.all(els.map((c,i)=>flipCoinEl(c,results[i],1100+Math.random()*700)));
-    const hh=results.filter(r=>r==='H').length, tt=n-hh;
-    results.forEach(r=>{stats[r==='H'?'h':'t']++;}); dingSound();
-    result.innerHTML=`<div class="big">${hh} Heads · ${tt} Tails</div>`+
-      `<div class="sub">${hh===tt?'A perfect tie!':(hh>tt?'👑 Heads wins this round':'⭐ Tails wins this round')}</div>`;
-  }
-  else { // series
-    const c=document.getElementById('coins'); 
-    const r=coin();
-    c.innerHTML=''; const ce=coinEl(false); c.appendChild(ce);
-    await flipCoinEl(ce,r,1400);
-    series[r==='H'?'h':'t']++; series.rounds.push(r); stats[r==='H'?'h':'t']++; pushHistory(r);
-    const need=Math.floor(series.target/2)+1;
-    const dots=series.rounds.map(x=>`<div class="series-dot ${x==='H'?'h':'t'}"></div>`).join('');
-    let inner=`<div class="big">${r==='H'?'👑 Heads':'⭐ Tails'}</div>`+
-      `<div class="tally"><span class="h">Heads ${series.h}</span><span class="t">Tails ${series.t}</span></div>`+
-      `<div class="series-bar">${dots}</div>`;
-    if(series.h>=need||series.t>=need){
-      const winner=series.h>=need?'Heads 👑':'Tails ⭐';
-      inner+=`<div class="series-win">🏆 ${winner} wins the series!</div>`;
-      dingSound(); setTimeout(dingSound,160);
-      series={target:series.target,h:0,t:0,rounds:[]}; // reset for next series
-    } else { dingSound(); }
-    result.innerHTML=inner;
-  }
-  btn.disabled=false; flipping=false;
-}
-
-document.getElementById('flipBtn').addEventListener('click',doFlip);
-document.getElementById('modes').addEventListener('click',e=>{
-  const b=e.target.closest('.mode'); if(!b) return;
-  document.querySelectorAll('.mode').forEach(x=>x.classList.remove('on')); b.classList.add('on');
-  mode=b.dataset.mode; renderOpts();
-  document.getElementById('coins').innerHTML=''; document.getElementById('result').innerHTML='';
-  if(mode==='series') series={target:3,h:0,t:0,rounds:[]};
-  // place an idle coin for single/series
-  if(mode!=='multi'){ const c=coinEl(false); document.getElementById('coins').appendChild(c); }
-  // wire target select for series
-  setTimeout(()=>{ const tg=document.getElementById('target'); if(tg) tg.addEventListener('change',()=>{series={target:+tg.value,h:0,t:0,rounds:[]};document.getElementById('result').innerHTML='';}); },0);
-});
-document.getElementById('soundBtn').addEventListener('click',e=>{ soundOn=!soundOn; e.target.textContent=soundOn?'🔊 Sound on':'🔇 Sound off'; });
-document.getElementById('resetBtn').addEventListener('click',()=>{ stats={h:0,t:0}; history=[]; series={target:series.target,h:0,t:0,rounds:[]}; renderHistory(); document.getElementById('result').innerHTML=''; });
-
-// init
-renderOpts();
-(function(){ const c=coinEl(false); document.getElementById('coins').appendChild(c); })();
-</script>
+<script>document.getElementById("yr").textContent=(new Date).getFullYear();let mode="single",soundOn=!0,stats={h:0,t:0},history=[],series={target:3,h:0,t:0,rounds:[]},flipping=!1;function coin(){if(window.crypto&&crypto.getRandomValues){const t=new Uint8Array(1);return crypto.getRandomValues(t),1&t[0]?"H":"T"}return Math.random()<.5?"H":"T"}let actx=null;function ping(t,e){if(soundOn)try{actx=actx||function(){try{return new AudioContext}catch(t){return null}}();const n=actx.createOscillator(),i=actx.createGain();n.connect(i),i.connect(actx.destination),n.frequency.value=e,n.type="triangle",i.gain.setValueAtTime(1e-4,t),i.gain.exponentialRampToValueAtTime(.16,t+.01),i.gain.exponentialRampToValueAtTime(1e-4,t+.12),n.start(t),n.stop(t+.13)}catch(t){}}function flipSound(){if(soundOn)try{if(actx=actx||function(){try{return new AudioContext}catch(t){return null}}(),!actx)return;const t=actx.currentTime;for(let e=0;e<5;e++)ping(t+.12*e,380+40*e)}catch(t){}}function dingSound(){if(soundOn){try{if(!actx)return}catch(t){return}try{if(actx=actx||function(){try{return new AudioContext}catch(t){return null}}(),!actx)return;const t=actx.currentTime;ping(t,720),ping(t+.09,960)}catch(t){}}}function coinEl(t){const e=document.createElement("div");return e.className="coin"+(t?" sm":""),e.innerHTML='<div class="face heads"><div><div>👑</div><div class="label">Heads</div></div></div><div class="face tails"><div><div>⭐</div><div class="label">Tails</div></div></div>',e}function flipCoinEl(t,e,n){return new Promise(i=>{t.style.setProperty("--dur",n+"ms");const s=1440+("T"===e?180:0);t.style.setProperty("--end",s+"deg"),t.classList.remove("flipping","show-tails"),t.offsetWidth,t.classList.add("flipping"),setTimeout(()=>{t.classList.remove("flipping"),t.style.transform="rotateY("+("T"===e?180:0)+"deg)",i()},n)})}function pushHistory(t){history.unshift(t),history.length>24&&history.pop(),renderHistory()}function renderHistory(){const t=document.getElementById("histWrap"),e=document.getElementById("histChips");history.length?(t.hidden=!1,e.innerHTML=history.map(t=>`<div class="chip ${"H"===t?"h":"t"}">${t}</div>`).join("")):t.hidden=!0}function renderOpts(){const t=document.getElementById("opts");t.innerHTML="single"===mode?"":"multi"===mode?'How many coins? <select id="count"><option>2</option><option>3</option><option>5</option><option selected>10</option><option>25</option><option>50</option><option>100</option></select>':'Best of <select id="target"><option selected>3</option><option>5</option><option>7</option></select>'}async function doFlip(){if(flipping)return;flipping=!0;const t=document.getElementById("flipBtn");t.disabled=!0;const e=document.getElementById("coins"),n=document.getElementById("result");if(flipSound(),"single"===mode){e.innerHTML="";const t=coinEl(!1);e.appendChild(t);const i=coin();await flipCoinEl(t,i,1400),stats["H"===i?"h":"t"]++,pushHistory(i),dingSound(),n.innerHTML=`<div class="big">${"H"===i?"👑 Heads!":"⭐ Tails!"}</div><div class="tally"><span class="h">Heads ${stats.h}</span><span class="t">Tails ${stats.t}</span></div>`}else if("multi"===mode){const t=+document.getElementById("count").value;e.innerHTML="";const i=[],s=t>4;for(let n=0;n<t;n++){const t=coinEl(s);e.appendChild(t),i.push(t)}const o=i.map(()=>coin());await Promise.all(i.map((t,e)=>flipCoinEl(t,o[e],1100+700*Math.random())));const d=o.filter(t=>"H"===t).length,r=t-d;o.forEach(t=>{stats["H"===t?"h":"t"]++}),dingSound(),n.innerHTML=`<div class="big">${d} Heads · ${r} Tails</div><div class="sub">${d===r?"A perfect tie!":d>r?"👑 Heads wins this round":"⭐ Tails wins this round"}</div>`}else{const t=document.getElementById("coins"),e=coin();t.innerHTML="";const i=coinEl(!1);t.appendChild(i),await flipCoinEl(i,e,1400),series["H"===e?"h":"t"]++,series.rounds.push(e),stats["H"===e?"h":"t"]++,pushHistory(e);const s=Math.floor(series.target/2)+1,o=series.rounds.map(t=>`<div class="series-dot ${"H"===t?"h":"t"}"></div>`).join("");let d=`<div class="big">${"H"===e?"👑 Heads":"⭐ Tails"}</div><div class="tally"><span class="h">Heads ${series.h}</span><span class="t">Tails ${series.t}</span></div><div class="series-bar">${o}</div>`;if(series.h>=s||series.t>=s){d+=`<div class="series-win">🏆 ${series.h>=s?"Heads 👑":"Tails ⭐"} wins the series!</div>`,dingSound(),setTimeout(dingSound,160),series={target:series.target,h:0,t:0,rounds:[]}}else dingSound();n.innerHTML=d}t.disabled=!1,flipping=!1}document.getElementById("flipBtn").addEventListener("click",doFlip),document.getElementById("modes").addEventListener("click",t=>{const e=t.target.closest(".mode");if(e){if(document.querySelectorAll(".mode").forEach(t=>t.classList.remove("on")),e.classList.add("on"),mode=e.dataset.mode,renderOpts(),document.getElementById("coins").innerHTML="",document.getElementById("result").innerHTML="","series"===mode&&(series={target:3,h:0,t:0,rounds:[]}),"multi"!==mode){const t=coinEl(!1);document.getElementById("coins").appendChild(t)}setTimeout(()=>{const t=document.getElementById("target");t&&t.addEventListener("change",()=>{series={target:+t.value,h:0,t:0,rounds:[]},document.getElementById("result").innerHTML=""})},0)}}),document.getElementById("soundBtn").addEventListener("click",t=>{soundOn=!soundOn,t.target.textContent=soundOn?"🔊 Sound on":"🔇 Sound off"}),document.getElementById("resetBtn").addEventListener("click",()=>{stats={h:0,t:0},history=[],series={target:series.target,h:0,t:0,rounds:[]},renderHistory(),document.getElementById("result").innerHTML=""}),renderOpts(),function(){const t=coinEl(!1);document.getElementById("coins").appendChild(t)}();</script>
 </body>
 </html>

@@ -25,7 +25,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Slot Machine","item":"https://picklytools.com/slotmachine/"}]}
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js" defer></script>
+
 <style>
 :root{
   --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
@@ -103,7 +103,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 
 footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 .foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.foot-col h5{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-col .foot-h5{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
 .foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
 .foot-col a:hover{color:var(--tx)}
 .foot-brand{max-width:240px}.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
@@ -112,6 +112,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 
 @font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
 @font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
+.foot-h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px;color:var(--tx)}
 </style>
 <style id="fonts">
 @font-face{font-family:'Fredoka';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/fredoka-400.woff2') format('woff2')}
@@ -121,6 +122,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 @font-face{font-family:'Nunito';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/nunito-700.woff2') format('woff2')}
 @font-face{font-family:'Nunito';font-style:normal;font-weight:800;font-display:swap;src:url('/fonts/nunito-800.woff2') format('woff2')}
 </style>
+<script>window._confettiSrc="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js",window._loadConfetti=function(n){if(window.confetti)n&&n();else{var t=document.createElement("script");t.src=window._confettiSrc,t.onload=function(){n&&n()},document.head.appendChild(t)}};</script>
 </head>
 <body>
 
@@ -138,6 +140,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
     </a>
     <a class="back" href="/">← All tools</a>
   </div>
+<main>
 </div>
 
 <header class="head">
@@ -172,7 +175,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
   </div>
 
   <div class="paytable">
-    <h4>💰 Payouts (per coin bet)</h4>
+    <h2>💰 Payouts (per coin bet)</h2>
     <div class="pt"><span>7️⃣ 7️⃣ 7️⃣ — Jackpot!</span><span>×50</span></div>
     <div class="pt"><span>💎 💎 💎</span><span>×20</span></div>
     <div class="pt"><span>⭐ ⭐ ⭐</span><span>×12</span></div>
@@ -211,6 +214,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
   </article>
 </div>
 
+</main>
 <footer>
   <div class="wrap foot-in">
     <div class="foot-col foot-brand">
@@ -225,110 +229,14 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
       </a>
       <p>Free, fun online tools to help you decide anything.</p>
     </div>
-        <div class="foot-col"><h5>Tools</h5><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/timezones/">Timezone Planner</a><a href="/randomnumber/">Random Number</a><a href="/teampicker/">Team Picker</a><a href="/whattoeat/">What to Eat?</a></div>
-    <div class="foot-col"><h5>Games</h5><a href="/magic8ball/">Magic 8 Ball</a><a href="/wouldyourather/">Would You Rather</a><a href="/rockpaperscissors/">Rock Paper Scissors</a><a href="/truthordare/">Truth or Dare</a><a href="/neverhaveiever/">Never Have I Ever</a><a href="/slotmachine/">Slot Machine</a></div>
-    <div class="foot-col"><h5>Site</h5><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
-    <div class="foot-col"><h5>Legal</h5><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+        <div class="foot-col"><p class="foot-h5">Tools</p><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/timezones/">Timezone Planner</a><a href="/randomnumber/">Random Number</a><a href="/teampicker/">Team Picker</a><a href="/whattoeat/">What to Eat?</a></div>
+    <div class="foot-col"><p class="foot-h5">Games</p><a href="/magic8ball/">Magic 8 Ball</a><a href="/wouldyourather/">Would You Rather</a><a href="/rockpaperscissors/">Rock Paper Scissors</a><a href="/truthordare/">Truth or Dare</a><a href="/neverhaveiever/">Never Have I Ever</a><a href="/slotmachine/">Slot Machine</a></div>
+    <div class="foot-col"><p class="foot-h5">Site</p><a href="/#about">About</a><a href="/#faq">FAQ</a></div>
+    <div class="foot-col"><p class="foot-h5">Legal</p><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
   </div>
   <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div></div>
 </footer>
 
-<script>
-document.getElementById('yr').textContent=new Date().getFullYear();
-
-const SYMBOLS=['🍒','🍋','🍊','🍉','🔔','⭐','💎','7️⃣'];
-const WEIGHTS=[22,20,18,15,12,8,4,2]; // rarer = better payout
-const PAY={'7️⃣':50,'💎':20,'⭐':12,'🔔':8}; // three-of-a-kind multipliers; fruit handled separately
-const FRUIT=['🍒','🍋','🍊','🍉'];
-
-let coins=100, bet=5, busy=false, soundOn=true;
-const BETS=[1,5,10,25];
-
-function randInt(n){ if(window.crypto&&crypto.getRandomValues){const m=4294967296,lim=m-(m%n),a=new Uint32Array(1);do{crypto.getRandomValues(a);}while(a[0]>=lim);return a[0]%n;} return Math.floor(Math.random()*n); }
-function weightedSym(){
-  const total=WEIGHTS.reduce((a,b)=>a+b,0);
-  let r=randInt(total);
-  for(let i=0;i<SYMBOLS.length;i++){ if(r<WEIGHTS[i]) return SYMBOLS[i]; r-=WEIGHTS[i]; }
-  return SYMBOLS[0];
-}
-
-let actx=null;
-function tone(f,t,d,type){ if(!soundOn)return; try{actx=actx||(function(){try{return new AudioContext()}catch(e){return null}})();const o=actx.createOscillator(),g=actx.createGain();o.connect(g);g.connect(actx.destination);o.type=type||'square';o.frequency.value=f;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.08,t+0.01);g.gain.exponentialRampToValueAtTime(0.0001,t+d);o.start(t);o.stop(t+d+0.02);}catch(e){} }
-function spinSound(){ if(!soundOn)return; try{actx=actx||(function(){try{return new AudioContext()}catch(e){return null}})();const t=actx.currentTime;for(let i=0;i<10;i++)tone(200+i*8,t+i*0.06,0.04,'square');}catch(e){} }
-function winSound(big){ if(!soundOn)return; try{actx=actx||(function(){try{return new AudioContext()}catch(e){return null}})();const t=actx.currentTime;const notes=big?[523,659,784,1047]:[523,784];notes.forEach((n,i)=>tone(n,t+i*0.1,0.16,'triangle'));}catch(e){} }
-
-function buildStrip(el, finalSym){
-  // build a column of random symbols ending on finalSym
-  let html='';
-  for(let i=0;i<20;i++) html+=`<div class="sym">${SYMBOLS[randInt(SYMBOLS.length)]}</div>`;
-  html+=`<div class="sym">${finalSym}</div>`;
-  el.innerHTML=html;
-  el.style.transition='none';
-  el.style.transform='translateY(0)';
-}
-
-function evaluate(a,b,c){
-  if(a===b&&b===c){
-    if(PAY[a]) return {mult:PAY[a], label:a==='7️⃣'?'🎉 JACKPOT! 7-7-7':'Three '+a+'!', jackpot:a==='7️⃣'};
-    if(FRUIT.includes(a)) return {mult:5, label:'Three '+a+'! Fruit match', jackpot:false};
-    return {mult:5,label:'Three of a kind!',jackpot:false};
-  }
-  if(a===b||b===c||a===c) return {mult:2,label:'Two match — small win',jackpot:false};
-  return {mult:0,label:'No match — spin again',jackpot:false};
-}
-
-async function spin(){
-  if(busy) return;
-  if(coins<bet){ document.getElementById('result').textContent='Not enough coins — tap Reset!'; document.getElementById('result').className='result lose'; return; }
-  busy=true; document.getElementById('spinBtn').disabled=true;
-  coins-=bet; updateCoins();
-  document.getElementById('result').textContent='Spinning…'; document.getElementById('result').className='result lose';
-  document.querySelectorAll('.reel').forEach(r=>r.classList.remove('win'));
-  spinSound();
-
-  const finals=[weightedSym(),weightedSym(),weightedSym()];
-  const strips=[document.getElementById('s0'),document.getElementById('s1'),document.getElementById('s2')];
-  strips.forEach((s,i)=>buildStrip(s,finals[i]));
-  // animate each reel stopping at staggered times
-  await Promise.all(strips.map((s,i)=>new Promise(res=>{
-    const symCount=21, symH=104;
-    const dist=(symCount-1)*symH; // land on last sym (finalSym)
-    // force reflow then animate
-    void s.offsetWidth;
-    const dur=900+i*450;
-    s.style.transition='transform '+dur+'ms cubic-bezier(.15,.7,.2,1)';
-    s.style.transform='translateY(-'+dist+'px)';
-    setTimeout(res,dur+30);
-  })));
-
-  const r=evaluate(finals[0],finals[1],finals[2]);
-  const res=document.getElementById('result');
-  if(r.mult>0){
-    const won=bet*r.mult;
-    coins+=won; updateCoins();
-    res.textContent=r.label+'  +'+won+' 🪙';
-    res.className='result '+(r.jackpot?'jackpot':'win');
-    document.querySelectorAll('.reel').forEach(rl=>rl.classList.add('win'));
-    winSound(r.jackpot||r.mult>=12);
-    if((r.jackpot||r.mult>=12)&&typeof confetti==='function'){ confetti({particleCount:r.jackpot?180:110,spread:r.jackpot?100:75,origin:{y:.5},colors:['#FFE08A','#FFB22E','#FF8C00','#FF2060','#00E676']}); }
-  } else {
-    res.textContent=r.label; res.className='result lose';
-  }
-  busy=false; document.getElementById('spinBtn').disabled=false;
-}
-
-function updateCoins(){ document.getElementById('coins').textContent=coins; }
-function updateBet(){ document.getElementById('betVal').textContent=bet; document.getElementById('betLabel').textContent=bet; }
-
-document.getElementById('spinBtn').addEventListener('click',spin);
-document.getElementById('betUp').addEventListener('click',()=>{ const i=BETS.indexOf(bet); if(i<BETS.length-1){bet=BETS[i+1];updateBet();} });
-document.getElementById('betDown').addEventListener('click',()=>{ const i=BETS.indexOf(bet); if(i>0){bet=BETS[i-1];updateBet();} });
-document.getElementById('soundBtn').addEventListener('click',e=>{ soundOn=!soundOn; e.target.textContent=soundOn?'🔊 Sound on':'🔇 Sound off'; });
-document.getElementById('resetBtn').addEventListener('click',()=>{ coins=100; updateCoins(); document.getElementById('result').textContent='Coins refilled — spin to play!'; document.getElementById('result').className='result lose'; });
-
-// init reels with a static symbol each
-['s0','s1','s2'].forEach(id=>{ document.getElementById(id).innerHTML='<div class="sym">🍒</div>'; });
-updateBet();
-</script>
+<script>document.getElementById("yr").textContent=(new Date).getFullYear();const SYMBOLS=["🍒","🍋","🍊","🍉","🔔","⭐","💎","7️⃣"],WEIGHTS=[22,20,18,15,12,8,4,2],PAY={"7️⃣":50,"💎":20,"⭐":12,"🔔":8},FRUIT=["🍒","🍋","🍊","🍉"];let coins=100,bet=5,busy=!1,soundOn=!0;const BETS=[1,5,10,25];function randInt(t){if(window.crypto&&crypto.getRandomValues){const e=4294967296,n=e-e%t,o=new Uint32Array(1);do{crypto.getRandomValues(o)}while(o[0]>=n);return o[0]%t}return Math.floor(Math.random()*t)}function weightedSym(){let t=randInt(WEIGHTS.reduce((t,e)=>t+e,0));for(let e=0;e<SYMBOLS.length;e++){if(t<WEIGHTS[e])return SYMBOLS[e];t-=WEIGHTS[e]}return SYMBOLS[0]}let actx=null;function tone(t,e,n,o){if(soundOn){try{if(!actx)return}catch(t){return}try{actx=actx||function(){try{return new AudioContext}catch(t){return null}}();const c=actx.createOscillator(),a=actx.createGain();c.connect(a),a.connect(actx.destination),c.type=o||"square",c.frequency.value=t,a.gain.setValueAtTime(1e-4,e),a.gain.exponentialRampToValueAtTime(.08,e+.01),a.gain.exponentialRampToValueAtTime(1e-4,e+n),c.start(e),c.stop(e+n+.02)}catch(t){}}}function spinSound(){if(soundOn){try{if(!actx)return}catch(t){return}try{if(actx=actx||function(){try{return new AudioContext}catch(t){return null}}(),!actx)return;const t=actx.currentTime;for(let e=0;e<10;e++)tone(200+8*e,t+.06*e,.04,"square")}catch(t){}}}function winSound(t){if(soundOn){try{if(!actx)return}catch(t){return}try{if(actx=actx||function(){try{return new AudioContext}catch(t){return null}}(),!actx)return;const e=actx.currentTime;(t?[523,659,784,1047]:[523,784]).forEach((t,n)=>tone(t,e+.1*n,.16,"triangle"))}catch(t){}}}function buildStrip(t,e){let n="";for(let t=0;t<20;t++)n+=`<div class="sym">${SYMBOLS[randInt(SYMBOLS.length)]}</div>`;n+=`<div class="sym">${e}</div>`,t.innerHTML=n,t.style.transition="none",t.style.transform="translateY(0)"}function evaluate(t,e,n){return t===e&&e===n?PAY[t]?{mult:PAY[t],label:"7️⃣"===t?"🎉 JACKPOT! 7-7-7":"Three "+t+"!",jackpot:"7️⃣"===t}:FRUIT.includes(t)?{mult:5,label:"Three "+t+"! Fruit match",jackpot:!1}:{mult:5,label:"Three of a kind!",jackpot:!1}:t===e||e===n||t===n?{mult:2,label:"Two match — small win",jackpot:!1}:{mult:0,label:"No match — spin again",jackpot:!1}}async function spin(){if(busy)return;if(coins<bet)return document.getElementById("result").textContent="Not enough coins — tap Reset!",void(document.getElementById("result").className="result lose");busy=!0,document.getElementById("spinBtn").disabled=!0,coins-=bet,updateCoins(),document.getElementById("result").textContent="Spinning…",document.getElementById("result").className="result lose",document.querySelectorAll(".reel").forEach(t=>t.classList.remove("win")),spinSound();const t=[weightedSym(),weightedSym(),weightedSym()],e=[document.getElementById("s0"),document.getElementById("s1"),document.getElementById("s2")];e.forEach((e,n)=>buildStrip(e,t[n])),await Promise.all(e.map((t,e)=>new Promise(n=>{t.offsetWidth;const o=900+450*e;t.style.transition="transform "+o+"ms cubic-bezier(.15,.7,.2,1)",t.style.transform="translateY(-2080px)",setTimeout(n,o+30)})));const n=evaluate(t[0],t[1],t[2]),o=document.getElementById("result");if(n.mult>0){const t=bet*n.mult;coins+=t,updateCoins(),o.textContent=n.label+"  +"+t+" 🪙",o.className="result "+(n.jackpot?"jackpot":"win"),document.querySelectorAll(".reel").forEach(t=>t.classList.add("win")),winSound(n.jackpot||n.mult>=12),(n.jackpot||n.mult>=12)&&"function"==typeof confetti&&confetti({particleCount:n.jackpot?180:110,spread:n.jackpot?100:75,origin:{y:.5},colors:["#FFE08A","#FFB22E","#FF8C00","#FF2060","#00E676"]})}else o.textContent=n.label,o.className="result lose";busy=!1,document.getElementById("spinBtn").disabled=!1}function updateCoins(){document.getElementById("coins").textContent=coins}function updateBet(){document.getElementById("betVal").textContent=bet,document.getElementById("betLabel").textContent=bet}document.getElementById("spinBtn").addEventListener("click",spin),document.getElementById("betUp").addEventListener("click",()=>{const t=BETS.indexOf(bet);t<BETS.length-1&&(bet=BETS[t+1],updateBet())}),document.getElementById("betDown").addEventListener("click",()=>{const t=BETS.indexOf(bet);t>0&&(bet=BETS[t-1],updateBet())}),document.getElementById("soundBtn").addEventListener("click",t=>{soundOn=!soundOn,t.target.textContent=soundOn?"🔊 Sound on":"🔇 Sound off"}),document.getElementById("resetBtn").addEventListener("click",()=>{coins=100,updateCoins(),document.getElementById("result").textContent="Coins refilled — spin to play!",document.getElementById("result").className="result lose"}),["s0","s1","s2"].forEach(t=>{document.getElementById(t).innerHTML='<div class="sym">🍒</div>'}),updateBet();</script>
 </body>
 </html>
