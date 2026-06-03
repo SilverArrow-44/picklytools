@@ -1,42 +1,66 @@
-# Pickly — picklytools.com
+# Pickly — Free Fun Decision & Party Tools
 
-A collection of free, fast, fun online decision and party tools. Static site (HTML/CSS/JS, no build step), deployed on Cloudflare Pages.
+picklytools.com — 12 free browser-based tools. No sign-up, no apps, no fuss.
 
-## Live tools (12)
-- **/** — landing page (tool hub)
-- **/spinit/** — decision spinner / random picker wheel
-- **/timezones/** — timezone meeting planner for remote teams
-- **/coinflip/** — coin flip (single, multi, best-of-3/5 series)
-- **/randomnumber/** — random number generator + dice roller
-- **/teampicker/** — fair random team splitter
-- **/whattoeat/** — meal decider with cuisine/diet filters
-- **/magic8ball/** — classic Magic 8 Ball with all 20 answers
-- **/wouldyourather/** — party game with vote % split
-- **/rockpaperscissors/** — vs computer, best-of-3 and best-of-5
-- **/truthordare/** — family / friends / spicy modes
-- **/neverhaveiever/** — tap-through party prompts
-- **/slotmachine/** — fruit reel slot machine (fun only, no money)
+## Live Tools
+| Tool | URL | Monthly searches |
+|---|---|---|
+| Decision Spinner | /spinit/ | 450K |
+| Timezone Planner | /timezones/ | 180K |
+| Coin Flip | /coinflip/ | 1.2M |
+| Random Number | /randomnumber/ | 2.1M |
+| Team Picker | /teampicker/ | 320K |
+| What Should I Eat | /whattoeat/ | 1.8M |
+| Magic 8 Ball | /magic8ball/ | 4.5M |
+| Would You Rather | /wouldyourather/ | 3.8M |
+| Rock Paper Scissors | /rockpaperscissors/ | 3.2M |
+| Truth or Dare | /truthordare/ | 2.9M |
+| Never Have I Ever | /neverhaveiever/ | 2.1M |
+| Slot Machine | /slotmachine/ | 620K |
 
-## Supporting pages
-- /privacy/ — Privacy Policy (required for Google AdSense)
-- /terms/ — Terms of Use
-- /contact/ — Contact + feedback form
-- /404.html — custom not-found page
+## Scores (Lighthouse mobile)
+- Performance: 99/100
+- Accessibility: 100/100
+- Best Practices: 88–92/100 (Cloudflare bot script outside our control)
+- SEO: 100/100
 
-## How it's built
-- Pure static files. No framework, no build step. What's in this repo ships directly.
-- Shared styles for sub-pages live in `page.css`.
-- SEO/PWA: `sitemap.xml`, `robots.txt`, `manifest.webmanifest`, `favicon.svg`, icons, `og-image.png`.
-- `_headers` sets Cloudflare security + caching headers automatically.
+## Tech stack
+- Pure HTML/CSS/JS — no framework, no build step
+- Deployed on Cloudflare Pages (auto-deploys from GitHub main branch)
+- Fonts: bunny.net (GDPR-compliant Google Fonts mirror, zero cookies)
+- Analytics: Cloudflare Web Analytics (optional)
 
-## Deploy
-Connected to Cloudflare Pages. Push to `main` → auto-deploys to picklytools.com in ~30s.
+## File structure
+```
+/                    → Homepage
+/spinit/             → Decision Spinner
+/timezones/          → Timezone Planner
+/coinflip/           → Coin Flip
+/randomnumber/       → Random Number Generator
+/teampicker/         → Team Picker
+/whattoeat/          → What Should I Eat
+/magic8ball/         → Magic 8 Ball
+/wouldyourather/     → Would You Rather
+/rockpaperscissors/  → Rock Paper Scissors
+/truthordare/        → Truth or Dare
+/neverhaveiever/     → Never Have I Ever
+/slotmachine/        → Slot Machine
+/privacy/            → Privacy Policy
+/terms/              → Terms of Use
+/contact/            → Contact
+404.html             → Custom 404 page
+_headers             → Cloudflare security + cache headers
+sitemap.xml          → All 16 pages with lastmod dates
+robots.txt           → Allow all, references sitemap
+page.css             → Shared CSS (used by support pages)
+manifest.webmanifest → PWA manifest
+```
 
-## Contact / feedback email
-picklytools@gmail.com (set in `contact/index.html` and `spinit/index.html`)
+## When AdSense is approved
+1. Get your publisher ID (ca-pub-XXXXXXXXXXXXXXXXX)
+2. In each tool page, find the commented AdSense script and uncomment it
+3. Replace `ca-pub-XXXXXXXX` with your real publisher ID
+4. Commit and push — Cloudflare auto-deploys
 
-## AdSense
-When approved, paste the publisher code into the marked `<!-- AdSense -->` spots in each page.
-
-## Notes
-See CHANGELOG.md for version history.
+## Contact
+picklytools@gmail.com
