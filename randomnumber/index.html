@@ -25,10 +25,6 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Random Number Generator","item":"https://picklytools.com/randomnumber/"}]}
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700 0;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700 0;700;800&display=swap"></noscript>
 <style>
 :root{
   --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
@@ -130,6 +126,14 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 
 @font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
 @font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
+</style>
+<style id="fonts">
+@font-face{font-family:'Fredoka';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/fredoka-400.woff2') format('woff2')}
+@font-face{font-family:'Fredoka';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/fredoka-600.woff2') format('woff2')}
+@font-face{font-family:'Fredoka';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/fredoka-700.woff2') format('woff2')}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/nunito-400.woff2') format('woff2')}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/nunito-700.woff2') format('woff2')}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:800;font-display:swap;src:url('/fonts/nunito-800.woff2') format('woff2')}
 </style>
 </head>
 <body>
@@ -258,9 +262,9 @@ function randInt(min,max){
 
 /* ── sound ── */
 let actx=null;
-function tone(freq,when,dur){ if(!soundOn)return; try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); const o=actx.createOscillator(),g=actx.createGain(); o.connect(g);g.connect(actx.destination); o.type='triangle'; o.frequency.value=freq; g.gain.setValueAtTime(0.0001,when); g.gain.exponentialRampToValueAtTime(0.14,when+0.01); g.gain.exponentialRampToValueAtTime(0.0001,when+dur); o.start(when);o.stop(when+dur+0.02);}catch(e){} }
-function tickSound(){ if(!soundOn)return; try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); tone(420+Math.random()*120,actx.currentTime,0.05);}catch(e){} }
-function winSound(){ if(!soundOn)return; try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); const t=actx.currentTime; tone(620,t,0.12); tone(820,t+0.1,0.14);}catch(e){} }
+function tone(freq,when,dur){ if(!soundOn)return; try{ actx=actx||(function(){try{return new AudioContext()}catch(e){return null}})(); const o=actx.createOscillator(),g=actx.createGain(); o.connect(g);g.connect(actx.destination); o.type='triangle'; o.frequency.value=freq; g.gain.setValueAtTime(0.0001,when); g.gain.exponentialRampToValueAtTime(0.14,when+0.01); g.gain.exponentialRampToValueAtTime(0.0001,when+dur); o.start(when);o.stop(when+dur+0.02);}catch(e){} }
+function tickSound(){ if(!soundOn)return; try{ actx=actx||(function(){try{return new AudioContext()}catch(e){return null}})(); tone(420+Math.random()*120,actx.currentTime,0.05);}catch(e){} }
+function winSound(){ if(!soundOn)return; try{ actx=actx||(function(){try{return new AudioContext()}catch(e){return null}})(); const t=actx.currentTime; tone(620,t,0.12); tone(820,t+0.1,0.14);}catch(e){} }
 
 const DICE_PIPS={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
 function dieHTML(v){ let h=''; for(let i=0;i<9;i++) h+='<div class="pip'+(DICE_PIPS[v].includes(i)?'':' off')+'"></div>'; return h; }

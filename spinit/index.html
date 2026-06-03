@@ -43,14 +43,14 @@
   ]
 }
 </script>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700 0;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700 0;700;800&display=swap"></noscript>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js" defer></script>
 <!-- ════════════════ GOOGLE ADSENSE (optional, for earning revenue) ════════════════
   To show real ads & earn money:
   1. Sign up at https://adsense.google.com and get your publisher ID (ca-pub-XXXXXXXX)
   2. Uncomment the line below and replace ca-pub-XXXXXXXX with your ID:
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script>
+<!-- ADSENSE_PLACEHOLDER: uncomment and add publisher ID when approved
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+-->
   3. Replace the placeholder ad box near the bottom of the <body> with your ad unit code.
 ═══════════════════════════════════════════════════════════════════════════════ -->
 <style>
@@ -444,6 +444,14 @@ textarea.fb-input{min-height:112px;resize:vertical;line-height:1.5;display:block
 @font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
 @font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
 </style>
+<style id="fonts">
+@font-face{font-family:'Fredoka';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/fredoka-400.woff2') format('woff2')}
+@font-face{font-family:'Fredoka';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/fredoka-600.woff2') format('woff2')}
+@font-face{font-family:'Fredoka';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/fredoka-700.woff2') format('woff2')}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/nunito-400.woff2') format('woff2')}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/nunito-700.woff2') format('woff2')}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:800;font-display:swap;src:url('/fonts/nunito-800.woff2') format('woff2')}
+</style>
 </head>
 <body>
 
@@ -832,7 +840,7 @@ function startSpin() {
 
   // Unlock audio
   if (!audioCtx) {
-    try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {}
+    try { audioCtx = new (AudioContext)(); } catch(e) {}
   }
 
   spinning = true;
