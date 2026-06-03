@@ -43,9 +43,9 @@
   ]
 }
 </script>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"></noscript>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.6.0/confetti.browser.min.js" defer></script>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700 0;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700 0;700;800&display=swap"></noscript>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js" defer></script>
 <!-- ════════════════ GOOGLE ADSENSE (optional, for earning revenue) ════════════════
   To show real ads & earn money:
   1. Sign up at https://adsense.google.com and get your publisher ID (ca-pub-XXXXXXXX)
@@ -74,7 +74,7 @@
 }
 
 body{
-  font-family:'Nunito',sans-serif;
+  font-family:'Nunito','Nunito Fallback',sans-serif;
   background:var(--bg);color:var(--tx);
   min-height:100vh;overflow-x:hidden;
 }
@@ -100,7 +100,7 @@ body::before{
 /* ── HEADER ──────────────────────────────── */
 .header{text-align:center;margin-bottom:22px}
 .logo{
-  font-family:'Fredoka',sans-serif;font-weight:700;
+  font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;
   font-size:clamp(40px,7vw,64px);letter-spacing:-.5px;margin-top:0;
   background:linear-gradient(135deg,#FF2060 0%,#FF8C00 50%,#FFD600 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
@@ -157,7 +157,7 @@ body::before{
 
 /* Spin Button */
 .spin-btn{
-  font-family:'Fredoka',sans-serif;font-weight:600;
+  font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;
   font-size:clamp(19px,4vw,27px);letter-spacing:.3px;
   padding:16px 60px;
   background:linear-gradient(135deg,var(--pk),var(--or));
@@ -209,7 +209,7 @@ body::before{
 .ppill{
   background:var(--sf);border:1.5px solid var(--bd);
   border-radius:100px;color:var(--tx);
-  font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;
+  font-family:'Nunito','Nunito Fallback',sans-serif;font-size:13px;font-weight:700;
   padding:6px 15px;cursor:pointer;white-space:nowrap;
   transition:all .15s;
 }
@@ -224,7 +224,7 @@ body::before{
 input.field{
   flex:1;background:rgba(255,255,255,.06);
   border:1.5px solid var(--bd);border-radius:var(--rs);
-  color:var(--tx);font-family:'Nunito',sans-serif;
+  color:var(--tx);font-family:'Nunito','Nunito Fallback',sans-serif;
   font-size:15px;font-weight:600;padding:10px 14px;
   outline:none;transition:border-color .2s,background .2s;
 }
@@ -277,7 +277,7 @@ input.field::placeholder{color:var(--mt)}
   display:flex;align-items:center;justify-content:center;gap:9px;
   background:linear-gradient(135deg,rgba(0,229,255,.16),rgba(108,99,255,.18));
   border:1.5px solid rgba(108,99,255,.5);border-radius:var(--rs);
-  color:var(--tx);font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;
+  color:var(--tx);font-family:'Nunito','Nunito Fallback',sans-serif;font-size:13px;font-weight:800;
   letter-spacing:.4px;padding:13px 10px;cursor:pointer;transition:all .15s;
 }
 .share-btn .ic{font-size:17px}
@@ -290,7 +290,7 @@ input.field::placeholder{color:var(--mt)}
 .abt{
   background:var(--sf);border:1.5px solid var(--bd);
   border-radius:var(--rs);color:var(--tx);
-  font-family:'Nunito',sans-serif;font-size:11px;font-weight:900;
+  font-family:'Nunito','Nunito Fallback',sans-serif;font-size:11px;font-weight:900;
   letter-spacing:.5px;text-transform:uppercase;
   padding:13px 6px;cursor:pointer;
   display:flex;flex-direction:column;align-items:center;gap:5px;
@@ -321,7 +321,7 @@ input.field::placeholder{color:var(--mt)}
 .m-emoji{font-size:54px;margin-bottom:8px;display:block;animation:popIn .5s cubic-bezier(.34,1.56,.64,1) .08s both}
 @keyframes popIn{from{transform:scale(0) rotate(-25deg)}to{transform:scale(1) rotate(0)}}
 .m-val{
-  font-family:'Fredoka',sans-serif;font-weight:700;
+  font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;
   font-size:clamp(28px,7vw,46px);letter-spacing:-.3px;
   background:linear-gradient(135deg,#FF2060,#FF8C00,#FFD600);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
@@ -330,7 +330,7 @@ input.field::placeholder{color:var(--mt)}
 }
 .m-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .mbtn{
-  font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;
+  font-family:'Nunito','Nunito Fallback',sans-serif;font-size:14px;font-weight:800;
   padding:13px 28px;border-radius:100px;cursor:pointer;border:none;transition:all .2s;
 }
 .mpri{
@@ -402,7 +402,7 @@ body.ads-closed .fab{bottom:18px}
   height:54px;padding:0 20px;border:none;border-radius:100px;cursor:pointer;
   background:linear-gradient(120deg,#B061FF,#FF2060,#FF8C00,#B061FF);
   background-size:280% 280%;
-  color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:14.5px;letter-spacing:.2px;
+  color:#fff;font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:800;font-size:14.5px;letter-spacing:.2px;
   box-shadow:0 8px 26px rgba(176,97,255,.5);
   white-space:nowrap;
   transition:transform .25s,box-shadow .25s;
@@ -422,7 +422,7 @@ body.ads-closed .fab{bottom:18px}
 .fb-types{display:flex;gap:8px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
 .fb-type{
   background:var(--sf);border:1.5px solid var(--bd);border-radius:100px;
-  color:var(--tx);font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;
+  color:var(--tx);font-family:'Nunito','Nunito Fallback',sans-serif;font-size:12px;font-weight:700;
   padding:6px 14px;cursor:pointer;transition:all .15s;
 }
 .fb-type:hover{background:var(--sfh)}
@@ -430,7 +430,7 @@ body.ads-closed .fab{bottom:18px}
 .fb-input{
   width:100%;background:rgba(255,255,255,.06);
   border:1.5px solid var(--bd);border-radius:var(--rs);
-  color:var(--tx);font-family:'Nunito',sans-serif;
+  color:var(--tx);font-family:'Nunito','Nunito Fallback',sans-serif;
   font-size:14px;font-weight:600;padding:10px 14px;
   outline:none;transition:border-color .2s,background .2s;
 }
@@ -440,13 +440,16 @@ textarea.fb-input{min-height:112px;resize:vertical;line-height:1.5;display:block
 @media(prefers-reduced-motion:reduce){
   body::before,.spin-dot,.fab-ic,.m-emoji,.order-item,.wheel-glow{animation:none!important}
 }
+
+@font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
+@font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
 </style>
 </head>
 <body>
 
 <div class="app">
 
-  <a href="/" style="position:absolute;top:18px;left:20px;z-index:20;display:inline-flex;align-items:center;gap:6px;color:#9a9ab5;text-decoration:none;font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;letter-spacing:.3px;padding:8px 14px;border:1px solid rgba(255,255,255,.1);border-radius:100px;background:rgba(255,255,255,.04);transition:all .15s" onmouseover="this.style.color='#f4f4fb';this.style.background='rgba(255,255,255,.09)'" onmouseout="this.style.color='#9a9ab5';this.style.background='rgba(255,255,255,.04)'">← All Pickly tools</a>
+  <a href="/" style="position:absolute;top:18px;left:20px;z-index:20;display:inline-flex;align-items:center;gap:6px;color:#9a9ab5;text-decoration:none;font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:800;font-size:13px;letter-spacing:.3px;padding:8px 14px;border:1px solid rgba(255,255,255,.1);border-radius:100px;background:rgba(255,255,255,.04);transition:all .15s" onmouseover="this.style.color='#f4f4fb';this.style.background='rgba(255,255,255,.09)'" onmouseout="this.style.color='#9a9ab5';this.style.background='rgba(255,255,255,.04)'">← All Pickly tools</a>
 
   <!-- Header -->
   <div class="header">

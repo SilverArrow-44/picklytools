@@ -27,8 +27,8 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"></noscript>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700 0;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700 0;700;800&display=swap"></noscript>
 <style>
 :root{
   --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
@@ -39,7 +39,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+body{font-family:'Nunito','Nunito Fallback',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 12% 8%,rgba(255,214,0,.1),transparent 60%),radial-gradient(ellipse 60% 50% at 88% 92%,rgba(255,140,0,.1),transparent 60%)}
 .wrap{position:relative;z-index:2;max-width:760px;margin:0 auto;padding:0 20px}
 
@@ -47,12 +47,12 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .topbar-in{max-width:760px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .brand-mark{width:34px;height:34px}
-.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.brand-name{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
 .back:hover{color:var(--tx);background:var(--sfh)}
 
 .head{text-align:center;padding:34px 0 16px}
-.head h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(30px,5.5vw,48px);letter-spacing:-1px;line-height:1.08;margin-bottom:10px}
+.head h1{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:clamp(30px,5.5vw,48px);letter-spacing:-1px;line-height:1.08;margin-bottom:10px}
 .head h1 .g{background:linear-gradient(115deg,var(--gold1),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .head p{color:var(--mt);font-size:15px;font-weight:600;max-width:480px;margin:0 auto}
 
@@ -69,7 +69,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 /* a coin */
 .coin{width:120px;height:120px;position:relative;transform-style:preserve-3d;transition:transform .1s}
 .coin.sm{width:64px;height:64px}
-.coin .face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;display:flex;align-items:center;justify-content:center;font-family:'Fredoka',sans-serif;font-weight:700;
+.coin .face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;display:flex;align-items:center;justify-content:center;font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;
   box-shadow:0 8px 26px rgba(0,0,0,.45), inset 0 3px 8px rgba(255,255,255,.5), inset 0 -6px 12px rgba(0,0,0,.35);
   background:radial-gradient(circle at 38% 32%,var(--gold1),var(--gold2) 62%,var(--gold3));
   border:3px solid rgba(255,255,255,.35);color:#7a4d0a;}
@@ -90,22 +90,22 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 
 /* result */
 .result{text-align:center;margin-top:20px;min-height:80px}
-.result .big{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(30px,7vw,52px);background:linear-gradient(135deg,var(--gold1),var(--or));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2}
+.result .big{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:clamp(30px,7vw,52px);background:linear-gradient(135deg,var(--gold1),var(--or));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2}
 .result .sub{color:var(--mt);font-size:15px;font-weight:700;margin-top:4px}
 .result .tally{display:inline-flex;gap:18px;margin-top:10px;font-weight:800;font-size:15px}
 .result .tally .h{color:var(--gold2)}.result .tally .t{color:var(--cy)}
 
 .controls{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:6px}
-.flip-btn{font-family:'Fredoka',sans-serif;font-weight:600;font-size:22px;padding:15px 52px;border-radius:100px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--gold2),var(--or));color:#3a2400;box-shadow:0 8px 28px rgba(255,140,0,.42);transition:transform .15s,box-shadow .15s}
+.flip-btn{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:22px;padding:15px 52px;border-radius:100px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--gold2),var(--or));color:#3a2400;box-shadow:0 8px 28px rgba(255,140,0,.42);transition:transform .15s,box-shadow .15s}
 .flip-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(255,140,0,.55)}
 .flip-btn:active{transform:scale(.97)}
 .flip-btn:disabled{opacity:.6;cursor:default;transform:none}
 
 .opts{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;color:var(--mt);font-weight:700;font-size:14px}
-.opts select,.opts input{background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:10px;color:var(--tx);padding:8px 12px;font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;outline:none;cursor:pointer}
+.opts select,.opts input{background:rgba(255,255,255,.06);border:1.5px solid var(--bd);border-radius:10px;color:var(--tx);padding:8px 12px;font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:700;font-size:14px;outline:none;cursor:pointer}
 .opts select:focus,.opts input:focus{border-color:var(--gold2)}
 .btn-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.mini{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;padding:9px 16px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--tx);cursor:pointer;transition:all .15s}
+.mini{font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:800;font-size:13px;padding:9px 16px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--tx);cursor:pointer;transition:all .15s}
 .mini:hover{background:var(--sfh)}
 
 /* history */
@@ -121,21 +121,21 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .series-dot{width:14px;height:14px;border-radius:50%;background:var(--sf);border:1.5px solid var(--bd)}
 .series-dot.h{background:var(--gold2);border-color:var(--gold2)}
 .series-dot.t{background:var(--cy);border-color:var(--cy)}
-.series-win{font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;margin-top:8px}
+.series-win{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:20px;margin-top:8px}
 
 .ad-wrap{max-width:760px;margin:36px auto 0;text-align:center}
 .ad-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(244,244,251,.3);margin-bottom:6px}
 .ad-box{min-height:100px;border:1px dashed var(--bd);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:var(--mt);font-size:13px;font-weight:600;background:rgba(255,255,255,.02)}
 
 .content{margin-top:40px}
-.content h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:24px;margin:30px 0 10px}
-.content h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin:20px 0 8px}
+.content h2{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:24px;margin:30px 0 10px}
+.content h3{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:18px;margin:20px 0 8px}
 .content p{color:var(--mt);font-size:15.5px;font-weight:600;margin-bottom:13px}
 .content ul{color:var(--mt);font-size:15.5px;font-weight:600;margin:0 0 13px 22px}
 .content li{margin-bottom:6px}
 .faq{display:flex;flex-direction:column;gap:10px;margin-top:6px}
 .qa{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);overflow:hidden}
-.qa summary{padding:15px 18px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.qa summary{padding:15px 18px;font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:500;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
 .qa summary::-webkit-details-marker{display:none}
 .qa summary::after{content:'+';font-size:22px;color:var(--mt);transition:transform .2s}
 .qa[open] summary::after{transform:rotate(45deg)}
@@ -143,12 +143,15 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 
 footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 .foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.foot-col h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-col h5{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
 .foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
 .foot-col a:hover{color:var(--tx)}
 .foot-brand{max-width:240px}.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
 .copy{text-align:center;color:var(--mt);font-size:13px;font-weight:600;margin-top:30px;padding-top:20px;border-top:1px solid var(--bd)}
 @media(prefers-reduced-motion:reduce){.coin.flipping{animation-duration:.3s!important}body::before{animation:none}}
+
+@font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
+@font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
 </style>
 </head>
 <body>

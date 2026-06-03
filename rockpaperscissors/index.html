@@ -27,9 +27,9 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"></noscript>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.6.0/confetti.browser.min.js" defer></script>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700 0;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700 0;700;800&display=swap"></noscript>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js" defer></script>
 <style>
 :root{
   --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
@@ -39,7 +39,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+body{font-family:'Nunito','Nunito Fallback',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 12% 8%,rgba(0,229,255,.12),transparent 60%),radial-gradient(ellipse 60% 50% at 88% 92%,rgba(255,140,0,.1),transparent 60%)}
 .wrap{position:relative;z-index:2;max-width:680px;margin:0 auto;padding:0 18px}
 
@@ -47,12 +47,12 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .topbar-in{max-width:680px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .brand-mark{width:34px;height:34px}
-.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.brand-name{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
 .back:hover{color:var(--tx);background:var(--sfh)}
 
 .head{text-align:center;padding:30px 0 8px}
-.head h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(26px,5vw,42px);letter-spacing:-1px;line-height:1.08;margin-bottom:8px}
+.head h1{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:clamp(26px,5vw,42px);letter-spacing:-1px;line-height:1.08;margin-bottom:8px}
 .head h1 .g{background:linear-gradient(115deg,var(--cy),var(--or));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .head p{color:var(--mt);font-size:15px;font-weight:600;max-width:420px;margin:0 auto}
 
@@ -64,9 +64,9 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .scoreboard{display:flex;justify-content:center;gap:30px;margin:18px 0 8px;align-items:center}
 .score{text-align:center}
 .score .lab{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--mt)}
-.score .val{font-family:'Fredoka',sans-serif;font-weight:700;font-size:40px;line-height:1}
+.score .val{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:40px;line-height:1}
 .score.you .val{color:var(--cy)}.score.cpu .val{color:var(--or)}
-.score-sep{font-family:'Fredoka',sans-serif;font-weight:700;font-size:24px;color:var(--mt)}
+.score-sep{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:24px;color:var(--mt)}
 .target-note{text-align:center;color:var(--mt);font-size:13px;font-weight:700;margin-bottom:6px}
 
 .arena{display:flex;justify-content:center;align-items:center;gap:20px;padding:18px 0;min-height:150px}
@@ -76,9 +76,9 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .hand.shake{animation:rps .4s ease}
 @keyframes rps{0%,100%{transform:translateY(0)}25%{transform:translateY(-16px)}50%{transform:translateY(0)}75%{transform:translateY(-9px)}}
 .hand.win{box-shadow:0 0 0 3px var(--gr);border-color:var(--gr)}
-.arena .vs{font-family:'Fredoka',sans-serif;font-weight:700;color:var(--mt);font-size:18px}
+.arena .vs{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;color:var(--mt);font-size:18px}
 
-.round-result{text-align:center;font-family:'Fredoka',sans-serif;font-weight:600;font-size:22px;min-height:30px;margin-bottom:6px}
+.round-result{text-align:center;font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:22px;min-height:30px;margin-bottom:6px}
 .round-result.win{color:var(--gr)}.round-result.lose{color:var(--pk)}.round-result.tie{color:var(--yl)}
 
 .choices{display:flex;justify-content:center;gap:14px;margin-top:10px}
@@ -89,26 +89,26 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .choice.dim{opacity:.4;pointer-events:none}
 
 .game-over{text-align:center;margin-top:18px}
-.game-over .big{font-family:'Fredoka',sans-serif;font-weight:700;font-size:30px;margin-bottom:10px}
+.game-over .big{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:30px;margin-bottom:10px}
 .game-over .big.won{background:linear-gradient(135deg,var(--gr),var(--cy));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .game-over .big.lost{color:var(--pk)}
-.btn{font-family:'Fredoka',sans-serif;font-weight:600;font-size:17px;padding:13px 32px;border-radius:100px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--cy),var(--or));color:#06121a;box-shadow:0 8px 24px rgba(0,229,255,.32);transition:transform .15s}
+.btn{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:17px;padding:13px 32px;border-radius:100px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--cy),var(--or));color:#06121a;box-shadow:0 8px 24px rgba(0,229,255,.32);transition:transform .15s}
 .btn:hover{transform:translateY(-2px)}
 .hint{text-align:center;color:var(--mt);font-size:14px;font-weight:700;margin-top:6px;min-height:20px}
-.soundbtn{display:block;margin:14px auto 0;font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;padding:9px 16px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--tx);cursor:pointer}
+.soundbtn{display:block;margin:14px auto 0;font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:800;font-size:13px;padding:9px 16px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--tx);cursor:pointer}
 
 .ad-wrap{max-width:680px;margin:34px auto 0;text-align:center}
 .ad-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(244,244,251,.3);margin-bottom:6px}
 .ad-box{min-height:100px;border:1px dashed var(--bd);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:var(--mt);font-size:13px;font-weight:600;background:rgba(255,255,255,.02)}
 
 .content{margin-top:40px}
-.content h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:24px;margin:30px 0 10px}
-.content h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin:20px 0 8px}
+.content h2{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:24px;margin:30px 0 10px}
+.content h3{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:18px;margin:20px 0 8px}
 .content p{color:var(--mt);font-size:15.5px;font-weight:600;margin-bottom:13px}
 .content ul{color:var(--mt);font-size:15.5px;font-weight:600;margin:0 0 13px 22px}.content li{margin-bottom:6px}
 .faq{display:flex;flex-direction:column;gap:10px;margin-top:6px}
 .qa{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);overflow:hidden}
-.qa summary{padding:15px 18px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.qa summary{padding:15px 18px;font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:500;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
 .qa summary::-webkit-details-marker{display:none}
 .qa summary::after{content:'+';font-size:22px;color:var(--mt);transition:transform .2s}
 .qa[open] summary::after{transform:rotate(45deg)}
@@ -116,12 +116,15 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 
 footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 .foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.foot-col h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-col h5{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px}
 .foot-col a{display:block;color:var(--mt);text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px}
 .foot-col a:hover{color:var(--tx)}
 .foot-brand{max-width:240px}.foot-brand p{color:var(--mt);font-size:13px;font-weight:600;margin-top:10px}
 .copy{text-align:center;color:var(--mt);font-size:13px;font-weight:600;margin-top:30px;padding-top:20px;border-top:1px solid var(--bd)}
 @media(prefers-reduced-motion:reduce){.hand.shake{animation:none!important}body::before{animation:none}}
+
+@font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
+@font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
 </style>
 </head>
 <body>
