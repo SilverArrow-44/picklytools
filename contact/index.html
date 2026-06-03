@@ -21,7 +21,8 @@
 <meta name="robots" content="index, follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"></noscript>
 <link rel="stylesheet" href="/page.css">
 <style>
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:10px}
@@ -39,6 +40,8 @@
   .hint{font-size:13px;font-weight:700;color:var(--cy);margin-top:8px;min-height:18px}
   .reasons li{margin-bottom:12px}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contact Pickly","url":"https://picklytools.com/contact/","description":"Contact the Pickly team to suggest a tool, send feedback, or report a bug.","isPartOf":{"@type":"WebSite","name":"Pickly","url":"https://picklytools.com/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://picklytools.com/contact/"}]}</script>
 </head>
 <body>
 <div class="bg-fx"></div>
