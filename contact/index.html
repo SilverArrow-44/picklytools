@@ -76,7 +76,13 @@
       <h2>Send us a message</h2>
       <p style="margin-bottom:16px">Pick a topic, write your note, and hit send. Your name is optional — no account needed.</p>
       <div class="fb-types" id="fbTypes">
-        <button class="fb-type on" data-type="Suggestion">💡 Suggest a tool</button>
+        
+      <!-- Honeypot: bots fill this, humans don't see it -->
+      <div style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
+        <label for="website">Leave this blank</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <button class="fb-type on" data-type="Suggestion">💡 Suggest a tool</button>
         <button class="fb-type" data-type="Feedback">⭐ Feedback</button>
         <button class="fb-type" data-type="Bug report">🐞 Report a bug</button>
         <button class="fb-type" data-type="Question">❓ Question</button>
