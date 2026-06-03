@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/favicon.svg">
 <link rel="manifest" href="/manifest.webmanifest">
-<title>Find Best Meeting Time Across Time Zones | Pickly</title>
+<title>Timezone Meeting Planner — Find the Best Meeting Time | Pickly</title>
 <meta name="description" content="Free timezone meeting planner for remote teams. Add everyone's city, see working hours overlap, drag to pick a time, and add it to your calendar instantly.">
 <meta name="keywords" content="meeting time finder, time zone meeting planner, best time to meet across time zones, world clock meeting, remote team scheduling, time zone converter">
 <link rel="canonical" href="https://picklytools.com/timezones/">
@@ -173,10 +173,45 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 @font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
 @font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
 .foot-h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px;color:var(--tx)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap"></noscript>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I use it?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Add each person and their city, set the hours everyone's roughly free, and read the answer at the top — it's shown in everyone's local time. That's it."}
+    },
+    {
+      "@type": "Question",
+      "name": "What if no time works for everyone?",
+      "acceptedAnswer": {"@type": "Answer", "text": "It automatically shows the best available time and how many people it suits, plus alternative times you can tap to compare."}
+    },
+    {
+      "@type": "Question",
+      "name": "Can I search by country?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes — type a city or a country (\"Milan\", \"Germany\", \"Vietnam\", \"Tokyo\") and it finds the right zone."}
+    },
+    {
+      "@type": "Question",
+      "name": "Does it handle daylight saving?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes, automatically, using your device's official time zone database."}
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data private?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Everything runs in your browser; nothing is sent to a server. See our Privacy Policy."}
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -199,7 +234,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 
 <header class="head">
   <div class="wrap">
-    <h1>What's the best time to <span class="g">meet?</span></h1>
+    <h1>What's the best time to <span class="g">meet? <span class="sr-only">— Timezone Meeting Planner</span></span></h1>
     <p>Add everyone and where they are. We'll show you the best time to meet — in each person's own local time. No math, no UTC, no confusion.</p>
   </div>
 </header>
