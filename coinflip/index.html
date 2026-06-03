@@ -40,11 +40,11 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .wrap{position:relative;z-index:2;max-width:760px;margin:0 auto;padding:0 20px}
 
 .topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,10,31,.72);border-bottom:1px solid var(--bd)}
-.topbar-in{max-width:760px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.topbar-in{max-width:760px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:center;position:relative}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .brand-mark{width:34px;height:34px}
 .brand-name{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;background-clip:text}
-.back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);position:absolute;right:20px;transition:all .15s}
 .back:hover{color:var(--tx);background:var(--sfh)}
 
 .head{text-align:center;padding:34px 0 16px}
@@ -65,14 +65,15 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 /* a coin */
 .coin{width:120px;height:120px;position:relative;transform-style:preserve-3d;transition:transform .1s}
 .coin.sm{width:64px;height:64px}
-.coin .face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;display:flex;align-items:center;justify-content:center;font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;
+.coin .face{line-height:1;position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;
   box-shadow:0 8px 26px rgba(0,0,0,.45), inset 0 3px 8px rgba(255,255,255,.5), inset 0 -6px 12px rgba(0,0,0,.35);
   background:radial-gradient(circle at 38% 32%,var(--gold1),var(--gold2) 62%,var(--gold3));
   border:3px solid rgba(255,255,255,.35);color:#7a4d0a;}
 .coin .heads{font-size:34px}
-.coin.sm .heads{font-size:20px}
+.coin.sm .heads{font-size:30px}
 .coin .tails{transform:rotateY(180deg);font-size:30px}
-.coin.sm .tails{font-size:18px}
+.coin.sm .tails{font-size:28px}
+.coin.sm .label{display:none}
 .coin .label{font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
 .coin.flipping{animation:flip var(--dur,1.4s) ease-out}
 @keyframes flip{
