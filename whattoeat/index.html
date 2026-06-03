@@ -35,7 +35,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Nunito','Nunito Fallback',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+body{font-family:'Nunito','Nunito Fallback',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;overflow-x:hidden;min-height:100vh}
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 12% 8%,rgba(255,140,0,.12),transparent 60%),radial-gradient(ellipse 60% 50% at 88% 92%,rgba(255,214,0,.1),transparent 60%)}
 .wrap{position:relative;z-index:2;max-width:720px;margin:0 auto;padding:0 18px}
 
@@ -43,13 +43,13 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .topbar-in{max-width:720px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .brand-mark{width:34px;height:34px}
-.brand-name{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.brand-name{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;background-clip:text}
 .back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
 .back:hover{color:var(--tx);background:var(--sfh)}
 
 .head{text-align:center;padding:34px 0 14px}
 .head h1{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:clamp(28px,5.2vw,46px);letter-spacing:-1px;line-height:1.08;margin-bottom:10px}
-.head h1 .g{background:linear-gradient(115deg,var(--or),var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.head h1 .g{background:linear-gradient(115deg,var(--or),var(--yl));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;background-clip:text}
 .head p{color:var(--mt);font-size:15px;font-weight:600;max-width:480px;margin:0 auto}
 
 /* filters */
@@ -76,7 +76,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 @keyframes pop{from{opacity:0;transform:scale(.94) translateY(8px)}to{opacity:1;transform:none}}
 .card-pick .emoji{font-size:64px;line-height:1;margin-bottom:8px;display:block;animation:bob 2.4s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-.card-pick .dish{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:clamp(26px,5vw,38px);background:linear-gradient(135deg,var(--or),var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.15}
+.card-pick .dish{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:clamp(26px,5vw,38px);background:linear-gradient(135deg,var(--or),var(--yl));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.15}
 .card-pick .desc{color:var(--tx);font-size:15px;font-weight:600;margin-top:8px;opacity:.85}
 .card-pick .tags{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-top:14px}
 .card-pick .tag{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:5px 11px;border-radius:100px;background:rgba(255,255,255,.08);border:1px solid var(--bd);color:var(--mt)}

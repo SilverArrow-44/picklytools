@@ -74,7 +74,7 @@
 html{scroll-behavior:smooth}
 body{
   font-family:'Nunito','Nunito Fallback',sans-serif;background:var(--bg);color:var(--tx);
-  line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  line-height:1.65;overflow-x:hidden;
 }
 
 /* Animated cosmic background */
@@ -105,7 +105,7 @@ nav{
 .brand-name{
   font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:25px;letter-spacing:-.5px;
   background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;background-clip:text;
 }
 .nav-links{display:flex;gap:28px;align-items:center}
 .nav-links a{color:var(--mt);text-decoration:none;font-weight:700;font-size:14.5px;transition:color .15s}
@@ -132,7 +132,7 @@ nav{
 .cycle{
   display:inline-block;
   background:linear-gradient(115deg,var(--cy),var(--pu));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;background-clip:text;
   animation:cycleIn .5s ease;
 }
 @keyframes cycleIn{from{opacity:0;transform:translateY(10px) rotate(-2deg)}to{opacity:1;transform:none}}
@@ -145,11 +145,11 @@ nav{
 }
 .resume:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,229,255,.25)}
 .resume-ic{font-size:24px}
-.resume-txt strong{background:linear-gradient(135deg,var(--cy),var(--pu));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.resume-txt strong{background:linear-gradient(135deg,var(--cy),var(--pu));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;background-clip:text}
 @keyframes resumePop{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
 .hero h1 .grad{
   background:linear-gradient(115deg,var(--pk) 0%,var(--or) 40%,var(--yl) 70%,var(--cy) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;background-clip:text;
 }
 .hero p{font-size:clamp(17px,2.4vw,21px);color:var(--mt);max-width:620px;margin:0 auto 38px;font-weight:600}
 .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
@@ -170,7 +170,7 @@ nav{
 /* ── STATS STRIP ─────────────────────────── */
 .stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:54px}
 .stat{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:18px 30px;text-align:center;min-width:140px}
-.stat .n{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:30px;background:linear-gradient(135deg,var(--pk),var(--or));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat .n{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:30px;background:linear-gradient(135deg,var(--pk),var(--or));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;background-clip:text}
 .stat .l{font-size:12.5px;color:var(--mt);font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
 
 /* ── SECTION HEADERS ─────────────────────── */

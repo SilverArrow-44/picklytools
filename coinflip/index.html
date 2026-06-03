@@ -35,7 +35,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Nunito','Nunito Fallback',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+body{font-family:'Nunito','Nunito Fallback',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;overflow-x:hidden;min-height:100vh}
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 12% 8%,rgba(255,214,0,.1),transparent 60%),radial-gradient(ellipse 60% 50% at 88% 92%,rgba(255,140,0,.1),transparent 60%)}
 .wrap{position:relative;z-index:2;max-width:760px;margin:0 auto;padding:0 20px}
 
@@ -43,13 +43,13 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .topbar-in{max-width:760px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .brand-mark{width:34px;height:34px}
-.brand-name{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.brand-name{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;background-clip:text}
 .back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
 .back:hover{color:var(--tx);background:var(--sfh)}
 
 .head{text-align:center;padding:34px 0 16px}
 .head h1{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:clamp(30px,5.5vw,48px);letter-spacing:-1px;line-height:1.08;margin-bottom:10px}
-.head h1 .g{background:linear-gradient(115deg,var(--gold1),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.head h1 .g{background:linear-gradient(115deg,var(--gold1),var(--gold2));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;background-clip:text}
 .head p{color:var(--mt);font-size:15px;font-weight:600;max-width:480px;margin:0 auto}
 
 /* mode tabs */
@@ -86,7 +86,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 
 /* result */
 .result{text-align:center;margin-top:20px;min-height:80px}
-.result .big{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:clamp(30px,7vw,52px);background:linear-gradient(135deg,var(--gold1),var(--or));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2}
+.result .big{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:clamp(30px,7vw,52px);background:linear-gradient(135deg,var(--gold1),var(--or));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2}
 .result .sub{color:var(--mt);font-size:15px;font-weight:700;margin-top:4px}
 .result .tally{display:inline-flex;gap:18px;margin-top:10px;font-weight:800;font-size:15px}
 .result .tally .h{color:var(--gold2)}.result .tally .t{color:var(--cy)}
