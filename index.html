@@ -205,6 +205,13 @@ section{padding:60px 0}
 .badge{position:absolute;top:18px;right:18px;font-size:10px;font-weight:900;letter-spacing:1px;text-transform:uppercase;padding:5px 11px;border-radius:100px;background:var(--sf);border:1px solid var(--bd);color:var(--mt)}
 .badge.live{background:rgba(0,230,118,.14);border-color:rgba(0,230,118,.4);color:var(--gr)}
 
+/* ── TOOL CATEGORY HEADERS ───────────────── */
+.grp-head{display:flex;align-items:center;gap:14px;margin:48px 0 22px}
+.grp-head:first-of-type{margin-top:8px}
+.grp-head h3{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:clamp(20px,3vw,26px);letter-spacing:-.5px;white-space:nowrap;margin:0}
+.grp-head .grp-count{font-size:12px;font-weight:800;color:var(--mt);background:var(--sf);border:1px solid var(--bd);padding:4px 11px;border-radius:100px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.grp-head .grp-line{flex:1;height:1px;background:linear-gradient(90deg,var(--bd),transparent)}
+
 /* ── HOW / WHY (content for AdSense + SEO) ── */
 .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-top:10px}
 .feat{padding:6px 4px}
@@ -317,9 +324,9 @@ footer{border-top:1px solid var(--bd);margin-top:70px;padding:48px 0 60px}
     </div>
 
     <div class="stats">
-      <div class="stat"><div class="n">Free</div><div class="l">Always &amp; forever</div></div>
-      <div class="stat"><div class="n">0</div><div class="l">Sign-ups needed</div></div>
-      <div class="stat"><div class="n">∞</div><div class="l">Times to use</div></div>
+      <div class="stat"><div class="n">18</div><div class="l">Free tools</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">Sign-ups ever</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">Free &amp; private</div></div>
     </div>
 
     <!-- Returning-visitor card: shown by JS only if they've used a tool before -->
@@ -338,127 +345,8 @@ footer{border-top:1px solid var(--bd);margin-top:70px;padding:48px 0 60px}
       <p>Each one does a single thing well — open it and go. More added regularly.</p>
     </div>
 
+    <div class="grp-head reveal"><h3>🎯 Decision Makers</h3><span class="grp-count">6 tools</span><span class="grp-line"></span></div>
     <div class="tools">
-
-      <a class="tool reveal" href="/magic8ball/" style="--glow:#B061FF;--edge:#B061FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.22),rgba(0,229,255,.16))">
-        <span class="badge live">● Live</span>
-        <div class="tool-ic">🎱</div>
-        <h3>Magic 8 Ball</h3>
-        <p>Ask any yes/no question and shake the ball for a classic fortune. All 20 original answers, fully animated.</p>
-        <span class="go">Open tool →</span>
-      </a>
-
-      <a class="tool reveal" href="/agecalculator/" style="--glow:#00E5FF;--edge:#40EFFF;--icbg:linear-gradient(135deg,rgba(0,229,255,.25),rgba(176,97,255,.2))">
-        <span class="badge live">● Live</span>
-        <div class="tool-ic">🎂</div>
-        <h3>Age Calculator</h3>
-        <p>Find your exact age in years, months, days, and hours. See your next birthday countdown and what day you were born.</p>
-        <span class="tool-cta">Open tool →</span>
-      </a>
-
-
-      <a class="tool reveal" href="/wouldyourather/" style="--glow:#FF2060;--edge:#FF2060;--icbg:linear-gradient(135deg,rgba(255,32,96,.22),rgba(0,229,255,.16))">
-        <span class="badge live">● Live</span>
-        <div class="tool-ic">🤔</div>
-        <h3>Would You Rather</h3>
-        <p>Hundreds of impossible choices across funny, hard, and gross categories. Pick a side and see how you compare.</p>
-        <span class="go">Open tool →</span>
-      </a>
-
-      <a class="tool reveal" href="/bmi/" style="--glow:#00E676;--edge:#40FF90;--icbg:linear-gradient(135deg,rgba(0,230,118,.25),rgba(0,229,255,.2))">
-        <span class="badge live">● Live</span>
-        <div class="tool-ic">⚖️</div>
-        <h3>BMI Calculator</h3>
-        <p>Calculate your Body Mass Index in metric or imperial. Shows your BMI category and healthy weight range.</p>
-        <span class="tool-cta">Open tool →</span>
-      </a>
-
-
-      <a class="tool reveal" href="/rockpaperscissors/" style="--glow:#00E5FF;--edge:#00E5FF;--icbg:linear-gradient(135deg,rgba(0,229,255,.2),rgba(255,140,0,.16))">
-        <span class="badge live">● Live</span>
-        <div class="tool-ic">✊</div>
-        <h3>Rock Paper Scissors</h3>
-        <p>Take on the computer in single rounds or best-of-3 and best-of-5 matches, with score tracking and animations.</p>
-        <span class="go">Open tool →</span>
-      </a>
-
-
-      <a class="tool reveal" href="/truthordare/" style="--glow:#B061FF;--edge:#B061FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.22),rgba(255,32,96,.16))">
-        <span class="badge live">● Live</span>
-        <div class="tool-ic">🎭</div>
-        <h3>Truth or Dare</h3>
-        <p>The ultimate party game — family, friends, and spicy modes with hundreds of truths and dares, plus a card-flip reveal.</p>
-        <span class="go">Open tool →</span>
-      </a>
-
-      <a class="tool reveal" href="/mortgage/" style="--glow:#B061FF;--edge:#C480FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.25),rgba(0,229,255,.2))">
-        <span class="badge live">● Live</span>
-        <div class="tool-ic">🏠</div>
-        <h3>Mortgage Calculator</h3>
-        <p>Full monthly home cost including P&I, tax, insurance, HOA, PMI, maintenance, and utilities. Color breakdown included.</p>
-        <span class="tool-cta">Open tool →</span>
-      </a>
-
-
-      <a class="tool reveal" href="/randomnumber/" style="--glow:#B061FF;--edge:#B061FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.22),rgba(255,32,96,.16))">
-        <span class="badge live">● Live</span>
-        <div class="tool-ic">🔢</div>
-        <h3>Random Number Generator</h3>
-        <p>Pick a number in any range, draw several with no repeats, or roll dice. Great for raffles, games, and quick draws.</p>
-        <span class="go">Open tool →</span>
-      </a>
-
-
-      <a class="tool reveal" href="/neverhaveiever/" style="--glow:#00E5FF;--edge:#00E5FF;--icbg:linear-gradient(135deg,rgba(0,229,255,.2),rgba(176,97,255,.18))">
-        <span class="badge live">● Live</span>
-        <div class="tool-ic">🙊</div>
-        <h3>Never Have I Ever</h3>
-        <p>Hundreds of confession prompts across clean, party, and spicy modes — one tap for the next. Perfect with friends.</p>
-        <span class="go">Open tool →</span>
-      </a>
-
-
-      <a class="tool reveal" href="/whattoeat/" style="--glow:#FF8C00;--edge:#FF8C00;--icbg:linear-gradient(135deg,rgba(255,140,0,.2),rgba(255,214,0,.18))">
-        <span class="badge live">● Live</span>
-        <div class="tool-ic">🍽️</div>
-        <h3>What Should I Eat?</h3>
-        <p>Can't pick a meal? Set your mood — cuisine, effort, diet — and get a tasty suggestion in seconds, or just hit surprise me.</p>
-        <span class="go">Open tool →</span>
-      </a>
-
-      <a class="tool reveal" href="/datecalculator/" style="--glow:#FFD600;--edge:#FFE040;--icbg:linear-gradient(135deg,rgba(255,214,0,.25),rgba(255,140,0,.2))">
-        <span class="badge live">● Live</span>
-        <div class="tool-ic">📅</div>
-        <h3>Date Calculator</h3>
-        <p>Count days between two dates, or add and subtract days, weeks, months and years from any date.</p>
-        <span class="tool-cta">Open tool →</span>
-      </a>
-
-
-      <a class="tool reveal" href="/coinflip/" style="--glow:#FFD600;--edge:#FFD600;--icbg:linear-gradient(135deg,rgba(255,214,0,.22),rgba(255,140,0,.2))">
-        <span class="badge live">● Live</span>
-        <div class="tool-ic">🪙</div>
-        <h3>Coin Flip</h3>
-        <p>Heads or tails, instantly. Flip one coin, a whole handful at once, or run a best-of series — with a satisfying animated toss.</p>
-        <span class="go">Open tool →</span>
-      </a>
-
-      <a class="tool reveal" href="/discount/" style="--glow:#FF8C00;--edge:#FFA040;--icbg:linear-gradient(135deg,rgba(255,140,0,.25),rgba(255,32,96,.2))">
-        <span class="badge live">● Live</span>
-        <div class="tool-ic">🏷️</div>
-        <h3>Discount Calculator</h3>
-        <p>Six discount modes: percent off, amount off, BOGO, stacked discounts, reverse price finder, and cashback.</p>
-        <span class="tool-cta">Open tool →</span>
-      </a>
-
-
-      <a class="tool reveal" href="/slotmachine/" style="--glow:#FFD600;--edge:#FFD600;--icbg:linear-gradient(135deg,rgba(255,214,0,.22),rgba(255,32,96,.16))">
-        <span class="badge live">● Live</span>
-        <div class="tool-ic">🎰</div>
-        <h3>Slot Machine</h3>
-        <p>Spin three fruit reels and win virtual coins, with confetti on the big wins. Pure fun — no real money, ever.</p>
-        <span class="go">Open tool →</span>
-      </a>
 
       <a class="tool reveal" href="/spinit/" style="--glow:#FF2060;--edge:#FF6B8A;--icbg:linear-gradient(135deg,rgba(255,32,96,.25),rgba(255,140,0,.2))">
         <span class="badge live">● Live</span>
@@ -468,20 +356,139 @@ footer{border-top:1px solid var(--bd);margin-top:70px;padding:48px 0 60px}
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/compatibility/" style="--glow:#FF2060;--edge:#FF6B8A;--icbg:linear-gradient(135deg,rgba(255,32,96,.25),rgba(255,214,0,.2))">
+      <a class="tool reveal" href="/coinflip/" style="--glow:#FFD600;--edge:#FFD600;--icbg:linear-gradient(135deg,rgba(255,214,0,.22),rgba(255,140,0,.2))">
         <span class="badge live">● Live</span>
-        <div class="tool-ic">💕</div>
-        <h3>Compatibility Calculator</h3>
-        <p>Enter two names and birthdays for a fun compatibility score. Star signs, percentage breakdown — 100% entertainment.</p>
-        <span class="tool-cta">Open tool →</span>
+        <div class="tool-ic">🪙</div>
+        <h3>Coin Flip</h3>
+        <p>Heads or tails, instantly. Flip one coin, a whole handful at once, or run a best-of series — with a satisfying animated toss.</p>
+        <span class="go">Open tool →</span>
       </a>
 
+      <a class="tool reveal" href="/randomnumber/" style="--glow:#B061FF;--edge:#B061FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.22),rgba(255,32,96,.16))">
+        <span class="badge live">● Live</span>
+        <div class="tool-ic">🔢</div>
+        <h3>Random Number Generator</h3>
+        <p>Pick a number in any range, draw several with no repeats, or roll dice. Great for raffles, games, and quick draws.</p>
+        <span class="go">Open tool →</span>
+      </a>
 
       <a class="tool reveal" href="/teampicker/" style="--glow:#FFD600;--edge:#FFD600;--icbg:linear-gradient(135deg,rgba(255,214,0,.2),rgba(255,140,0,.18))">
         <span class="badge live">● Live</span>
         <div class="tool-ic">👥</div>
         <h3>Team Picker</h3>
         <p>Drop in a list of names and split them into fair, random teams in one tap — perfect for sports, projects, and games.</p>
+        <span class="go">Open tool →</span>
+      </a>
+
+      <a class="tool reveal" href="/whattoeat/" style="--glow:#FF8C00;--edge:#FF8C00;--icbg:linear-gradient(135deg,rgba(255,140,0,.2),rgba(255,214,0,.18))">
+        <span class="badge live">● Live</span>
+        <div class="tool-ic">🍽️</div>
+        <h3>What Should I Eat?</h3>
+        <p>Can't pick a meal? Set your mood — cuisine, effort, diet — and get a tasty suggestion in seconds, or just hit surprise me.</p>
+        <span class="go">Open tool →</span>
+      </a>
+
+      <a class="tool reveal" href="/magic8ball/" style="--glow:#B061FF;--edge:#B061FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.22),rgba(0,229,255,.16))">
+        <span class="badge live">● Live</span>
+        <div class="tool-ic">🎱</div>
+        <h3>Magic 8 Ball</h3>
+        <p>Ask any yes/no question and shake the ball for a classic fortune. All 20 original answers, fully animated.</p>
+        <span class="go">Open tool →</span>
+      </a>
+    </div>
+
+    <div class="grp-head reveal"><h3>🎉 Party &amp; Games</h3><span class="grp-count">5 tools</span><span class="grp-line"></span></div>
+    <div class="tools">
+
+      <a class="tool reveal" href="/wouldyourather/" style="--glow:#FF2060;--edge:#FF2060;--icbg:linear-gradient(135deg,rgba(255,32,96,.22),rgba(0,229,255,.16))">
+        <span class="badge live">● Live</span>
+        <div class="tool-ic">🤔</div>
+        <h3>Would You Rather</h3>
+        <p>Hundreds of impossible choices across funny, hard, and gross categories. Pick a side and see how you compare.</p>
+        <span class="go">Open tool →</span>
+      </a>
+
+      <a class="tool reveal" href="/truthordare/" style="--glow:#B061FF;--edge:#B061FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.22),rgba(255,32,96,.16))">
+        <span class="badge live">● Live</span>
+        <div class="tool-ic">🎭</div>
+        <h3>Truth or Dare</h3>
+        <p>The ultimate party game — family, friends, and spicy modes with hundreds of truths and dares, plus a card-flip reveal.</p>
+        <span class="go">Open tool →</span>
+      </a>
+
+      <a class="tool reveal" href="/neverhaveiever/" style="--glow:#00E5FF;--edge:#00E5FF;--icbg:linear-gradient(135deg,rgba(0,229,255,.2),rgba(176,97,255,.18))">
+        <span class="badge live">● Live</span>
+        <div class="tool-ic">🙊</div>
+        <h3>Never Have I Ever</h3>
+        <p>Hundreds of confession prompts across clean, party, and spicy modes — one tap for the next. Perfect with friends.</p>
+        <span class="go">Open tool →</span>
+      </a>
+
+      <a class="tool reveal" href="/rockpaperscissors/" style="--glow:#00E5FF;--edge:#00E5FF;--icbg:linear-gradient(135deg,rgba(0,229,255,.2),rgba(255,140,0,.16))">
+        <span class="badge live">● Live</span>
+        <div class="tool-ic">✊</div>
+        <h3>Rock Paper Scissors</h3>
+        <p>Take on the computer in single rounds or best-of-3 and best-of-5 matches, with score tracking and animations.</p>
+        <span class="go">Open tool →</span>
+      </a>
+
+      <a class="tool reveal" href="/slotmachine/" style="--glow:#FFD600;--edge:#FFD600;--icbg:linear-gradient(135deg,rgba(255,214,0,.22),rgba(255,32,96,.16))">
+        <span class="badge live">● Live</span>
+        <div class="tool-ic">🎰</div>
+        <h3>Slot Machine</h3>
+        <p>Spin three fruit reels and win virtual coins, with confetti on the big wins. Pure fun — no real money, ever.</p>
+        <span class="go">Open tool →</span>
+      </a>
+    </div>
+
+    <div class="grp-head reveal"><h3>🧮 Calculators &amp; Planners</h3><span class="grp-count">7 tools</span><span class="grp-line"></span></div>
+    <div class="tools">
+
+      <a class="tool reveal" href="/agecalculator/" style="--glow:#00E5FF;--edge:#40EFFF;--icbg:linear-gradient(135deg,rgba(0,229,255,.25),rgba(176,97,255,.2))">
+        <span class="badge live">● Live</span>
+        <div class="tool-ic">🎂</div>
+        <h3>Age Calculator</h3>
+        <p>Find your exact age in years, months, days, and hours. See your next birthday countdown and what day you were born.</p>
+        <span class="go">Open tool →</span>
+      </a>
+
+      <a class="tool reveal" href="/datecalculator/" style="--glow:#FFD600;--edge:#FFE040;--icbg:linear-gradient(135deg,rgba(255,214,0,.25),rgba(255,140,0,.2))">
+        <span class="badge live">● Live</span>
+        <div class="tool-ic">📅</div>
+        <h3>Date Calculator</h3>
+        <p>Count days between two dates, or add and subtract days, weeks, months and years from any date.</p>
+        <span class="go">Open tool →</span>
+      </a>
+
+      <a class="tool reveal" href="/bmi/" style="--glow:#00E676;--edge:#40FF90;--icbg:linear-gradient(135deg,rgba(0,230,118,.25),rgba(0,229,255,.2))">
+        <span class="badge live">● Live</span>
+        <div class="tool-ic">⚖️</div>
+        <h3>BMI Calculator</h3>
+        <p>Calculate your Body Mass Index in metric or imperial. Shows your BMI category and healthy weight range.</p>
+        <span class="go">Open tool →</span>
+      </a>
+
+      <a class="tool reveal" href="/discount/" style="--glow:#FF8C00;--edge:#FFA040;--icbg:linear-gradient(135deg,rgba(255,140,0,.25),rgba(255,32,96,.2))">
+        <span class="badge live">● Live</span>
+        <div class="tool-ic">🏷️</div>
+        <h3>Discount Calculator</h3>
+        <p>Six discount modes: percent off, amount off, BOGO, stacked discounts, reverse price finder, and cashback.</p>
+        <span class="go">Open tool →</span>
+      </a>
+
+      <a class="tool reveal" href="/mortgage/" style="--glow:#B061FF;--edge:#C480FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.25),rgba(0,229,255,.2))">
+        <span class="badge live">● Live</span>
+        <div class="tool-ic">🏠</div>
+        <h3>Mortgage Calculator</h3>
+        <p>Full monthly home cost including P&I, tax, insurance, HOA, PMI, maintenance, and utilities. Color breakdown included.</p>
+        <span class="go">Open tool →</span>
+      </a>
+
+      <a class="tool reveal" href="/compatibility/" style="--glow:#FF2060;--edge:#FF6B8A;--icbg:linear-gradient(135deg,rgba(255,32,96,.25),rgba(255,214,0,.2))">
+        <span class="badge live">● Live</span>
+        <div class="tool-ic">💕</div>
+        <h3>Compatibility Calculator</h3>
+        <p>Enter two names and birthdays for a fun compatibility score. Star signs, percentage breakdown — 100% entertainment.</p>
         <span class="go">Open tool →</span>
       </a>
 
@@ -555,7 +562,7 @@ footer{border-top:1px solid var(--bd);margin-top:70px;padding:48px 0 60px}
   <div class="wrap">
     <div class="cta-banner reveal">
       <h2>Ready to decide?</h2>
-      <p>12 free tools live now — spinners, games, timezone planner, and more. Open any tool and go.</p>
+      <p>18 free tools live now — spinners, party games, calculators, a timezone planner, and more. Open any tool and go.</p>
       <div class="cta-row" style="justify-content:center;margin-top:0">
         <a class="btn btn-primary" href="#tools">✨ Browse all tools</a>
         <a class="btn btn-ghost" href="/spinit/">🎡 Try the Spinner</a>
