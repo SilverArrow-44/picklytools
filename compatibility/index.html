@@ -298,5 +298,31 @@ function calcCompat(){
   ════════════════════════════════════════════════════ -->
 </main>
 <script>document.getElementById("yr").textContent=(new Date).getFullYear();</script>
+<!-- PK-SHARE-START -->
+<script>(function(){
+function mk(){
+  if(document.getElementById('pkShareBtn'))return;
+  var b=document.createElement('button');b.id='pkShareBtn';b.type='button';b.textContent='\ud83d\udd17 Share result';
+  b.style.cssText="display:inline-flex;align-items:center;gap:7px;cursor:pointer;font:700 14px 'Nunito','Nunito Fallback',sans-serif;color:#f4f4fb;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:100px;padding:10px 18px;transition:background .15s";
+  b.onmouseover=function(){b.style.background='rgba(255,255,255,.11)'};b.onmouseout=function(){b.style.background='rgba(255,255,255,.06)'};
+  var w=document.createElement('div');w.style.cssText="text-align:center;margin:16px auto 0";w.appendChild(b);
+  var a=document.getElementById('compatResult');
+  if(a&&a.parentNode)a.parentNode.insertBefore(w,a.nextSibling);else (document.querySelector('main')||document.body).appendChild(w);
+  b.addEventListener('click',function(){
+    var s=((document.getElementById('compatScore')||{}).textContent||'').trim(),
+        n1=((document.getElementById('name1')||{}).value||'').trim(),
+        n2=((document.getElementById('name2')||{}).value||'').trim(),
+        val=(s.indexOf('%')>=0)?s:'';
+    if(!val){b.textContent='Calculate a match first!';setTimeout(function(){b.textContent='\ud83d\udd17 Share result'},1500);return;}
+    var msg=(n1&&n2?n1+' \u2764\ufe0f '+n2+' = ':'My match score: ')+s+'! \ud83d\udc95 Find your compatibility',
+        url='https://picklytools.com/compatibility/';
+    if(navigator.share){navigator.share({title:'Compatibility Calculator',text:msg,url:url}).catch(function(){});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(msg+' '+url).then(function(){b.textContent='\u2713 Copied!';setTimeout(function(){b.textContent='\ud83d\udd17 Share result'},1600);});}
+  });
+}
+mk();
+})();</script>
+<!-- PK-SHARE-END -->
+
 </body>
 </html>
