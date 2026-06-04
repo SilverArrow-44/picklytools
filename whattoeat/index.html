@@ -470,5 +470,27 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 {n:"Eggs Benedict",e:"🍳",d:"Poached eggs, hollandaise, Canadian bacon on an English muffin.",meal:["breakfast"],cuisine:"other",effort:["order","cook"],diet:["comfort"]},
 {n:"Granola & yoghurt",e:"🥛",d:"Crunchy, creamy, quick.",meal:["breakfast","snack"],cuisine:"other",effort:["quick"],diet:["veg","healthy"]}
 ];let sel={meal:"any",cuisine:"any",effort:"any",diet:"any"},busy=!1,lastPick=null;function randInt(e){if(window.crypto&&crypto.getRandomValues){const i=4294967296,n=i-i%e,a=new Uint32Array(1);do{crypto.getRandomValues(a)}while(a[0]>=n);return a[0]%e}return Math.floor(Math.random()*e)}function pick(e){return e[randInt(e.length)]}function matches(e){return!("any"!==sel.meal&&!e.meal.includes(sel.meal))&&(("any"===sel.cuisine||e.cuisine===sel.cuisine)&&(!("any"!==sel.effort&&!e.effort.includes(sel.effort))&&!("any"!==sel.diet&&!e.diet.includes(sel.diet))))}function showPick(e){lastPick=e,document.getElementById("result").innerHTML=`<div class="card-pick"><span class="emoji">${e.e}</span><div class="dish">${e.n}</div><div class="desc">${e.d}</div><div class="tags"><span class="tag">${e.cuisine}</span>${e.diet.map(e=>`<span class="tag">${e}</span>`).join("")}</div></div><div class="again-row"><button class="mini accent" id="again">🔄 Try again</button><button class="mini" id="surprise2">🎲 Surprise me</button></div>`,document.getElementById("again").onclick=()=>run(!1),document.getElementById("surprise2").onclick=()=>run(!0),"function"==typeof confetti&&confetti({particleCount:70,spread:65,origin:{y:.55},colors:["#FF8C00","#FFD600","#FF2060","#00E676"]})}async function run(e){if(busy)return;const i=document.getElementById("err");i.textContent="";let n=e?FOODS.slice():FOODS.filter(matches);if(!n.length)return void(i.textContent="Nothing matches that combo — try loosening a filter, or hit Surprise me.");busy=!0,document.getElementById("goBtn").disabled=!0;const a=document.getElementById("result"),t=performance.now();await new Promise(e=>{const i=setInterval(()=>{const c=pick(n);a.innerHTML=`<div class="rolling"><span class="emoji">${c.e}</span><div class="dish">${c.n}</div></div>`,performance.now()-t>900&&(clearInterval(i),e())},95)});let c=pick(n);if(lastPick&&n.length>1){let e=0;for(;c.n===lastPick.n&&e<8;)c=pick(n),e++}showPick(c),busy=!1,document.getElementById("goBtn").disabled=!1}document.querySelectorAll(".chips").forEach(e=>{const i=e.dataset.group;e.addEventListener("click",n=>{const a=n.target.closest(".chip");a&&(e.querySelectorAll(".chip").forEach(e=>e.classList.remove("on")),a.classList.add("on"),sel[i]=a.dataset.val)})}),document.getElementById("goBtn").addEventListener("click",()=>run(!1)),document.getElementById("surpriseBtn").addEventListener("click",()=>run(!0));</script>
+<!-- PK-SHARE-START -->
+<script>(function(){
+function mk(){
+  if(document.getElementById('pkShareBtn'))return;
+  var b=document.createElement('button');b.id='pkShareBtn';b.type='button';b.textContent='\ud83d\udd17 Share my meal';
+  b.style.cssText="display:inline-flex;align-items:center;gap:7px;cursor:pointer;font:700 14px 'Nunito','Nunito Fallback',sans-serif;color:#f4f4fb;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:100px;padding:10px 18px;transition:background .15s";
+  b.onmouseover=function(){b.style.background='rgba(255,255,255,.11)'};b.onmouseout=function(){b.style.background='rgba(255,255,255,.06)'};
+  var w=document.createElement('div');w.style.cssText="text-align:center;margin:16px auto 0";w.appendChild(b);
+  var a=document.getElementById('result');
+  if(a&&a.parentNode)a.parentNode.insertBefore(w,a.nextSibling);else (document.querySelector('main')||document.body).appendChild(w);
+  b.addEventListener('click',function(){
+    var d=document.querySelector('#result .dish'),val=d?d.textContent.trim():'';
+    if(!val){b.textContent='Get a result first!';setTimeout(function(){b.textContent='\ud83d\udd17 Share my meal'},1500);return;}
+    var msg='\ud83c\udf7d\ufe0f Pickly told me to eat: '+val+'! See what it picks for you',url='https://picklytools.com/whattoeat/';
+    if(navigator.share){navigator.share({title:'What Should I Eat?',text:msg,url:url}).catch(function(){});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(msg+' '+url).then(function(){b.textContent='\u2713 Copied!';setTimeout(function(){b.textContent='\ud83d\udd17 Share my meal'},1600);});}
+  });
+}
+mk();
+})();</script>
+<!-- PK-SHARE-END -->
+
 </body>
 </html>

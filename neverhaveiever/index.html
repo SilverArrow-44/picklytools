@@ -698,5 +698,27 @@ spicy:{
   ]
 }
 };let mode="clean",queue=[],count=0;function randInt(e){if(window.crypto&&crypto.getRandomValues){const t=4294967296,n=t-t%e,o=new Uint32Array(1);do{crypto.getRandomValues(o)}while(o[0]>=n);return o[0]%e}return Math.floor(Math.random()*e)}function shuffle(e){for(let t=(e=e.slice()).length-1;t>0;t--){const n=randInt(t+1);[e[t],e[n]]=[e[n],e[t]]}return e}function rebuild(){queue=shuffle(DATA[mode].items)}function next(){queue.length||rebuild();const e=queue.pop(),t=document.getElementById("text");t.classList.add("swap"),setTimeout(()=>{t.textContent=e,t.classList.remove("swap")},200),count++,document.getElementById("counter").textContent="Prompt #"+count}document.getElementById("nextBtn").addEventListener("click",next),document.getElementById("card").addEventListener("click",next),document.getElementById("resetBtn").addEventListener("click",()=>{rebuild(),count=0,document.getElementById("counter").textContent="",document.getElementById("text").textContent="Tap to start 👆"}),document.getElementById("modes").addEventListener("click",e=>{const t=e.target.closest(".mode");t&&(document.querySelectorAll(".mode").forEach(e=>e.classList.remove("on")),t.classList.add("on"),mode=t.dataset.mode,document.getElementById("modeNote").textContent=DATA[mode].note,rebuild(),count=0,document.getElementById("counter").textContent="",document.getElementById("text").textContent="Tap to start 👆")}),rebuild();</script>
+<!-- PK-SHARE-START -->
+<script>(function(){
+function mk(){
+  if(document.getElementById('pkShareBtn'))return;
+  var b=document.createElement('button');b.id='pkShareBtn';b.type='button';b.textContent='\ud83d\udd17 Share this';
+  b.style.cssText="display:inline-flex;align-items:center;gap:7px;cursor:pointer;font:700 14px 'Nunito','Nunito Fallback',sans-serif;color:#f4f4fb;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:100px;padding:10px 18px;transition:background .15s";
+  b.onmouseover=function(){b.style.background='rgba(255,255,255,.11)'};b.onmouseout=function(){b.style.background='rgba(255,255,255,.06)'};
+  var w=document.createElement('div');w.style.cssText="text-align:center;margin:16px auto 0";w.appendChild(b);
+  var a=document.getElementById('counter');
+  if(a&&a.parentNode)a.parentNode.insertBefore(w,a.nextSibling);else (document.querySelector('main')||document.body).appendChild(w);
+  b.addEventListener('click',function(){
+    var t=(document.getElementById('text')||{}).textContent||'',val=(t&&t.indexOf('Tap to start')<0)?t.trim():'';
+    if(!val){b.textContent='Get a result first!';setTimeout(function(){b.textContent='\ud83d\udd17 Share this'},1500);return;}
+    var msg='Never Have I Ever \ud83d\ude4a \u2014 "'+t+'" Your turn\u2026',url='https://picklytools.com/neverhaveiever/';
+    if(navigator.share){navigator.share({title:'Never Have I Ever',text:msg,url:url}).catch(function(){});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(msg+' '+url).then(function(){b.textContent='\u2713 Copied!';setTimeout(function(){b.textContent='\ud83d\udd17 Share this'},1600);});}
+  });
+}
+mk();
+})();</script>
+<!-- PK-SHARE-END -->
+
 </body>
 </html>
