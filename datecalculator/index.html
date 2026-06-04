@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Date Calculator — Days Between Dates | Pickly</title>
+<meta name="description" content="Free date calculator — find days between two dates, add or subtract days/months/years from any date. Shows weekdays, weeks, and hours too.">
+<link rel="canonical" href="https://picklytools.com/datecalculator/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap"></noscript>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Date Calculator — Days Between Dates","url":"https://picklytools.com/datecalculator/","description":"Free date calculator — find days between two dates, add or subtract days/months/years from any date. Shows weekdays, weeks, and hours too.","applicationCategory":"UtilityApplication","operatingSystem":"Any","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Date Calculator — Days Between Dates","item":"https://picklytools.com/datecalculator/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate the number of days between two dates?","acceptedAnswer":{"@type":"Answer","text":"Enter both dates in 'Days between dates' mode — the calculator instantly shows the exact count in days, weeks, months, years, and even weekdays only."}},{"@type":"Question","name":"Can I find the date X days from today?","acceptedAnswer":{"@type":"Answer","text":"Yes — switch to 'Add / subtract' mode, set today as the start date, enter the number of days, and it shows the exact future (or past) date."}},{"@type":"Question","name":"Does the calculator count weekdays separately?","acceptedAnswer":{"@type":"Answer","text":"Yes — in between-dates mode it shows both total days and weekdays (Monday–Friday) separately, useful for working out business days."}},{"@type":"Question","name":"Can I subtract months and years, not just days?","acceptedAnswer":{"@type":"Answer","text":"Yes — the add/subtract mode lets you add or subtract any combination of years, months, and days from a starting date."}},{"@type":"Question","name":"How many days until a specific date?","acceptedAnswer":{"@type":"Answer","text":"Set today as the start date and your target as the end date — the result shows the exact number of days, weeks, and hours remaining."}}]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a1f;--bg2:#11112e;--sf:rgba(255,255,255,.05);--sfh:rgba(255,255,255,.09);--bd:rgba(255,255,255,.1);--tx:#f4f4fb;--mt:#9a9ab5;--pk:#FF2060;--or:#FF8C00;--yl:#FFD600;--cy:#00E5FF;--pu:#B061FF;--gr:#00E676;--rl:16px}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+h1,h2,h3{font-family:'Fredoka',sans-serif}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(10,10,31,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:800px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:center;position:relative}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--tx)}
+.brand-mark{width:28px;height:28px}
+.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;background:linear-gradient(90deg,#FF2D6E,#FF8C00);background-clip:text;color:transparent}
+.back{position:absolute;right:20px;color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+.wrap{max-width:800px;margin:0 auto;padding:0 20px}
+.head{padding:40px 20px 24px;text-align:center}
+.head h1{font-size:clamp(28px,5vw,44px);font-weight:700;margin-bottom:10px}
+.head p{color:var(--mt);font-size:16px;font-weight:600;max-width:540px;margin:0 auto}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:24px}
+.card+.card{margin-top:16px}
+label{display:block;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--mt);margin-bottom:6px}
+input,select{width:100%;background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:13px 16px;color:var(--tx);font-size:16px;font-family:'Nunito',sans-serif;font-weight:700;outline:none;transition:border .15s}
+input:focus,select:focus{border-color:var(--cy)}
+input[type=number]{-moz-appearance:textfield}
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+select option{background:var(--bg2);color:var(--tx)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:560px){.row,.row3{grid-template-columns:1fr}}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;border:none;border-radius:14px;font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;cursor:pointer;transition:all .15s;margin-top:16px}
+.btn-pk{background:linear-gradient(135deg,var(--pk),var(--or));color:#fff}
+.btn-pk:hover{transform:scale(1.02);box-shadow:0 6px 24px rgba(255,32,96,.3)}
+.btn-cy{background:linear-gradient(135deg,#0af,var(--cy));color:#0a0a1f}
+.btn-gr{background:linear-gradient(135deg,#00c85a,var(--gr));color:#0a0a1f}
+.result{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:28px;margin-top:16px;display:none}
+.result.show{display:block}
+.result-main{font-family:'Fredoka',sans-serif;font-size:clamp(36px,6vw,60px);font-weight:700;text-align:center;margin-bottom:8px}
+.result-sub{text-align:center;color:var(--mt);font-weight:600;margin-bottom:20px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.stat{background:var(--sf);border-radius:14px;padding:14px;text-align:center}
+.stat-val{font-family:'Fredoka',sans-serif;font-size:26px;font-weight:700}
+.stat-lbl{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--mt)}
+.divider{height:1px;background:var(--bd);margin:20px 0}
+.toggle-row{display:flex;gap:8px;background:var(--sf);border-radius:12px;padding:4px}
+.toggle-btn{flex:1;padding:10px;border:none;border-radius:9px;background:none;color:var(--mt);font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;cursor:pointer;transition:all .15s}
+.toggle-btn.on{background:var(--bg2);color:var(--tx);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.section-title{font-family:'Fredoka',sans-serif;font-size:18px;font-weight:600;margin-bottom:16px;color:var(--cy)}
+.article{max-width:800px;margin:40px auto 0;padding:0 20px}
+.article h2{font-size:24px;margin:28px 0 10px;color:var(--tx)}
+.article h3{font-size:18px;margin:20px 0 8px;color:var(--cy)}
+.article p{color:var(--mt);font-weight:600;margin-bottom:12px;font-size:15px}
+details.qa{background:var(--sf);border:1px solid var(--bd);border-radius:12px;margin-bottom:8px}
+details.qa summary{padding:14px 18px;cursor:pointer;font-weight:800;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.qa summary::after{content:"﹢";color:var(--mt);font-size:18px}
+details.qa[open] summary::after{content:"－"}
+.a{padding:0 18px 14px;color:var(--mt);font-size:14px;font-weight:600;line-height:1.6}
+footer{border-top:1px solid var(--bd);margin-top:60px;padding:24px 20px;text-align:center}
+footer p{font-size:13px;color:var(--mt);font-weight:600}
+footer a{color:var(--mt);text-decoration:none;margin:0 10px}
+footer a:hover{color:var(--tx)}
+.related{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:20px;margin:32px 0}
+.related h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin-bottom:12px}
+.related-grid{display:flex;gap:10px;flex-wrap:wrap}
+.related-card{flex:1;min-width:140px;text-decoration:none;padding:12px 14px;border-radius:12px;background:var(--sf);border:1px solid var(--bd);transition:background .15s}
+.related-card:hover{background:var(--sfh)}
+.rc-title{font-weight:800;font-size:13px;color:var(--tx);display:block;margin-bottom:2px}
+.rc-desc{font-size:11px;color:var(--mt);font-weight:600}
+.badge{display:inline-block;padding:4px 10px;border-radius:100px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.badge-gr{background:rgba(0,230,118,.15);color:var(--gr)}
+.badge-yl{background:rgba(255,214,0,.15);color:var(--yl)}
+.badge-pk{background:rgba(255,32,96,.15);color:var(--pk)}
+.badge-cy{background:rgba(0,229,255,.15);color:var(--cy)}
+
+
+.ad-wrap{margin:32px auto;max-width:640px;text-align:center}
+.ad-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--mt);margin-bottom:6px;opacity:.6}
+.ad-box{background:var(--sf);border:1px solid var(--bd);border-radius:14px;
+  padding:40px 20px;color:var(--mt);font-size:13px;font-weight:600}
+
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/">← All tools</a>
+  </div>
+</div>
+<main>
+<header class="head">
+  <h1>Date Calculator</h1>
+  <p>Days between two dates, or add and subtract time from any date.</p>
+</header>
+<div class="wrap">
+<div class="card">
+  <div class="toggle-row" id="dateModeRow">
+    <button class="toggle-btn on" onclick="setDateMode('between',this)">📅 Days between dates</button>
+    <button class="toggle-btn" onclick="setDateMode('add',this)">➕ Add / subtract</button>
+  </div>
+</div>
+<div class="card" id="betweenCard">
+  <div class="row">
+    <div><label>Start date</label><input type="date" id="d1" oninput="calcBetween()"></div>
+    <div><label>End date</label><input type="date" id="d2" oninput="calcBetween()"></div>
+  </div>
+</div>
+<div class="card" id="addCard" style="display:none">
+  <div><label>Start date</label><input type="date" id="d3" oninput="calcAdd()"></div>
+  <div style="margin-top:12px">
+    <div class="toggle-row" id="addSubRow" style="margin-bottom:12px">
+      <button class="toggle-btn on" id="addBtn" onclick="setAddSub('add',this)">➕ Add</button>
+      <button class="toggle-btn" id="subBtn" onclick="setAddSub('sub',this)">➖ Subtract</button>
+    </div>
+    <div class="row3">
+      <div><label>Years</label><input type="number" id="addY" min="0" max="1000" placeholder="0" oninput="calcAdd()"></div>
+      <div><label>Months</label><input type="number" id="addM" min="0" max="12000" placeholder="0" oninput="calcAdd()"></div>
+      <div><label>Days</label><input type="number" id="addD" min="0" max="365000" placeholder="0" oninput="calcAdd()"></div>
+    </div>
+  </div>
+</div>
+<div class="result" id="dateResult">
+  <div class="result-main" id="dateBig"></div>
+  <div class="result-sub" id="dateSub"></div>
+  <div class="stats" id="dateStats"></div>
+</div>
+<script>
+let dateMode='between',addSub='add';
+function setDateMode(m,btn){
+  dateMode=m;
+  document.querySelectorAll('#dateModeRow .toggle-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('betweenCard').style.display=m==='between'?'block':'none';
+  document.getElementById('addCard').style.display=m==='add'?'block':'none';
+  document.getElementById('dateResult').classList.remove('show');
+}
+function setAddSub(s,btn){
+  addSub=s;
+  document.querySelectorAll('#addSubRow .toggle-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  calcAdd();
+}
+function calcBetween(){
+  const d1=document.getElementById('d1').value,d2=document.getElementById('d2').value;
+  if(!d1||!d2)return;
+  const a=new Date(d1),b=new Date(d2);
+  const sign=b>=a?1:-1;
+  const [start,end]=sign>=0?[a,b]:[b,a];
+  const totalDays=Math.round(Math.abs(b-a)/(1000*60*60*24));
+  const totalWks=Math.floor(totalDays/7);
+  const remDays=totalDays%7;
+  let yrs=end.getFullYear()-start.getFullYear();
+  let ms=end.getMonth()-start.getMonth();
+  let ds=end.getDate()-start.getDate();
+  if(ds<0){ms--;const prev=new Date(end.getFullYear(),end.getMonth(),0);ds+=prev.getDate();}
+  if(ms<0){yrs--;ms+=12;}
+  // count weekdays
+  let wd=0;let tmp=new Date(start);
+  while(tmp<end){const day=tmp.getDay();if(day>=1&&day<=5)wd++;tmp.setDate(tmp.getDate()+1);}
+  const label=sign<0?'earlier':'later';
+  document.getElementById('dateBig').textContent=totalDays.toLocaleString()+' days';
+  document.getElementById('dateSub').textContent=(sign<0?'First date is ':'Second date is ')+yrs+' yr '+ms+' mo '+ds+' days '+label;
+  document.getElementById('dateStats').innerHTML=`
+    <div class="stat"><div class="stat-val" style="color:var(--cy)">${yrs}</div><div class="stat-lbl">Years</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--or)">${ms}</div><div class="stat-lbl">Months</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--gr)">${ds}</div><div class="stat-lbl">Days</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--pu)">${totalWks}</div><div class="stat-lbl">Weeks</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--yl)">${wd.toLocaleString()}</div><div class="stat-lbl">Weekdays</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--pk)">${(totalDays*24).toLocaleString()}</div><div class="stat-lbl">Hours</div></div>`;
+  document.getElementById('dateResult').classList.add('show');
+}
+function calcAdd(){
+  const d3=document.getElementById('d3').value;
+  if(!d3)return;
+  const base=new Date(d3);
+  const y=parseInt(document.getElementById('addY').value)||0;
+  const m=parseInt(document.getElementById('addM').value)||0;
+  const d=parseInt(document.getElementById('addD').value)||0;
+  if(y===0&&m===0&&d===0)return;
+  const result=new Date(base);
+  if(addSub==='add'){result.setFullYear(result.getFullYear()+y);result.setMonth(result.getMonth()+m);result.setDate(result.getDate()+d);}
+  else{result.setFullYear(result.getFullYear()-y);result.setMonth(result.getMonth()-m);result.setDate(result.getDate()-d);}
+  const opts={weekday:'long',year:'numeric',month:'long',day:'numeric'};
+  const dayNames=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const totalDays=y*365+m*30+d;
+  document.getElementById('dateBig').textContent=result.toLocaleDateString('en',{month:'long',day:'numeric',year:'numeric'});
+  document.getElementById('dateSub').textContent=result.toLocaleDateString('en',{weekday:'long'})+' · '+(addSub==='add'?'+':'-')+totalDays+' days from start';
+  document.getElementById('dateStats').innerHTML=`
+    <div class="stat"><div class="stat-val" style="color:var(--cy)">${result.getFullYear()}</div><div class="stat-lbl">Year</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--or)">${result.toLocaleDateString('en',{month:'short'})}</div><div class="stat-lbl">Month</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--gr)">${result.getDate()}</div><div class="stat-lbl">Day</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--pu)">${dayNames[result.getDay()]}</div><div class="stat-lbl">Weekday</div></div>`;
+  document.getElementById('dateResult').classList.add('show');
+}
+</script>
+<div class="related">
+  <h3>🔗 Try these next</h3>
+  <div class="related-grid"><a class="related-card" href="/agecalculator/"><span class="rc-title">🎂 Age Calculator</span><span class="rc-desc">Exact age in years, months & days</span></a>
+<a class="related-card" href="/randomnumber/"><span class="rc-title">🎲 Random Number</span><span class="rc-desc">Pick numbers in any range</span></a>
+<a class="related-card" href="/mortgage/"><span class="rc-title">🏠 Mortgage Calculator</span><span class="rc-desc">Full monthly cost breakdown</span></a></div>
+</div>
+</div>
+<article class="article">
+<details class="qa"><summary>How do I calculate the number of days between two dates?</summary><div class="a">Enter both dates in 'Days between dates' mode — the calculator instantly shows the exact count in days, weeks, months, years, and even weekdays only.</div></details>
+<details class="qa"><summary>Can I find the date X days from today?</summary><div class="a">Yes — switch to 'Add / subtract' mode, set today as the start date, enter the number of days, and it shows the exact future (or past) date.</div></details>
+<details class="qa"><summary>Does the calculator count weekdays separately?</summary><div class="a">Yes — in between-dates mode it shows both total days and weekdays (Monday–Friday) separately, useful for working out business days.</div></details>
+<details class="qa"><summary>Can I subtract months and years, not just days?</summary><div class="a">Yes — the add/subtract mode lets you add or subtract any combination of years, months, and days from a starting date.</div></details>
+<details class="qa"><summary>How many days until a specific date?</summary><div class="a">Set today as the start date and your target as the end date — the result shows the exact number of days, weeks, and hours remaining.</div></details>
+</article>
+<footer>
+  <p>© <span id="yr"></span> Pickly &middot; <a href="/privacy/">Privacy</a> <a href="/terms/">Terms</a> <a href="/contact/">Contact</a></p>
+</footer>
+
+  <div class="ad-wrap">
+    <div class="ad-lbl">Advertisement</div>
+    <div class="ad-box">Ad space — apply for Google AdSense to display ads here</div>
+  </div>
+  <!-- ════ GOOGLE ADSENSE — uncomment when approved ════
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script>
+  ════════════════════════════════════════════════════ -->
+</main>
+<script>document.getElementById("yr").textContent=(new Date).getFullYear();</script>
+</body>
+</html>

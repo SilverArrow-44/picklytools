@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Age Calculator — How Old Am I? | Pickly</title>
+<meta name="description" content="Free age calculator — find your exact age in years, months, days, hours and minutes. Calculate age on any date or count down to a milestone age.">
+<link rel="canonical" href="https://picklytools.com/agecalculator/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap"></noscript>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Age Calculator — How Old Am I?","url":"https://picklytools.com/agecalculator/","description":"Free age calculator — find your exact age in years, months, days, hours and minutes. Calculate age on any date or count down to a milestone age.","applicationCategory":"UtilityApplication","operatingSystem":"Any","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Age Calculator — How Old Am I?","item":"https://picklytools.com/agecalculator/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the age calculator work?","acceptedAnswer":{"@type":"Answer","text":"Enter your date of birth and the calculator instantly computes your exact age in years, months, and days, plus total days, hours, and minutes lived."}},{"@type":"Question","name":"Can I calculate my age on a specific past or future date?","acceptedAnswer":{"@type":"Answer","text":"Yes — switch to 'Age on a date' mode, enter your birthday and any target date, and it calculates exactly how old you were or will be."}},{"@type":"Question","name":"How do I find out how many days until I turn a certain age?","acceptedAnswer":{"@type":"Answer","text":"Use 'Years until age' mode, enter your birthday and the target age, and it shows the exact countdown in years, months, days, and hours."}},{"@type":"Question","name":"How many days old am I?","acceptedAnswer":{"@type":"Answer","text":"The calculator shows your total days lived. For example, someone turning 30 has lived approximately 10,950 days."}},{"@type":"Question","name":"What day of the week was I born?","acceptedAnswer":{"@type":"Answer","text":"The calculator shows the day of the week for your date of birth in every calculation mode."}}]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a1f;--bg2:#11112e;--sf:rgba(255,255,255,.05);--sfh:rgba(255,255,255,.09);--bd:rgba(255,255,255,.1);--tx:#f4f4fb;--mt:#9a9ab5;--pk:#FF2060;--or:#FF8C00;--yl:#FFD600;--cy:#00E5FF;--pu:#B061FF;--gr:#00E676;--rl:16px}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+h1,h2,h3{font-family:'Fredoka',sans-serif}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(10,10,31,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:800px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:center;position:relative}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--tx)}
+.brand-mark{width:28px;height:28px}
+.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;background:linear-gradient(90deg,#FF2D6E,#FF8C00);background-clip:text;color:transparent}
+.back{position:absolute;right:20px;color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+.wrap{max-width:800px;margin:0 auto;padding:0 20px}
+.head{padding:40px 20px 24px;text-align:center}
+.head h1{font-size:clamp(28px,5vw,44px);font-weight:700;margin-bottom:10px}
+.head p{color:var(--mt);font-size:16px;font-weight:600;max-width:540px;margin:0 auto}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:24px}
+.card+.card{margin-top:16px}
+label{display:block;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--mt);margin-bottom:6px}
+input,select{width:100%;background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:13px 16px;color:var(--tx);font-size:16px;font-family:'Nunito',sans-serif;font-weight:700;outline:none;transition:border .15s}
+input:focus,select:focus{border-color:var(--cy)}
+input[type=number]{-moz-appearance:textfield}
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+select option{background:var(--bg2);color:var(--tx)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:560px){.row,.row3{grid-template-columns:1fr}}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;border:none;border-radius:14px;font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;cursor:pointer;transition:all .15s;margin-top:16px}
+.btn-pk{background:linear-gradient(135deg,var(--pk),var(--or));color:#fff}
+.btn-pk:hover{transform:scale(1.02);box-shadow:0 6px 24px rgba(255,32,96,.3)}
+.btn-cy{background:linear-gradient(135deg,#0af,var(--cy));color:#0a0a1f}
+.btn-gr{background:linear-gradient(135deg,#00c85a,var(--gr));color:#0a0a1f}
+.result{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:28px;margin-top:16px;display:none}
+.result.show{display:block}
+.result-main{font-family:'Fredoka',sans-serif;font-size:clamp(36px,6vw,60px);font-weight:700;text-align:center;margin-bottom:8px}
+.result-sub{text-align:center;color:var(--mt);font-weight:600;margin-bottom:20px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.stat{background:var(--sf);border-radius:14px;padding:14px;text-align:center}
+.stat-val{font-family:'Fredoka',sans-serif;font-size:26px;font-weight:700}
+.stat-lbl{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--mt)}
+.divider{height:1px;background:var(--bd);margin:20px 0}
+.toggle-row{display:flex;gap:8px;background:var(--sf);border-radius:12px;padding:4px}
+.toggle-btn{flex:1;padding:10px;border:none;border-radius:9px;background:none;color:var(--mt);font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;cursor:pointer;transition:all .15s}
+.toggle-btn.on{background:var(--bg2);color:var(--tx);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.section-title{font-family:'Fredoka',sans-serif;font-size:18px;font-weight:600;margin-bottom:16px;color:var(--cy)}
+.article{max-width:800px;margin:40px auto 0;padding:0 20px}
+.article h2{font-size:24px;margin:28px 0 10px;color:var(--tx)}
+.article h3{font-size:18px;margin:20px 0 8px;color:var(--cy)}
+.article p{color:var(--mt);font-weight:600;margin-bottom:12px;font-size:15px}
+details.qa{background:var(--sf);border:1px solid var(--bd);border-radius:12px;margin-bottom:8px}
+details.qa summary{padding:14px 18px;cursor:pointer;font-weight:800;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.qa summary::after{content:"﹢";color:var(--mt);font-size:18px}
+details.qa[open] summary::after{content:"－"}
+.a{padding:0 18px 14px;color:var(--mt);font-size:14px;font-weight:600;line-height:1.6}
+footer{border-top:1px solid var(--bd);margin-top:60px;padding:24px 20px;text-align:center}
+footer p{font-size:13px;color:var(--mt);font-weight:600}
+footer a{color:var(--mt);text-decoration:none;margin:0 10px}
+footer a:hover{color:var(--tx)}
+.related{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:20px;margin:32px 0}
+.related h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin-bottom:12px}
+.related-grid{display:flex;gap:10px;flex-wrap:wrap}
+.related-card{flex:1;min-width:140px;text-decoration:none;padding:12px 14px;border-radius:12px;background:var(--sf);border:1px solid var(--bd);transition:background .15s}
+.related-card:hover{background:var(--sfh)}
+.rc-title{font-weight:800;font-size:13px;color:var(--tx);display:block;margin-bottom:2px}
+.rc-desc{font-size:11px;color:var(--mt);font-weight:600}
+.badge{display:inline-block;padding:4px 10px;border-radius:100px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.badge-gr{background:rgba(0,230,118,.15);color:var(--gr)}
+.badge-yl{background:rgba(255,214,0,.15);color:var(--yl)}
+.badge-pk{background:rgba(255,32,96,.15);color:var(--pk)}
+.badge-cy{background:rgba(0,229,255,.15);color:var(--cy)}
+
+
+.ad-wrap{margin:32px auto;max-width:640px;text-align:center}
+.ad-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--mt);margin-bottom:6px;opacity:.6}
+.ad-box{background:var(--sf);border:1px solid var(--bd);border-radius:14px;
+  padding:40px 20px;color:var(--mt);font-size:13px;font-weight:600}
+
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/">← All tools</a>
+  </div>
+</div>
+<main>
+<header class="head">
+  <h1>Age Calculator</h1>
+  <p>Your exact age — down to the day, hour, and minute.</p>
+</header>
+<div class="wrap">
+<div class="card">
+  <div class="toggle-row" id="ageModeRow">
+    <button class="toggle-btn on" onclick="setAgeMode('age',this)">🎂 My age today</button>
+    <button class="toggle-btn" onclick="setAgeMode('on',this)">📅 Age on a date</button>
+    <button class="toggle-btn" onclick="setAgeMode('until',this)">⏳ Years until age</button>
+  </div>
+</div>
+<div class="card" id="ageInputs">
+  <div id="modeAge">
+    <label>Your date of birth</label>
+    <input type="date" id="dob" oninput="calcAge()" max="">
+  </div>
+  <div id="modeOn" style="display:none">
+    <div class="row">
+      <div><label>Date of birth</label><input type="date" id="dob2" oninput="calcAge()"></div>
+      <div><label>Calculate age on</label><input type="date" id="onDate" oninput="calcAge()"></div>
+    </div>
+  </div>
+  <div id="modeUntil" style="display:none">
+    <div class="row">
+      <div><label>Date of birth</label><input type="date" id="dob3" oninput="calcAge()"></div>
+      <div><label>Age you want to reach</label><input type="number" id="targetAge" placeholder="e.g. 65" min="1" max="130" oninput="calcAge()"></div>
+    </div>
+  </div>
+</div>
+<div class="result" id="ageResult">
+  <div class="result-main" id="ageBig"></div>
+  <div class="result-sub" id="ageSub"></div>
+  <div class="stats" id="ageStats"></div>
+</div>
+<script>
+let ageMode='age';
+function setAgeMode(m,btn){
+  ageMode=m;
+  document.querySelectorAll('#ageModeRow .toggle-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('modeAge').style.display=m==='age'?'block':'none';
+  document.getElementById('modeOn').style.display=m==='on'?'block':'none';
+  document.getElementById('modeUntil').style.display=m==='until'?'block':'none';
+  document.getElementById('ageResult').classList.remove('show');
+  calcAge();
+}
+function pad(n){return String(n).padStart(2,'0')}
+function calcAge(){
+  const res=document.getElementById('ageResult');
+  if(ageMode==='age'){
+    const d=document.getElementById('dob').value;
+    if(!d)return;
+    const born=new Date(d),now=new Date();
+    if(born>now)return;
+    showAge(born,now,'today');
+  } else if(ageMode==='on'){
+    const d1=document.getElementById('dob2').value,d2=document.getElementById('onDate').value;
+    if(!d1||!d2)return;
+    const born=new Date(d1),on=new Date(d2);
+    if(born>on)return;
+    showAge(born,on,'on '+new Date(d2).toLocaleDateString('en',{month:'long',day:'numeric',year:'numeric'}));
+  } else {
+    const d=document.getElementById('dob3').value,t=parseInt(document.getElementById('targetAge').value);
+    if(!d||!t||t<1||t>130)return;
+    const born=new Date(d),target=new Date(born);
+    target.setFullYear(born.getFullYear()+t);
+    const now=new Date(),days=Math.round((target-now)/(1000*60*60*24));
+    if(days<0){
+      document.getElementById('ageBig').textContent='Already passed!';
+      document.getElementById('ageSub').textContent='You reached age '+t+' on '+target.toLocaleDateString('en',{month:'long',day:'numeric',year:'numeric'});
+    } else {
+      document.getElementById('ageBig').textContent=days.toLocaleString()+' days';
+      document.getElementById('ageSub').textContent='until you turn '+t+' ('+target.toLocaleDateString('en',{month:'long',day:'numeric',year:'numeric'})+')';
+    }
+    const yrs=Math.floor(days/365),rem=days%365,ms=Math.floor(rem/30),ds=rem%30;
+    document.getElementById('ageStats').innerHTML=`
+      <div class="stat"><div class="stat-val" style="color:var(--cy)">${yrs}</div><div class="stat-lbl">Years</div></div>
+      <div class="stat"><div class="stat-val" style="color:var(--or)">${ms}</div><div class="stat-lbl">Months</div></div>
+      <div class="stat"><div class="stat-val" style="color:var(--gr)">${ds}</div><div class="stat-lbl">Days</div></div>
+      <div class="stat"><div class="stat-val" style="color:var(--pu)">${(days*24).toLocaleString()}</div><div class="stat-lbl">Hours</div></div>`;
+    res.classList.add('show');return;
+  }
+}
+function showAge(born,ref,label){
+  let yrs=ref.getFullYear()-born.getFullYear();
+  let ms=ref.getMonth()-born.getMonth();
+  let ds=ref.getDate()-born.getDate();
+  if(ds<0){ms--;const prev=new Date(ref.getFullYear(),ref.getMonth(),0);ds+=prev.getDate();}
+  if(ms<0){yrs--;ms+=12;}
+  const totalDays=Math.round((ref-born)/(1000*60*60*24));
+  const totalHrs=Math.round((ref-born)/(1000*60*60));
+  const totalMins=Math.round((ref-born)/(1000*60));
+  const bornDay=born.toLocaleDateString('en',{weekday:'long'});
+  const nextBday=new Date(ref.getFullYear(),born.getMonth(),born.getDate());
+  if(nextBday<ref)nextBday.setFullYear(ref.getFullYear()+1);
+  const daysToNext=Math.ceil((nextBday-ref)/(1000*60*60*24));
+  document.getElementById('ageBig').textContent=yrs+' years';
+  document.getElementById('ageSub').textContent=yrs+' years, '+ms+' months & '+ds+' days '+label;
+  document.getElementById('ageStats').innerHTML=`
+    <div class="stat"><div class="stat-val" style="color:var(--cy)">${ms}</div><div class="stat-lbl">Months</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--or)">${ds}</div><div class="stat-lbl">Days</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--gr)">${totalDays.toLocaleString()}</div><div class="stat-lbl">Total Days</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--pu)">${totalHrs.toLocaleString()}</div><div class="stat-lbl">Total Hours</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--pk)">${totalMins.toLocaleString()}</div><div class="stat-lbl">Total Minutes</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--yl)">${daysToNext}</div><div class="stat-lbl">Days to Birthday</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--cy)">${bornDay.slice(0,3)}</div><div class="stat-lbl">Born on</div></div>`;
+  document.getElementById('ageResult').classList.add('show');
+}
+// set max date to today
+document.addEventListener('DOMContentLoaded',()=>{
+  const t=new Date().toISOString().split('T')[0];
+  ['dob','dob2','dob3'].forEach(id=>{const el=document.getElementById(id);if(el)el.max=t;});
+});
+</script>
+<div class="related">
+  <h3>🔗 Try these next</h3>
+  <div class="related-grid"><a class="related-card" href="/datecalculator/"><span class="rc-title">📅 Date Calculator</span><span class="rc-desc">Days between dates & add/subtract</span></a>
+<a class="related-card" href="/bmi/"><span class="rc-title">⚖️ BMI Calculator</span><span class="rc-desc">Check your body mass index</span></a>
+<a class="related-card" href="/randomnumber/"><span class="rc-title">🎲 Random Number</span><span class="rc-desc">Pick a number in any range</span></a></div>
+</div>
+</div>
+<article class="article">
+<details class="qa"><summary>How does the age calculator work?</summary><div class="a">Enter your date of birth and the calculator instantly computes your exact age in years, months, and days, plus total days, hours, and minutes lived.</div></details>
+<details class="qa"><summary>Can I calculate my age on a specific past or future date?</summary><div class="a">Yes — switch to 'Age on a date' mode, enter your birthday and any target date, and it calculates exactly how old you were or will be.</div></details>
+<details class="qa"><summary>How do I find out how many days until I turn a certain age?</summary><div class="a">Use 'Years until age' mode, enter your birthday and the target age, and it shows the exact countdown in years, months, days, and hours.</div></details>
+<details class="qa"><summary>How many days old am I?</summary><div class="a">The calculator shows your total days lived. For example, someone turning 30 has lived approximately 10,950 days.</div></details>
+<details class="qa"><summary>What day of the week was I born?</summary><div class="a">The calculator shows the day of the week for your date of birth in every calculation mode.</div></details>
+</article>
+<footer>
+  <p>© <span id="yr"></span> Pickly &middot; <a href="/privacy/">Privacy</a> <a href="/terms/">Terms</a> <a href="/contact/">Contact</a></p>
+</footer>
+
+  <div class="ad-wrap">
+    <div class="ad-lbl">Advertisement</div>
+    <div class="ad-box">Ad space — apply for Google AdSense to display ads here</div>
+  </div>
+  <!-- ════ GOOGLE ADSENSE — uncomment when approved ════
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script>
+  ════════════════════════════════════════════════════ -->
+</main>
+<script>document.getElementById("yr").textContent=(new Date).getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compatibility Calculator — Name & Birthday Match | Pickly</title>
+<meta name="description" content="Free compatibility calculator — enter two names and birthdays to get a fun compatibility score. See your star signs and match percentage instantly.">
+<link rel="canonical" href="https://picklytools.com/compatibility/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap"></noscript>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Compatibility Calculator — Name & Birthday Match","url":"https://picklytools.com/compatibility/","description":"Free compatibility calculator — enter two names and birthdays to get a fun compatibility score. See your star signs and match percentage instantly.","applicationCategory":"UtilityApplication","operatingSystem":"Any","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Compatibility Calculator — Name & Birthday Match","item":"https://picklytools.com/compatibility/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the compatibility score calculated?","acceptedAnswer":{"@type":"Answer","text":"The score uses a deterministic algorithm based on the numerical values of each name's characters. If birthdays are added, star sign compatibility is factored in too. It's purely for entertainment."}},{"@type":"Question","name":"Is this compatibility calculator accurate?","acceptedAnswer":{"@type":"Answer","text":"No — and it's not meant to be! This is a fun party game tool. Real compatibility is built over time through shared values, communication, and experiences. The algorithm always gives the same pair the same score, which makes it fun to compare with friends."}},{"@type":"Question","name":"Can I use this for any relationship?","acceptedAnswer":{"@type":"Answer","text":"Yes — friends, partners, colleagues, even rivals. It works for any two names you're curious about."}},{"@type":"Question","name":"Does adding birthdays change the score?","acceptedAnswer":{"@type":"Answer","text":"Yes — when you add both birthdays, the calculator includes a birthday compatibility element and shows your star signs alongside the score."}},{"@type":"Question","name":"What does 99% compatibility mean?","acceptedAnswer":{"@type":"Answer","text":"It means the universe approves of this pairing — according to our very scientific name-hash algorithm 😄. Take it as a good omen and have fun with it."}}]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a1f;--bg2:#11112e;--sf:rgba(255,255,255,.05);--sfh:rgba(255,255,255,.09);--bd:rgba(255,255,255,.1);--tx:#f4f4fb;--mt:#9a9ab5;--pk:#FF2060;--or:#FF8C00;--yl:#FFD600;--cy:#00E5FF;--pu:#B061FF;--gr:#00E676;--rl:16px}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+h1,h2,h3{font-family:'Fredoka',sans-serif}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(10,10,31,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:800px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:center;position:relative}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--tx)}
+.brand-mark{width:28px;height:28px}
+.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;background:linear-gradient(90deg,#FF2D6E,#FF8C00);background-clip:text;color:transparent}
+.back{position:absolute;right:20px;color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+.wrap{max-width:800px;margin:0 auto;padding:0 20px}
+.head{padding:40px 20px 24px;text-align:center}
+.head h1{font-size:clamp(28px,5vw,44px);font-weight:700;margin-bottom:10px}
+.head p{color:var(--mt);font-size:16px;font-weight:600;max-width:540px;margin:0 auto}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:24px}
+.card+.card{margin-top:16px}
+label{display:block;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--mt);margin-bottom:6px}
+input,select{width:100%;background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:13px 16px;color:var(--tx);font-size:16px;font-family:'Nunito',sans-serif;font-weight:700;outline:none;transition:border .15s}
+input:focus,select:focus{border-color:var(--cy)}
+input[type=number]{-moz-appearance:textfield}
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+select option{background:var(--bg2);color:var(--tx)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:560px){.row,.row3{grid-template-columns:1fr}}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;border:none;border-radius:14px;font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;cursor:pointer;transition:all .15s;margin-top:16px}
+.btn-pk{background:linear-gradient(135deg,var(--pk),var(--or));color:#fff}
+.btn-pk:hover{transform:scale(1.02);box-shadow:0 6px 24px rgba(255,32,96,.3)}
+.btn-cy{background:linear-gradient(135deg,#0af,var(--cy));color:#0a0a1f}
+.btn-gr{background:linear-gradient(135deg,#00c85a,var(--gr));color:#0a0a1f}
+.result{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:28px;margin-top:16px;display:none}
+.result.show{display:block}
+.result-main{font-family:'Fredoka',sans-serif;font-size:clamp(36px,6vw,60px);font-weight:700;text-align:center;margin-bottom:8px}
+.result-sub{text-align:center;color:var(--mt);font-weight:600;margin-bottom:20px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.stat{background:var(--sf);border-radius:14px;padding:14px;text-align:center}
+.stat-val{font-family:'Fredoka',sans-serif;font-size:26px;font-weight:700}
+.stat-lbl{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--mt)}
+.divider{height:1px;background:var(--bd);margin:20px 0}
+.toggle-row{display:flex;gap:8px;background:var(--sf);border-radius:12px;padding:4px}
+.toggle-btn{flex:1;padding:10px;border:none;border-radius:9px;background:none;color:var(--mt);font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;cursor:pointer;transition:all .15s}
+.toggle-btn.on{background:var(--bg2);color:var(--tx);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.section-title{font-family:'Fredoka',sans-serif;font-size:18px;font-weight:600;margin-bottom:16px;color:var(--cy)}
+.article{max-width:800px;margin:40px auto 0;padding:0 20px}
+.article h2{font-size:24px;margin:28px 0 10px;color:var(--tx)}
+.article h3{font-size:18px;margin:20px 0 8px;color:var(--cy)}
+.article p{color:var(--mt);font-weight:600;margin-bottom:12px;font-size:15px}
+details.qa{background:var(--sf);border:1px solid var(--bd);border-radius:12px;margin-bottom:8px}
+details.qa summary{padding:14px 18px;cursor:pointer;font-weight:800;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.qa summary::after{content:"﹢";color:var(--mt);font-size:18px}
+details.qa[open] summary::after{content:"－"}
+.a{padding:0 18px 14px;color:var(--mt);font-size:14px;font-weight:600;line-height:1.6}
+footer{border-top:1px solid var(--bd);margin-top:60px;padding:24px 20px;text-align:center}
+footer p{font-size:13px;color:var(--mt);font-weight:600}
+footer a{color:var(--mt);text-decoration:none;margin:0 10px}
+footer a:hover{color:var(--tx)}
+.related{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:20px;margin:32px 0}
+.related h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin-bottom:12px}
+.related-grid{display:flex;gap:10px;flex-wrap:wrap}
+.related-card{flex:1;min-width:140px;text-decoration:none;padding:12px 14px;border-radius:12px;background:var(--sf);border:1px solid var(--bd);transition:background .15s}
+.related-card:hover{background:var(--sfh)}
+.rc-title{font-weight:800;font-size:13px;color:var(--tx);display:block;margin-bottom:2px}
+.rc-desc{font-size:11px;color:var(--mt);font-weight:600}
+.badge{display:inline-block;padding:4px 10px;border-radius:100px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.badge-gr{background:rgba(0,230,118,.15);color:var(--gr)}
+.badge-yl{background:rgba(255,214,0,.15);color:var(--yl)}
+.badge-pk{background:rgba(255,32,96,.15);color:var(--pk)}
+.badge-cy{background:rgba(0,229,255,.15);color:var(--cy)}
+
+
+.ad-wrap{margin:32px auto;max-width:640px;text-align:center}
+.ad-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--mt);margin-bottom:6px;opacity:.6}
+.ad-box{background:var(--sf);border:1px solid var(--bd);border-radius:14px;
+  padding:40px 20px;color:var(--mt);font-size:13px;font-weight:600}
+
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/">← All tools</a>
+  </div>
+</div>
+<main>
+<header class="head">
+  <h1>Compatibility Calculator</h1>
+  <p>Enter two names and see how compatible you are — just for fun.</p>
+</header>
+<div class="wrap">
+<div class="card">
+  <div style="text-align:center;padding:4px 0 12px;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--mt)">💫 100% for fun — not science!</div>
+  <div class="row">
+    <div><label>Your name</label><input type="text" id="name1" placeholder="Enter your name" oninput="calcCompat()"></div>
+    <div><label>Their name</label><input type="text" id="name2" placeholder="Enter their name" oninput="calcCompat()"></div>
+  </div>
+  <div class="row" style="margin-top:12px">
+    <div><label>Your birthday (optional)</label><input type="date" id="bday1" oninput="calcCompat()"></div>
+    <div><label>Their birthday (optional)</label><input type="date" id="bday2" oninput="calcCompat()"></div>
+  </div>
+</div>
+<div class="result" id="compatResult">
+  <div id="compatEmoji" style="font-size:48px;text-align:center;margin-bottom:8px"></div>
+  <div class="result-main" id="compatScore" style="font-size:72px"></div>
+  <div class="result-sub" id="compatLabel"></div>
+  <div style="margin:20px 0 8px;height:16px;background:var(--sf);border-radius:100px;overflow:hidden">
+    <div id="compatBar" style="height:100%;border-radius:100px;background:linear-gradient(90deg,var(--pk),var(--or),var(--yl));transition:width .6s ease;width:0%"></div>
+  </div>
+  <div class="divider"></div>
+  <div class="stats" id="compatStats"></div>
+  <div id="compatSign" style="margin-top:16px;padding:14px;background:var(--sf);border-radius:14px;font-size:14px;font-weight:600;color:var(--mt);line-height:1.6"></div>
+  <div style="margin-top:12px;font-size:12px;text-align:center;color:var(--mt);font-weight:600">🎭 This is purely for entertainment. Compatibility is not determined by names or birthdays.</div>
+</div>
+<script>
+const SIGNS=[
+  {name:"Aries",sym:"♈",from:[3,21],to:[4,19]},
+  {name:"Taurus",sym:"♉",from:[4,20],to:[5,20]},
+  {name:"Gemini",sym:"♊",from:[5,21],to:[6,20]},
+  {name:"Cancer",sym:"♋",from:[6,21],to:[7,22]},
+  {name:"Leo",sym:"♌",from:[7,23],to:[8,22]},
+  {name:"Virgo",sym:"♍",from:[8,23],to:[9,22]},
+  {name:"Libra",sym:"♎",from:[9,23],to:[10,22]},
+  {name:"Scorpio",sym:"♏",from:[10,23],to:[11,21]},
+  {name:"Sagittarius",sym:"♐",from:[11,22],to:[12,21]},
+  {name:"Capricorn",sym:"♑",from:[12,22],to:[1,19]},
+  {name:"Aquarius",sym:"♒",from:[1,20],to:[2,18]},
+  {name:"Pisces",sym:"♓",from:[2,19],to:[3,20]},
+];
+function getSign(d){
+  const dt=new Date(d),m=dt.getMonth()+1,day=dt.getDate();
+  for(const s of SIGNS){
+    if((m===s.from[0]&&day>=s.from[1])||(m===s.to[0]&&day<=s.to[1]))return s;
+  }
+  return SIGNS[0];
+}
+function hashName(s){
+  let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))>>>0;return h;
+}
+const LABELS=[
+  [90,"Soulmate energy 💘 Practically made for each other."],
+  [75,"Really strong match 💕 You just get each other."],
+  [60,"Great connection ✨ Lots of fun potential here."],
+  [45,"Interesting pair 🤔 Opposites attract, maybe?"],
+  [30,"It's... complicated 😅 But where's the fun without a challenge?"],
+  [0,"Chaos duo 🌪️ You'll either be best friends or mortal enemies."],
+];
+const EMOJIS=[["99","💘"],["85","😍"],["70","😊"],["55","🙂"],["40","🤔"],["0","😅"]];
+function calcCompat(){
+  const n1=document.getElementById('name1').value.trim();
+  const n2=document.getElementById('name2').value.trim();
+  if(!n1||!n2)return;
+  // deterministic score from combined names
+  const combined=(n1+n2).toLowerCase().replace(/\s/g,'');
+  const h1=hashName(n1.toLowerCase()),h2=hashName(n2.toLowerCase());
+  const namePct=Math.min(99,Math.abs((h1^h2)%100)+1);
+  const b1=document.getElementById('bday1').value;
+  const b2=document.getElementById('bday2').value;
+  let datePct=null,s1=null,s2=null,signNote='';
+  if(b1&&b2){
+    const d1=new Date(b1),d2=new Date(b2);
+    datePct=Math.min(99,Math.abs((d1.getDate()*d2.getDate()+d1.getMonth()*d2.getMonth())%100)+1);
+    s1=getSign(b1);s2=getSign(b2);
+    signNote=`${s1.sym} ${s1.name} & ${s2.sym} ${s2.name} — a celestial pairing written in the stars (probably 🌟)`;
+  }
+  const overall=datePct!==null?Math.round((namePct*0.5+datePct*0.5)):namePct;
+  document.getElementById('compatResult').classList.add('show');
+  document.getElementById('compatScore').textContent=overall+'%';
+  const emoji=EMOJIS.find(([t])=>overall>=parseInt(t))?.[1]||'😅';
+  document.getElementById('compatEmoji').textContent=emoji;
+  const label=LABELS.find(([t])=>overall>=t)?.[1]||LABELS[LABELS.length-1][1];
+  document.getElementById('compatLabel').innerHTML=`<strong style="color:var(--cy)">${n1} & ${n2}</strong> — ${label}`;
+  document.getElementById('compatBar').style.width=overall+'%';
+  document.getElementById('compatStats').innerHTML=`
+    <div class="stat"><div class="stat-val" style="color:var(--pk)">${namePct}%</div><div class="stat-lbl">Name match</div></div>
+    ${datePct!==null?`<div class="stat"><div class="stat-val" style="color:var(--or)">${datePct}%</div><div class="stat-lbl">Birthday match</div></div>`:''}
+    <div class="stat"><div class="stat-val" style="color:var(--cy)">${overall}%</div><div class="stat-lbl">Overall score</div></div>`;
+  document.getElementById('compatSign').textContent=signNote||(n1+' and '+n2+' — the stars are watching 👀');
+}
+</script>
+<div class="related">
+  <h3>🔗 Try these next</h3>
+  <div class="related-grid"><a class="related-card" href="/wouldyourather/"><span class="rc-title">🤔 Would You Rather</span><span class="rc-desc">Classic party game for groups</span></a>
+<a class="related-card" href="/truthordare/"><span class="rc-title">🎴 Truth or Dare</span><span class="rc-desc">The ultimate party game</span></a>
+<a class="related-card" href="/spinit/"><span class="rc-title">🎡 Decision Spinner</span><span class="rc-desc">Spin to pick a winner</span></a></div>
+</div>
+</div>
+<article class="article">
+<details class="qa"><summary>How is the compatibility score calculated?</summary><div class="a">The score uses a deterministic algorithm based on the numerical values of each name's characters. If birthdays are added, star sign compatibility is factored in too. It's purely for entertainment.</div></details>
+<details class="qa"><summary>Is this compatibility calculator accurate?</summary><div class="a">No — and it's not meant to be! This is a fun party game tool. Real compatibility is built over time through shared values, communication, and experiences. The algorithm always gives the same pair the same score, which makes it fun to compare with friends.</div></details>
+<details class="qa"><summary>Can I use this for any relationship?</summary><div class="a">Yes — friends, partners, colleagues, even rivals. It works for any two names you're curious about.</div></details>
+<details class="qa"><summary>Does adding birthdays change the score?</summary><div class="a">Yes — when you add both birthdays, the calculator includes a birthday compatibility element and shows your star signs alongside the score.</div></details>
+<details class="qa"><summary>What does 99% compatibility mean?</summary><div class="a">It means the universe approves of this pairing — according to our very scientific name-hash algorithm 😄. Take it as a good omen and have fun with it.</div></details>
+</article>
+<footer>
+  <p>© <span id="yr"></span> Pickly &middot; <a href="/privacy/">Privacy</a> <a href="/terms/">Terms</a> <a href="/contact/">Contact</a></p>
+</footer>
+
+  <div class="ad-wrap">
+    <div class="ad-lbl">Advertisement</div>
+    <div class="ad-box">Ad space — apply for Google AdSense to display ads here</div>
+  </div>
+  <!-- ════ GOOGLE ADSENSE — uncomment when approved ════
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script>
+  ════════════════════════════════════════════════════ -->
+</main>
+<script>document.getElementById("yr").textContent=(new Date).getFullYear();</script>
+</body>
+</html>

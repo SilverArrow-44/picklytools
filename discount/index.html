@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Discount Calculator — % Off, BOGO, Stacked & More | Pickly</title>
+<meta name="description" content="Free discount calculator — calculate percentage off, flat discounts, BOGO deals, stacked discounts, reverse price finder, and cashback savings.">
+<link rel="canonical" href="https://picklytools.com/discount/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap"></noscript>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Discount Calculator — % Off, BOGO, Stacked & More","url":"https://picklytools.com/discount/","description":"Free discount calculator — calculate percentage off, flat discounts, BOGO deals, stacked discounts, reverse price finder, and cashback savings.","applicationCategory":"UtilityApplication","operatingSystem":"Any","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Discount Calculator — % Off, BOGO, Stacked & More","item":"https://picklytools.com/discount/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate percentage discount?","acceptedAnswer":{"@type":"Answer","text":"Enter the original price and the discount percentage — the calculator instantly shows the sale price, amount saved, and optionally the total after tax."}},{"@type":"Question","name":"What is a stacked discount?","acceptedAnswer":{"@type":"Answer","text":"Stacked discounts apply multiple percentage discounts in sequence. For example, 20% off then an additional 10% off is not 30% off — it's an effective 28% off. This calculator shows the real effective discount."}},{"@type":"Question","name":"How does the reverse discount calculator work?","acceptedAnswer":{"@type":"Answer","text":"If you know the sale price and the discount percentage, the reverse calculator works backwards to find the original price. Useful for finding the original price of clearance items."}},{"@type":"Question","name":"What does BOGO mean?","acceptedAnswer":{"@type":"Answer","text":"BOGO stands for Buy One Get One. The calculator supports BOGO free, Buy 2 Get 1 Free, Buy 1 Get 2nd 50% Off, and Buy 3 Get 1 Free — showing the effective discount for any quantity."}},{"@type":"Question","name":"How is cashback different from a discount?","acceptedAnswer":{"@type":"Answer","text":"With cashback you pay full price upfront and receive a portion back later. This calculator shows your effective cost after cashback and the equivalent discount percentage."}}]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a1f;--bg2:#11112e;--sf:rgba(255,255,255,.05);--sfh:rgba(255,255,255,.09);--bd:rgba(255,255,255,.1);--tx:#f4f4fb;--mt:#9a9ab5;--pk:#FF2060;--or:#FF8C00;--yl:#FFD600;--cy:#00E5FF;--pu:#B061FF;--gr:#00E676;--rl:16px}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+h1,h2,h3{font-family:'Fredoka',sans-serif}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(10,10,31,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:800px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:center;position:relative}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--tx)}
+.brand-mark{width:28px;height:28px}
+.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;background:linear-gradient(90deg,#FF2D6E,#FF8C00);background-clip:text;color:transparent}
+.back{position:absolute;right:20px;color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+.wrap{max-width:800px;margin:0 auto;padding:0 20px}
+.head{padding:40px 20px 24px;text-align:center}
+.head h1{font-size:clamp(28px,5vw,44px);font-weight:700;margin-bottom:10px}
+.head p{color:var(--mt);font-size:16px;font-weight:600;max-width:540px;margin:0 auto}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:24px}
+.card+.card{margin-top:16px}
+label{display:block;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--mt);margin-bottom:6px}
+input,select{width:100%;background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:13px 16px;color:var(--tx);font-size:16px;font-family:'Nunito',sans-serif;font-weight:700;outline:none;transition:border .15s}
+input:focus,select:focus{border-color:var(--cy)}
+input[type=number]{-moz-appearance:textfield}
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+select option{background:var(--bg2);color:var(--tx)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:560px){.row,.row3{grid-template-columns:1fr}}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;border:none;border-radius:14px;font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;cursor:pointer;transition:all .15s;margin-top:16px}
+.btn-pk{background:linear-gradient(135deg,var(--pk),var(--or));color:#fff}
+.btn-pk:hover{transform:scale(1.02);box-shadow:0 6px 24px rgba(255,32,96,.3)}
+.btn-cy{background:linear-gradient(135deg,#0af,var(--cy));color:#0a0a1f}
+.btn-gr{background:linear-gradient(135deg,#00c85a,var(--gr));color:#0a0a1f}
+.result{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:28px;margin-top:16px;display:none}
+.result.show{display:block}
+.result-main{font-family:'Fredoka',sans-serif;font-size:clamp(36px,6vw,60px);font-weight:700;text-align:center;margin-bottom:8px}
+.result-sub{text-align:center;color:var(--mt);font-weight:600;margin-bottom:20px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.stat{background:var(--sf);border-radius:14px;padding:14px;text-align:center}
+.stat-val{font-family:'Fredoka',sans-serif;font-size:26px;font-weight:700}
+.stat-lbl{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--mt)}
+.divider{height:1px;background:var(--bd);margin:20px 0}
+.toggle-row{display:flex;gap:8px;background:var(--sf);border-radius:12px;padding:4px}
+.toggle-btn{flex:1;padding:10px;border:none;border-radius:9px;background:none;color:var(--mt);font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;cursor:pointer;transition:all .15s}
+.toggle-btn.on{background:var(--bg2);color:var(--tx);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.section-title{font-family:'Fredoka',sans-serif;font-size:18px;font-weight:600;margin-bottom:16px;color:var(--cy)}
+.article{max-width:800px;margin:40px auto 0;padding:0 20px}
+.article h2{font-size:24px;margin:28px 0 10px;color:var(--tx)}
+.article h3{font-size:18px;margin:20px 0 8px;color:var(--cy)}
+.article p{color:var(--mt);font-weight:600;margin-bottom:12px;font-size:15px}
+details.qa{background:var(--sf);border:1px solid var(--bd);border-radius:12px;margin-bottom:8px}
+details.qa summary{padding:14px 18px;cursor:pointer;font-weight:800;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.qa summary::after{content:"﹢";color:var(--mt);font-size:18px}
+details.qa[open] summary::after{content:"－"}
+.a{padding:0 18px 14px;color:var(--mt);font-size:14px;font-weight:600;line-height:1.6}
+footer{border-top:1px solid var(--bd);margin-top:60px;padding:24px 20px;text-align:center}
+footer p{font-size:13px;color:var(--mt);font-weight:600}
+footer a{color:var(--mt);text-decoration:none;margin:0 10px}
+footer a:hover{color:var(--tx)}
+.related{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:20px;margin:32px 0}
+.related h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin-bottom:12px}
+.related-grid{display:flex;gap:10px;flex-wrap:wrap}
+.related-card{flex:1;min-width:140px;text-decoration:none;padding:12px 14px;border-radius:12px;background:var(--sf);border:1px solid var(--bd);transition:background .15s}
+.related-card:hover{background:var(--sfh)}
+.rc-title{font-weight:800;font-size:13px;color:var(--tx);display:block;margin-bottom:2px}
+.rc-desc{font-size:11px;color:var(--mt);font-weight:600}
+.badge{display:inline-block;padding:4px 10px;border-radius:100px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.badge-gr{background:rgba(0,230,118,.15);color:var(--gr)}
+.badge-yl{background:rgba(255,214,0,.15);color:var(--yl)}
+.badge-pk{background:rgba(255,32,96,.15);color:var(--pk)}
+.badge-cy{background:rgba(0,229,255,.15);color:var(--cy)}
+
+
+.ad-wrap{margin:32px auto;max-width:640px;text-align:center}
+.ad-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--mt);margin-bottom:6px;opacity:.6}
+.ad-box{background:var(--sf);border:1px solid var(--bd);border-radius:14px;
+  padding:40px 20px;color:var(--mt);font-size:13px;font-weight:600}
+
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/">← All tools</a>
+  </div>
+</div>
+<main>
+<header class="head">
+  <h1>Discount Calculator</h1>
+  <p>Percentage off, flat discount, BOGO, stacked deals, cashback and reverse price.</p>
+</header>
+<div class="wrap">
+<div class="card">
+  <div class="toggle-row" id="discModeRow" style="flex-wrap:wrap">
+    <button class="toggle-btn on" onclick="setDiscMode('pct',this)">% Off</button>
+    <button class="toggle-btn" onclick="setDiscMode('flat',this)">$ Off</button>
+    <button class="toggle-btn" onclick="setDiscMode('bogo',this)">BOGO</button>
+    <button class="toggle-btn" onclick="setDiscMode('stack',this)">Stacked</button>
+    <button class="toggle-btn" onclick="setDiscMode('reverse',this)">Reverse</button>
+    <button class="toggle-btn" onclick="setDiscMode('cash',this)">Cashback</button>
+  </div>
+</div>
+<div class="card" id="discInputs">
+  <!-- Pct Off -->
+  <div id="modePct">
+    <div class="row">
+      <div><label>Original price ($)</label><input type="number" id="origPct" placeholder="100.00" min="0" step="0.01" oninput="calcDisc()"></div>
+      <div><label>Discount (%)</label><input type="number" id="discPct" placeholder="20" min="0" max="100" step="0.1" oninput="calcDisc()"></div>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <div><label>Sales tax (% optional)</label><input type="number" id="taxPct" placeholder="0" min="0" max="30" step="0.1" oninput="calcDisc()"></div>
+      <div><label>Quantity (optional)</label><input type="number" id="qtyPct" placeholder="1" min="1" oninput="calcDisc()"></div>
+    </div>
+  </div>
+  <!-- Flat Off -->
+  <div id="modeFlat" style="display:none">
+    <div class="row">
+      <div><label>Original price ($)</label><input type="number" id="origFlat" placeholder="100.00" min="0" step="0.01" oninput="calcDisc()"></div>
+      <div><label>Amount off ($)</label><input type="number" id="discFlat" placeholder="15.00" min="0" step="0.01" oninput="calcDisc()"></div>
+    </div>
+  </div>
+  <!-- BOGO -->
+  <div id="modeBogo" style="display:none">
+    <div class="row">
+      <div><label>Item price ($)</label><input type="number" id="origBogo" placeholder="25.00" min="0" step="0.01" oninput="calcDisc()"></div>
+      <div><label>Number of items buying</label><input type="number" id="bogoQty" placeholder="2" min="2" oninput="calcDisc()"></div>
+    </div>
+    <div style="margin-top:12px">
+      <label>Offer type</label>
+      <select id="bogoType" onchange="calcDisc()">
+        <option value="b1g1">Buy 1 Get 1 Free</option>
+        <option value="b2g1">Buy 2 Get 1 Free</option>
+        <option value="b1g50">Buy 1 Get 2nd 50% Off</option>
+        <option value="b3g1">Buy 3 Get 1 Free</option>
+      </select>
+    </div>
+  </div>
+  <!-- Stacked -->
+  <div id="modeStack" style="display:none">
+    <label>Original price ($)</label>
+    <input type="number" id="origStack" placeholder="200.00" min="0" step="0.01" oninput="calcDisc()" style="margin-bottom:12px">
+    <div class="row3">
+      <div><label>Discount 1 (%)</label><input type="number" id="s1" placeholder="20" min="0" max="100" oninput="calcDisc()"></div>
+      <div><label>Discount 2 (%)</label><input type="number" id="s2" placeholder="10" min="0" max="100" oninput="calcDisc()"></div>
+      <div><label>Discount 3 (% opt.)</label><input type="number" id="s3" placeholder="5" min="0" max="100" oninput="calcDisc()"></div>
+    </div>
+  </div>
+  <!-- Reverse -->
+  <div id="modeReverse" style="display:none">
+    <div class="row">
+      <div><label>Sale price ($)</label><input type="number" id="saleRev" placeholder="80.00" min="0" step="0.01" oninput="calcDisc()"></div>
+      <div><label>Discount was (%)</label><input type="number" id="pctRev" placeholder="20" min="1" max="99" step="0.1" oninput="calcDisc()"></div>
+    </div>
+  </div>
+  <!-- Cashback -->
+  <div id="modeCash" style="display:none">
+    <div class="row">
+      <div><label>Purchase price ($)</label><input type="number" id="origCash" placeholder="100.00" min="0" step="0.01" oninput="calcDisc()"></div>
+      <div><label>Cashback (%)</label><input type="number" id="cashPct" placeholder="5" min="0" max="100" step="0.1" oninput="calcDisc()"></div>
+    </div>
+  </div>
+</div>
+<div class="result" id="discResult">
+  <div class="stats" id="discStats"></div>
+</div>
+<script>
+let discMode='pct';
+const discModes=['Pct','Flat','Bogo','Stack','Reverse','Cash'];
+function setDiscMode(m,btn){
+  discMode=m;
+  document.querySelectorAll('#discModeRow .toggle-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  discModes.forEach(n=>document.getElementById('mode'+n).style.display='none');
+  document.getElementById('mode'+m.charAt(0).toUpperCase()+m.slice(1)).style.display='block';
+  document.getElementById('discResult').classList.remove('show');
+  calcDisc();
+}
+function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',')}
+function calcDisc(){
+  const r=document.getElementById('discResult');
+  const stats=document.getElementById('discStats');
+  let orig,final,saved,savePct;
+  try{
+    if(discMode==='pct'){
+      orig=parseFloat(document.getElementById('origPct').value);
+      const pct=parseFloat(document.getElementById('discPct').value);
+      const tax=parseFloat(document.getElementById('taxPct').value)||0;
+      const qty=parseFloat(document.getElementById('qtyPct').value)||1;
+      if(!orig||isNaN(pct))return;
+      final=(orig*(1-pct/100));
+      saved=orig-final;
+      savePct=pct;
+      const afterTax=final*(1+tax/100);
+      stats.innerHTML=`
+        <div class="stat"><div class="stat-val" style="color:var(--mt);text-decoration:line-through;font-size:20px">${fmt(orig)}</div><div class="stat-lbl">Original</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--pk)">${pct}% off</div><div class="stat-lbl">Discount</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--gr)">${fmt(final)}</div><div class="stat-lbl">Sale price</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--yl)">${fmt(saved)}</div><div class="stat-lbl">You save</div></div>
+        ${tax>0?`<div class="stat"><div class="stat-val" style="color:var(--cy)">${fmt(afterTax)}</div><div class="stat-lbl">After tax</div></div>`:''}
+        ${qty>1?`<div class="stat"><div class="stat-val" style="color:var(--or)">${fmt(final*qty)}</div><div class="stat-lbl">Total (×${qty})</div></div>`:''}`;
+    } else if(discMode==='flat'){
+      orig=parseFloat(document.getElementById('origFlat').value);
+      const off=parseFloat(document.getElementById('discFlat').value);
+      if(!orig||isNaN(off))return;
+      final=Math.max(0,orig-off);
+      saved=orig-final;
+      stats.innerHTML=`
+        <div class="stat"><div class="stat-val" style="color:var(--mt);text-decoration:line-through;font-size:20px">${fmt(orig)}</div><div class="stat-lbl">Original</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--pk)">${fmt(off)} off</div><div class="stat-lbl">Discount</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--gr)">${fmt(final)}</div><div class="stat-lbl">Sale price</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--yl)">${(saved/orig*100).toFixed(1)}%</div><div class="stat-lbl">% saved</div></div>`;
+    } else if(discMode==='bogo'){
+      const price=parseFloat(document.getElementById('origBogo').value);
+      const qty=parseFloat(document.getElementById('bogoQty').value)||2;
+      const type=document.getElementById('bogoType').value;
+      if(!price)return;
+      let totalPaid=price*qty;
+      if(type==='b1g1'){const free=Math.floor(qty/2);totalPaid=price*(qty-free);}
+      else if(type==='b2g1'){const free=Math.floor(qty/3);totalPaid=price*(qty-free);}
+      else if(type==='b1g50'){if(qty>=2)totalPaid=price+(price*0.5)+(price*(qty-2));}
+      else if(type==='b3g1'){const free=Math.floor(qty/4);totalPaid=price*(qty-free);}
+      const totalFull=price*qty;
+      const effSave=totalFull-totalPaid;
+      stats.innerHTML=`
+        <div class="stat"><div class="stat-val" style="color:var(--mt);text-decoration:line-through;font-size:20px">${fmt(totalFull)}</div><div class="stat-lbl">Full price</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--gr)">${fmt(totalPaid)}</div><div class="stat-lbl">You pay</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--yl)">${fmt(effSave)}</div><div class="stat-lbl">You save</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--pk)">${(effSave/totalFull*100).toFixed(1)}%</div><div class="stat-lbl">Effective %</div></div>`;
+    } else if(discMode==='stack'){
+      orig=parseFloat(document.getElementById('origStack').value);
+      const s1=parseFloat(document.getElementById('s1').value)||0;
+      const s2=parseFloat(document.getElementById('s2').value)||0;
+      const s3=parseFloat(document.getElementById('s3').value)||0;
+      if(!orig||(!s1&&!s2&&!s3))return;
+      let price=orig;
+      if(s1)price*=(1-s1/100);
+      if(s2)price*=(1-s2/100);
+      if(s3)price*=(1-s3/100);
+      const eff=(1-price/orig)*100;
+      stats.innerHTML=`
+        <div class="stat"><div class="stat-val" style="color:var(--mt);text-decoration:line-through;font-size:20px">${fmt(orig)}</div><div class="stat-lbl">Original</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--gr)">${fmt(price)}</div><div class="stat-lbl">Final price</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--yl)">${fmt(orig-price)}</div><div class="stat-lbl">Total saved</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--pk)">${eff.toFixed(1)}%</div><div class="stat-lbl">Effective %</div></div>`;
+    } else if(discMode==='reverse'){
+      const sale=parseFloat(document.getElementById('saleRev').value);
+      const pct=parseFloat(document.getElementById('pctRev').value);
+      if(!sale||!pct)return;
+      orig=sale/(1-pct/100);
+      stats.innerHTML=`
+        <div class="stat"><div class="stat-val" style="color:var(--cy)">${fmt(orig)}</div><div class="stat-lbl">Original price</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--gr)">${fmt(sale)}</div><div class="stat-lbl">Sale price</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--yl)">${fmt(orig-sale)}</div><div class="stat-lbl">Amount saved</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--pk)">${pct}%</div><div class="stat-lbl">Discount was</div></div>`;
+    } else if(discMode==='cash'){
+      const price=parseFloat(document.getElementById('origCash').value);
+      const pct=parseFloat(document.getElementById('cashPct').value);
+      if(!price||!pct)return;
+      const back=price*pct/100;
+      const eff=price-back;
+      stats.innerHTML=`
+        <div class="stat"><div class="stat-val" style="color:var(--mt);font-size:20px">${fmt(price)}</div><div class="stat-lbl">You pay</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--gr)">${fmt(back)}</div><div class="stat-lbl">Cashback</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--cy)">${fmt(eff)}</div><div class="stat-lbl">Effective cost</div></div>
+        <div class="stat"><div class="stat-val" style="color:var(--pk)">${pct}%</div><div class="stat-lbl">Effective %</div></div>`;
+    }
+    r.classList.add('show');
+  }catch(e){}
+}
+</script>
+<div class="related">
+  <h3>🔗 Try these next</h3>
+  <div class="related-grid"><a class="related-card" href="/mortgage/"><span class="rc-title">🏠 Mortgage Calculator</span><span class="rc-desc">Full monthly home ownership cost</span></a>
+<a class="related-card" href="/bmi/"><span class="rc-title">⚖️ BMI Calculator</span><span class="rc-desc">Body mass index calculator</span></a>
+<a class="related-card" href="/randomnumber/"><span class="rc-title">🎲 Random Number</span><span class="rc-desc">Pick a random number</span></a></div>
+</div>
+</div>
+<article class="article">
+<details class="qa"><summary>How do I calculate percentage discount?</summary><div class="a">Enter the original price and the discount percentage — the calculator instantly shows the sale price, amount saved, and optionally the total after tax.</div></details>
+<details class="qa"><summary>What is a stacked discount?</summary><div class="a">Stacked discounts apply multiple percentage discounts in sequence. For example, 20% off then an additional 10% off is not 30% off — it's an effective 28% off. This calculator shows the real effective discount.</div></details>
+<details class="qa"><summary>How does the reverse discount calculator work?</summary><div class="a">If you know the sale price and the discount percentage, the reverse calculator works backwards to find the original price. Useful for finding the original price of clearance items.</div></details>
+<details class="qa"><summary>What does BOGO mean?</summary><div class="a">BOGO stands for Buy One Get One. The calculator supports BOGO free, Buy 2 Get 1 Free, Buy 1 Get 2nd 50% Off, and Buy 3 Get 1 Free — showing the effective discount for any quantity.</div></details>
+<details class="qa"><summary>How is cashback different from a discount?</summary><div class="a">With cashback you pay full price upfront and receive a portion back later. This calculator shows your effective cost after cashback and the equivalent discount percentage.</div></details>
+</article>
+<footer>
+  <p>© <span id="yr"></span> Pickly &middot; <a href="/privacy/">Privacy</a> <a href="/terms/">Terms</a> <a href="/contact/">Contact</a></p>
+</footer>
+
+  <div class="ad-wrap">
+    <div class="ad-lbl">Advertisement</div>
+    <div class="ad-box">Ad space — apply for Google AdSense to display ads here</div>
+  </div>
+  <!-- ════ GOOGLE ADSENSE — uncomment when approved ════
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script>
+  ════════════════════════════════════════════════════ -->
+</main>
+<script>document.getElementById("yr").textContent=(new Date).getFullYear();</script>
+</body>
+</html>

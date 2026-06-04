@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mortgage Calculator — Full Monthly Cost Breakdown | Pickly</title>
+<meta name="description" content="Free mortgage calculator with all-in monthly cost: principal, interest, tax, insurance, HOA, PMI, maintenance and utilities. See the real cost of homeownership.">
+<link rel="canonical" href="https://picklytools.com/mortgage/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap"></noscript>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Mortgage Calculator — Full Monthly Cost Breakdown","url":"https://picklytools.com/mortgage/","description":"Free mortgage calculator with all-in monthly cost: principal, interest, tax, insurance, HOA, PMI, maintenance and utilities. See the real cost of homeownership.","applicationCategory":"UtilityApplication","operatingSystem":"Any","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Mortgage Calculator — Full Monthly Cost Breakdown","item":"https://picklytools.com/mortgage/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the mortgage calculator include?","acceptedAnswer":{"@type":"Answer","text":"This calculator includes principal & interest, property tax, home insurance, HOA fees, PMI (auto-calculated when down payment is under 20%), maintenance estimates, and monthly utilities — giving you the true all-in monthly cost."}},{"@type":"Question","name":"What is PMI and when do I need it?","acceptedAnswer":{"@type":"Answer","text":"PMI (Private Mortgage Insurance) is required by most lenders when your down payment is less than 20% of the home's value. The calculator automatically estimates it at 0.6% of the loan annually and stops it once you reach 20% equity."}},{"@type":"Question","name":"How is the principal and interest calculated?","acceptedAnswer":{"@type":"Answer","text":"It uses the standard amortisation formula based on the loan amount, annual interest rate, and term in years to calculate your fixed monthly payment."}},{"@type":"Question","name":"Should I include maintenance costs?","acceptedAnswer":{"@type":"Answer","text":"Yes — most financial advisors recommend budgeting 1% of the home's value annually for maintenance and repairs. This calculator includes it as an adjustable field so you can see the real cost of ownership."}},{"@type":"Question","name":"What is a good debt-to-income ratio for a mortgage?","acceptedAnswer":{"@type":"Answer","text":"Lenders typically prefer your total monthly debt payments (including the mortgage) to be under 43% of gross monthly income, with the mortgage itself under 28%."}}]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a1f;--bg2:#11112e;--sf:rgba(255,255,255,.05);--sfh:rgba(255,255,255,.09);--bd:rgba(255,255,255,.1);--tx:#f4f4fb;--mt:#9a9ab5;--pk:#FF2060;--or:#FF8C00;--yl:#FFD600;--cy:#00E5FF;--pu:#B061FF;--gr:#00E676;--rl:16px}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+h1,h2,h3{font-family:'Fredoka',sans-serif}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(10,10,31,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:800px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:center;position:relative}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--tx)}
+.brand-mark{width:28px;height:28px}
+.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;background:linear-gradient(90deg,#FF2D6E,#FF8C00);background-clip:text;color:transparent}
+.back{position:absolute;right:20px;color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+.wrap{max-width:800px;margin:0 auto;padding:0 20px}
+.head{padding:40px 20px 24px;text-align:center}
+.head h1{font-size:clamp(28px,5vw,44px);font-weight:700;margin-bottom:10px}
+.head p{color:var(--mt);font-size:16px;font-weight:600;max-width:540px;margin:0 auto}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:24px}
+.card+.card{margin-top:16px}
+label{display:block;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--mt);margin-bottom:6px}
+input,select{width:100%;background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:13px 16px;color:var(--tx);font-size:16px;font-family:'Nunito',sans-serif;font-weight:700;outline:none;transition:border .15s}
+input:focus,select:focus{border-color:var(--cy)}
+input[type=number]{-moz-appearance:textfield}
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+select option{background:var(--bg2);color:var(--tx)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:560px){.row,.row3{grid-template-columns:1fr}}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;border:none;border-radius:14px;font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;cursor:pointer;transition:all .15s;margin-top:16px}
+.btn-pk{background:linear-gradient(135deg,var(--pk),var(--or));color:#fff}
+.btn-pk:hover{transform:scale(1.02);box-shadow:0 6px 24px rgba(255,32,96,.3)}
+.btn-cy{background:linear-gradient(135deg,#0af,var(--cy));color:#0a0a1f}
+.btn-gr{background:linear-gradient(135deg,#00c85a,var(--gr));color:#0a0a1f}
+.result{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:28px;margin-top:16px;display:none}
+.result.show{display:block}
+.result-main{font-family:'Fredoka',sans-serif;font-size:clamp(36px,6vw,60px);font-weight:700;text-align:center;margin-bottom:8px}
+.result-sub{text-align:center;color:var(--mt);font-weight:600;margin-bottom:20px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.stat{background:var(--sf);border-radius:14px;padding:14px;text-align:center}
+.stat-val{font-family:'Fredoka',sans-serif;font-size:26px;font-weight:700}
+.stat-lbl{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--mt)}
+.divider{height:1px;background:var(--bd);margin:20px 0}
+.toggle-row{display:flex;gap:8px;background:var(--sf);border-radius:12px;padding:4px}
+.toggle-btn{flex:1;padding:10px;border:none;border-radius:9px;background:none;color:var(--mt);font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;cursor:pointer;transition:all .15s}
+.toggle-btn.on{background:var(--bg2);color:var(--tx);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.section-title{font-family:'Fredoka',sans-serif;font-size:18px;font-weight:600;margin-bottom:16px;color:var(--cy)}
+.article{max-width:800px;margin:40px auto 0;padding:0 20px}
+.article h2{font-size:24px;margin:28px 0 10px;color:var(--tx)}
+.article h3{font-size:18px;margin:20px 0 8px;color:var(--cy)}
+.article p{color:var(--mt);font-weight:600;margin-bottom:12px;font-size:15px}
+details.qa{background:var(--sf);border:1px solid var(--bd);border-radius:12px;margin-bottom:8px}
+details.qa summary{padding:14px 18px;cursor:pointer;font-weight:800;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.qa summary::after{content:"﹢";color:var(--mt);font-size:18px}
+details.qa[open] summary::after{content:"－"}
+.a{padding:0 18px 14px;color:var(--mt);font-size:14px;font-weight:600;line-height:1.6}
+footer{border-top:1px solid var(--bd);margin-top:60px;padding:24px 20px;text-align:center}
+footer p{font-size:13px;color:var(--mt);font-weight:600}
+footer a{color:var(--mt);text-decoration:none;margin:0 10px}
+footer a:hover{color:var(--tx)}
+.related{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:20px;margin:32px 0}
+.related h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin-bottom:12px}
+.related-grid{display:flex;gap:10px;flex-wrap:wrap}
+.related-card{flex:1;min-width:140px;text-decoration:none;padding:12px 14px;border-radius:12px;background:var(--sf);border:1px solid var(--bd);transition:background .15s}
+.related-card:hover{background:var(--sfh)}
+.rc-title{font-weight:800;font-size:13px;color:var(--tx);display:block;margin-bottom:2px}
+.rc-desc{font-size:11px;color:var(--mt);font-weight:600}
+.badge{display:inline-block;padding:4px 10px;border-radius:100px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.badge-gr{background:rgba(0,230,118,.15);color:var(--gr)}
+.badge-yl{background:rgba(255,214,0,.15);color:var(--yl)}
+.badge-pk{background:rgba(255,32,96,.15);color:var(--pk)}
+.badge-cy{background:rgba(0,229,255,.15);color:var(--cy)}
+
+
+.ad-wrap{margin:32px auto;max-width:640px;text-align:center}
+.ad-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--mt);margin-bottom:6px;opacity:.6}
+.ad-box{background:var(--sf);border:1px solid var(--bd);border-radius:14px;
+  padding:40px 20px;color:var(--mt);font-size:13px;font-weight:600}
+
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/">← All tools</a>
+  </div>
+</div>
+<main>
+<header class="head">
+  <h1>Mortgage Calculator</h1>
+  <p>The full monthly cost — P&I, tax, insurance, HOA, PMI, maintenance, and utilities.</p>
+</header>
+<div class="wrap">
+<div class="card">
+  <div class="section-title">🏡 Property details</div>
+  <div class="row">
+    <div><label>Home price ($)</label><input type="number" id="mHomePrice" placeholder="400000" min="10000" oninput="calcMortgage()"></div>
+    <div>
+      <label>Down payment</label>
+      <div style="display:flex;gap:8px">
+        <input type="number" id="mDown" placeholder="80000" min="0" style="flex:1" oninput="calcMortgage()">
+        <input type="number" id="mDownPct" placeholder="20" min="0" max="100" style="width:80px" oninput="calcMortgagePct()">
+        <span style="display:flex;align-items:center;color:var(--mt);font-weight:800;font-size:14px">%</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="section-title">📊 Loan details</div>
+  <div class="row">
+    <div><label>Interest rate (%)</label><input type="number" id="mRate" placeholder="6.5" min="0" max="30" step="0.01" oninput="calcMortgage()"></div>
+    <div><label>Loan term</label>
+      <select id="mTerm" onchange="calcMortgage()">
+        <option value="30">30 years</option>
+        <option value="25">25 years</option>
+        <option value="20">20 years</option>
+        <option value="15">15 years</option>
+        <option value="10">10 years</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="section-title">🏦 Monthly costs</div>
+  <div class="row3">
+    <div><label>Property tax (annual $)</label><input type="number" id="mTax" placeholder="5000" min="0" oninput="calcMortgage()"></div>
+    <div><label>Home insurance (annual $)</label><input type="number" id="mIns" placeholder="1800" min="0" oninput="calcMortgage()"></div>
+    <div><label>HOA (monthly $)</label><input type="number" id="mHoa" placeholder="0" min="0" oninput="calcMortgage()"></div>
+  </div>
+  <div class="row3" style="margin-top:12px">
+    <div><label>Utilities est. (monthly $)</label><input type="number" id="mUtil" placeholder="300" min="0" oninput="calcMortgage()"></div>
+    <div><label>Maintenance (% of value/yr)</label><input type="number" id="mMaint" placeholder="1" min="0" max="10" step="0.1" oninput="calcMortgage()"></div>
+    <div><label>PMI (auto if &lt;20% down)</label><input type="number" id="mPmi" placeholder="auto" min="0" step="0.01" oninput="calcMortgage()" style="color:var(--mt)"></div>
+  </div>
+</div>
+<div class="result show" id="mortResult">
+  <div class="section-title" style="text-align:center;font-size:22px">Monthly breakdown</div>
+  <div style="margin:16px 0" id="mortBreakdown">
+    <div style="text-align:center;color:var(--mt);font-weight:600">Enter details above to see your estimate</div>
+  </div>
+  <div class="stats" id="mortStats"></div>
+</div>
+<script>
+function mortFmt(n){return '$'+Math.round(n).toLocaleString();}
+function calcMortgagePct(){
+  const hp=parseFloat(document.getElementById('mHomePrice').value)||0;
+  const pct=parseFloat(document.getElementById('mDownPct').value)||0;
+  document.getElementById('mDown').value=(hp*pct/100).toFixed(0);
+  calcMortgage();
+}
+function calcMortgage(){
+  const hp=parseFloat(document.getElementById('mHomePrice').value)||0;
+  const down=parseFloat(document.getElementById('mDown').value)||0;
+  const rate=parseFloat(document.getElementById('mRate').value)||0;
+  const term=parseInt(document.getElementById('mTerm').value)||30;
+  const tax=parseFloat(document.getElementById('mTax').value)||0;
+  const ins=parseFloat(document.getElementById('mIns').value)||0;
+  const hoa=parseFloat(document.getElementById('mHoa').value)||0;
+  const util=parseFloat(document.getElementById('mUtil').value)||0;
+  const maintPct=parseFloat(document.getElementById('mMaint').value)||1;
+  const pmiInp=parseFloat(document.getElementById('mPmi').value);
+  if(!hp||!rate||!term){return;}
+  const loan=hp-down;
+  const downPct=down/hp*100;
+  const r=rate/100/12;
+  const n=term*12;
+  const pi=r>0?loan*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1):loan/n;
+  const taxMo=tax/12;
+  const insMo=ins/12;
+  const maintMo=(hp*maintPct/100)/12;
+  const pmiMo=isNaN(pmiInp)?( downPct<20?(loan*0.006/12):0 ):(pmiInp/12);
+  const total=pi+taxMo+insMo+hoa+maintMo+pmiMo+util;
+  const totalPaid=pi*n;
+  const totalInterest=totalPaid-loan;
+  const rows=[
+    {lbl:'Principal & Interest',val:pi,col:'var(--cy)'},
+    {lbl:'Property Tax',val:taxMo,col:'var(--or)'},
+    {lbl:'Home Insurance',val:insMo,col:'var(--pu)'},
+    {lbl:'HOA',val:hoa,col:'var(--yl)'},
+    {lbl:'PMI'+(downPct>=20?' (not needed)':''),val:pmiMo,col:'var(--pk)'},
+    {lbl:'Maintenance est.',val:maintMo,col:'var(--gr)'},
+    {lbl:'Utilities est.',val:util,col:'#9a9ab5'},
+  ].filter(r=>r.val>0);
+  const barTotal=rows.reduce((s,r)=>s+r.val,0);
+  let barsHtml=rows.map(r=>`<div title="${r.lbl}: ${mortFmt(r.val)}/mo" style="flex:${r.val/barTotal};background:${r.col};height:16px;transition:flex .3s"></div>`).join('');
+  let rowsHtml=rows.map(r=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd)"><span style="font-weight:700;font-size:14px"><span style="color:${r.col};margin-right:6px">●</span>${r.lbl}</span><span style="font-family:'Fredoka',sans-serif;font-size:18px;font-weight:700">${mortFmt(r.val)}/mo</span></div>`).join('');
+  document.getElementById('mortBreakdown').innerHTML=`
+    <div style="display:flex;border-radius:8px;overflow:hidden;height:16px;margin-bottom:8px">${barsHtml}</div>
+    ${rowsHtml}
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;margin-top:4px">
+      <span style="font-family:'Fredoka',sans-serif;font-size:18px;font-weight:700">Total monthly</span>
+      <span style="font-family:'Fredoka',sans-serif;font-size:28px;font-weight:700;color:var(--cy)">${mortFmt(total)}</span>
+    </div>`;
+  document.getElementById('mortStats').innerHTML=`
+    <div class="stat"><div class="stat-val" style="color:var(--cy);font-size:20px">${mortFmt(loan)}</div><div class="stat-lbl">Loan amount</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--or);font-size:20px">${downPct.toFixed(1)}%</div><div class="stat-lbl">Down payment</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--pk);font-size:20px">${mortFmt(totalInterest)}</div><div class="stat-lbl">Total interest</div></div>
+    <div class="stat"><div class="stat-val" style="color:var(--gr);font-size:20px">${mortFmt(totalPaid)}</div><div class="stat-lbl">Total repaid</div></div>
+    ${downPct<20?`<div class="stat"><div class="stat-val" style="color:var(--yl);font-size:20px">${downPct<20?Math.round((0.2*hp-down)).toLocaleString():'None'}</div><div class="stat-lbl">$ to avoid PMI</div></div>`:''}`;
+}
+</script>
+<div class="related">
+  <h3>🔗 Try these next</h3>
+  <div class="related-grid"><a class="related-card" href="/discount/"><span class="rc-title">🏷️ Discount Calculator</span><span class="rc-desc">All types of discount calculations</span></a>
+<a class="related-card" href="/bmi/"><span class="rc-title">⚖️ BMI Calculator</span><span class="rc-desc">Body mass index calculator</span></a>
+<a class="related-card" href="/datecalculator/"><span class="rc-title">📅 Date Calculator</span><span class="rc-desc">Days between dates</span></a></div>
+</div>
+</div>
+<article class="article">
+<details class="qa"><summary>What does the mortgage calculator include?</summary><div class="a">This calculator includes principal & interest, property tax, home insurance, HOA fees, PMI (auto-calculated when down payment is under 20%), maintenance estimates, and monthly utilities — giving you the true all-in monthly cost.</div></details>
+<details class="qa"><summary>What is PMI and when do I need it?</summary><div class="a">PMI (Private Mortgage Insurance) is required by most lenders when your down payment is less than 20% of the home's value. The calculator automatically estimates it at 0.6% of the loan annually and stops it once you reach 20% equity.</div></details>
+<details class="qa"><summary>How is the principal and interest calculated?</summary><div class="a">It uses the standard amortisation formula based on the loan amount, annual interest rate, and term in years to calculate your fixed monthly payment.</div></details>
+<details class="qa"><summary>Should I include maintenance costs?</summary><div class="a">Yes — most financial advisors recommend budgeting 1% of the home's value annually for maintenance and repairs. This calculator includes it as an adjustable field so you can see the real cost of ownership.</div></details>
+<details class="qa"><summary>What is a good debt-to-income ratio for a mortgage?</summary><div class="a">Lenders typically prefer your total monthly debt payments (including the mortgage) to be under 43% of gross monthly income, with the mortgage itself under 28%.</div></details>
+</article>
+<footer>
+  <p>© <span id="yr"></span> Pickly &middot; <a href="/privacy/">Privacy</a> <a href="/terms/">Terms</a> <a href="/contact/">Contact</a></p>
+</footer>
+
+  <div class="ad-wrap">
+    <div class="ad-lbl">Advertisement</div>
+    <div class="ad-box">Ad space — apply for Google AdSense to display ads here</div>
+  </div>
+  <!-- ════ GOOGLE ADSENSE — uncomment when approved ════
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script>
+  ════════════════════════════════════════════════════ -->
+</main>
+<script>document.getElementById("yr").textContent=(new Date).getFullYear();</script>
+</body>
+</html>
