@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Discount Calculator — % Off, BOGO, Stacked & More | Pickly</title>
+<!-- Google AdSense -->
+<meta name="google-adsense-account" content="ca-pub-7937234001453997">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7937234001453997" crossorigin="anonymous"></script>
 <meta name="description" content="Free discount calculator — calculate percentage off, flat discounts, BOGO deals, stacked discounts, reverse price finder, and cashback savings.">
 <link rel="canonical" href="https://picklytools.com/discount/">
 <meta name="twitter:image" content="https://picklytools.com/og/discount.png">
@@ -28,15 +31,18 @@
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate percentage discount?","acceptedAnswer":{"@type":"Answer","text":"Enter the original price and the discount percentage — the calculator instantly shows the sale price, amount saved, and optionally the total after tax."}},{"@type":"Question","name":"What is a stacked discount?","acceptedAnswer":{"@type":"Answer","text":"Stacked discounts apply multiple percentage discounts in sequence. For example, 20% off then an additional 10% off is not 30% off — it's an effective 28% off. This calculator shows the real effective discount."}},{"@type":"Question","name":"How does the reverse discount calculator work?","acceptedAnswer":{"@type":"Answer","text":"If you know the sale price and the discount percentage, the reverse calculator works backwards to find the original price. Useful for finding the original price of clearance items."}},{"@type":"Question","name":"What does BOGO mean?","acceptedAnswer":{"@type":"Answer","text":"BOGO stands for Buy One Get One. The calculator supports BOGO free, Buy 2 Get 1 Free, Buy 1 Get 2nd 50% Off, and Buy 3 Get 1 Free — showing the effective discount for any quantity."}},{"@type":"Question","name":"How is cashback different from a discount?","acceptedAnswer":{"@type":"Answer","text":"With cashback you pay full price upfront and receive a portion back later. This calculator shows your effective cost after cashback and the equivalent discount percentage."}}]}
 </script>
 <style>
+@font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
+@font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#0a0a1f;--bg2:#11112e;--sf:rgba(255,255,255,.05);--sfh:rgba(255,255,255,.09);--bd:rgba(255,255,255,.1);--tx:#f4f4fb;--mt:#9a9ab5;--pk:#FF2060;--or:#FF8C00;--yl:#FFD600;--cy:#00E5FF;--pu:#B061FF;--gr:#00E676;--rl:16px}
-body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
-h1,h2,h3{font-family:'Fredoka',sans-serif}
+body{font-family:'Nunito','Nunito Fallback',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+h1,h2,h3{font-family:'Fredoka','Fredoka Fallback',sans-serif}
 .topbar{position:sticky;top:0;z-index:100;background:rgba(10,10,31,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
 .topbar-in{max-width:800px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:center;position:relative}
 .brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--tx)}
 .brand-mark{width:28px;height:28px}
-.brand-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;background:linear-gradient(90deg,#FF2D6E,#FF8C00);background-clip:text;color:transparent}
+.brand-name{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:20px;background:linear-gradient(90deg,#FF2D6E,#FF8C00);background-clip:text;color:transparent}
 .back{position:absolute;right:20px;color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
 .back:hover{color:var(--tx);background:var(--sfh)}
 .wrap{max-width:800px;margin:0 auto;padding:0 20px}
@@ -46,7 +52,7 @@ h1,h2,h3{font-family:'Fredoka',sans-serif}
 .card{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:24px}
 .card+.card{margin-top:16px}
 label{display:block;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--mt);margin-bottom:6px}
-input,select{width:100%;background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:13px 16px;color:var(--tx);font-size:16px;font-family:'Nunito',sans-serif;font-weight:700;outline:none;transition:border .15s}
+input,select{width:100%;background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:13px 16px;color:var(--tx);font-size:16px;font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:700;outline:none;transition:border .15s}
 input:focus,select:focus{border-color:var(--cy)}
 input[type=number]{-moz-appearance:textfield}
 input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
@@ -54,24 +60,24 @@ select option{background:var(--bg2);color:var(--tx)}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
 @media(max-width:560px){.row,.row3{grid-template-columns:1fr}}
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;border:none;border-radius:14px;font-family:'Fredoka',sans-serif;font-weight:700;font-size:20px;cursor:pointer;transition:all .15s;margin-top:16px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;border:none;border-radius:14px;font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:20px;cursor:pointer;transition:all .15s;margin-top:16px}
 .btn-pk{background:linear-gradient(135deg,var(--pk),var(--or));color:#fff}
 .btn-pk:hover{transform:scale(1.02);box-shadow:0 6px 24px rgba(255,32,96,.3)}
 .btn-cy{background:linear-gradient(135deg,#0af,var(--cy));color:#0a0a1f}
 .btn-gr{background:linear-gradient(135deg,#00c85a,var(--gr));color:#0a0a1f}
 .result{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:28px;margin-top:16px;display:none}
 .result.show{display:block}
-.result-main{font-family:'Fredoka',sans-serif;font-size:clamp(36px,6vw,60px);font-weight:700;text-align:center;margin-bottom:8px}
+.result-main{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-size:clamp(36px,6vw,60px);font-weight:700;text-align:center;margin-bottom:8px}
 .result-sub{text-align:center;color:var(--mt);font-weight:600;margin-bottom:20px}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
 .stat{background:var(--sf);border-radius:14px;padding:14px;text-align:center}
-.stat-val{font-family:'Fredoka',sans-serif;font-size:26px;font-weight:700}
+.stat-val{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-size:26px;font-weight:700}
 .stat-lbl{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--mt)}
 .divider{height:1px;background:var(--bd);margin:20px 0}
 .toggle-row{display:flex;gap:8px;background:var(--sf);border-radius:12px;padding:4px}
-.toggle-btn{flex:1;padding:10px;border:none;border-radius:9px;background:none;color:var(--mt);font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;cursor:pointer;transition:all .15s}
+.toggle-btn{flex:1;padding:10px;border:none;border-radius:9px;background:none;color:var(--mt);font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:15px;cursor:pointer;transition:all .15s}
 .toggle-btn.on{background:var(--bg2);color:var(--tx);box-shadow:0 2px 8px rgba(0,0,0,.3)}
-.section-title{font-family:'Fredoka',sans-serif;font-size:18px;font-weight:600;margin-bottom:16px;color:var(--cy)}
+.section-title{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-size:18px;font-weight:600;margin-bottom:16px;color:var(--cy)}
 .article{max-width:800px;margin:40px auto 0;padding:0 20px}
 .article h2{font-size:24px;margin:28px 0 10px;color:var(--tx)}
 .article h3{font-size:18px;margin:20px 0 8px;color:var(--cy)}
@@ -86,7 +92,7 @@ footer p{font-size:13px;color:var(--mt);font-weight:600}
 footer a{color:var(--mt);text-decoration:none;margin:0 10px}
 footer a:hover{color:var(--tx)}
 .related{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:20px;margin:32px 0}
-.related h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin-bottom:12px}
+.related h3{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:18px;margin-bottom:12px}
 .related-grid{display:flex;gap:10px;flex-wrap:wrap}
 .related-card{flex:1;min-width:140px;text-decoration:none;padding:12px 14px;border-radius:12px;background:var(--sf);border:1px solid var(--bd);transition:background .15s}
 .related-card:hover{background:var(--sfh)}
@@ -374,10 +380,7 @@ function calcDisc(){
     <div class="ad-lbl">Advertisement</div>
     <div class="ad-box">Ad space — apply for Google AdSense to display ads here</div>
   </div>
-  <!-- ════ GOOGLE ADSENSE — uncomment when approved ════
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script>
-  ════════════════════════════════════════════════════ -->
-</main>
+  </main>
 <script>document.getElementById("yr").textContent=(new Date).getFullYear();</script>
 </body>
 </html>
