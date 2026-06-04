@@ -100,6 +100,18 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 @font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
 @font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
 .foot-h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px;color:var(--tx)}
+
+.related-tools{margin:36px 0;padding:22px;background:var(--bg2);
+  border:1px solid var(--bd);border-radius:18px}
+.related-tools h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;
+  margin-bottom:12px;color:var(--tx)}
+.related-grid{display:flex;gap:8px;flex-wrap:wrap}
+.related-card{flex:1;min-width:150px;text-decoration:none;padding:12px 15px;
+  border-radius:12px;background:var(--sf);border:1px solid var(--bd);transition:background .15s}
+.related-card:hover{background:var(--sfh)}
+.related-card .rc-title{font-weight:800;font-size:14px;color:var(--tx);display:block;margin-bottom:2px}
+.related-card .rc-desc{font-size:11px;color:var(--mt);font-weight:600}
+
 </style>
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
@@ -212,6 +224,12 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 </div>
 
 </main>
+<div class="related-tools"><h3>🔗 Try these next</h3><div class="related-grid">
+<a class="related-card" href="/truthordare/"><span class="rc-title">🎴 Truth or Dare</span><span class="rc-desc">Perfect pairing</span></a>
+<a class="related-card" href="/wouldyourather/"><span class="rc-title">🤔 Would You Rather</span><span class="rc-desc">More group fun</span></a>
+<a class="related-card" href="/spinit/"><span class="rc-title">🎡 Decision Spinner</span><span class="rc-desc">Spin to pick who goes</span></a>
+</div></div>
+
 <footer>
   <div class="wrap foot-in">
     <div class="foot-col foot-brand">
