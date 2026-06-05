@@ -159,6 +159,9 @@ nav{
 }
 .btn-primary{background:linear-gradient(135deg,var(--pk),var(--or));color:#fff;box-shadow:0 8px 32px rgba(255,32,96,.45)}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 42px rgba(255,32,96,.6)}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px}
+.hero-chip{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:13px;color:var(--mt);padding:8px 14px;border-radius:100px;border:1px solid var(--bd);background:var(--sf);transition:all .15s}
+.hero-chip:hover{color:var(--tx);background:var(--sfh);border-color:rgba(255,255,255,.22);transform:translateY(-2px)}
 .btn-ghost{background:var(--sf);color:var(--tx);border:1.5px solid var(--bd)}
 .btn-ghost:hover{background:var(--sfh);transform:translateY(-3px)}
 
@@ -318,13 +321,19 @@ footer{border-top:1px solid var(--bd);margin-top:70px;padding:48px 0 60px}
     <h1>Can't decide<br><span class="cycle-wrap"><span class="cycle" id="cyc">dinner?</span></span><br><span class="grad">Let Pickly decide.</span></h1>
     <p>Pickly is a free collection of fast, fun tools that help you make decisions and get quick answers — spin a wheel, find the best meeting time across time zones, and more. No apps, no accounts, no fuss.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="#tools">✨ Browse free tools</a>
-      <a class="btn btn-ghost" href="/spinit/">🎡 Try the Spinner</a>
+      <a class="btn btn-primary" href="/spinit/">🎡 Spin a Wheel</a>
+      <a class="btn btn-ghost" href="#tools">✨ Browse all tools</a>
+    </div>
+    <div class="hero-chips">
+      <a href="/whattoeat/" class="hero-chip">🍽️ What to Eat</a>
+      <a href="/truthordare/" class="hero-chip">🎉 Party Games</a>
+      <a href="/teampicker/" class="hero-chip">👥 Split Teams</a>
+      <a href="/spinit/" class="hero-chip">🎯 Pick a Name</a>
     </div>
 
     <div class="stats">
       <div class="stat"><div class="n">18</div><div class="l">Free tools</div></div>
-      <div class="stat"><div class="n">0</div><div class="l">Sign-ups ever</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">Sign-ups required</div></div>
       <div class="stat"><div class="n">100%</div><div class="l">Free &amp; private</div></div>
     </div>
 

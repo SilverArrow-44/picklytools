@@ -1,6 +1,6 @@
 # Pickly — Free Fun Decision & Party Tools
 
-picklytools.com — 12 free browser-based tools. No sign-up, no apps, no fuss.
+picklytools.com — 18 free browser-based tools. No sign-up, no apps, no fuss.
 
 ## Live Tools
 | Tool | URL | Monthly searches |
@@ -58,7 +58,7 @@ manifest.webmanifest → PWA manifest
 
 ## When AdSense is approved
 1. Get your publisher ID (ca-pub-XXXXXXXXXXXXXXXXX)
-2. In each tool page, find the commented AdSense script and uncomment it
+2. AdSense loader + verification meta are live in <head> on all pages (publisher ca-pub-7937234001453997); ads.txt is at site root
 3. Replace `ca-pub-XXXXXXXX` with your real publisher ID
 4. Commit and push — Cloudflare auto-deploys
 
