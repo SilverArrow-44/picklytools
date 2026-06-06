@@ -17,6 +17,12 @@ picklytools.com — 18 free browser-based tools. No sign-up, no apps, no fuss.
 | Truth or Dare | /truthordare/ | 2.9M |
 | Never Have I Ever | /neverhaveiever/ | 2.1M |
 | Slot Machine | /slotmachine/ | 620K |
+| Age Calculator | /agecalculator/ | 1.5M |
+| Date Calculator | /datecalculator/ | 900K |
+| BMI Calculator | /bmi/ | 4.0M |
+| Discount Calculator | /discount/ | 700K |
+| Mortgage Calculator | /mortgage/ | 5.0M |
+| Compatibility Calculator | /compatibility/ | 800K |
 
 ## Scores (Lighthouse mobile)
 - Performance: 99/100

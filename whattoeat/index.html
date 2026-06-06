@@ -196,7 +196,40 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 </header>
 
 <div class="wrap">
-  <div class="filters">
+  <!-- PK-PRESETS-START -->
+<style id="pk-presets-css">
+.pk-presets{margin:4px 0 24px}
+.pk-presets-lbl{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:13px;color:#9a9ab5;text-transform:uppercase;letter-spacing:.6px;margin:0 0 11px;text-align:center}
+.pk-presets-row{display:flex;flex-wrap:wrap;gap:9px;justify-content:center}
+.pk-preset{font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:800;font-size:14px;cursor:pointer;color:#fff;padding:11px 17px;border-radius:100px;border:1px solid rgba(255,140,0,.45);background:linear-gradient(135deg,rgba(255,32,96,.2),rgba(255,140,0,.18));transition:transform .15s,box-shadow .15s,background .15s}
+.pk-preset:hover{transform:translateY(-2px);background:linear-gradient(135deg,rgba(255,32,96,.34),rgba(255,140,0,.3));box-shadow:0 8px 22px rgba(255,32,96,.28)}
+.pk-preset:active{transform:translateY(0)}
+</style>
+<div class="pk-presets">
+  <div class="pk-presets-lbl">&#9889; One-tap picks</div>
+  <div class="pk-presets-row">
+    <button class="pk-preset" type="button" data-p='{"effort":"quick"}'>&#128293; I'm hungry now</button>
+    <button class="pk-preset" type="button" data-p='{"diet":"comfort"}'>&#128523; Comfort food</button>
+    <button class="pk-preset" type="button" data-p='{"meal":"lunch","diet":"healthy"}'>&#129362; Healthy lunch</button>
+    <button class="pk-preset" type="button" data-p='{"diet":"veg"}'>&#127793; Vegetarian</button>
+    <button class="pk-preset" type="button" data-p='{"effort":"order"}'>&#127869;&#65039; Eating out</button>
+    <button class="pk-preset" type="button" data-p='{"meal":"dinner","effort":"quick"}'>&#127769; Quick dinner</button>
+    <button class="pk-preset" type="button" data-p='{"meal":"breakfast"}'>&#127859; Breakfast</button>
+    <button class="pk-preset" type="button" data-p='{"meal":"dessert"}'>&#127856; Sweet treat</button>
+  </div>
+</div>
+<script>(function(){
+  function setChip(g,v){var grp=document.querySelector('.chips[data-group="'+g+'"]');if(!grp)return;var b=grp.querySelector('.chip[data-val="'+v+'"]');if(b)b.click();}
+  function applyPreset(p){setChip('meal',p.meal||'any');setChip('cuisine',p.cuisine||'any');setChip('effort',p.effort||'any');setChip('diet',p.diet||'any');var g=document.getElementById('goBtn');if(g)g.click();}
+  document.querySelectorAll('.pk-preset').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      try{applyPreset(JSON.parse(btn.getAttribute('data-p')));}catch(e){}
+      var r=document.getElementById('result');if(r)r.scrollIntoView({behavior:'smooth',block:'center'});
+    });
+  });
+})();</script>
+<!-- PK-PRESETS-END -->
+<div class="filters">
     <div class="fgroup">
       <div class="flabel">🍴 Meal</div>
       <div class="chips" data-group="meal">
