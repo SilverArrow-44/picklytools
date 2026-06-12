@@ -1,5 +1,27 @@
 # Pickly — Changelog
 
+## v2.1 — 2026-06-11 (AdSense readiness + retention)
+
+### AdSense / trust
+- Removed all visible "Ad space / plug in AdSense" placeholder boxes
+  from homepage + 18 tool pages (replaced with HTML comments)
+- SpinIt: removed fake sticky ad rail (120×600), bottom ad banner,
+  and misleading "✕ Close ads" button — HTML, CSS, and JS
+- Removed unused .ad-wrap/.ad-lbl/.ad-box CSS from all pages
+- AdSense head script (ca-pub-7937234001453997) kept live on all pages
+
+### Retention / UX
+- New "Recently used tools" — every tool page records its slug to
+  localStorage (pickly_recent); homepage shows "Jump back in" chips
+- Timezones: added "Try these next" related-tools block (was the only
+  tool page without one)
+- Homepage: removed 18 meaningless "● Live" badges from tool cards
+
+### Housekeeping
+- sitemap.xml lastmod refreshed to 2026-06-11
+- QA: all inline JS parses, zero broken internal links, HTML balanced,
+  zero placeholder strings remain
+
 ## v2.0 — 2026-06-03 (Enterprise QA Audit)
 
 ### Phase 1 — Sync & Fixes

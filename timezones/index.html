@@ -214,9 +214,6 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 
 /* ── Ad ── */
-.ad-wrap{margin:28px 0;text-align:center}
-.ad-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mt);margin-bottom:5px;opacity:.6}
-.ad-box{background:var(--sf);border:1px solid var(--bd);border-radius:14px;padding:32px 20px;color:var(--mt);font-size:13px;font-weight:600}
 
 /* ── Content / FAQ ── */
 article.content{max-width:700px;margin:36px auto 0}
@@ -383,10 +380,7 @@ footer.ft a:hover{color:var(--tx)}
   </div>
 </div>
 <!-- Ad -->
-<div class="ad-wrap">
-  <div class="ad-lbl">Advertisement</div>
-  <div class="ad-box">Ad space &mdash; apply for Google AdSense to display ads here</div>
-</div>
+  <!-- AdSense in-content unit goes here after approval -->
 
 <!-- Content -->
 <article class="content">
@@ -411,6 +405,15 @@ footer.ft a:hover{color:var(--tx)}
 </article>
 
 </div><!-- /wrap -->
+
+<div class="related-tools" style="max-width:880px;margin:6px auto 0;padding:0 20px">
+  <h3 style="font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:18px;margin:24px 0 10px">🔗 Try these next</h3>
+  <div class="related-grid" style="display:flex;gap:10px;flex-wrap:wrap">
+    <a class="related-card" style="flex:1;min-width:140px;text-decoration:none;padding:12px 14px;border-radius:12px;background:var(--sf);border:1px solid var(--bd)" href="/datecalculator/"><span style="font-weight:800;font-size:13px;color:var(--tx);display:block;margin-bottom:2px">📅 Date Calculator</span><span style="font-size:11px;color:var(--mt);font-weight:600">Days between any two dates</span></a>
+    <a class="related-card" style="flex:1;min-width:140px;text-decoration:none;padding:12px 14px;border-radius:12px;background:var(--sf);border:1px solid var(--bd)" href="/teampicker/"><span style="font-weight:800;font-size:13px;color:var(--tx);display:block;margin-bottom:2px">👥 Team Picker</span><span style="font-size:11px;color:var(--mt);font-weight:600">Split any group into fair teams</span></a>
+    <a class="related-card" style="flex:1;min-width:140px;text-decoration:none;padding:12px 14px;border-radius:12px;background:var(--sf);border:1px solid var(--bd)" href="/spinit/"><span style="font-weight:800;font-size:13px;color:var(--tx);display:block;margin-bottom:2px">🎡 Decision Spinner</span><span style="font-size:11px;color:var(--mt);font-weight:600">Spin a wheel to pick anything</span></a>
+  </div>
+</div>
 </main>
 
 <!-- PK-EXPLORE-START -->
@@ -1232,5 +1235,6 @@ try{
 setInterval(renderClocks,1000);
 setInterval(renderTimeline,60000);
 </script>
+<script>try{var _pr=JSON.parse(localStorage.getItem("pickly_recent")||"[]").filter(function(x){return x!=="timezones"});_pr.unshift("timezones");localStorage.setItem("pickly_recent",JSON.stringify(_pr.slice(0,6)))}catch(e){}</script>
 </body>
 </html>
