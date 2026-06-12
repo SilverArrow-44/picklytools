@@ -6,21 +6,23 @@
 <meta name="theme-color" content="#0a0a1f">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="/manifest.webmanifest">
-<title>Timezone Meeting Planner — Find the Best Meeting Time | Pickly</title>
-<!-- Google AdSense -->
+<title>Time Zone Converter &amp; World Clock — Free | Pickly</title>
 <meta name="google-adsense-account" content="ca-pub-7937234001453997">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7937234001453997" crossorigin="anonymous"></script>
-<meta name="description" content="Free world clock and meeting planner. See what time it is in any city at a glance. Color-coded timeline shows the best overlap instantly.">
+<meta name="description" content="Free timezone converter and world clock. Instantly see what time it is in any city, convert any time between time zones, find meeting times for remote teams, and share with a link.">
 <link rel="canonical" href="https://picklytools.com/timezones/">
 <meta name="twitter:image" content="https://picklytools.com/og/timezones.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:image" content="https://picklytools.com/og/timezones.png">
 <meta property="og:url" content="https://picklytools.com/timezones/">
-<meta property="og:description" content="Free world clock and meeting planner. See what time it is in any city at a glance. Color-coded timeline shows the best overlap instantly.">
-<meta property="og:title" content="Timezone Meeting Planner — Find the Best Meeting Time | Pickly">
+<meta property="og:description" content="Free timezone converter and world clock. Instantly convert any time, find remote team meeting windows, and share with a link.">
+<meta property="og:title" content="Time Zone Converter &amp; World Clock — Free | Pickly">
 <meta property="og:type" content="website">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"World Clock & Meeting Planner","url":"https://picklytools.com/timezones/","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Time Zone Converter & World Clock","url":"https://picklytools.com/timezones/","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free timezone converter and world clock for remote teams. Convert times between 200+ cities instantly."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I convert a time from one time zone to another?","acceptedAnswer":{"@type":"Answer","text":"Use the Convert a Time section. Pick your time and the city it's in, and the tool instantly shows the equivalent time in all your other cities."}},{"@type":"Question","name":"How do I find the best meeting time for a remote team?","acceptedAnswer":{"@type":"Answer","text":"Add all your team members' cities, then check the Meeting Planner section. Green blocks show business hours (8am–6pm). The Best times chips at the bottom highlight slots where all cities overlap in working hours."}},{"@type":"Question","name":"Can I share a time zone conversion with my team?","acceptedAnswer":{"@type":"Answer","text":"Yes. After setting your cities and time, click Share link. It copies a URL that opens the tool with your exact cities and time pre-loaded for anyone who clicks it."}},{"@type":"Question","name":"Does it handle Daylight Saving Time?","acceptedAnswer":{"@type":"Answer","text":"Yes. The tool uses your browser's built-in timezone database via the Intl API, which handles DST automatically for all regions worldwide."}}]}
 </script>
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
@@ -28,122 +30,227 @@
 <style>
 @font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
 @font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
-
 :root{--bg:#0a0a1f;--bg2:#11112e;--sf:rgba(255,255,255,.05);--sfh:rgba(255,255,255,.09);--bd:rgba(255,255,255,.1);--tx:#f4f4fb;--mt:#9a9ab5;--pk:#FF2060;--or:#FF8C00;--yl:#FFD600;--cy:#00E5FF;--pu:#B061FF;--gr:#00E676}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Nunito','Nunito Fallback',sans-serif;background:var(--bg);color:var(--tx);line-height:1.5;overflow-x:hidden;min-height:100vh}
-body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 12% 8%,rgba(0,229,255,.08),transparent 60%),radial-gradient(ellipse 60% 50% at 88% 92%,rgba(176,97,255,.08),transparent 60%)}
-.wrap{position:relative;z-index:2;max-width:960px;margin:0 auto;padding:0 16px 48px}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 50% at 10% 5%,rgba(0,229,255,.07),transparent 55%),radial-gradient(ellipse 60% 50% at 90% 90%,rgba(176,97,255,.07),transparent 55%)}
+.wrap{position:relative;z-index:2;max-width:1040px;margin:0 auto;padding:0 16px 48px}
+
+/* ── Topbar ── */
 .topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,10,31,.72);border-bottom:1px solid var(--bd)}
-.topbar-in{max-width:960px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:center;position:relative}
+.topbar-in{max-width:1040px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:center;position:relative}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .brand-mark{width:32px;height:32px}
 .brand-name{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:21px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 .back{position:absolute;right:20px;color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
 .back:hover{color:var(--tx);background:var(--sfh)}
-.head{text-align:center;padding:24px 0 16px}
-.head h1{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:clamp(24px,5vw,40px);letter-spacing:-1px;line-height:1.1;margin-bottom:6px}
-.head h1 .g{background:linear-gradient(115deg,var(--cy),var(--pu));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
-.head p{color:var(--mt);font-size:14px;font-weight:600}
-.clock-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:10px;margin-bottom:14px}
-.clock-card{background:var(--bg2);border:1.5px solid var(--bd);border-radius:16px;padding:14px 16px;position:relative;overflow:hidden;transition:border-color .2s}
-.clock-card:hover{border-color:rgba(255,255,255,.2)}
-.clock-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--cc,var(--bd))}
-.clock-card .rem{position:absolute;top:8px;right:10px;background:none;border:none;color:var(--mt);cursor:pointer;font-size:14px;opacity:0;transition:opacity .15s;padding:2px}
-.clock-card:hover .rem{opacity:1}
-.clock-card .rem:hover{color:var(--pk)}
+
+/* ── Hero ── */
+.head{text-align:center;padding:28px 0 22px}
+.head h1{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:clamp(26px,5vw,44px);letter-spacing:-1px;line-height:1.1;margin-bottom:8px}
+.g{background:linear-gradient(115deg,var(--cy),var(--pu));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.head-sub{color:var(--mt);font-size:15px;font-weight:600;margin-bottom:14px}
+.head-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.htag{background:var(--sf);border:1px solid var(--bd);border-radius:100px;padding:4px 12px;font-size:12px;font-weight:700;color:var(--mt)}
+
+/* ── Section header ── */
+.sec-hd{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.sec-title{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:19px}
+.sec-num{width:26px;height:26px;border-radius:50%;background:var(--sf);border:1.5px solid var(--bd);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;color:var(--mt);flex-shrink:0}
+.divider{border:none;border-top:1px solid var(--bd);margin:28px 0}
+
+/* ── Clock cards ── */
+.clock-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:10px;margin-bottom:14px}
+.clock-card{background:var(--bg2);border:1.5px solid var(--bd);border-radius:16px;padding:14px 16px 14px;position:relative;overflow:hidden;transition:border-color .2s,transform .15s;cursor:default}
+.clock-card:hover{border-color:rgba(255,255,255,.2);transform:translateY(-1px)}
+.clock-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--cc,var(--bd));border-radius:16px 16px 0 0}
+.cc-rem{position:absolute;top:9px;right:10px;background:none;border:none;color:var(--mt);cursor:pointer;font-size:13px;opacity:0;transition:opacity .15s;padding:3px 5px;line-height:1;border-radius:6px}
+.clock-card:hover .cc-rem{opacity:1}
+.cc-rem:hover{color:var(--pk);background:rgba(255,32,96,.1)}
+.cc-you{position:absolute;top:10px;left:14px;font-size:9px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--cy);background:rgba(0,229,255,.1);border-radius:100px;padding:2px 7px}
+.cc-flag{font-size:20px;margin-bottom:3px;margin-top:2px}
 .cc-city{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:15px;padding-right:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cc-country{font-size:10px;font-weight:700;color:var(--mt);letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
-.cc-time{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:26px;letter-spacing:-1px;line-height:1}
+.cc-country{font-size:10px;font-weight:700;color:var(--mt);letter-spacing:.4px;text-transform:uppercase;margin-bottom:7px}
+.cc-time{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:28px;letter-spacing:-1.5px;line-height:1}
 .cc-date{font-size:11px;color:var(--mt);font-weight:700;margin-top:3px}
 .cc-badge{display:inline-block;font-size:10px;font-weight:800;padding:2px 8px;border-radius:100px;margin-top:6px;border:1px solid currentColor;opacity:.85}
-.ctrl-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}
-.add-btn{display:flex;align-items:center;gap:5px;background:var(--sf);border:1.5px dashed var(--bd);border-radius:100px;padding:9px 18px;color:var(--mt);font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:800;font-size:13px;cursor:pointer;transition:all .2s}
+
+/* ── Controls ── */
+.ctrl-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:18px}
+.add-btn{display:flex;align-items:center;gap:6px;background:var(--sf);border:1.5px dashed var(--bd);border-radius:100px;padding:9px 18px;color:var(--mt);font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:800;font-size:13px;cursor:pointer;transition:all .2s}
 .add-btn:hover{border-color:var(--cy);color:var(--cy);background:rgba(0,229,255,.06)}
 .pill-btn{background:var(--sf);border:1.5px solid var(--bd);border-radius:100px;padding:8px 16px;color:var(--mt);font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:800;font-size:12px;cursor:pointer;transition:all .15s;white-space:nowrap}
 .pill-btn:hover,.pill-btn.on{background:rgba(0,229,255,.1);border-color:var(--cy);color:var(--cy)}
-.picker{background:var(--bg2);border:1.5px solid var(--bd);border-radius:16px;padding:18px;margin-bottom:16px;display:none}
+.pill-btn.reset-btn:hover{background:rgba(255,32,96,.07);border-color:var(--pk);color:var(--pk)}
+.ml-auto{margin-left:auto}
+
+/* ── City picker ── */
+.picker{background:var(--bg2);border:1.5px solid var(--bd);border-radius:16px;padding:18px;margin-bottom:20px;display:none}
 .picker.open{display:block}
-.city-search{width:100%;background:var(--bg);border:1.5px solid var(--bd);border-radius:12px;padding:11px 14px;color:var(--tx);font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:700;font-size:15px;outline:none;transition:border-color .15s;margin-bottom:10px;display:block}
+.city-search{width:100%;background:var(--bg);border:1.5px solid var(--bd);border-radius:12px;padding:11px 14px;color:var(--tx);font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:700;font-size:16px;outline:none;transition:border-color .15s;margin-bottom:10px;display:block}
 .city-search:focus{border-color:var(--cy)}
-.search-results{display:flex;flex-direction:column;gap:2px;max-height:260px;overflow-y:auto}
+.search-results{display:flex;flex-direction:column;gap:2px;max-height:280px;overflow-y:auto}
 .sr-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;cursor:pointer;transition:background .12s;font-weight:700;font-size:13px}
 .sr-item:hover{background:var(--sfh)}
-.sr-item.added{cursor:default}
+.sr-item.added{cursor:default;opacity:.6}
 .sr-flag{font-size:18px;flex-shrink:0}
 .sr-name{flex:1}
 .sr-country{font-size:11px;color:var(--mt);font-weight:700}
 .sr-empty{font-size:13px;color:var(--mt);font-weight:700;padding:12px;font-style:italic}
-.planner{background:var(--bg2);border:1.5px solid var(--bd);border-radius:20px;padding:20px 18px;margin-top:6px;display:none}
-.planner.show{display:block}
-.pl-head{margin-bottom:14px}
-.pl-head h2{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:20px}
-.pl-hint{font-size:12px;color:var(--mt);font-weight:600;margin-top:3px}
-.tl-outer{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+
+/* ── Converter ── */
+.conv-box{background:var(--bg2);border:1.5px solid var(--bd);border-radius:20px;padding:22px 20px 20px}
+.conv-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.conv-lbl{font-size:13px;font-weight:800;color:var(--mt);white-space:nowrap}
+.conv-time-grp{display:flex;align-items:center;gap:5px}
+.conv-sel,.conv-hsel,.conv-msel,.conv-apsel{background:var(--bg);border:1.5px solid var(--bd);border-radius:12px;color:var(--tx);font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:800;outline:none;cursor:pointer;transition:border-color .15s;-webkit-appearance:none;appearance:none}
+.conv-sel:focus,.conv-hsel:focus,.conv-msel:focus,.conv-apsel:focus{border-color:var(--cy)}
+.conv-hsel{width:64px;padding:9px 0 9px 10px;font-family:'Fredoka','Fredoka Fallback',sans-serif;font-size:22px;text-align:center;padding-right:4px}
+.conv-msel{width:60px;padding:9px 0 9px 10px;font-family:'Fredoka','Fredoka Fallback',sans-serif;font-size:22px;text-align:center;padding-right:4px}
+.conv-apsel{padding:9px 10px;font-size:13px}
+.conv-colon{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;color:var(--mt)}
+.conv-sel{padding:10px 30px 10px 12px;font-size:14px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%239a9ab5' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.conv-rem-btn{background:none;border:1.5px solid var(--bd);border-radius:100px;padding:8px 11px;color:var(--mt);font-size:12px;cursor:pointer;transition:all .15s;line-height:1}
+.conv-rem-btn:hover{border-color:var(--pk);color:var(--pk);background:rgba(255,32,96,.07)}
+.conv-add-btn{background:var(--sf);border:1.5px dashed var(--bd);border-radius:100px;padding:9px 14px;color:var(--mt);font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:800;font-size:12px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.conv-add-btn:hover{border-color:var(--cy);color:var(--cy);background:rgba(0,229,255,.06)}
+.conv-search-wrap{position:relative;display:none}
+.conv-search-wrap.open{display:block}
+.conv-search-inp{background:var(--bg);border:1.5px solid var(--cy);border-radius:12px;padding:9px 14px;color:var(--tx);font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:700;font-size:14px;outline:none;width:200px}
+.conv-search-drop{position:absolute;top:calc(100% + 6px);left:0;background:var(--bg2);border:1.5px solid var(--bd);border-radius:14px;padding:6px;z-index:200;min-width:220px;max-height:240px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.conv-drop-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;cursor:pointer;font-size:13px;font-weight:700;transition:background .1s}
+.conv-drop-item:hover{background:var(--sfh)}
+.conv-drop-empty{font-size:12px;color:var(--mt);padding:8px 10px;font-style:italic}
+.conv-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;margin-bottom:16px}
+.conv-card{background:var(--sf);border:1.5px solid var(--bd);border-radius:14px;padding:14px 16px;transition:border-color .2s}
+.conv-card.is-ref{border-color:rgba(0,229,255,.3);background:rgba(0,229,255,.04)}
+.conv-flag{font-size:20px;margin-bottom:5px}
+.conv-city{font-size:11px;font-weight:800;color:var(--mt);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px;display:flex;align-items:center;gap:5px}
+.conv-ref-tag{font-size:9px;font-weight:800;color:var(--cy);background:rgba(0,229,255,.12);border-radius:100px;padding:1px 6px;text-transform:uppercase;letter-spacing:.3px}
+.conv-time{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:30px;letter-spacing:-1px;line-height:1.1}
+.conv-date{font-size:11px;color:var(--mt);font-weight:700;margin-top:4px}
+.conv-status{font-size:10px;font-weight:800;margin-top:5px}
+.conv-daydiff{font-size:10px;font-weight:800;margin-left:4px}
+.conv-actions{display:flex;gap:8px;flex-wrap:wrap}
+.act-btn{display:flex;align-items:center;gap:6px;background:var(--sf);border:1.5px solid var(--bd);border-radius:100px;padding:8px 16px;color:var(--mt);font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:800;font-size:12px;cursor:pointer;transition:all .2s}
+.act-btn:hover{border-color:var(--cy);color:var(--cy);background:rgba(0,229,255,.06)}
+.act-btn.ok{border-color:var(--gr);color:var(--gr);background:rgba(0,230,118,.06)}
+.conv-empty{font-size:13px;color:var(--mt);font-weight:700;font-style:italic;grid-column:1/-1;padding:6px 0}
+
+/* ── Timeline / Meeting Planner ── */
+.planner-box{background:var(--bg2);border:1.5px solid var(--bd);border-radius:20px;padding:20px 18px}
+#plannerWrap{display:block}
+.tl-hint{font-size:12px;color:var(--mt);font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:5px}
+.tl-outer{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;margin:-2px}
 .tl-outer::-webkit-scrollbar{height:4px}
 .tl-outer::-webkit-scrollbar-thumb{background:var(--bd);border-radius:4px}
-.tl-table{display:table;border-collapse:separate;border-spacing:0 4px;min-width:min-content}
-.tl-lc{display:table-cell;width:120px;min-width:120px;padding:0 10px 6px 0;font-size:10px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--mt);vertical-align:bottom}
-.tl-hdr{display:table-row}
-.tl-hcell{display:table-cell;padding:0 10px 6px 0;vertical-align:bottom}
-.tl-hlabels{display:flex;gap:1px}
-.h-lbl{flex:1;min-width:28px;text-align:center;font-size:9px;font-weight:700;color:var(--mt);opacity:.55;line-height:1}
+/* table layout for sticky city labels */
+.tl-tbl{display:table;border-collapse:separate;border-spacing:0 3px;min-width:660px;width:100%}
+.tl-hrow{display:table-row}
+.tl-hlc{display:table-cell;width:148px;min-width:148px;padding:0 8px 6px 0;vertical-align:bottom;position:sticky;left:0;background:var(--bg2);z-index:8}
+.tl-hlc-txt{font-size:10px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--mt)}
+.tl-hcell{display:table-cell;padding:0 0 6px;vertical-align:bottom}
+.tl-hlabels{display:flex;gap:2px}
+.h-lbl{flex:1;min-width:22px;text-align:center;font-size:9px;font-weight:700;color:var(--mt);opacity:.55;line-height:1}
 .tl-row{display:table-row}
-.tl-name{display:table-cell;padding:0 10px 0 0;vertical-align:middle;min-width:120px}
-.tl-city{font-weight:800;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:115px}
-.tl-now{font-size:10px;color:var(--mt);font-weight:700}
-.tl-cells{display:table-cell;vertical-align:middle}
-.tl-inner{display:flex;gap:1px;align-items:stretch}
-.bl{flex:1;min-width:28px;height:36px;border-radius:5px;cursor:pointer;transition:transform .1s;position:relative;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:rgba(255,255,255,.55);user-select:none;overflow:hidden}
-.bl:hover{transform:scaleY(1.12);z-index:2;filter:brightness(1.3)}
-.c-sleep{background:rgba(255,255,255,.04);color:rgba(255,255,255,.25)}
-.c-early{background:rgba(255,200,0,.25)}
-.c-work{background:rgba(0,230,118,.32)}
-.c-eve{background:rgba(255,140,0,.28)}
-.bl.now-bl{outline:2px solid var(--cy);outline-offset:1px;z-index:3;color:rgba(255,255,255,.95)}
-.bl.sel-bl{box-shadow:inset 0 0 0 60px rgba(255,214,0,.45);outline:2px solid var(--yl);outline-offset:1px;z-index:4;color:rgba(255,255,255,.95)}
-.bl.range-bl{box-shadow:inset 0 0 0 60px rgba(255,214,0,.28);outline:1px solid rgba(255,214,0,.55);z-index:3;color:rgba(255,255,255,.9)}
+.tl-lc{display:table-cell;padding:0 8px 0 0;vertical-align:middle;min-width:148px;position:sticky;left:0;background:var(--bg2);z-index:6}
+.tl-lc-inner{display:flex;align-items:center;gap:4px}
+.tl-lc-text{flex:1;min-width:0}
+.tl-cname{font-weight:800;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:110px}
+.tl-cnow{font-size:11px;color:var(--mt);font-weight:700;margin-top:1px}
+.tl-rem{background:none;border:1.5px solid transparent;border-radius:100px;padding:3px 6px;color:var(--mt);font-size:11px;cursor:pointer;opacity:0;transition:all .15s;flex-shrink:0;line-height:1}
+.tl-row:hover .tl-rem{opacity:1;border-color:var(--bd)}
+.tl-rem:hover{color:var(--pk);border-color:var(--pk)!important;background:rgba(255,32,96,.07)}
+.tl-bc{display:table-cell;vertical-align:middle;padding:1px 0}
+.tl-inner{display:flex;gap:2px}
+.bl{flex:1;min-width:22px;height:38px;border-radius:5px;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;color:rgba(255,255,255,.45);user-select:none;transition:filter .12s,transform .12s;overflow:hidden}
+.bl:hover{filter:brightness(1.6);transform:scaleY(1.12);z-index:3;color:rgba(255,255,255,.9)}
+.bl.ch{filter:brightness(1.6);transform:scaleY(1.12);z-index:3;color:rgba(255,255,255,.9)}
+.c-sleep{background:rgba(255,255,255,.04)}
+.c-early{background:rgba(255,200,0,.22)}
+.c-work{background:rgba(0,230,118,.28)}
+.c-eve{background:rgba(255,140,0,.24)}
+.bl.now-bl{outline:2px solid var(--cy);outline-offset:1px;z-index:4;color:rgba(255,255,255,.95)}
+.bl.sel-bl{box-shadow:inset 0 0 0 60px rgba(255,214,0,.45);outline:2px solid var(--yl);z-index:5;color:rgba(255,255,255,.95)}
+.bl.range-bl{box-shadow:inset 0 0 0 60px rgba(255,214,0,.28);outline:1px solid rgba(255,214,0,.5);z-index:4;color:rgba(255,255,255,.9)}
 .legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 .leg{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--mt)}
-.ldot{width:12px;height:12px;border-radius:3px}
-.detail{background:rgba(255,214,0,.06);border:1.5px solid rgba(255,214,0,.18);border-radius:14px;padding:14px 16px;margin-top:14px;display:none}
-.detail.show{display:block}
-.det-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.det-title{font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--yl)}
-.det-clear{background:none;border:1px solid rgba(255,214,0,.3);border-radius:100px;color:var(--yl);font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:800;font-size:11px;padding:4px 10px;cursor:pointer}
-.detail-cities{display:flex;flex-wrap:wrap;gap:8px}
-.dc{background:var(--sf);border-radius:10px;padding:8px 13px;min-width:130px}
-.dc-name{font-size:11px;font-weight:700;color:var(--mt);margin-bottom:2px}
-.dc-time{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.5px}
-.dc-end{font-size:11px;font-weight:700;color:var(--mt);margin-top:1px}
-.dc-status{font-size:10px;font-weight:800;margin-top:3px}
-.det-hint{font-size:11px;color:var(--mt);font-weight:700;margin-top:10px;font-style:italic}
+.ldot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+
+/* ── Hover tooltip ── */
+#hovTip{position:fixed;z-index:1000;background:var(--bg2);border:1.5px solid rgba(0,229,255,.3);border-radius:14px;padding:12px 16px;min-width:200px;max-width:260px;pointer-events:none;box-shadow:0 8px 36px rgba(0,0,0,.55);display:none}
+.tip-head{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:17px;color:var(--cy);padding-bottom:7px;margin-bottom:7px;border-bottom:1px solid var(--bd)}
+.tip-row{display:flex;align-items:center;gap:7px;padding:3px 0}
+.tip-flag{font-size:14px;flex-shrink:0}
+.tip-city{flex:1;font-size:12px;font-weight:700;color:var(--mt);min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tip-t{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:14px;white-space:nowrap}
+.tip-badge{font-size:9px;font-weight:800;padding:1px 5px;border-radius:100px;border:1px solid currentColor;margin-left:3px;flex-shrink:0}
+
+/* ── Selection detail ── */
+.sel-box{background:rgba(255,214,0,.05);border:1.5px solid rgba(255,214,0,.18);border-radius:14px;padding:14px 16px;margin-top:14px;display:none}
+.sel-box.show{display:block}
+.sel-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:8px}
+.sel-title{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--yl);flex:1}
+.sel-clear{background:none;border:1px solid rgba(255,214,0,.3);border-radius:100px;color:var(--yl);font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:800;font-size:11px;padding:4px 10px;cursor:pointer;white-space:nowrap}
+.sel-cities{display:flex;flex-wrap:wrap;gap:8px}
+.sc{background:var(--sf);border-radius:10px;padding:8px 13px;min-width:120px}
+.sc-name{font-size:11px;font-weight:700;color:var(--mt);margin-bottom:2px}
+.sc-time{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.5px}
+.sc-end{font-size:11px;font-weight:700;color:var(--mt);margin-top:1px}
+.sc-st{font-size:10px;font-weight:800;margin-top:3px}
+
+/* ── Best times ── */
 .best{margin-top:16px}
-.best-lbl{font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--mt);margin-bottom:10px}
+.best-lbl{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--mt);margin-bottom:10px}
 .best-chips{display:flex;flex-wrap:wrap;gap:7px}
-.bchip{background:rgba(0,230,118,.1);border:1.5px solid rgba(0,230,118,.3);border-radius:12px;padding:8px 13px;cursor:pointer;transition:all .15s}
-.bchip:hover{background:rgba(0,230,118,.18);border-color:var(--gr)}
+.bchip{background:rgba(0,230,118,.08);border:1.5px solid rgba(0,230,118,.28);border-radius:12px;padding:8px 14px;cursor:pointer;transition:all .15s}
+.bchip:hover{background:rgba(0,230,118,.16);border-color:var(--gr)}
 .bchip-t{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:15px;color:var(--gr)}
 .bchip-s{font-size:10px;color:var(--mt);font-weight:700;margin-top:1px}
 .no-ov{font-size:13px;color:var(--mt);font-weight:700;font-style:italic}
+
+/* ── Toast ── */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(70px);background:var(--gr);color:#071a0c;font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:800;font-size:13px;padding:11px 22px;border-radius:100px;z-index:2000;transition:transform .3s,opacity .3s;opacity:0;pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* ── Ad ── */
 .ad-wrap{margin:28px 0;text-align:center}
 .ad-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mt);margin-bottom:5px;opacity:.6}
 .ad-box{background:var(--sf);border:1px solid var(--bd);border-radius:14px;padding:32px 20px;color:var(--mt);font-size:13px;font-weight:600}
-article.content{max-width:680px;margin:36px auto 0}
-article.content h2{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:20px;margin:24px 0 6px}
-article.content p{color:rgba(244,244,251,.72);font-size:14px;line-height:1.7;margin-bottom:10px}
+
+/* ── Content / FAQ ── */
+article.content{max-width:700px;margin:36px auto 0}
+article.content h2{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:20px;margin:24px 0 7px}
+article.content p{color:rgba(244,244,251,.72);font-size:14px;line-height:1.75;margin-bottom:10px}
 details.qa{border-top:1px solid var(--bd);padding:12px 0}
-details.qa summary{cursor:pointer;font-weight:800;font-size:14px;list-style:none;padding-right:22px;position:relative}
-details.qa summary::after{content:'\002B';position:absolute;right:0;top:0;font-weight:400;color:var(--mt)}
-details.qa[open] summary::after{content:'\2212'}
-.a{padding-top:8px;color:rgba(244,244,251,.7);font-size:13px;line-height:1.7}
+details.qa summary{cursor:pointer;font-weight:800;font-size:14px;list-style:none;padding-right:24px;position:relative}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary::after{content:'+';position:absolute;right:0;top:0;font-weight:400;color:var(--mt)}
+details.qa[open] summary::after{content:'−'}
+.a{padding-top:8px;color:rgba(244,244,251,.7);font-size:13px;line-height:1.75}
+
+/* ── Footer ── */
 footer.ft{text-align:center;padding:24px 20px;color:var(--mt);font-size:12px;font-weight:700;border-top:1px solid var(--bd);margin-top:36px}
 footer.ft a{color:var(--mt);text-decoration:none;margin:0 7px}
 footer.ft a:hover{color:var(--tx)}
-@media(max-width:600px){.clock-grid{grid-template-columns:1fr 1fr}.cc-time{font-size:22px}.tl-lc,.tl-name{min-width:90px;max-width:90px;width:90px}.bl{min-width:22px}}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  .clock-grid{grid-template-columns:1fr 1fr}
+  .cc-time{font-size:24px}
+  .conv-hsel,.conv-msel{width:52px;font-size:18px}
+  .conv-time{font-size:24px}
+  .conv-results{grid-template-columns:1fr 1fr}
+}
+@media(max-width:400px){
+  .conv-results{grid-template-columns:1fr}
+  .conv-top{gap:6px}
+  .clock-grid{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
+
 <header class="topbar">
   <div class="topbar-in">
     <a class="brand" href="/">
@@ -159,69 +266,153 @@ footer.ft a:hover{color:var(--tx)}
     <a class="back" href="/">&#8592; All tools</a>
   </div>
 </header>
+
 <main>
 <div class="wrap">
+
+<!-- Hero -->
 <header class="head">
-  <h1>World Clock &amp;<br><span class="g">Meeting Planner</span></h1>
-  <p>Each row shows the local time for every column. Green = business hours. Drag to pick a meeting slot.</p>
+  <h1>World Clock &amp; <span class="g">Time Zone Converter</span></h1>
+  <p class="head-sub">Live clocks &middot; Instant time conversion &middot; Meeting planner for remote teams</p>
+  <div class="head-tags">
+    <span class="htag">🌍 200+ cities</span>
+    <span class="htag">⚡ Instant conversion</span>
+    <span class="htag">🤝 Remote-team ready</span>
+    <span class="htag">🔗 Shareable links</span>
+  </div>
 </header>
+
+<!-- ── Section 1: Live Clocks ── -->
+<div class="sec-hd">
+  <div class="sec-num">1</div>
+  <div class="sec-title">Live World Clocks</div>
+</div>
 <div class="clock-grid" id="clockGrid"></div>
 <div class="ctrl-row">
-  <button class="add-btn" id="addBtn" onclick="togglePicker()">&#xFF0B; Add a city</button>
-  <button class="pill-btn" id="hrToggle" onclick="toggle24()">24hr</button>
-  <button class="pill-btn" id="halfToggle" onclick="toggleHalf()">&frac12;hr slots</button>
-  <button class="pill-btn" onclick="clearExtra()" style="margin-left:auto">Reset</button>
+  <button class="add-btn" id="addBtn" onclick="togglePicker()">＋ Add a city</button>
+  <button class="pill-btn" id="hrToggle" onclick="toggle24()">24-hour</button>
+  <button class="pill-btn reset-btn" onclick="removeAllCities()">Remove all</button>
+  <button class="pill-btn reset-btn ml-auto" onclick="resetAll()">Reset defaults</button>
 </div>
 <div class="picker" id="picker">
-  <input type="text" id="citySearch" class="city-search" placeholder="Search any city &mdash; Milan, Lagos, Denver..." oninput="searchCities(this.value)" autocomplete="off" spellcheck="false">
+  <input type="text" id="citySearch" class="city-search" placeholder="Search any city — Tokyo, Lagos, Denver, Berlin…" oninput="searchCities(this.value)" autocomplete="off" spellcheck="false">
   <div class="search-results" id="searchResults"></div>
 </div>
-<div class="planner" id="planner">
-  <div class="pl-head">
-    <h2>&#128197; Best time to meet</h2>
-    <div class="pl-hint" id="plHint">Drag across the blocks to pick a time or a range</div>
-  </div>
-  <div class="tl-outer"><div class="tl-table" id="tlTable"></div></div>
-  <div class="legend">
-    <div class="leg"><div class="ldot" style="background:rgba(0,230,118,.45)"></div>Work 8a&ndash;6p</div>
-    <div class="leg"><div class="ldot" style="background:rgba(255,140,0,.4)"></div>Evening</div>
-    <div class="leg"><div class="ldot" style="background:rgba(255,200,0,.35)"></div>Early</div>
-    <div class="leg"><div class="ldot" style="background:rgba(255,255,255,.06)"></div>Night</div>
-    <div class="leg"><div class="ldot" style="background:transparent;outline:2px solid var(--cy);outline-offset:1px"></div>Now</div>
-    <div class="leg"><div class="ldot" style="background:rgba(255,214,0,.45)"></div>Selected</div>
-  </div>
-  <div class="detail" id="detail">
-    <div class="det-hd">
-      <div class="det-title" id="detTitle"></div>
-      <button class="det-clear" onclick="clearSel()">&#10005; Clear</button>
-    </div>
-    <div class="detail-cities" id="detCities"></div>
-    <div class="det-hint">Drag to change selection</div>
-  </div>
-  <div class="best" id="best"></div>
+
+<hr class="divider">
+
+<!-- ── Section 2: Convert a Time ── -->
+<div class="sec-hd">
+  <div class="sec-num">2</div>
+  <div class="sec-title">Convert a Time</div>
 </div>
+<div class="conv-box">
+  <div class="conv-top">
+    <span class="conv-lbl">When it&rsquo;s</span>
+    <div class="conv-time-grp">
+      <select class="conv-hsel" id="convH" onchange="renderConverter()"></select>
+      <span class="conv-colon">:</span>
+      <select class="conv-msel" id="convM" onchange="renderConverter()">
+        <option value="0">00</option>
+        <option value="15">15</option>
+        <option value="30">30</option>
+        <option value="45">45</option>
+      </select>
+      <select class="conv-apsel" id="convAP" onchange="renderConverter()">
+        <option>AM</option>
+        <option>PM</option>
+      </select>
+    </div>
+    <span class="conv-lbl">in</span>
+    <select class="conv-sel" id="convCity" onchange="renderConverter()"></select>
+    <button class="conv-rem-btn" id="convRemBtn" onclick="convRemoveCity()" title="Remove this city">✕</button>
+    <div class="conv-search-wrap" id="convSearchWrap">
+      <input type="text" class="conv-search-inp" id="convSearchInp" placeholder="Search city…" oninput="convSearch(this.value)" autocomplete="off" spellcheck="false">
+      <div class="conv-search-drop" id="convSearchDrop"></div>
+    </div>
+    <button class="conv-add-btn" id="convAddBtn" onclick="toggleConvSearch()">＋ Add city</button>
+  </div>
+  <div class="conv-results" id="convResults"></div>
+  <div class="conv-actions">
+    <button class="act-btn" id="copyBtn" onclick="copyTimes()">📋 Copy all times</button>
+    <button class="act-btn" id="shareBtn" onclick="shareLink()">🔗 Share link</button>
+    <button class="pill-btn reset-btn" onclick="removeAllConv()">✕ Remove all</button>
+    <button class="pill-btn reset-btn" onclick="resetAll()" style="margin-left:auto">↺ Reset defaults</button>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ── Section 3: Meeting Planner ── -->
+<div class="sec-hd">
+  <div class="sec-num">3</div>
+  <div class="sec-title">Meeting Planner</div>
+</div>
+<div id="plannerWrap">
+  <div class="planner-box">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;flex-wrap:wrap">
+      <div class="tl-hint" style="margin-bottom:0">💡 Hover any hour to compare &nbsp;&middot;&nbsp; Drag to select a meeting window</div>
+      <div style="display:flex;gap:8px;flex-shrink:0">
+        <button class="pill-btn reset-btn" onclick="removeAllPlan()">✕ Remove all</button>
+        <button class="pill-btn reset-btn" onclick="resetAll()">↺ Reset defaults</button>
+      </div>
+    </div>
+    <div id="plannerMsg" style="display:none;align-items:center;justify-content:center;gap:10px;padding:32px 20px;color:var(--mt);font-size:13px;font-weight:700;flex-direction:column">
+      <span>Add one more city to use the Meeting Planner</span>
+      <button class="add-btn" style="font-size:12px;padding:7px 16px" onclick="togglePicker();document.getElementById('citySearch').focus()">＋ Add a city</button>
+    </div>
+    <div class="tl-outer" id="plannerTlOuter">
+      <div class="tl-tbl" id="tlTbl"></div>
+    </div>
+    <div class="legend" id="plannerLegend">
+      <div class="leg"><div class="ldot" style="background:rgba(0,230,118,.42)"></div>Work 8a&ndash;6p</div>
+      <div class="leg"><div class="ldot" style="background:rgba(255,140,0,.38)"></div>Evening</div>
+      <div class="leg"><div class="ldot" style="background:rgba(255,200,0,.32)"></div>Early</div>
+      <div class="leg"><div class="ldot" style="background:rgba(255,255,255,.07)"></div>Night</div>
+      <div class="leg"><div class="ldot" style="border:2px solid var(--cy);background:transparent"></div>Now</div>
+      <div class="leg"><div class="ldot" style="background:rgba(255,214,0,.45)"></div>Selected</div>
+    </div>
+    <div class="sel-box" id="selBox">
+      <div class="sel-hd">
+        <div class="sel-title" id="selTitle"></div>
+        <button class="sel-clear" onclick="clearSel()">&#10005; Clear</button>
+      </div>
+      <div class="sel-cities" id="selCities"></div>
+    </div>
+    <div class="best" id="best"></div>
+  </div>
+</div>
+<!-- Ad -->
 <div class="ad-wrap">
   <div class="ad-lbl">Advertisement</div>
   <div class="ad-box">Ad space &mdash; apply for Google AdSense to display ads here</div>
 </div>
+
+<!-- Content -->
 <article class="content">
-<h2>How to use</h2>
-<p>Your city loads automatically alongside New York, London, Dubai, Tokyo, and Sydney as examples. Add or remove any city using the search box. The timeline shows what local time each column is for each city &mdash; so you can see at a glance that 9am in London is 4pm in Dubai and 11pm in Tokyo.</p>
-<p>Drag across the hour blocks to select a meeting window. The detail panel shows the exact start and end time in every city. Use &#189;hr slots for 30-minute precision.</p>
+<h2>How to use this tool</h2>
+<p><strong>Live World Clocks</strong> — Your local city is detected automatically. Add any city you need with the search box. All clocks update live every second. Remove a city by hovering its card and clicking ✕.</p>
+<p><strong>Convert a Time</strong> — Pick any time and choose which city it&rsquo;s in. The tool instantly shows what that moment is in every other city on your list. Hit &ldquo;Share link&rdquo; to copy a URL your teammates can open and see the exact same conversion.</p>
+<p><strong>Meeting Planner</strong> — Hover any hour block to see that moment across all cities at once. Drag across blocks to select a meeting window — the detail panel shows start and end times for everyone. The &ldquo;Best times&rdquo; chips at the bottom highlight slots where all cities overlap in business hours.</p>
+
 <h2>Frequently asked questions</h2>
-<details class="qa"><summary>Why do the rows show different times for the same column?</summary>
-<div class="a">That is the whole point. Each column is the same moment in time, shown in each city&#39;s local clock. So column 9a (9am your time) will show a different time in every row depending on the timezone.</div></details>
-<details class="qa"><summary>How do I select a multi-hour meeting slot?</summary>
-<div class="a">Just drag. Press on your start block and drag right to your end block. The whole range highlights as you drag, and the detail panel shows start and end times for all cities.</div></details>
-<details class="qa"><summary>How do I get half-hour precision like 9:30am?</summary>
-<div class="a">Click the &#189;hr slots button. Each hour splits into two 30-minute blocks so you can pick 9:00 or 9:30 separately.</div></details>
-<details class="qa"><summary>Can I change my city if it was detected wrong?</summary>
-<div class="a">Yes. Hover over any card and click the X to remove it, then search for your actual city using the Add a city button.</div></details>
-<details class="qa"><summary>Does it handle Daylight Saving Time?</summary>
-<div class="a">Yes. The browser&#39;s Intl API uses your OS timezone database, which handles DST correctly for all regions.</div></details>
+<details class="qa"><summary>How do I convert a time from one time zone to another?</summary>
+<div class="a">Use section 2 — &ldquo;Convert a Time.&rdquo; Choose the hour and minute, select AM or PM, then pick the city the time is in. All your other cities update instantly to show the equivalent local time.</div></details>
+<details class="qa"><summary>How do I find the best meeting time for a remote team?</summary>
+<div class="a">Add all your team cities first, then scroll to the Meeting Planner. Green blocks = 8am–6pm working hours. Hover a column to preview all times at once. The &ldquo;Best times&rdquo; chips at the bottom highlight windows where everyone is in working hours. Click a chip to select it.</div></details>
+<details class="qa"><summary>Can I share a time zone conversion with my team?</summary>
+<div class="a">Yes — click &ldquo;Share link&rdquo; in the converter section. It copies a URL that encodes your cities and time. Anyone who opens it sees the exact same setup, no account needed.</div></details>
+<details class="qa"><summary>Does it handle Daylight Saving Time automatically?</summary>
+<div class="a">Yes. The tool uses the browser&rsquo;s built-in Intl timezone database, which applies DST rules automatically for all regions. You never need to manually adjust for DST changes.</div></details>
+<details class="qa"><summary>What is the time difference between New York and London?</summary>
+<div class="a">New York (ET) is typically 5 hours behind London (GMT/BST). During US Daylight Saving it becomes 4 hours behind. The exact difference depends on the date — the Meeting Planner shows the real-time gap for any date.</div></details>
+<details class="qa"><summary>How many cities can I add?</summary>
+<div class="a">Up to 8 cities at once. You can add or remove any city at any time using the search box. All three sections — clocks, converter, and planner — update simultaneously.</div></details>
 </article>
-</div>
+
+</div><!-- /wrap -->
 </main>
+
 <!-- PK-EXPLORE-START -->
 <style id="pk-explore-css">
 .pk-explore{position:relative;z-index:2;max-width:880px;margin:10px auto 0;padding:26px 20px 6px;font-family:'Nunito','Nunito Fallback',sans-serif;box-sizing:border-box}
@@ -241,40 +432,50 @@ footer.ft a:hover{color:var(--tx)}
   <div class="pk-explore-wrap">
     <div class="pk-explore-top">
       <h2 class="pk-explore-h">Explore more free tools</h2>
-      <a class="pk-explore-link" href="/">All 18 tools →</a>
+      <a class="pk-explore-link" href="/">All 18 tools &rarr;</a>
     </div>
-    <p class="pk-explore-sub">No sign-up, no downloads — every Pickly tool opens instantly in your browser.</p>
+    <p class="pk-explore-sub">No sign-up, no downloads &mdash; every Pickly tool opens instantly in your browser.</p>
     <div class="pk-explore-grid">
-        <a class="pk-pill" href="/spinit/"><span class="pk-pill-ic">🎡</span>Decision Spinner</a>
-        <a class="pk-pill" href="/coinflip/"><span class="pk-pill-ic">🪙</span>Coin Flip</a>
-        <a class="pk-pill" href="/randomnumber/"><span class="pk-pill-ic">🔢</span>Random Number</a>
-        <a class="pk-pill" href="/teampicker/"><span class="pk-pill-ic">👥</span>Team Picker</a>
-        <a class="pk-pill" href="/whattoeat/"><span class="pk-pill-ic">🍽️</span>What to Eat</a>
-        <a class="pk-pill" href="/magic8ball/"><span class="pk-pill-ic">🎱</span>Magic 8 Ball</a>
-        <a class="pk-pill" href="/wouldyourather/"><span class="pk-pill-ic">🤔</span>Would You Rather</a>
-        <a class="pk-pill" href="/truthordare/"><span class="pk-pill-ic">🎭</span>Truth or Dare</a>
-        <a class="pk-pill" href="/neverhaveiever/"><span class="pk-pill-ic">🙊</span>Never Have I Ever</a>
-        <a class="pk-pill" href="/rockpaperscissors/"><span class="pk-pill-ic">✊</span>Rock Paper Scissors</a>
-        <a class="pk-pill" href="/slotmachine/"><span class="pk-pill-ic">🎰</span>Slot Machine</a>
-        <a class="pk-pill" href="/agecalculator/"><span class="pk-pill-ic">🎂</span>Age Calculator</a>
-        <a class="pk-pill" href="/datecalculator/"><span class="pk-pill-ic">📅</span>Date Calculator</a>
-        <a class="pk-pill" href="/bmi/"><span class="pk-pill-ic">⚖️</span>BMI Calculator</a>
-        <a class="pk-pill" href="/discount/"><span class="pk-pill-ic">🏷️</span>Discount Calculator</a>
-        <a class="pk-pill" href="/mortgage/"><span class="pk-pill-ic">🏠</span>Mortgage Calculator</a>
-        <a class="pk-pill" href="/compatibility/"><span class="pk-pill-ic">💕</span>Compatibility</a>
+      <a class="pk-pill" href="/agecalculator/"><span class="pk-pill-ic">🎂</span>Age Calculator</a>
+      <a class="pk-pill" href="/datecalculator/"><span class="pk-pill-ic">📅</span>Date Calculator</a>
+      <a class="pk-pill" href="/bmi/"><span class="pk-pill-ic">⚖️</span>BMI Calculator</a>
+      <a class="pk-pill" href="/discount/"><span class="pk-pill-ic">🏷️</span>Discount Calculator</a>
+      <a class="pk-pill" href="/mortgage/"><span class="pk-pill-ic">🏠</span>Mortgage Calculator</a>
+      <a class="pk-pill" href="/spinit/"><span class="pk-pill-ic">🎡</span>Decision Spinner</a>
+      <a class="pk-pill" href="/coinflip/"><span class="pk-pill-ic">🪙</span>Coin Flip</a>
+      <a class="pk-pill" href="/randomnumber/"><span class="pk-pill-ic">🔢</span>Random Number</a>
+      <a class="pk-pill" href="/magic8ball/"><span class="pk-pill-ic">🎱</span>Magic 8 Ball</a>
+      <a class="pk-pill" href="/wouldyourather/"><span class="pk-pill-ic">🤔</span>Would You Rather</a>
+      <a class="pk-pill" href="/truthordare/"><span class="pk-pill-ic">🎭</span>Truth or Dare</a>
+      <a class="pk-pill" href="/neverhaveiever/"><span class="pk-pill-ic">🙊</span>Never Have I Ever</a>
+      <a class="pk-pill" href="/rockpaperscissors/"><span class="pk-pill-ic">✊</span>Rock Paper Scissors</a>
+      <a class="pk-pill" href="/slotmachine/"><span class="pk-pill-ic">🎰</span>Slot Machine</a>
+      <a class="pk-pill" href="/compatibility/"><span class="pk-pill-ic">💕</span>Compatibility</a>
+      <a class="pk-pill" href="/teampicker/"><span class="pk-pill-ic">👥</span>Team Picker</a>
+      <a class="pk-pill" href="/whattoeat/"><span class="pk-pill-ic">🍽️</span>What to Eat</a>
     </div>
   </div>
 </section>
 <!-- PK-EXPLORE-END -->
 
 <footer class="ft"><span id="yr"></span> Pickly &nbsp;&middot;&nbsp; <a href="/">All tools</a> &nbsp;&middot;&nbsp; <a href="/privacy/">Privacy</a> &nbsp;&middot;&nbsp; <a href="/contact/">Contact</a></footer>
+
+<!-- Hover tooltip -->
+<div id="hovTip"></div>
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
 
-// ===== STATE =====
-var use24=false,useHalf=false,dragStart=null,dragEnd=null,isDragging=false,active=[];
+// ── STATE ──
+var use24=false,active=[],dragStart=null,dragEnd=null,isDragging=false,hoverCol=-1;
+var convHidden=new Set(),planHidden=new Set();
+function ckey(c){return c.tz+'|'+c.n;}
+function convVisible(){return active.filter(function(c){return !convHidden.has(ckey(c));});}
+function planVisible(){return active.filter(function(c){return !planHidden.has(ckey(c));});}
 
-// ===== CITY DATABASE =====
+// ── CITY DATABASE ──
 var DB=[
 ['New York','USA','US','America/New_York'],
 ['Los Angeles','USA','US','America/Los_Angeles'],
@@ -446,21 +647,62 @@ var DB=[
 ['Wellington','New Zealand','NZ','Pacific/Auckland'],
 ];
 
-// flag emoji from country code
+// ── HELPERS ──
 function flag(cc){
-  if(!cc||cc.length!==2)return '\uD83C\uDF0D';
+  if(!cc||cc.length!==2)return'🌍';
   var a=cc.toUpperCase().charCodeAt(0)-65+0x1F1E6;
   var b=cc.toUpperCase().charCodeAt(1)-65+0x1F1E6;
   return String.fromCodePoint(a)+String.fromCodePoint(b);
 }
 function toCity(r){return r?{n:r[0],c:r[1],f:flag(r[2]),tz:r[3]}:null;}
-
 function detectLocal(){
   var tz=Intl.DateTimeFormat().resolvedOptions().timeZone;
   var m=DB.find(function(r){return r[3]===tz;})||DB.find(function(r){return r[3].split('/')[0]===tz.split('/')[0];});
-  return m?toCity(m):{n:'My City',c:'Local',f:'\uD83D\uDCCD',tz:tz};
+  var city=m?toCity(m):{n:'My City',c:'Local',f:'📍',tz:tz};
+  city.isLocal=true;return city;
 }
+function lhm(date,tz){
+  try{
+    var p=new Intl.DateTimeFormat('en',{timeZone:tz,hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(date);
+    return{h:parseInt(p.find(function(x){return x.type==='hour';}).value),m:parseInt(p.find(function(x){return x.type==='minute';}).value)};
+  }catch(e){return{h:12,m:0};}
+}
+function fmtT(date,tz,withMin){
+  try{
+    var o={timeZone:tz,hour:'2-digit',hourCycle:use24?'h23':'h12'};
+    if(withMin)o.minute='2-digit';
+    return new Intl.DateTimeFormat('en-US',o).format(date).replace(' AM','am').replace(' PM','pm');
+  }catch(e){return'--';}
+}
+function fmtDate(date,tz){
+  return new Intl.DateTimeFormat('en-US',{timeZone:tz,weekday:'short',month:'short',day:'numeric'}).format(date);
+}
+function hClass(h){
+  if(h>=22||h<6)return'c-sleep';
+  if(h<8)return'c-early';
+  if(h<18)return'c-work';
+  return'c-eve';
+}
+function hStatus(h){
+  if(h>=22||h<6)return{txt:'Night',col:'#9a9ab5'};
+  if(h<8)return{txt:'Early morning',col:'#FFD600'};
+  if(h<12)return{txt:'Morning',col:'#00E676'};
+  if(h<18)return{txt:'Afternoon',col:'#00E676'};
+  return{txt:'Evening',col:'#FF8C00'};
+}
+function cardAccent(h){
+  if(h>=22||h<6)return'rgba(176,97,255,.65)';
+  if(h<8)return'rgba(255,214,0,.85)';
+  if(h<18)return'rgba(0,230,118,.85)';
+  return'rgba(255,140,0,.85)';
+}
+function slotDate(i){
+  var n=new Date();
+  return new Date(n.getFullYear(),n.getMonth(),n.getDate(),i,0,0);
+}
+function nowSlot(){return new Date().getHours();}
 
+// ── INIT CITIES ──
 function initCities(){
   var local=detectLocal();
   var want=['New York','London','Dubai','Tokyo','Sydney'];
@@ -473,58 +715,7 @@ function initCities(){
   active=arr;
 }
 
-// ===== TIME HELPERS =====
-function lhm(date,tz){
-  try{
-    var p=new Intl.DateTimeFormat('en',{timeZone:tz,hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(date);
-    return {h:parseInt(p.find(function(x){return x.type==='hour';}).value),m:parseInt(p.find(function(x){return x.type==='minute';}).value)};
-  }catch(e){return {h:12,m:0};}
-}
-function fmtT(date,tz,min){
-  try{
-    var o={timeZone:tz,hour:'2-digit',hourCycle:use24?'h23':'h12'};
-    if(min)o.minute='2-digit';
-    return new Intl.DateTimeFormat('en-US',o).format(date).replace(' AM','am').replace(' PM','pm');
-  }catch(e){return '--';}
-}
-function blkLbl(date,tz){
-  var hm=lhm(date,tz);
-  if(use24)return hm.m===0?String(hm.h).padStart(2,'0'):String(hm.h).padStart(2,'0')+'\xB3\u2070';
-  var ap=hm.h<12?'a':'p';var h12=hm.h%12||12;
-  return hm.m===0?h12+ap:h12+'\xB3\u2070';
-}
-function hClass(h){
-  if(h>=22||h<6)return 'c-sleep';
-  if(h<8)return 'c-early';
-  if(h<18)return 'c-work';
-  return 'c-eve';
-}
-function hStatus(h){
-  if(h>=22||h<6)return {txt:'Sleeping',col:'#9a9ab5'};
-  if(h<8)return {txt:'Early morning',col:'#FFD600'};
-  if(h<12)return {txt:'Morning',col:'#00E676'};
-  if(h<18)return {txt:'Afternoon',col:'#00E676'};
-  return {txt:'Evening',col:'#FF8C00'};
-}
-function cardAccent(h){
-  if(h>=22||h<6)return 'rgba(176,97,255,.6)';
-  if(h<8)return 'rgba(255,214,0,.8)';
-  if(h<18)return 'rgba(0,230,118,.8)';
-  return 'rgba(255,140,0,.8)';
-}
-function slotCount(){return useHalf?48:24;}
-function slotDate(i){
-  var now=new Date();
-  var d=new Date(now.getFullYear(),now.getMonth(),now.getDate(),0,0,0);
-  if(useHalf)d.setMinutes(i*30);else d.setHours(i);
-  return d;
-}
-function nowSlot(){
-  var n=new Date();
-  return useHalf?n.getHours()*2+(n.getMinutes()>=30?1:0):n.getHours();
-}
-
-// ===== RENDER CLOCKS =====
+// ── RENDER CLOCKS ──
 function renderClocks(){
   var now=new Date();
   var html=active.map(function(city,i){
@@ -532,10 +723,12 @@ function renderClocks(){
     var st=hStatus(hm.h);
     var ac=cardAccent(hm.h);
     var t=fmtT(now,city.tz,true);
-    var dt=new Intl.DateTimeFormat('en-US',{timeZone:city.tz,weekday:'short',month:'short',day:'numeric'}).format(now);
-    var remBtn=active.length>1?('<button class="rem" onclick="removeCity('+i+')">\u2715</button>'):'';
-    return '<div class="clock-card" style="--cc:'+ac+'">'+remBtn+
-      '<div class="cc-city">'+city.f+' '+city.n+'</div>'+
+    var dt=fmtDate(now,city.tz);
+    var rem=active.length>1?'<button class="cc-rem" onclick="removeCity('+i+')" title="Remove">✕</button>':'';
+    var you=city.isLocal?'<span class="cc-you">You</span>':'';
+    return'<div class="clock-card" style="--cc:'+ac+'">'+you+rem+
+      '<div class="cc-flag">'+city.f+'</div>'+
+      '<div class="cc-city">'+city.n+'</div>'+
       '<div class="cc-country">'+city.c+'</div>'+
       '<div class="cc-time">'+t+'</div>'+
       '<div class="cc-date">'+dt+'</div>'+
@@ -543,108 +736,273 @@ function renderClocks(){
       '</div>';
   }).join('');
   document.getElementById('clockGrid').innerHTML=html;
+  rebuildConvSelects();
 }
 
-// ===== RENDER TIMELINE =====
-function renderTimeline(){
-  var show=active.length>=2;
-  document.getElementById('planner').classList.toggle('show',show);
-  if(!show)return;
-  var ns=nowSlot(),slots=slotCount();
-  var hlabels=Array.from({length:slots},function(_,i){
-    if(useHalf&&i%2!==0)return '<div class="h-lbl"></div>';
-    var d=slotDate(i),h=d.getHours(),ap=h<12?'a':'p',h12=h%12||12;
-    var lbl=use24?String(h).padStart(2,'0'):(h===0?'12a':h===12?'12p':h12+ap);
-    return '<div class="h-lbl">'+lbl+'</div>';
+// ── CONVERTER SELECTS ──
+function rebuildConvSelects(){
+  var hEl=document.getElementById('convH');
+  var cityEl=document.getElementById('convCity');
+  if(!hEl||!cityEl)return;
+
+  // Hour select — rebuild only if format changed
+  var curH=hEl.value;
+  hEl.innerHTML='';
+  if(use24){
+    for(var h=0;h<24;h++){
+      var o=document.createElement('option');
+      o.value=h;o.textContent=String(h).padStart(2,'0');
+      hEl.appendChild(o);
+    }
+    hEl.value=parseInt(curH)||0;
+    document.getElementById('convAP').style.display='none';
+  }else{
+    for(var h=1;h<=12;h++){
+      var o=document.createElement('option');
+      o.value=h;o.textContent=String(h).padStart(2,'0');
+      hEl.appendChild(o);
+    }
+    hEl.value=parseInt(curH)||9;
+    document.getElementById('convAP').style.display='';
+  }
+
+  // City select — uses convVisible() so only non-hidden cities appear
+  var curCity=cityEl.value;
+  cityEl.innerHTML='';
+  convVisible().forEach(function(city){
+    var o=document.createElement('option');
+    o.value=ckey(city);o.textContent=city.f+' '+city.n;
+    cityEl.appendChild(o);
+  });
+  if(curCity&&convVisible().find(function(c){return ckey(c)===curCity;}))cityEl.value=curCity;
+  else if(convVisible().length)cityEl.value=ckey(convVisible()[0]);
+  renderConverter();
+}
+
+// ── BUILD CONVERTER DATE ──
+function buildConvDate(){
+  var h=parseInt(document.getElementById('convH').value)||0;
+  var m=parseInt(document.getElementById('convM').value)||0;
+  if(!use24){
+    var ap=document.getElementById('convAP').value;
+    if(ap==='PM'&&h!==12)h+=12;
+    if(ap==='AM'&&h===12)h=0;
+  }
+  var n=new Date();
+  return new Date(n.getFullYear(),n.getMonth(),n.getDate(),h,m,0);
+}
+
+// ── RENDER CONVERTER ──
+function renderConverter(){
+  var el=document.getElementById('convResults');
+  if(!el)return;
+  var vis=convVisible();
+  if(!vis.length){el.innerHTML='<div class="conv-empty">Add cities above to see conversions.</div>';return;}
+  var refKey=document.getElementById('convCity').value||'';
+  var refCity=vis.find(function(c){return ckey(c)===refKey;})||vis[0];
+  var cd=buildConvDate();
+
+  var html=vis.map(function(city){
+    var isRef=(ckey(city)===ckey(refCity));
+    var t=fmtT(cd,city.tz,true);
+    var dt=fmtDate(cd,city.tz);
+    var refDt=fmtDate(cd,refCity.tz);
+    var hm=lhm(cd,city.tz);
+    var st=hStatus(hm.h);
+    var diff='';
+    if(!isRef&&dt!==refDt){
+      // compare day-of-month
+      var rDay=new Intl.DateTimeFormat('en',{timeZone:refCity.tz,day:'numeric'}).format(cd);
+      var cDay=new Intl.DateTimeFormat('en',{timeZone:city.tz,day:'numeric'}).format(cd);
+      if(parseInt(cDay)>parseInt(rDay)||parseInt(cDay)<parseInt(rDay)-20)
+        diff='<span class="conv-daydiff" style="color:var(--cy)">+1 day</span>';
+      else if(parseInt(cDay)<parseInt(rDay)&&parseInt(rDay)-parseInt(cDay)<20)
+        diff='<span class="conv-daydiff" style="color:var(--mt)">-1 day</span>';
+    }
+    var refTag=isRef?'<span class="conv-ref-tag">from</span>':'';
+    return'<div class="conv-card'+(isRef?' is-ref':'')+'">'+
+      '<div class="conv-flag">'+city.f+'</div>'+
+      '<div class="conv-city">'+city.n+refTag+'</div>'+
+      '<div class="conv-time" style="color:'+(isRef?'var(--cy)':'var(--tx)')+'">'+t+'</div>'+
+      '<div class="conv-date">'+dt+diff+'</div>'+
+      '<div class="conv-status" style="color:'+st.col+'">'+st.txt+'</div>'+
+      '</div>';
   }).join('');
+  el.innerHTML=html;
+}
+
+// ── RENDER TIMELINE ──
+function renderTimeline(){
+  var show=planVisible().length>=2;
+  var msg=document.getElementById('plannerMsg');
+  var outr=document.getElementById('plannerTlOuter');
+  var lgnd=document.getElementById('plannerLegend');
+  var bst=document.getElementById('best');
+  if(msg)  msg.style.display=show?'none':'flex';
+  if(outr) outr.style.display=show?'':'none';
+  if(lgnd) lgnd.style.display=show?'':'none';
+  if(bst)  bst.style.display=show?'':'none';
+  if(!show)return;
+
+  var ns=nowSlot();
   var lo=dragStart!==null&&dragEnd!==null?Math.min(dragStart,dragEnd):dragStart;
   var hi=dragStart!==null&&dragEnd!==null?Math.max(dragStart,dragEnd):dragStart;
-  var rows=active.map(function(city){
+
+  var hlabels=Array.from({length:24},function(_,i){
+    var ap=i<12?'a':'p',h12=i%12||12;
+    var lbl=use24?String(i).padStart(2,'0'):(i===0?'12a':i===12?'12p':h12+ap);
+    return'<div class="h-lbl">'+lbl+'</div>';
+  }).join('');
+
+  var pv=planVisible();
+  var rows=pv.map(function(city){
+    var ai=active.findIndex(function(c){return c.tz===city.tz&&c.n===city.n;});
     var nowT=fmtT(new Date(),city.tz,true);
-    var blocks=Array.from({length:slots},function(_,i){
+    var blocks=Array.from({length:24},function(_,i){
       var d=slotDate(i);
       var hm=lhm(d,city.tz);
       var cls=hClass(hm.h);
-      var lbl=blkLbl(d,city.tz);
+      var h12=hm.h%12||12;
+      var lbl=use24?String(hm.h).padStart(2,'0'):(hm.h===0?'12':hm.h===12?'12':String(h12));
       var ex='';
       if(i===ns)ex+=' now-bl';
-      if(dragStart!==null&&i>=lo&&i<=hi){
-        if(i===lo||i===hi)ex+=' sel-bl';else ex+=' range-bl';
-      }
-      return '<div class="bl '+cls+ex+'" data-i="'+i+'" onmousedown="startDrag('+i+')">'+lbl+'</div>';
+      if(dragStart!==null&&lo!==null&&hi!==null&&i>=lo&&i<=hi)
+        ex+=i===lo||i===hi?' sel-bl':' range-bl';
+      return'<div class="bl '+cls+ex+'" data-col="'+i+
+        '" onmousedown="startDrag('+i+')" onmouseenter="enterCol('+i+',event)" onmouseleave="leaveCol()">'+lbl+'</div>';
     }).join('');
-    return '<div class="tl-row"><div class="tl-name"><div class="tl-city">'+city.f+' '+city.n+'</div><div class="tl-now">'+nowT+'</div></div><div class="tl-cells"><div class="tl-inner">'+blocks+'</div></div></div>';
+    var remBtn=pv.length>1?'<button class="tl-rem" onclick="removePlanCity('+ai+')">✕</button>':'';
+    return'<div class="tl-row">'+
+      '<div class="tl-lc"><div class="tl-lc-inner"><div class="tl-lc-text"><div class="tl-cname">'+city.f+' '+city.n+'</div><div class="tl-cnow">'+nowT+'</div></div>'+remBtn+'</div></div>'+
+      '<div class="tl-bc"><div class="tl-inner">'+blocks+'</div></div>'+
+      '</div>';
   }).join('');
-  document.getElementById('tlTable').innerHTML=
-    '<div class="tl-hdr"><div class="tl-lc">City / Now</div><div class="tl-hcell"><div class="tl-hlabels">'+hlabels+'</div></div></div>'+rows;
-  renderDetail();renderBest();
+
+  document.getElementById('tlTbl').innerHTML=
+    '<div class="tl-hrow"><div class="tl-hlc"><div class="tl-hlc-txt">City &middot; Now</div></div>'+
+    '<div class="tl-hcell"><div class="tl-hlabels">'+hlabels+'</div></div></div>'+rows;
+
+  renderSelDetail();
+  renderBest();
 }
 
-// ===== DRAG =====
+// ── HOVER TOOLTIP ──
+function enterCol(col,e){
+  if(isDragging){var i=col;if(i!==dragEnd){dragEnd=i;renderTimeline();}return;}
+  hoverCol=col;
+  document.querySelectorAll('[data-col="'+col+'"]').forEach(function(b){b.classList.add('ch');});
+  var d=slotDate(col);
+  var ap=d.getHours()<12?'am':'pm';
+  var h12=d.getHours()%12||12;
+  var timeStr=use24?String(d.getHours()).padStart(2,'0')+':00':(h12+':00'+ap);
+  var pv=planVisible();
+  var refDate=fmtDate(d,pv[0]?pv[0].tz:Intl.DateTimeFormat().resolvedOptions().timeZone);
+  var rows=pv.map(function(city){
+    var t=fmtT(d,city.tz,true);
+    var hm=lhm(d,city.tz);
+    var st=hStatus(hm.h);
+    return'<div class="tip-row">'+
+      '<span class="tip-flag">'+city.f+'</span>'+
+      '<span class="tip-city">'+city.n+'</span>'+
+      '<span class="tip-t">'+t+'</span>'+
+      '<span class="tip-badge" style="color:'+st.col+';border-color:'+st.col+'">'+st.txt+'</span>'+
+      '</div>';
+  }).join('');
+  var tip=document.getElementById('hovTip');
+  tip.innerHTML='<div class="tip-head">'+timeStr+' &middot; '+refDate+'</div>'+rows;
+  tip.style.display='block';
+  posTip(e.clientX,e.clientY);
+}
+function leaveCol(){
+  if(isDragging)return;
+  hoverCol=-1;
+  document.querySelectorAll('.ch').forEach(function(b){b.classList.remove('ch');});
+  document.getElementById('hovTip').style.display='none';
+}
+function posTip(x,y){
+  var tip=document.getElementById('hovTip');
+  var tw=tip.offsetWidth||210,th=tip.offsetHeight||160;
+  var left=x+16,top=y-th/2;
+  if(left+tw>window.innerWidth-12)left=x-tw-16;
+  if(top<10)top=10;
+  if(top+th>window.innerHeight-10)top=window.innerHeight-th-10;
+  tip.style.left=left+'px';tip.style.top=top+'px';
+}
+document.addEventListener('mousemove',function(e){if(hoverCol>=0)posTip(e.clientX,e.clientY);});
+
+// ── DRAG ──
 function startDrag(i){isDragging=true;dragStart=i;dragEnd=i;renderTimeline();}
-function onDragMove(e){
+function onMove(e){
   if(!isDragging)return;
   var cx=e.touches?e.touches[0].clientX:e.clientX;
   var cy=e.touches?e.touches[0].clientY:e.clientY;
   var el=document.elementFromPoint(cx,cy);
-  if(el&&el.dataset&&el.dataset.i!==undefined){
-    var i=parseInt(el.dataset.i);
+  if(el&&el.dataset&&el.dataset.col!==undefined){
+    var i=parseInt(el.dataset.col);
     if(i!==dragEnd){dragEnd=i;renderTimeline();}
   }
 }
 function endDrag(){isDragging=false;}
 function clearSel(){dragStart=null;dragEnd=null;isDragging=false;renderTimeline();}
-document.addEventListener('mousemove',onDragMove);
+document.addEventListener('mousemove',onMove);
 document.addEventListener('mouseup',endDrag);
-document.addEventListener('touchmove',function(e){if(isDragging){e.preventDefault();onDragMove(e);}},{passive:false});
+document.addEventListener('touchmove',function(e){if(isDragging){e.preventDefault();onMove(e);}},{passive:false});
 document.addEventListener('touchend',endDrag);
 
-// ===== DETAIL PANEL =====
-function renderDetail(){
-  var el=document.getElementById('detail');
+// ── SELECTION DETAIL ──
+function renderSelDetail(){
+  var el=document.getElementById('selBox');
   if(dragStart===null){el.classList.remove('show');return;}
   el.classList.add('show');
   var s=Math.min(dragStart,dragEnd!==null?dragEnd:dragStart);
   var e=Math.max(dragStart,dragEnd!==null?dragEnd:dragStart);
   var dS=slotDate(s),dE=slotDate(e+1);
   var hasR=dragEnd!==null&&dragStart!==dragEnd;
-  var localTz=Intl.DateTimeFormat().resolvedOptions().timeZone;
-  var fS=fmtT(dS,localTz,true),fE=fmtT(dE,localTz,true);
-  document.getElementById('detTitle').textContent=hasR?'Meeting: '+fS+' \u2013 '+fE+' (your time)':'Meeting at '+fS+' (your time)';
-  document.getElementById('detCities').innerHTML=active.map(function(city){
+  var ltz=Intl.DateTimeFormat().resolvedOptions().timeZone;
+  var fS=fmtT(dS,ltz,true),fE=fmtT(dE,ltz,true);
+  document.getElementById('selTitle').textContent=hasR?'Meeting: '+fS+' – '+fE+' (your time)':'Meeting at '+fS+' (your time)';
+  document.getElementById('selCities').innerHTML=planVisible().map(function(city){
     var hm=lhm(dS,city.tz);var st=hStatus(hm.h);
     var tS=fmtT(dS,city.tz,true),tE=fmtT(dE,city.tz,true);
-    return '<div class="dc"><div class="dc-name">'+city.f+' '+city.n+'</div><div class="dc-time">'+tS+'</div>'+(hasR?'<div class="dc-end">\u2192 '+tE+'</div>':'')+'<div class="dc-status" style="color:'+st.col+'">'+st.txt+'</div></div>';
+    return'<div class="sc"><div class="sc-name">'+city.f+' '+city.n+'</div>'+
+      '<div class="sc-time">'+tS+'</div>'+
+      (hasR?'<div class="sc-end">→ '+tE+'</div>':'')+
+      '<div class="sc-st" style="color:'+st.col+'">'+st.txt+'</div></div>';
   }).join('');
 }
 
-// ===== BEST TIMES =====
+// ── BEST TIMES ──
 function renderBest(){
-  var slots=slotCount();
-  var scores=Array.from({length:slots},function(_,i){
+  var scores=Array.from({length:24},function(_,i){
     var d=slotDate(i);
-    return active.reduce(function(mn,city){
+    return planVisible().reduce(function(mn,city){
       var h=lhm(d,city.tz).h;
       return Math.min(mn,(h>=8&&h<18)?2:(h>=6&&h<22)?1:0);
     },2);
   });
-  var best=scores.map(function(s,i){return {s:s,i:i};}).filter(function(x){return x.s===2;});
-  if(!best.length)best=scores.map(function(s,i){return {s:s,i:i};}).filter(function(x){return x.s>=1;});
+  var best=scores.map(function(s,i){return{s:s,i:i};}).filter(function(x){return x.s===2;});
+  if(!best.length)best=scores.map(function(s,i){return{s:s,i:i};}).filter(function(x){return x.s>=1;});
   var groups=[];
   best.forEach(function(x){if(!groups.length||x.i>groups[groups.length-1]+1)groups.push(x.i);});
   var picks=groups.slice(0,4);
-  var localTz=Intl.DateTimeFormat().resolvedOptions().timeZone;
-  if(!picks.length){document.getElementById('best').innerHTML='<div class="best-lbl">Best times</div><div class="no-ov">No business-hour overlap &mdash; try adjusting the cities.</div>';return;}
+  var ltz=Intl.DateTimeFormat().resolvedOptions().timeZone;
+  if(!picks.length){
+    document.getElementById('best').innerHTML='<div class="best-lbl">Best overlap times</div><div class="no-ov">No business-hour overlap — try different cities.</div>';
+    return;
+  }
   var chips=picks.map(function(i){
     var d=slotDate(i);
-    var ref=fmtT(d,localTz,true);
-    var sub=active.slice(0,3).map(function(c){return c.f+' '+fmtT(d,c.tz,true);}).join('  ');
-    return '<div class="bchip" onmousedown="startDrag('+i+')"><div class="bchip-t">'+ref+'</div><div class="bchip-s">'+sub+'</div></div>';
+    var ref=fmtT(d,ltz,true);
+    var sub=planVisible().slice(0,3).map(function(c){return c.f+' '+fmtT(d,c.tz,true);}).join('  ');
+    return'<div class="bchip" onmousedown="startDrag('+i+')">'+
+      '<div class="bchip-t">'+ref+'</div>'+
+      '<div class="bchip-s">'+sub+'</div></div>';
   }).join('');
-  document.getElementById('best').innerHTML='<div class="best-lbl">\u2705 Best times (drag to select)</div><div class="best-chips">'+chips+'</div>';
+  document.getElementById('best').innerHTML='<div class="best-lbl">✅ Best times to meet (click to select)</div>'+
+    '<div class="best-chips">'+chips+'</div>';
 }
 
-// ===== CITY SEARCH =====
+// ── CITY MANAGEMENT ──
 function togglePicker(){
   var p=document.getElementById('picker');
   var op=p.classList.toggle('open');
@@ -654,28 +1012,34 @@ function searchCities(q){
   var taken=new Set(active.map(function(c){return c.tz+c.n;}));
   var el=document.getElementById('searchResults');
   q=q.trim().toLowerCase();
-  var popular=['New York','London','Dubai','Tokyo','Sydney','Paris','Singapore','Los Angeles','Mumbai','Toronto'];
-  var matches=q?DB.filter(function(r){return r[0].toLowerCase().indexOf(q)>=0||r[1].toLowerCase().indexOf(q)>=0||r[3].toLowerCase().indexOf(q)>=0;}).slice(0,20):popular.map(function(n){return DB.find(function(r){return r[0]===n;});}).filter(Boolean);
-  if(!matches.length){el.innerHTML='<div class="sr-empty">No results &mdash; try a different spelling</div>';return;}
-  var full=active.length>=8;
+  var popular=['New York','London','Dubai','Tokyo','Sydney','Paris','Singapore','Los Angeles','Mumbai','Toronto','Berlin','Sydney','Seoul'];
+  var matches=q
+    ?DB.filter(function(r){return r[0].toLowerCase().indexOf(q)>=0||r[1].toLowerCase().indexOf(q)>=0||r[3].toLowerCase().indexOf(q)>=0;}).slice(0,20)
+    :popular.map(function(n){return DB.find(function(r){return r[0]===n;});}).filter(Boolean);
+  if(!matches.length){el.innerHTML='<div class="sr-empty">No results — try a different spelling</div>';return;}
+  var full=active.length>=12;
   el.innerHTML=matches.map(function(r,ri){
     var key=r[3]+r[0];var added=taken.has(key);
-    var badge=added?'<span style="color:var(--cy);font-size:11px">\u2713</span>':full?'<span style="font-size:11px;color:var(--mt)">Max 8</span>':'<span style="font-size:11px;color:var(--mt)">+ Add</span>';
-    var click=(!added&&!full)?'onclick="addByIndex('+ri+')"':'';
-    return '<div class="sr-item'+(added?' added':'')+'" '+click+'>'+
+    var badge=added?'<span style="color:var(--cy);font-size:11px">✓ Added</span>':
+      full?'<span style="font-size:11px;color:var(--mt)">Max 12</span>':
+      '<span style="font-size:11px;color:var(--mt)">+ Add</span>';
+    var click=(!added&&!full)?'onclick="addCity('+ri+')"':'';
+    return'<div class="sr-item'+(added?' added':'')+'" '+click+'>'+
       '<span class="sr-flag">'+flag(r[2])+'</span>'+
       '<span class="sr-name">'+r[0]+'</span>'+
       '<span class="sr-country">'+r[1]+'</span>'+badge+'</div>';
   }).join('');
-  window._srMatches=matches;
+  window._srM=matches;
 }
-function addByIndex(ri){
-  if(active.length>=8)return;
-  var r=window._srMatches[ri];if(!r)return;
+function addCity(ri){
+  if(active.length>=12)return;
+  var r=window._srM[ri];if(!r)return;
   var city=toCity(r);
   if(!active.find(function(c){return c.tz===city.tz&&c.n===city.n;})){
-    active.push(city);dragStart=null;dragEnd=null;
-    renderClocks();renderTimeline();
+    active.push(city);
+    convHidden.delete(ckey(city));planHidden.delete(ckey(city));
+    dragStart=null;dragEnd=null;
+    renderClocks();renderConverter();renderTimeline();
     searchCities(document.getElementById('citySearch').value);
   }
 }
@@ -686,22 +1050,185 @@ function removeCity(i){
   if(document.getElementById('picker').classList.contains('open'))
     searchCities(document.getElementById('citySearch').value||'');
 }
-function clearExtra(){
-  initCities();dragStart=null;dragEnd=null;isDragging=false;
+function resetAll(){
+  initCities();convHidden.clear();planHidden.clear();dragStart=null;dragEnd=null;isDragging=false;
   document.getElementById('picker').classList.remove('open');
   var cs=document.getElementById('citySearch');if(cs)cs.value='';
+  use24=false;
+  document.getElementById('hrToggle').classList.remove('on');
+  document.getElementById('hrToggle').textContent='24-hour';
   renderClocks();renderTimeline();
 }
-function toggle24(){use24=!use24;document.getElementById('hrToggle').classList.toggle('on',use24);renderClocks();renderTimeline();}
-function toggleHalf(){
-  useHalf=!useHalf;dragStart=null;dragEnd=null;
-  document.getElementById('halfToggle').classList.toggle('on',useHalf);
-  document.getElementById('plHint').textContent=useHalf?'Half-hour slots active — drag to select':'Drag across the blocks to pick a time or a range';
-  renderTimeline();
+function toggle24(){
+  use24=!use24;
+  document.getElementById('hrToggle').classList.toggle('on',use24);
+  document.getElementById('hrToggle').textContent=use24?'12-hour':'24-hour';
+  renderClocks();renderTimeline();renderConverter();
 }
 
-// ===== INIT =====
-try{initCities();renderClocks();renderTimeline();}catch(e){console.error('Pickly tz init:',e);}
+// ── CONVERTER INLINE CITY SEARCH ──
+// Section 1: Remove all cities from master list (keeps local)
+function removeAllCities(){
+  active=active.slice(0,1);
+  convHidden.clear();planHidden.clear();
+  dragStart=null;dragEnd=null;
+  renderClocks();renderConverter();renderTimeline();
+}
+// Section 2: Hide all non-local cities from converter only
+function removeAllConv(){
+  active.forEach(function(c,i){if(i>0)convHidden.add(ckey(c));});
+  rebuildConvSelects();
+}
+// Section 3: Hide all non-local cities from planner only
+function removeAllPlan(){
+  active.forEach(function(c,i){if(i>0)planHidden.add(ckey(c));});
+  dragStart=null;dragEnd=null;
+  renderTimeline();
+}
+// Section 3: Remove single city from planner view only
+function removePlanCity(ai){
+  if(ai>0&&ai<active.length)planHidden.add(ckey(active[ai]));
+  dragStart=null;dragEnd=null;
+  renderTimeline();
+}
+function convRemoveCity(){
+  var sel=document.getElementById('convCity');
+  if(!sel)return;
+  var refKey=sel.value;
+  var city=convVisible().find(function(c){return ckey(c)===refKey;});
+  // Don't remove the local city (active[0])
+  if(!city||ckey(city)===ckey(active[0]))return;
+  convHidden.add(ckey(city));
+  rebuildConvSelects();
+}
+function toggleConvSearch(){
+  var wrap=document.getElementById('convSearchWrap');
+  var open=wrap.classList.toggle('open');
+  if(open){
+    convSearch('');
+    setTimeout(function(){document.getElementById('convSearchInp').focus();},60);
+  }
+}
+function convSearch(q){
+  var drop=document.getElementById('convSearchDrop');
+  q=q.trim().toLowerCase();
+  var taken=new Set(active.map(function(c){return c.tz+c.n;}));
+  var matches=q
+    ?DB.filter(function(r){return r[0].toLowerCase().indexOf(q)>=0||r[1].toLowerCase().indexOf(q)>=0;}).slice(0,12)
+    :['New York','London','Dubai','Tokyo','Sydney','Paris','Singapore','Los Angeles','Mumbai','Toronto'].map(function(n){return DB.find(function(r){return r[0]===n;});}).filter(Boolean);
+  if(!matches.length){drop.innerHTML='<div class="conv-drop-empty">No results</div>';return;}
+  drop.innerHTML=matches.map(function(r,ri){
+    var added=taken.has(r[3]+r[0]);
+    var full=active.length>=12;
+    var badge=added?'<span style="color:var(--cy);font-size:11px;margin-left:auto">✓</span>':
+      full?'<span style="color:var(--mt);font-size:11px;margin-left:auto">Max 12</span>':
+      '<span style="color:var(--mt);font-size:11px;margin-left:auto">+ Add</span>';
+    var click=(!added&&!full)?'onclick="convAddCity('+ri+')"':'';
+    return'<div class="conv-drop-item" '+click+'>'+
+      '<span>'+flag(r[2])+'</span>'+
+      '<span style="flex:1">'+r[0]+'<span style="font-size:11px;color:var(--mt);margin-left:5px">'+r[1]+'</span></span>'+
+      badge+'</div>';
+  }).join('');
+  window._convM=matches;
+}
+function convAddCity(ri){
+  var r=window._convM[ri];if(!r)return;
+  if(active.length>=12)return;
+  var city=toCity(r);
+  if(!active.find(function(c){return c.tz===city.tz&&c.n===city.n;})){
+    active.push(city);
+    convHidden.delete(ckey(city));planHidden.delete(ckey(city));
+    renderClocks();renderTimeline();
+  } else {
+    convHidden.delete(ckey(city)); // unhide if previously hidden in converter
+  }
+  // Select the newly added city as reference
+  rebuildConvSelects();
+  document.getElementById('convCity').value=ckey(city);
+  renderConverter();
+  // Close search
+  document.getElementById('convSearchWrap').classList.remove('open');
+  document.getElementById('convSearchInp').value='';
+}
+// Close conv search on outside click
+document.addEventListener('click',function(e){
+  var wrap=document.getElementById('convSearchWrap');
+  var btn=document.getElementById('convAddBtn');
+  if(wrap&&btn&&!wrap.contains(e.target)&&!btn.contains(e.target))
+    wrap.classList.remove('open');
+});
+
+// ── COPY & SHARE ──
+function copyTimes(){
+  var vis=convVisible();
+  var refKey=document.getElementById('convCity').value||'';
+  var refCity=vis.find(function(c){return ckey(c)===refKey;})||vis[0];
+  var cd=buildConvDate();
+  if(!refCity||!cd)return;
+  var refT=fmtT(cd,refCity.tz,true);
+  var text='When it\'s '+refT+' in '+refCity.n+' it\'s:\n\n'+
+    vis.map(function(city){
+      return city.f+' '+city.n+': '+fmtT(cd,city.tz,true)+' ('+fmtDate(cd,city.tz)+')';
+    }).join('\n')+
+    '\n\nConverted via picklytools.com/timezones/';
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(function(){showToast('Times copied to clipboard!');});
+  }
+}
+function shareLink(){
+  var h=document.getElementById('convH').value;
+  var m=document.getElementById('convM').value;
+  var ap=document.getElementById('convAP').value;
+  var ref=document.getElementById('convCity').value||0;
+  var cities=active.map(function(c){return encodeURIComponent(c.n+'|'+c.tz);}).join(',');
+  var url='https://picklytools.com/timezones/?cities='+cities+'&t='+h+':'+m+'&ap='+ap+'&ref='+ref;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(url).then(function(){showToast('Link copied — share with your team!');});
+  }
+}
+function showToast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},2800);
+}
+
+// ── URL STATE ──
+function loadFromURL(){
+  var p=new URLSearchParams(window.location.search);
+  if(!p.has('cities'))return false;
+  try{
+    var parsed=p.get('cities').split(',').map(function(s){
+      var parts=decodeURIComponent(s).split('|');
+      var r=DB.find(function(r){return r[0]===parts[0]&&r[3]===parts[1];});
+      return r?toCity(r):null;
+    }).filter(Boolean);
+    if(!parsed.length)return false;
+    active=parsed;
+    // Restore time
+    var t=p.get('t'),ap=p.get('ap')||'AM',ref=parseInt(p.get('ref'))||0;
+    if(t){
+      var parts=t.split(':');
+      setTimeout(function(){
+        document.getElementById('convH').value=parseInt(parts[0])||1;
+        document.getElementById('convM').value=parseInt(parts[1])||0;
+        if(document.getElementById('convAP'))document.getElementById('convAP').value=ap;
+        document.getElementById('convCity').value=ref<active.length?ref:0;
+        renderConverter();
+      },120);
+    }
+    return true;
+  }catch(e){return false;}
+}
+
+// ── INIT ──
+try{
+  var hEl=document.getElementById('convH');
+  for(var h=1;h<=12;h++){var o=document.createElement('option');o.value=h;o.textContent=String(h).padStart(2,'0');hEl.appendChild(o);}
+  hEl.value=9;
+  if(!loadFromURL())initCities();
+  renderClocks();
+  renderTimeline();
+}catch(e){console.error('Pickly tz:',e);}
 setInterval(renderClocks,1000);
 setInterval(renderTimeline,60000);
 </script>
