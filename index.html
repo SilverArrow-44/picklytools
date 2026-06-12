@@ -130,6 +130,8 @@ nav{
 .cycle-wrap{display:inline-block;min-height:1.1em}
 .cycle{
   display:inline-block;
+  /* padding-bottom + negative margin: gradient box covers descenders (g, y) without changing line spacing */
+  padding-bottom:.14em;margin-bottom:-.14em;
   background:linear-gradient(115deg,var(--cy),var(--pu));
   background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;background-clip:text;
   animation:cycleIn .5s ease;
@@ -147,6 +149,7 @@ nav{
 .resume-txt strong{background:linear-gradient(135deg,var(--cy),var(--pu));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;background-clip:text}
 @keyframes resumePop{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
 .hero h1 .grad{
+  display:inline-block;padding-bottom:.14em;margin-bottom:-.14em;
   background:linear-gradient(115deg,var(--pk) 0%,var(--or) 40%,var(--yl) 70%,var(--cy) 100%);
   background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;background-clip:text;
 }
