@@ -105,11 +105,6 @@ footer a:hover{color:var(--tx)}
 .badge-cy{background:rgba(0,229,255,.15);color:var(--cy)}
 
 
-.ad-wrap{margin:32px auto;max-width:640px;text-align:center}
-.ad-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--mt);margin-bottom:6px;opacity:.6}
-.ad-box{background:var(--sf);border:1px solid var(--bd);border-radius:14px;
-  padding:40px 20px;color:var(--mt);font-size:13px;font-weight:600}
 
 
 /* ── Custom date select dropdowns ── */
@@ -1123,11 +1118,9 @@ document.addEventListener('DOMContentLoaded',()=>{
   <p>© <span id="yr"></span> Pickly &middot; <a href="/privacy/">Privacy</a> <a href="/terms/">Terms</a> <a href="/contact/">Contact</a></p>
 </footer>
 
-  <div class="ad-wrap">
-    <div class="ad-lbl">Advertisement</div>
-    <div class="ad-box">Ad space — apply for Google AdSense to display ads here</div>
-  </div>
+  <!-- AdSense in-content unit goes here after approval -->
   </main>
 <script>document.getElementById("yr").textContent=(new Date).getFullYear();</script>
+<script>try{var _pr=JSON.parse(localStorage.getItem("pickly_recent")||"[]").filter(function(x){return x!=="agecalculator"});_pr.unshift("agecalculator");localStorage.setItem("pickly_recent",JSON.stringify(_pr.slice(0,6)))}catch(e){}</script>
 </body>
 </html>

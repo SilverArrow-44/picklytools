@@ -86,9 +86,6 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .mini{font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:800;font-size:13px;padding:9px 16px;border-radius:100px;border:1.5px solid var(--bd);background:var(--sf);color:var(--tx);cursor:pointer;margin-top:12px}
 .mini:hover{background:var(--sfh)}
 
-.ad-wrap{max-width:680px;margin:36px auto 0;text-align:center}
-.ad-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(244,244,251,.3);margin-bottom:6px}
-.ad-box{min-height:100px;border:1px dashed var(--bd);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:var(--mt);font-size:13px;font-weight:600;background:rgba(255,255,255,.02)}
 
 .content{margin-top:40px}
 .content h2{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:24px;margin:30px 0 10px}
@@ -210,10 +207,7 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
     <button class="mini" id="shareBtn" hidden>🔗 Share answer</button>
   </div>
 
-  <div class="ad-wrap">
-    <div class="ad-lbl">Advertisement</div>
-    <div class="ad-box">Your ad space — plug in Google AdSense here 📢</div>
-  </div>
+  <!-- AdSense in-content unit goes here after approval -->
 
   <article class="content">
     <h2>The classic Magic 8 Ball, now online</h2>
@@ -312,5 +306,6 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 </footer>
 
 <script>document.getElementById("yr").textContent=(new Date).getFullYear();const ANSWERS=[{t:"It is certain",k:"yes"},{t:"It is decidedly so",k:"yes"},{t:"Without a doubt",k:"yes"},{t:"Yes — definitely",k:"yes"},{t:"You may rely on it",k:"yes"},{t:"As I see it, yes",k:"yes"},{t:"Most likely",k:"yes"},{t:"Outlook good",k:"yes"},{t:"Yes",k:"yes"},{t:"Signs point to yes",k:"yes"},{t:"Reply hazy, try again",k:"maybe"},{t:"Ask again later",k:"maybe"},{t:"Better not tell you now",k:"maybe"},{t:"Cannot predict now",k:"maybe"},{t:"Concentrate and ask again",k:"maybe"},{t:"Don't count on it",k:"no"},{t:"My reply is no",k:"no"},{t:"My sources say no",k:"no"},{t:"Outlook not so good",k:"no"},{t:"Very doubtful",k:"no"}];let soundOn=!0,busy=!1;function randInt(t){if(window.crypto&&crypto.getRandomValues){const e=4294967296,n=e-e%t,a=new Uint32Array(1);do{crypto.getRandomValues(a)}while(a[0]>=n);return a[0]%t}return Math.floor(Math.random()*t)}let actx=null;function shakeSound(){if(soundOn){try{if(actx=actx||function(){try{return new AudioContext}catch(t){return null}}(),!actx)return;const t=actx.currentTime;for(let e=0;e<6;e++){const n=actx.createOscillator(),a=actx.createGain();n.connect(a),a.connect(actx.destination),n.type="sine",n.frequency.value=120+80*Math.random();const o=t+.07*e;a.gain.setValueAtTime(1e-4,o),a.gain.exponentialRampToValueAtTime(.1,o+.01),a.gain.exponentialRampToValueAtTime(1e-4,o+.06),n.start(o),n.stop(o+.07)}}catch(t){}}}function revealSound(){if(soundOn){try{if(actx=actx||function(){try{return new AudioContext}catch(t){return null}}(),!actx)return;const t=actx.currentTime,e=actx.createOscillator(),n=actx.createGain();e.connect(n),n.connect(actx.destination),e.type="triangle",e.frequency.setValueAtTime(300,t),e.frequency.exponentialRampToValueAtTime(600,t+.3),n.gain.setValueAtTime(1e-4,t),n.gain.exponentialRampToValueAtTime(.12,t+.05),n.gain.exponentialRampToValueAtTime(1e-4,t+.5),e.start(t),e.stop(t+.5)}catch(t){}}}const ball=document.getElementById("ball"),eight=document.getElementById("eight"),tri=document.getElementById("tri"),answer=document.getElementById("answer"),verdict=document.getElementById("verdict"),hint=document.getElementById("hint");function shake(){busy||(busy=!0,document.getElementById("shakeBtn").disabled=!0,hint.textContent="",verdict.textContent="",verdict.className="verdict",answer.classList.remove("show"),eight.classList.remove("hide"),tri.style.display="none",shakeSound(),ball.classList.remove("shaking"),ball.offsetWidth,ball.classList.add("shaking"),setTimeout(()=>{eight.classList.add("hide"),setTimeout(()=>{const t=ANSWERS[randInt(ANSWERS.length)];tri.style.display="block",answer.textContent=t.t,answer.classList.add("show"),verdict.textContent="yes"===t.k?"✓ Yes!":"no"===t.k?"✗ No":"🤔 Hmm…",verdict.className="verdict "+t.k,revealSound();const e=document.getElementById("q").value.trim();hint.textContent=e?"“"+e+"”":"Ask another, or shake again 🎱",window.__lastAns=t.t,window.__lastQ=e,document.getElementById("shareBtn").hidden=!1,busy=!1,document.getElementById("shakeBtn").disabled=!1},300)},500))}ball.addEventListener("click",shake),document.getElementById("shakeBtn").addEventListener("click",shake),document.getElementById("q").addEventListener("keydown",t=>{"Enter"===t.key&&shake()}),document.getElementById("soundBtn").addEventListener("click",t=>{soundOn=!soundOn,t.target.textContent=soundOn?"🔊 Sound on":"🔇 Sound off"});document.getElementById("shareBtn").addEventListener("click",function(){var a=window.__lastAns||"",q=window.__lastQ||"",txt=(q?'I asked the Magic 8 Ball: "'+q+'"\n':"")+'🎱 It says: "'+a+'"',url="https://picklytools.com/magic8ball/";if(navigator.share){navigator.share({title:"Magic 8 Ball",text:txt+" Ask yours \u2192",url:url}).catch(function(){})}else if(navigator.clipboard){navigator.clipboard.writeText(txt+" Ask yours \u2192 "+url).then(function(){var b=document.getElementById("shareBtn");b.textContent="\u2713 Copied!";setTimeout(function(){b.textContent="\ud83d\udd17 Share answer"},1600)})}});</script>
+<script>try{var _pr=JSON.parse(localStorage.getItem("pickly_recent")||"[]").filter(function(x){return x!=="magic8ball"});_pr.unshift("magic8ball");localStorage.setItem("pickly_recent",JSON.stringify(_pr.slice(0,6)))}catch(e){}</script>
 </body>
 </html>
