@@ -29,6 +29,8 @@
   .nf h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:clamp(22px,4vw,32px);margin-bottom:12px}
   .nf p{color:var(--mt);font-weight:600;max-width:440px;margin:0 auto 28px}
 </style>
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap"></noscript>
@@ -92,5 +94,6 @@
   <div class="copy">© <span id="yr"></span> Pickly. All rights reserved.</div>
 </footer>
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
 </body>
 </html>

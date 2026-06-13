@@ -28,6 +28,8 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I convert a time from one time zone to another?","acceptedAnswer":{"@type":"Answer","text":"Use the Convert a Time section. Pick your time and the city it's in, and the tool instantly shows the equivalent time in all your other cities."}},{"@type":"Question","name":"How do I find the best meeting time for a remote team?","acceptedAnswer":{"@type":"Answer","text":"Add all your team members' cities, then check the Meeting Planner section. Green blocks show business hours (8am–6pm). The Best times chips at the bottom highlight slots where all cities overlap in working hours."}},{"@type":"Question","name":"Can I share a time zone conversion with my team?","acceptedAnswer":{"@type":"Answer","text":"Yes. After setting your cities and time, click Share link. It copies a URL that opens the tool with your exact cities and time pre-loaded for anyone who clicks it."}},{"@type":"Question","name":"Does it handle Daylight Saving Time?","acceptedAnswer":{"@type":"Answer","text":"Yes. The tool uses your browser's built-in timezone database via the Intl API, which handles DST automatically for all regions worldwide."}}]}
 </script>
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap"></noscript>
@@ -1240,5 +1242,6 @@ setInterval(renderClocks,1000);
 setInterval(renderTimeline,60000);
 </script>
 <script>try{var _pr=JSON.parse(localStorage.getItem("pickly_recent")||"[]").filter(function(x){return x!=="timezones"});_pr.unshift("timezones");localStorage.setItem("pickly_recent",JSON.stringify(_pr.slice(0,6)))}catch(e){}</script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
 </body>
 </html>
