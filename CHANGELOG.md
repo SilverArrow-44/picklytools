@@ -1,5 +1,26 @@
 # Pickly — Changelog
 
+## v2.2 — 2026-06-13 (Performance, analytics, retention)
+
+### Analytics
+- Google Analytics 4 (G-PRMM0HXRCG) added to all 23 pages
+- Privacy policy updated with GA4 + Cloudflare analytics sections
+
+### Performance
+- `dns-prefetch` for googletagmanager.com + pagead2.googlesyndication.com on all pages
+- `will-change:transform` on `.bg-fx` and `.bg-fx::before` — GPU layer for animated background
+- `.grain` promoted to GPU layer via `transform:translateZ(0)`
+- Nav `backdrop-filter` reduced from `blur(14px)` → `blur(8px)` for smoother scroll
+- `Cache-Control: no-cache` on `/*` in `_headers` — Cloudflare edge always serves fresh HTML
+
+### Retention
+- Share button added to Coin Flip — contextual text per flip mode, native share + clipboard fallback
+- Share button added to Rock Paper Scissors — round and match result sharing
+- Service worker (`sw.js`) added — all 18 tools cached for offline play; enables PWA home screen install
+
+### Housekeeping
+- sitemap.xml lastmod refreshed to 2026-06-13
+
 ## v2.1 — 2026-06-11 (AdSense readiness + retention)
 
 ### AdSense / trust
