@@ -155,17 +155,27 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
     {
       "@type": "Question",
       "name": "How does it keep teams fair?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Names are randomly shuffled and then dealt out one by one, so team sizes never differ by more than one person and assignment is completely random."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Names are randomly shuffled using a Fisher-Yates algorithm backed by the browser's cryptographic random source, then dealt out one by one across teams. Team sizes never differ by more than one person and assignment is completely random."}
     },
     {
       "@type": "Question",
       "name": "Can I reshuffle if I don't like the result?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Yes — just tap \"Shuffle again\" for a fresh random split with the same names and settings."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes — just tap \"Shuffle again\" for a fresh random split with the same names and settings. Each shuffle is independent and equally random."}
+    },
+    {
+      "@type": "Question",
+      "name": "What if my group doesn't divide evenly?",
+      "acceptedAnswer": {"@type": "Answer", "text": "The extra people are spread one per team rather than piling onto one group. For example, 11 people into 3 teams gives you teams of 4, 4, and 3 — never an unfair 5-5-1 split."}
     },
     {
       "@type": "Question",
       "name": "Can I copy or share the teams?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Yes. After generating, use Copy to grab the team list as text you can paste into a chat or email."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. After generating, use \"Copy teams\" to grab the full team list as formatted text — great for pasting into a group chat, email, or classroom app."}
+    },
+    {
+      "@type": "Question",
+      "name": "How many names can I add?",
+      "acceptedAnswer": {"@type": "Answer", "text": "There's no hard limit. The tool works with any number of names from 2 upward. A few hundred names is fine — the shuffle and render happen instantly in your browser."}
     },
     {
       "@type": "Question",
@@ -235,22 +245,31 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 
   <article class="content">
     <h2>Make fair teams in seconds</h2>
-    <p>Picking teams by hand is slow and always feels a little unfair. This free team picker takes your list of names and splits them into random, balanced groups instantly — no more "you go with them" arguments. It's perfect for PE class, pickup sports, group projects, party games, hackathons, secret santa groups, or any time you need to divide people fairly.</p>
+    <p>Picking teams by hand is slow and always feels a little unfair. This free team picker takes your list of names and splits them into random, balanced groups instantly — no more "you go with them" arguments. It's perfect for PE class, pickup sports, group projects, party games, hackathons, secret santa groups, or any time you need to divide people fairly and quickly.</p>
     <h3>Two ways to split</h3>
     <ul>
-      <li><strong>By number of teams</strong> — say how many teams you want (2, 3, 4…) and everyone gets distributed as evenly as possible.</li>
-      <li><strong>By team size</strong> — say how many people per team, and the picker creates as many teams as needed.</li>
+      <li><strong>By number of teams</strong> — say how many teams you want (2, 3, 4…) and everyone gets distributed as evenly as possible across all groups.</li>
+      <li><strong>By team size</strong> — say how many people per team, and the picker creates as many teams as needed to fit everyone.</li>
     </ul>
-    <h3>Always balanced</h3>
-    <p>When the numbers don't divide evenly, the extra people are spread out one per team so no group is ever more than one person larger than another. The assignment is fully random each time you shuffle, so it's genuinely fair.</p>
-    <h3>Great for</h3>
-    <p>Sports teams and pickup games, classroom group work, trivia nights, work breakout groups, gaming squads, study groups, chores rotation, and party games like charades or Pictionary.</p>
+    <h3>Always balanced — never uneven by more than one</h3>
+    <p>When the numbers don't divide evenly (say 11 people into 3 teams), the extra people are spread out one per team rather than piled onto one group. So you might get teams of 4, 4, and 3 — never 5, 5, and 1. The assignment is fully random each time you shuffle, so it's genuinely fair and nobody can accuse you of stacking a team.</p>
+
+    <h3>How the randomness works</h3>
+    <p>The team picker uses a Fisher-Yates shuffle — a well-known algorithm that guarantees every possible ordering of names has exactly equal probability. It's backed by your browser's cryptographic random number generator (the same source used for secure passwords), so the result is unpredictable and can't be gamed. Each click of "Make teams" produces an independent, fresh shuffle with no memory of previous results.</p>
+
+    <h3>Real-world use cases</h3>
+    <p>The most common uses: PE teachers splitting a class into teams for a game, coaches making practice squads from a roster, friends picking sides for a board game or party game like Pictionary or trivia. But people also use it for less obvious things: splitting a work team into breakout groups for a brainstorm, assigning secret santa partners, dividing volunteers into shifts, randomising which group presents first, or even making fair chore rotations at home. Anywhere you need to divide a list of people without it feeling biased, this tool does it in under five seconds.</p>
+
+    <h3>Tips for getting the most out of it</h3>
+    <p>Paste your names one per line — first names are fine, full names work too. Use "Remove duplicates" if you've accidentally entered someone twice. If you want to keep one particular pairing together, just treat them as one entry (e.g. "Alex + Sam") and split the rest. After generating, use the "Copy teams" button to paste results straight into a WhatsApp group, Slack channel, or classroom management tool. If the first split doesn't feel right, tap "Shuffle again" as many times as you like — it's free and instant.</p>
 
     <h2>Frequently asked questions</h2>
     <div class="faq">
-      <details class="qa"><summary>How does it keep teams fair?</summary><div class="a">Names are randomly shuffled and then dealt out one by one, so team sizes never differ by more than one person and assignment is completely random.</div></details>
-      <details class="qa"><summary>Can I reshuffle if I don't like the result?</summary><div class="a">Yes — just tap "Shuffle again" for a fresh random split with the same names and settings.</div></details>
-      <details class="qa"><summary>Can I copy or share the teams?</summary><div class="a">Yes. After generating, use Copy to grab the team list as text you can paste into a chat or email.</div></details>
+      <details class="qa"><summary>How does it keep teams fair?</summary><div class="a">Names are randomly shuffled using a Fisher-Yates algorithm backed by the browser's cryptographic random source, then dealt out one by one across teams. Team sizes never differ by more than one person, and the assignment is completely random with no bias.</div></details>
+      <details class="qa"><summary>Can I reshuffle if I don't like the result?</summary><div class="a">Yes — just tap "Shuffle again" for a fresh random split with the same names and settings. You can reshuffle as many times as you like; each shuffle is independent and equally random.</div></details>
+      <details class="qa"><summary>What if my group doesn't divide evenly?</summary><div class="a">The extra people are spread one per team rather than piling onto one group. For example, 11 people into 3 teams gives you teams of 4, 4, and 3 — never an unfair 5-5-1 split.</div></details>
+      <details class="qa"><summary>Can I copy or share the teams?</summary><div class="a">Yes. After generating, use "Copy teams" to grab the full team list as formatted text — great for pasting into a group chat, email, or classroom app.</div></details>
+      <details class="qa"><summary>How many names can I add?</summary><div class="a">There's no hard limit. The tool works with any number of names from 2 upward. Practically, a few hundred names is fine — the shuffle and render happen instantly in your browser.</div></details>
       <details class="qa"><summary>Is it free?</summary><div class="a">Completely free, no sign-up, supported by unobtrusive ads. See our <a href="/privacy/" style="color:var(--cy)">Privacy Policy</a>.</div></details>
     </div>
   </article>
