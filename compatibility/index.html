@@ -419,10 +419,8 @@ function calcCompat(){
     var btn=this;
     var n1=((document.getElementById('name1')||{}).value||'').trim();
     var n2=((document.getElementById('name2')||{}).value||'').trim();
-    var score=document.getElementById('scCompatScore').textContent;
-    var label=document.getElementById('scCompatLabel').textContent;
-    var txt=(n1&&n2?n1+' + '+n2:'💕')+' = '+score+' compatible! '+label+' → picklytools.com/compatibility';
-    navigator.clipboard&&navigator.clipboard.writeText(txt).then(function(){
+    var url='https://picklytools.com/compatibility/'+(n1&&n2?'?n1='+encodeURIComponent(n1)+'&n2='+encodeURIComponent(n2):'');
+    navigator.clipboard&&navigator.clipboard.writeText(url).then(function(){
       btn.textContent='✓ Copied!';setTimeout(function(){btn.textContent='🔗 Copy';},1600);
     });
   });
@@ -430,13 +428,32 @@ function calcCompat(){
     var n1=((document.getElementById('name1')||{}).value||'').trim();
     var n2=((document.getElementById('name2')||{}).value||'').trim();
     var score=document.getElementById('scCompatScore').textContent;
-    var txt=(n1&&n2?n1+' + '+n2+' = '+score+' 💕':'My compatibility score: '+score+' 💕');
-    var url='https://picklytools.com/compatibility/';
-    if(navigator.share){navigator.share({title:'Compatibility',text:txt+' '+url}).catch(function(){});}
-    else if(navigator.clipboard){navigator.clipboard.writeText(txt+' '+url);}
+    var url='https://picklytools.com/compatibility/'+(n1&&n2?'?n1='+encodeURIComponent(n1)+'&n2='+encodeURIComponent(n2):'');
+    var txt=(n1&&n2?n1+' + '+n2+' = '+score+' 💕 Are you compatible?':'My score: '+score+' 💕')+' '+url;
+    if(navigator.share){navigator.share({title:'Compatibility',text:txt}).catch(function(){});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(url);}
   });
 })();</script>
 <!-- PK-SHARE-END -->
+
+<!-- PK-DEEPLINK-COMPAT -->
+<script>(function(){
+  var p=new URLSearchParams(location.search);
+  var n1=p.get('n1'),n2=p.get('n2');
+  if(!n1||!n2)return;
+  window.addEventListener('DOMContentLoaded',function(){
+    var f1=document.getElementById('name1'),f2=document.getElementById('name2');
+    if(!f1||!f2)return;
+    f1.value=n1;f2.value=n2;
+    if(typeof calcCompat==='function')calcCompat();
+    else f1.dispatchEvent(new Event('input'));
+    setTimeout(function(){
+      var card=document.getElementById('compatCard');
+      if(card&&!card.hidden)card.scrollIntoView({behavior:'smooth',block:'center'});
+    },600);
+  });
+})();</script>
+<!-- PK-DEEPLINK-END -->
 
 <script>try{var _pr=JSON.parse(localStorage.getItem("pickly_recent")||"[]").filter(function(x){return x!=="compatibility"});_pr.unshift("compatibility");localStorage.setItem("pickly_recent",JSON.stringify(_pr.slice(0,6)))}catch(e){}</script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>

@@ -786,20 +786,35 @@ spicy:{
   document.getElementById('scNhieCopy').addEventListener('click',function(){
     var btn=this;
     var stmt=document.getElementById('scNhieStmt').textContent;
-    var txt='Never Have I Ever… '+stmt+' 🙊 Your turn → picklytools.com/neverhaveiever';
-    navigator.clipboard&&navigator.clipboard.writeText(txt).then(function(){
+    var url='https://picklytools.com/neverhaveiever/?q='+encodeURIComponent(stmt);
+    navigator.clipboard&&navigator.clipboard.writeText(url).then(function(){
       btn.textContent='✓ Copied!';setTimeout(function(){btn.textContent='🔗 Copy link';},1600);
     });
   });
   document.getElementById('scNhieShare').addEventListener('click',function(){
     var stmt=document.getElementById('scNhieStmt').textContent;
-    var txt='Never Have I Ever… '+stmt+' 🙊';
-    var url='https://picklytools.com/neverhaveiever/';
-    if(navigator.share){navigator.share({title:'Never Have I Ever',text:txt+' '+url}).catch(function(){});}
-    else if(navigator.clipboard){navigator.clipboard.writeText(txt+' '+url);}
+    var url='https://picklytools.com/neverhaveiever/?q='+encodeURIComponent(stmt);
+    if(navigator.share){navigator.share({title:'Never Have I Ever',text:'Never Have I Ever… '+stmt+' 🙊 '+url}).catch(function(){});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(url);}
   });
 })();</script>
 <!-- PK-SHARE-END -->
+
+<!-- PK-DEEPLINK-NHIE -->
+<script>(function(){
+  var p=new URLSearchParams(location.search);
+  var q=p.get('q');
+  if(!q)return;
+  var card=document.getElementById('nhieCard');
+  var actions=document.getElementById('nhieCardActions');
+  if(!card)return;
+  document.getElementById('scNhieStmt').textContent=q;
+  var cta=document.getElementById('scNhieCta');
+  if(cta)cta.textContent='Who has? 🙊';
+  card.hidden=false;actions.hidden=false;
+  setTimeout(function(){card.scrollIntoView({behavior:'smooth',block:'center'});},400);
+})();</script>
+<!-- PK-DEEPLINK-END -->
 
 <script>try{var _pr=JSON.parse(localStorage.getItem("pickly_recent")||"[]").filter(function(x){return x!=="neverhaveiever"});_pr.unshift("neverhaveiever");localStorage.setItem("pickly_recent",JSON.stringify(_pr.slice(0,6)))}catch(e){}</script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>

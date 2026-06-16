@@ -824,21 +824,38 @@ spicy:{
     var btn=this;
     var badge=document.getElementById('scTodBadge').textContent;
     var prompt=document.getElementById('scTodPrompt').textContent;
-    var txt=badge+': "'+prompt+'" 🎭 Play → picklytools.com/truthordare';
-    navigator.clipboard&&navigator.clipboard.writeText(txt).then(function(){
+    var url='https://picklytools.com/truthordare/?type='+encodeURIComponent(badge.toLowerCase())+'&q='+encodeURIComponent(prompt);
+    navigator.clipboard&&navigator.clipboard.writeText(url).then(function(){
       btn.textContent='✓ Copied!';setTimeout(function(){btn.textContent='🔗 Copy link';},1600);
     });
   });
   document.getElementById('scTodShare').addEventListener('click',function(){
     var badge=document.getElementById('scTodBadge').textContent;
     var prompt=document.getElementById('scTodPrompt').textContent;
-    var txt=badge+': "'+prompt+'" 🎭';
-    var url='https://picklytools.com/truthordare/';
-    if(navigator.share){navigator.share({title:'Truth or Dare',text:txt+' '+url}).catch(function(){});}
-    else if(navigator.clipboard){navigator.clipboard.writeText(txt+' '+url);}
+    var url='https://picklytools.com/truthordare/?type='+encodeURIComponent(badge.toLowerCase())+'&q='+encodeURIComponent(prompt);
+    if(navigator.share){navigator.share({title:'Truth or Dare',text:badge+': "'+prompt+'" 🎭 '+url}).catch(function(){});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(url);}
   });
 })();</script>
 <!-- PK-SHARE-END -->
+
+<!-- PK-DEEPLINK-TOD -->
+<script>(function(){
+  var p=new URLSearchParams(location.search);
+  var type=p.get('type'),q=p.get('q');
+  if(!type||!q)return;
+  var card=document.getElementById('todCard');
+  var actions=document.getElementById('todCardActions');
+  if(!card)return;
+  var scBadge=document.getElementById('scTodBadge');
+  scBadge.textContent=type.toUpperCase();
+  scBadge.className='pksc-tod-badge '+(type.indexOf('dare')>=0?'dare':'truth');
+  document.getElementById('scTodPrompt').textContent=q;
+  document.getElementById('scTodMode').textContent='';
+  card.hidden=false;actions.hidden=false;
+  setTimeout(function(){card.scrollIntoView({behavior:'smooth',block:'center'});},400);
+})();</script>
+<!-- PK-DEEPLINK-END -->
 
 <script>try{var _pr=JSON.parse(localStorage.getItem("pickly_recent")||"[]").filter(function(x){return x!=="truthordare"});_pr.unshift("truthordare");localStorage.setItem("pickly_recent",JSON.stringify(_pr.slice(0,6)))}catch(e){}</script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>

@@ -656,13 +656,14 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
     document.head.appendChild(s);
   });
 
-  // 🔗 Copy link
+  // 🔗 Copy link — deep link URL
   document.getElementById('scCopy').addEventListener('click',function(){
     var btn=this;
     var tA=document.getElementById('scTxtA').textContent;
     var tB=document.getElementById('scTxtB').textContent;
-    var txt='Would you rather '+tA+' OR '+tB+'? 🤔 Play → picklytools.com/wouldyourather';
-    navigator.clipboard&&navigator.clipboard.writeText(txt).then(function(){
+    var chosenA=document.getElementById('optA').classList.contains('chosen');
+    var url='https://picklytools.com/wouldyourather/?a='+encodeURIComponent(tA)+'&b='+encodeURIComponent(tB)+'&pick='+(chosenA?'a':'b');
+    navigator.clipboard&&navigator.clipboard.writeText(url).then(function(){
       btn.textContent='✓ Copied!';
       setTimeout(function(){btn.textContent='🔗 Copy link';},1600);
     });
@@ -672,13 +673,40 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
   document.getElementById('scShare').addEventListener('click',function(){
     var tA=document.getElementById('scTxtA').textContent;
     var tB=document.getElementById('scTxtB').textContent;
+    var chosenA=document.getElementById('optA').classList.contains('chosen');
     var txt='Would you rather '+tA+' OR '+tB+'? 🤔';
-    var url='https://picklytools.com/wouldyourather/';
+    var url='https://picklytools.com/wouldyourather/?a='+encodeURIComponent(tA)+'&b='+encodeURIComponent(tB)+'&pick='+(chosenA?'a':'b');
     if(navigator.share){navigator.share({title:'Would You Rather',text:txt+' '+url}).catch(function(){});}
     else if(navigator.clipboard){navigator.clipboard.writeText(txt+' '+url);}
   });
 })();
 </script>
+<!-- PK-DEEPLINK-WYR -->
+<script>(function(){
+  var p=new URLSearchParams(location.search);
+  var a=p.get('a'),b=p.get('b'),pick=p.get('pick');
+  if(!a||!b)return;
+  // replicate baselinePct from main script
+  function basePct(a,b){var t=0,o=a+b;for(var i=0;i<o.length;i++)t=(31*t+o.charCodeAt(i))>>>0;return 25+t%51;}
+  var pctA=basePct(a,b),pctB=100-pctA;
+  var chosenA=(pick!=='b');
+  document.getElementById('scTxtA').textContent=a;
+  document.getElementById('scTxtB').textContent=b;
+  document.getElementById('scPctA').textContent=pctA+'%';
+  document.getElementById('scPctB').textContent=pctB+'%';
+  document.getElementById('scBarA').style.width=pctA+'%';
+  document.getElementById('scBarB').style.width=pctB+'%';
+  document.getElementById('scOptA').className='pksc-opt'+(chosenA?' chosen':'');
+  document.getElementById('scOptB').className='pksc-opt'+(!chosenA?' chosen':'');
+  document.getElementById('scVerdict').textContent='';
+  var card=document.getElementById('wyrCard');
+  var actions=document.getElementById('wyrCardActions');
+  if(card){card.hidden=false;}
+  if(actions){actions.hidden=false;}
+  setTimeout(function(){if(card)card.scrollIntoView({behavior:'smooth',block:'center'});},400);
+})();</script>
+<!-- PK-DEEPLINK-END -->
+
 <script>try{var _pr=JSON.parse(localStorage.getItem("pickly_recent")||"[]").filter(function(x){return x!=="wouldyourather"});_pr.unshift("wouldyourather");localStorage.setItem("pickly_recent",JSON.stringify(_pr.slice(0,6)))}catch(e){}</script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
 </body>
