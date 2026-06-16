@@ -638,7 +638,19 @@ spicy:{
     "Have you ever left someone on read on purpose just to see what they'd do?",
     "What's something about your past you'd delete if you could?",
     "Have you ever liked someone purely because they paid attention to you, not because you actually liked them?",
-    "What's the most embarrassing reason you've ever unfollowed or muted someone?"
+    "What's the most embarrassing reason you've ever unfollowed or muted someone?",
+    "If you had to go on a date with someone in this room right now, who would you pick and where would you take them?",
+    "Who in this room do you think has the most chaotic romantic life, and does it make them more or less interesting?",
+    "What's the most attractive thing about the person sitting directly across from you — say it out loud.",
+    "If everyone here was a stranger and you could take one person's number, who would it be and what would you say?",
+    "Who in this room do you think would be the worst ex, and why — be specific.",
+    "What's a thought you've had about someone here tonight that you'd never say sober?",
+    "If you could read the mind of one person in this room for 60 seconds, who would it be and what are you hoping to find?",
+    "Who in this room gives off energy you'd describe as dangerous — and is that a good or bad thing?",
+    "If the group had to vote on who's most likely to break someone's heart — would your name come up? Be honest.",
+    "What's something about how you present yourself that's completely different from who you actually are?",
+    "Who in this room have you thought about differently since the night started?",
+    "If you could only keep one friendship from this room for the rest of your life, who would it be and what makes them irreplaceable?"
   ],
   dares:[
     "Give a genuine compliment to everyone in the room one by one.",
@@ -690,7 +702,26 @@ spicy:{
     "Read out the last paragraph of any book or article on your phone dramatically.",
     "Do your most convincing 'I definitely wasn't waiting for your text' face.",
     "Let someone send one emoji to anyone in your contacts list.",
-    "Give the best pep talk you've ever heard to the person who looks like they need one."
+    "Give the best pep talk you've ever heard to the person who looks like they need one.",
+    "Stare directly into the eyes of the person across from you for 60 seconds. No laughing, no looking away first.",
+    "Tell the person to your right the most genuinely attractive thing about them — eye contact required the whole time.",
+    "Let the group send one text from your phone to anyone they choose. You can approve the wording, but not the recipient.",
+    "Give a 10-second hug to whoever the group nominates — make it count.",
+    "Let the group rate your rizz out of 10 and each person has to give a one-word reason.",
+    "Act out your most recent situationship in under 60 seconds — you play both people.",
+    "Let someone pick any photo from your camera roll and you have to explain the full story behind it.",
+    "Do your most convincing 'I'm totally over them' performance. Group votes if they believe you.",
+    "Let the group craft a message to your most recent ex. You don't have to send it, but you must read it aloud with full sincerity.",
+    "Send a voice note to someone not in this room saying you've been thinking about them. Group picks who.",
+    "Let someone go through your Spotify or music app and play the most embarrassing thing they find.",
+    "Describe your ideal person without using physical traits — the group decides if it sounds like anyone in the room.",
+    "Without saying any names, describe the most attractive personality in the room. Group guesses who you mean.",
+    "Let the group read the last conversation you had with someone you're 'not into like that'.",
+    "Do your honest impression of how you act when you're trying to seem unbothered but aren't.",
+    "Tell the group something you find genuinely attractive that you'd normally never admit out loud.",
+    "Let someone choose your wallpaper and your ringtone for the next 24 hours.",
+    "Go around the room and give each person a brutally honest one-word description of their vibe.",
+    "Recreate the exact vibe of your last first date in 30 seconds. Someone else has to guess what went wrong."
   ]
 }};let mode="family",busy=!1,queues={truth:[],dare:[]};function randInt(e){if(window.crypto&&crypto.getRandomValues){const t=4294967296,o=t-t%e,r=new Uint32Array(1);do{crypto.getRandomValues(r)}while(r[0]>=o);return r[0]%e}return Math.floor(Math.random()*e)}function shuffle(e){for(let t=(e=e.slice()).length-1;t>0;t--){const o=randInt(t+1);[e[t],e[o]]=[e[o],e[t]]}return e}function rebuildQueues(){queues.truth=shuffle(DATA[mode].truths),queues.dare=shuffle(DATA[mode].dares)}function nextPrompt(e){return queues[e].length||(queues[e]=shuffle(DATA[mode][e+"s"])),queues[e].pop()}const card=document.getElementById("card");function reveal(e){if(busy)return;busy=!0,document.getElementById("truthBtn").disabled=!0,document.getElementById("dareBtn").disabled=!0;const t=()=>{const t=nextPrompt(e),o=document.getElementById("badge"),r=document.getElementById("prompt");o.textContent="truth"===e?"Truth":"Dare",o.className="badge "+e,r.textContent=t,card.classList.add("flipped"),document.getElementById("nextRow").innerHTML='<button class="mini" id="nextBtn">🔄 Next player</button>',document.getElementById("nextBtn").onclick=resetCard,busy=!1};card.classList.contains("flipped")?(card.classList.remove("flipped"),setTimeout(t,600)):t()}function resetCard(){card.classList.remove("flipped"),document.getElementById("nextRow").innerHTML="",document.getElementById("truthBtn").disabled=!1,document.getElementById("dareBtn").disabled=!1}document.getElementById("truthBtn").addEventListener("click",()=>reveal("truth")),document.getElementById("dareBtn").addEventListener("click",()=>reveal("dare")),document.getElementById("modes").addEventListener("click",e=>{const t=e.target.closest(".mode");t&&(document.querySelectorAll(".mode").forEach(e=>e.classList.remove("on")),t.classList.add("on"),mode=t.dataset.mode,document.getElementById("modeNote").textContent=DATA[mode].note,rebuildQueues(),resetCard())}),rebuildQueues();</script>
 <!-- PK-SHARE-START -->
