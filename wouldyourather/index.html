@@ -119,6 +119,29 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 .copy{text-align:center;color:var(--mt);font-size:13px;font-weight:600;margin-top:30px;padding-top:20px;border-top:1px solid var(--bd)}
 @media(prefers-reduced-motion:reduce){.opt .fill{transition:none}body::before{animation:none}}
 
+/* ── WYR SHARE CARD ── */
+.pk-share-card{max-width:440px;margin:22px auto 0;background:linear-gradient(160deg,#1a1040,#0f0f28);border:1.5px solid rgba(255,255,255,.13);border-radius:20px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.55)}
+.pksc-stripe{height:4px;background:linear-gradient(90deg,#FF2060,#FF8C00,#FFD600,#B061FF)}
+.pksc-inner{padding:20px 22px 18px}
+.pksc-head{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+.pksc-logo{width:26px;height:26px;flex-shrink:0}
+.pksc-tool{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:15px;color:#f4f4fb;letter-spacing:-.3px}
+.pksc-q{font-size:11px;font-weight:800;color:#9a9ab5;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.pksc-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.pksc-opt{position:relative;border:1.5px solid rgba(255,255,255,.1);border-radius:12px;padding:12px 52px 12px 14px;background:rgba(255,255,255,.04);overflow:hidden;min-height:46px;display:flex;align-items:center}
+.pksc-opt.chosen{border-color:#FF2060;background:rgba(255,32,96,.13)}
+.pksc-bar{position:absolute;left:0;top:0;bottom:0;background:rgba(255,32,96,.07);border-radius:12px 0 0 12px}
+.pksc-opt.chosen .pksc-bar{background:rgba(255,32,96,.18)}
+.pksc-otxt{position:relative;z-index:1;font-weight:700;font-size:14px;color:#f4f4fb;line-height:1.35}
+.pksc-pct{position:absolute;right:13px;top:50%;transform:translateY(-50%);font-weight:800;font-size:13px;color:#9a9ab5;z-index:1}
+.pksc-opt.chosen .pksc-pct{color:#FF8C00}
+.pksc-or{text-align:center;font-size:12px;color:#9a9ab5;font-weight:700;letter-spacing:.5px}
+.pksc-verdict{font-size:13px;font-weight:700;color:#FFD600;text-align:center;margin-bottom:16px;line-height:1.45;min-height:18px}
+.pksc-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.08);padding-top:11px}
+.pksc-url{font-size:11px;font-weight:800;color:#9a9ab5;letter-spacing:.3px}
+.pksc-brand{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:14px;background:linear-gradient(135deg,#FF2060,#FF8C00,#FFD600);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.pk-share-actions{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+
 @font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
 @font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
 .foot-h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:14px;margin-bottom:12px;color:var(--tx)}
@@ -220,6 +243,47 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
     <button class="mini" id="shareBtn">🔗 Share this one</button>
   </div>
   <div class="streak" id="streak"></div>
+
+  <!-- SHARE CARD -->
+  <div id="wyrCard" class="pk-share-card" hidden>
+    <div class="pksc-stripe"></div>
+    <div class="pksc-inner">
+      <div class="pksc-head">
+        <svg class="pksc-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="pcbm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+          <circle cx="50" cy="50" r="46" fill="url(#pcbm)"/>
+          <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="79,21 79,41 63,31" fill="#fff"/>
+          <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+        </svg>
+        <span class="pksc-tool">Pickly — Would You Rather</span>
+      </div>
+      <div class="pksc-q">Would you rather…</div>
+      <div class="pksc-opts">
+        <div class="pksc-opt" id="scOptA">
+          <div class="pksc-bar" id="scBarA"></div>
+          <span class="pksc-otxt" id="scTxtA"></span>
+          <span class="pksc-pct" id="scPctA"></span>
+        </div>
+        <div class="pksc-or">— or —</div>
+        <div class="pksc-opt" id="scOptB">
+          <div class="pksc-bar" id="scBarB"></div>
+          <span class="pksc-otxt" id="scTxtB"></span>
+          <span class="pksc-pct" id="scPctB"></span>
+        </div>
+      </div>
+      <div class="pksc-verdict" id="scVerdict"></div>
+      <div class="pksc-foot">
+        <span class="pksc-url">picklytools.com/wouldyourather</span>
+        <span class="pksc-brand">Pickly</span>
+      </div>
+    </div>
+  </div>
+  <div class="pk-share-actions" id="wyrCardActions" hidden>
+    <button class="mini" id="scDownload">📸 Save image</button>
+    <button class="mini" id="scCopy">🔗 Copy link</button>
+    <button class="mini" id="scShare">📤 Share</button>
+  </div>
 
   <!-- AdSense in-content unit goes here after approval -->
 
@@ -526,6 +590,95 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 ["Every ice cream you eat tastes like mustard","Every drink you have tastes slightly of vinegar","gross"],
 ["Find a hair in your food once a week for the rest of your life","Find a small bug in your drink once a month for the rest of your life","gross"]
 ];let cat="all",pool=[],idx=0,current=null,answered=!1,streak=0;function randInt(e){if(window.crypto&&crypto.getRandomValues){const t=4294967296,o=t-t%e,a=new Uint32Array(1);do{crypto.getRandomValues(a)}while(a[0]>=o);return a[0]%e}return Math.floor(Math.random()*e)}function shuffle(e){for(let t=(e=e.slice()).length-1;t>0;t--){const o=randInt(t+1);[e[t],e[o]]=[e[o],e[t]]}return e}function baselinePct(e){let t=0;const o=e[0]+e[1];for(let e=0;e<o.length;e++)t=31*t+o.charCodeAt(e)>>>0;return 25+t%51}function buildPool(){pool=shuffle(QUESTIONS.filter(e=>"all"===cat||e[2]===cat)),idx=0}function show(){idx>=pool.length&&buildPool(),current=pool[idx++],answered=!1,document.getElementById("txtA").textContent=current[0],document.getElementById("txtB").textContent=current[1],document.getElementById("qnum").textContent="Would you rather…",["A","B"].forEach(e=>{const t=document.getElementById("opt"+e);t.classList.remove("revealed","chosen"),document.getElementById("pct"+e).textContent="",t.querySelector(".fill").style.height="0"}),document.getElementById("after").innerHTML="",document.getElementById("nextRow").style.display="none"}function choose(e){if(answered)return;answered=!0;let t=baselinePct(current);t="A"===e?Math.min(92,t+randInt(6)+2):Math.max(8,t-(randInt(6)+2));const o=100-t;document.getElementById("pctA").textContent=t+"%",document.getElementById("pctB").textContent=o+"%",document.getElementById("optA").querySelector(".fill").style.height=t+"%",document.getElementById("optB").querySelector(".fill").style.height=o+"%",document.getElementById("optA").classList.add("revealed"),document.getElementById("optB").classList.add("revealed"),document.getElementById("opt"+e).classList.add("chosen");const a="A"===e?t:o;let n;n=a>=60?"You're with the majority 🙌":a>=45?"It's a close call! 😬":"Ooh, you picked the rare side 🦄",document.getElementById("after").innerHTML='<div class="verdict">'+n+" "+a+"% chose what you did.</div>",document.getElementById("nextRow").style.display="flex",streak++,document.getElementById("streak").textContent="Questions answered: "+streak}document.getElementById("optA").addEventListener("click",()=>choose("A")),document.getElementById("optB").addEventListener("click",()=>choose("B")),document.getElementById("nextBtn").addEventListener("click",show),document.getElementById("cats").addEventListener("click",e=>{const t=e.target.closest(".cat");t&&(document.querySelectorAll(".cat").forEach(e=>e.classList.remove("on")),t.classList.add("on"),cat=t.dataset.cat,buildPool(),show())}),document.getElementById("shareBtn").addEventListener("click",async()=>{const e="Would you rather "+current[0]+" OR "+current[1]+"? 🤔 via picklytools.com/wouldyourather",t="https://picklytools.com/wouldyourather/";if(navigator.share)try{return void await navigator.share({title:"Would You Rather",text:e,url:t})}catch(e){}if(navigator.clipboard)try{await navigator.clipboard.writeText(e+" "+t);const o=document.getElementById("shareBtn");o.textContent="✓ Copied!",setTimeout(()=>o.textContent="🔗 Share this one",1800)}catch(e){}}),buildPool(),show();</script>
+<script>
+/* ── WYR SHARE CARD LOGIC ── */
+(function(){
+  var card=document.getElementById('wyrCard');
+  var actions=document.getElementById('wyrCardActions');
+  var nextRow=document.getElementById('nextRow');
+  if(!card||!nextRow)return;
+
+  // Watch nextRow: visible = answer chosen, hidden = new question
+  new MutationObserver(function(muts){
+    muts.forEach(function(m){
+      if(m.attributeName!=='style')return;
+      if(nextRow.style.display==='none'){
+        card.hidden=true;actions.hidden=true;
+      } else {
+        populateCard();
+      }
+    });
+  }).observe(nextRow,{attributes:true});
+
+  function populateCard(){
+    var tA=document.getElementById('txtA').textContent;
+    var tB=document.getElementById('txtB').textContent;
+    var pA=document.getElementById('pctA').textContent;
+    var pB=document.getElementById('pctB').textContent;
+    var chosenA=document.getElementById('optA').classList.contains('chosen');
+    var vEl=document.querySelector('#after .verdict');
+
+    document.getElementById('scTxtA').textContent=tA;
+    document.getElementById('scTxtB').textContent=tB;
+    document.getElementById('scPctA').textContent=pA;
+    document.getElementById('scPctB').textContent=pB;
+    document.getElementById('scBarA').style.width=pA;
+    document.getElementById('scBarB').style.width=pB;
+    document.getElementById('scVerdict').textContent=vEl?vEl.textContent:'';
+    document.getElementById('scOptA').className='pksc-opt'+(chosenA?' chosen':'');
+    document.getElementById('scOptB').className='pksc-opt'+(!chosenA?' chosen':'');
+
+    card.hidden=false;actions.hidden=false;
+  }
+
+  // 📸 Save image — lazy-loads html2canvas only on click
+  document.getElementById('scDownload').addEventListener('click',function(){
+    var btn=this;
+    btn.textContent='⏳ Generating…';btn.disabled=true;
+    function capture(){
+      html2canvas(card,{backgroundColor:'#0f0f28',scale:2,useCORS:true,allowTaint:false,logging:false})
+        .then(function(canvas){
+          var a=document.createElement('a');
+          a.download='pickly-wyr-'+Date.now()+'.png';
+          a.href=canvas.toDataURL('image/png');a.click();
+          btn.textContent='✅ Saved!';
+          setTimeout(function(){btn.textContent='📸 Save image';btn.disabled=false;},2200);
+        }).catch(function(){
+          btn.textContent='📱 Screenshot it!';
+          setTimeout(function(){btn.textContent='📸 Save image';btn.disabled=false;},2200);
+        });
+    }
+    if(window.html2canvas){capture();return;}
+    var s=document.createElement('script');
+    s.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+    s.onload=capture;
+    s.onerror=function(){btn.textContent='📱 Screenshot it!';btn.disabled=false;};
+    document.head.appendChild(s);
+  });
+
+  // 🔗 Copy link
+  document.getElementById('scCopy').addEventListener('click',function(){
+    var btn=this;
+    var tA=document.getElementById('scTxtA').textContent;
+    var tB=document.getElementById('scTxtB').textContent;
+    var txt='Would you rather '+tA+' OR '+tB+'? 🤔 Play → picklytools.com/wouldyourather';
+    navigator.clipboard&&navigator.clipboard.writeText(txt).then(function(){
+      btn.textContent='✓ Copied!';
+      setTimeout(function(){btn.textContent='🔗 Copy link';},1600);
+    });
+  });
+
+  // 📤 Share
+  document.getElementById('scShare').addEventListener('click',function(){
+    var tA=document.getElementById('scTxtA').textContent;
+    var tB=document.getElementById('scTxtB').textContent;
+    var txt='Would you rather '+tA+' OR '+tB+'? 🤔';
+    var url='https://picklytools.com/wouldyourather/';
+    if(navigator.share){navigator.share({title:'Would You Rather',text:txt,url:url}).catch(function(){});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(txt+' '+url);}
+  });
+})();
+</script>
 <script>try{var _pr=JSON.parse(localStorage.getItem("pickly_recent")||"[]").filter(function(x){return x!=="wouldyourather"});_pr.unshift("wouldyourather");localStorage.setItem("pickly_recent",JSON.stringify(_pr.slice(0,6)))}catch(e){}</script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
 </body>
