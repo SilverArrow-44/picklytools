@@ -432,7 +432,7 @@ function calcCompat(){
     var score=document.getElementById('scCompatScore').textContent;
     var txt=(n1&&n2?n1+' + '+n2+' = '+score+' 💕':'My compatibility score: '+score+' 💕');
     var url='https://picklytools.com/compatibility/';
-    if(navigator.share){navigator.share({title:'Compatibility',text:txt,url:url}).catch(function(){});}
+    if(navigator.share){navigator.share({title:'Compatibility',text:txt+' '+url}).catch(function(){});}
     else if(navigator.clipboard){navigator.clipboard.writeText(txt+' '+url);}
   });
 })();</script>

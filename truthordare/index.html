@@ -834,7 +834,7 @@ spicy:{
     var prompt=document.getElementById('scTodPrompt').textContent;
     var txt=badge+': "'+prompt+'" 🎭';
     var url='https://picklytools.com/truthordare/';
-    if(navigator.share){navigator.share({title:'Truth or Dare',text:txt,url:url}).catch(function(){});}
+    if(navigator.share){navigator.share({title:'Truth or Dare',text:txt+' '+url}).catch(function(){});}
     else if(navigator.clipboard){navigator.clipboard.writeText(txt+' '+url);}
   });
 })();</script>
