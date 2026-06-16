@@ -128,6 +128,25 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 .related-card .rc-title{font-weight:800;font-size:14px;color:var(--tx);display:block;margin-bottom:2px}
 .related-card .rc-desc{font-size:11px;color:var(--mt);font-weight:600}
 
+
+/* === Share card (pk-share-card) === */
+.pk-share-card{max-width:440px;margin:22px auto 0;background:linear-gradient(160deg,#1a1040,#0f0f28);border:1.5px solid rgba(255,255,255,.13);border-radius:20px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.55)}
+.pksc-stripe{height:4px;background:linear-gradient(90deg,#FF2060,#FF8C00,#FFD600,#B061FF)}
+.pksc-inner{padding:20px 22px 18px}
+.pksc-head{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+.pksc-logo{width:26px;height:26px;flex-shrink:0}
+.pksc-tool{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:15px;color:#f4f4fb;letter-spacing:-.3px}
+.pksc-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.08);padding-top:11px}
+.pksc-url{font-size:11px;font-weight:800;color:#9a9ab5;letter-spacing:.3px}
+.pksc-brand{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:14px;background:linear-gradient(135deg,#FF2060,#FF8C00,#FFD600);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.pk-share-actions{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+/* ToD card specifics */
+.pksc-tod-badge-row{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.pksc-tod-badge{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;letter-spacing:.5px;padding:4px 16px;border-radius:8px}
+.pksc-tod-badge.truth{background:rgba(0,229,255,.15);color:#00E5FF;border:1.5px solid rgba(0,229,255,.35)}
+.pksc-tod-badge.dare{background:rgba(255,32,96,.15);color:#FF2060;border:1.5px solid rgba(255,32,96,.35)}
+.pksc-tod-mode{font-size:11px;font-weight:800;color:#9a9ab5;text-transform:uppercase;letter-spacing:1px}
+.pksc-tod-prompt{font-size:17px;font-weight:700;color:#f4f4fb;line-height:1.5;margin-bottom:18px;min-height:52px}
 </style>
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
@@ -217,6 +236,34 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
   </div>
 
   <div class="next-row" id="nextRow"></div>
+
+<div id="todCard" class="pk-share-card" hidden>
+  <div class="pksc-stripe"></div>
+  <div class="pksc-inner">
+    <div class="pksc-head">
+      <svg class="pksc-logo" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="pctod" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FF2060"/><stop offset="50%" stop-color="#FF8C00"/><stop offset="100%" stop-color="#FFD600"/></linearGradient></defs>
+        <rect width="36" height="36" rx="9" fill="url(#pctod)"/>
+        <text x="18" y="26" font-family="Fredoka,sans-serif" font-size="22" font-weight="700" fill="#fff" text-anchor="middle">P</text>
+      </svg>
+      <span class="pksc-tool">Pickly — Truth or Dare</span>
+    </div>
+    <div class="pksc-tod-badge-row">
+      <span id="scTodBadge" class="pksc-tod-badge truth">TRUTH</span>
+      <span id="scTodMode" class="pksc-tod-mode">Family Mode</span>
+    </div>
+    <div id="scTodPrompt" class="pksc-tod-prompt"></div>
+    <div class="pksc-foot">
+      <span class="pksc-url">picklytools.com/truthordare</span>
+      <span class="pksc-brand">Pickly</span>
+    </div>
+  </div>
+</div>
+<div class="pk-share-actions" id="todCardActions" hidden>
+  <button class="mini" id="scTodDownload">📸 Save image</button>
+  <button class="mini" id="scTodCopy">🔗 Copy link</button>
+  <button class="mini" id="scTodShare">📤 Share</button>
+</div>
 
   <!-- AdSense in-content unit goes here after approval -->
 
@@ -726,23 +773,70 @@ spicy:{
 }};let mode="family",busy=!1,queues={truth:[],dare:[]};function randInt(e){if(window.crypto&&crypto.getRandomValues){const t=4294967296,o=t-t%e,r=new Uint32Array(1);do{crypto.getRandomValues(r)}while(r[0]>=o);return r[0]%e}return Math.floor(Math.random()*e)}function shuffle(e){for(let t=(e=e.slice()).length-1;t>0;t--){const o=randInt(t+1);[e[t],e[o]]=[e[o],e[t]]}return e}function rebuildQueues(){queues.truth=shuffle(DATA[mode].truths),queues.dare=shuffle(DATA[mode].dares)}function nextPrompt(e){return queues[e].length||(queues[e]=shuffle(DATA[mode][e+"s"])),queues[e].pop()}const card=document.getElementById("card");function reveal(e){if(busy)return;busy=!0,document.getElementById("truthBtn").disabled=!0,document.getElementById("dareBtn").disabled=!0;const t=()=>{const t=nextPrompt(e),o=document.getElementById("badge"),r=document.getElementById("prompt");o.textContent="truth"===e?"Truth":"Dare",o.className="badge "+e,r.textContent=t,card.classList.add("flipped"),document.getElementById("nextRow").innerHTML='<button class="mini" id="nextBtn">🔄 Next player</button>',document.getElementById("nextBtn").onclick=resetCard,busy=!1};card.classList.contains("flipped")?(card.classList.remove("flipped"),setTimeout(t,600)):t()}function resetCard(){card.classList.remove("flipped"),document.getElementById("nextRow").innerHTML="",document.getElementById("truthBtn").disabled=!1,document.getElementById("dareBtn").disabled=!1}document.getElementById("truthBtn").addEventListener("click",()=>reveal("truth")),document.getElementById("dareBtn").addEventListener("click",()=>reveal("dare")),document.getElementById("modes").addEventListener("click",e=>{const t=e.target.closest(".mode");t&&(document.querySelectorAll(".mode").forEach(e=>e.classList.remove("on")),t.classList.add("on"),mode=t.dataset.mode,document.getElementById("modeNote").textContent=DATA[mode].note,rebuildQueues(),resetCard())}),rebuildQueues();</script>
 <!-- PK-SHARE-START -->
 <script>(function(){
-function mk(){
-  if(document.getElementById('pkShareBtn'))return;
-  var b=document.createElement('button');b.id='pkShareBtn';b.type='button';b.textContent='\ud83d\udd17 Share this';
-  b.style.cssText="display:inline-flex;align-items:center;gap:7px;cursor:pointer;font:700 14px 'Nunito','Nunito Fallback',sans-serif;color:#f4f4fb;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:100px;padding:10px 18px;transition:background .15s";
-  b.onmouseover=function(){b.style.background='rgba(255,255,255,.11)'};b.onmouseout=function(){b.style.background='rgba(255,255,255,.06)'};
-  var w=document.createElement('div');w.style.cssText="text-align:center;margin:16px auto 0";w.appendChild(b);
-  var a=document.getElementById('nextRow');
-  if(a&&a.parentNode)a.parentNode.insertBefore(w,a.nextSibling);else (document.querySelector('main')||document.body).appendChild(w);
-  b.addEventListener('click',function(){
-    var bd=(document.getElementById('badge')||{}).textContent||'',p=(document.getElementById('prompt')||{}).textContent||'',val=p.trim();
-    if(!val){b.textContent='Get a result first!';setTimeout(function(){b.textContent='\ud83d\udd17 Share this'},1500);return;}
-    var msg='Truth or Dare \ud83c\udfad \u2014 '+bd+': "'+p+'" Can you handle it?',url='https://picklytools.com/truthordare/';
-    if(navigator.share){navigator.share({title:'Truth or Dare',text:msg,url:url}).catch(function(){});}
-    else if(navigator.clipboard){navigator.clipboard.writeText(msg+' '+url).then(function(){b.textContent='\u2713 Copied!';setTimeout(function(){b.textContent='\ud83d\udd17 Share this'},1600);});}
+  var card=document.getElementById('todCard');
+  var actions=document.getElementById('todCardActions');
+  var nextRow=document.getElementById('nextRow');
+  if(!card||!nextRow)return;
+  new MutationObserver(function(muts){
+    muts.forEach(function(m){
+      if(m.type==='childList'){
+        if(nextRow.children.length>0){populateCard();}
+        else{card.hidden=true;actions.hidden=true;}
+      }
+    });
+  }).observe(nextRow,{childList:true});
+  function populateCard(){
+    var badgeEl=document.getElementById('badge');
+    var promptEl=document.getElementById('prompt');
+    var modeEl=document.querySelector('#modes .on');
+    var badgeText=(badgeEl?badgeEl.textContent:'Truth').trim();
+    var promptText=(promptEl?promptEl.textContent:'').trim();
+    var modeName=(modeEl?modeEl.textContent:'Family').trim();
+    var scBadge=document.getElementById('scTodBadge');
+    scBadge.textContent=badgeText.toUpperCase();
+    scBadge.className='pksc-tod-badge '+(badgeText.toLowerCase().indexOf('dare')>=0?'dare':'truth');
+    document.getElementById('scTodPrompt').textContent=promptText;
+    document.getElementById('scTodMode').textContent=modeName+' Mode';
+    card.hidden=false;actions.hidden=false;
+  }
+  document.getElementById('scTodDownload').addEventListener('click',function(){
+    var btn=this;btn.textContent='⏳ Generating…';btn.disabled=true;
+    function capture(){
+      html2canvas(card,{backgroundColor:'#0f0f28',scale:2,useCORS:true,allowTaint:false,logging:false})
+        .then(function(canvas){
+          var a=document.createElement('a');
+          a.download='pickly-tod-'+Date.now()+'.png';
+          a.href=canvas.toDataURL('image/png');a.click();
+          btn.textContent='✅ Saved!';
+          setTimeout(function(){btn.textContent='📸 Save image';btn.disabled=false;},2200);
+        }).catch(function(){
+          btn.textContent='📱 Screenshot it!';
+          setTimeout(function(){btn.textContent='📸 Save image';btn.disabled=false;},2200);
+        });
+    }
+    if(window.html2canvas){capture();return;}
+    var s=document.createElement('script');
+    s.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+    s.onload=capture;s.onerror=function(){btn.textContent='📱 Screenshot it!';btn.disabled=false;};
+    document.head.appendChild(s);
   });
-}
-mk();
+  document.getElementById('scTodCopy').addEventListener('click',function(){
+    var btn=this;
+    var badge=document.getElementById('scTodBadge').textContent;
+    var prompt=document.getElementById('scTodPrompt').textContent;
+    var txt=badge+': "'+prompt+'" 🎭 Play → picklytools.com/truthordare';
+    navigator.clipboard&&navigator.clipboard.writeText(txt).then(function(){
+      btn.textContent='✓ Copied!';setTimeout(function(){btn.textContent='🔗 Copy link';},1600);
+    });
+  });
+  document.getElementById('scTodShare').addEventListener('click',function(){
+    var badge=document.getElementById('scTodBadge').textContent;
+    var prompt=document.getElementById('scTodPrompt').textContent;
+    var txt=badge+': "'+prompt+'" 🎭';
+    var url='https://picklytools.com/truthordare/';
+    if(navigator.share){navigator.share({title:'Truth or Dare',text:txt,url:url}).catch(function(){});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(txt+' '+url);}
+  });
 })();</script>
 <!-- PK-SHARE-END -->
 

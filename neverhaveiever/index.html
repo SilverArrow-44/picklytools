@@ -116,6 +116,22 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
 .related-card .rc-title{font-weight:800;font-size:14px;color:var(--tx);display:block;margin-bottom:2px}
 .related-card .rc-desc{font-size:11px;color:var(--mt);font-weight:600}
 
+
+/* === Share card (pk-share-card) === */
+.pk-share-card{max-width:440px;margin:22px auto 0;background:linear-gradient(160deg,#1a1040,#0f0f28);border:1.5px solid rgba(255,255,255,.13);border-radius:20px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.55)}
+.pksc-stripe{height:4px;background:linear-gradient(90deg,#FF2060,#FF8C00,#FFD600,#B061FF)}
+.pksc-inner{padding:20px 22px 18px}
+.pksc-head{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+.pksc-logo{width:26px;height:26px;flex-shrink:0}
+.pksc-tool{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:15px;color:#f4f4fb;letter-spacing:-.3px}
+.pksc-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.08);padding-top:11px}
+.pksc-url{font-size:11px;font-weight:800;color:#9a9ab5;letter-spacing:.3px}
+.pksc-brand{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:14px;background:linear-gradient(135deg,#FF2060,#FF8C00,#FFD600);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.pk-share-actions{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+/* NHIE card specifics */
+.pksc-nhie-label{font-size:11px;font-weight:800;color:#9a9ab5;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.pksc-nhie-stmt{font-size:17px;font-weight:700;color:#f4f4fb;line-height:1.5;margin-bottom:14px;padding:14px;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:12px;min-height:52px}
+.pksc-nhie-cta{font-size:13px;font-weight:700;color:#FFD600;text-align:center;margin-bottom:16px}
 </style>
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
@@ -197,6 +213,32 @@ footer{border-top:1px solid var(--bd);margin-top:48px;padding:36px 0 48px}
     <div class="counter" id="counter"></div>
     <button class="mini" id="resetBtn">↺ Reshuffle</button>
   </div>
+
+<div id="nhieCard" class="pk-share-card" hidden>
+  <div class="pksc-stripe"></div>
+  <div class="pksc-inner">
+    <div class="pksc-head">
+      <svg class="pksc-logo" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="pcnhie" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FF2060"/><stop offset="50%" stop-color="#FF8C00"/><stop offset="100%" stop-color="#FFD600"/></linearGradient></defs>
+        <rect width="36" height="36" rx="9" fill="url(#pcnhie)"/>
+        <text x="18" y="26" font-family="Fredoka,sans-serif" font-size="22" font-weight="700" fill="#fff" text-anchor="middle">P</text>
+      </svg>
+      <span class="pksc-tool">Pickly — Never Have I Ever</span>
+    </div>
+    <div class="pksc-nhie-label">Never have I ever…</div>
+    <div id="scNhieStmt" class="pksc-nhie-stmt"></div>
+    <div id="scNhieCta" class="pksc-nhie-cta">Who has? 🙊</div>
+    <div class="pksc-foot">
+      <span class="pksc-url">picklytools.com/neverhaveiever</span>
+      <span class="pksc-brand">Pickly</span>
+    </div>
+  </div>
+</div>
+<div class="pk-share-actions" id="nhieCardActions" hidden>
+  <button class="mini" id="scNhieDownload">📸 Save image</button>
+  <button class="mini" id="scNhieCopy">🔗 Copy link</button>
+  <button class="mini" id="scNhieShare">📤 Share</button>
+</div>
 
   <!-- AdSense in-content unit goes here after approval -->
 
@@ -703,23 +745,59 @@ spicy:{
 };let mode="clean",queue=[],count=0;function randInt(e){if(window.crypto&&crypto.getRandomValues){const t=4294967296,n=t-t%e,o=new Uint32Array(1);do{crypto.getRandomValues(o)}while(o[0]>=n);return o[0]%e}return Math.floor(Math.random()*e)}function shuffle(e){for(let t=(e=e.slice()).length-1;t>0;t--){const n=randInt(t+1);[e[t],e[n]]=[e[n],e[t]]}return e}function rebuild(){queue=shuffle(DATA[mode].items)}function next(){queue.length||rebuild();const e=queue.pop(),t=document.getElementById("text");t.classList.add("swap"),setTimeout(()=>{t.textContent=e,t.classList.remove("swap")},200),count++,document.getElementById("counter").textContent="Prompt #"+count}document.getElementById("nextBtn").addEventListener("click",next),document.getElementById("card").addEventListener("click",next),document.getElementById("resetBtn").addEventListener("click",()=>{rebuild(),count=0,document.getElementById("counter").textContent="",document.getElementById("text").textContent="Tap to start 👆"}),document.getElementById("modes").addEventListener("click",e=>{const t=e.target.closest(".mode");t&&(document.querySelectorAll(".mode").forEach(e=>e.classList.remove("on")),t.classList.add("on"),mode=t.dataset.mode,document.getElementById("modeNote").textContent=DATA[mode].note,rebuild(),count=0,document.getElementById("counter").textContent="",document.getElementById("text").textContent="Tap to start 👆")}),rebuild();</script>
 <!-- PK-SHARE-START -->
 <script>(function(){
-function mk(){
-  if(document.getElementById('pkShareBtn'))return;
-  var b=document.createElement('button');b.id='pkShareBtn';b.type='button';b.textContent='\ud83d\udd17 Share this';
-  b.style.cssText="display:inline-flex;align-items:center;gap:7px;cursor:pointer;font:700 14px 'Nunito','Nunito Fallback',sans-serif;color:#f4f4fb;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:100px;padding:10px 18px;transition:background .15s";
-  b.onmouseover=function(){b.style.background='rgba(255,255,255,.11)'};b.onmouseout=function(){b.style.background='rgba(255,255,255,.06)'};
-  var w=document.createElement('div');w.style.cssText="text-align:center;margin:16px auto 0";w.appendChild(b);
-  var a=document.getElementById('counter');
-  if(a&&a.parentNode)a.parentNode.insertBefore(w,a.nextSibling);else (document.querySelector('main')||document.body).appendChild(w);
-  b.addEventListener('click',function(){
-    var t=(document.getElementById('text')||{}).textContent||'',val=(t&&t.indexOf('Tap to start')<0)?t.trim():'';
-    if(!val){b.textContent='Get a result first!';setTimeout(function(){b.textContent='\ud83d\udd17 Share this'},1500);return;}
-    var msg='Never Have I Ever \ud83d\ude4a \u2014 "'+t+'" Your turn\u2026',url='https://picklytools.com/neverhaveiever/';
-    if(navigator.share){navigator.share({title:'Never Have I Ever',text:msg,url:url}).catch(function(){});}
-    else if(navigator.clipboard){navigator.clipboard.writeText(msg+' '+url).then(function(){b.textContent='\u2713 Copied!';setTimeout(function(){b.textContent='\ud83d\udd17 Share this'},1600);});}
+  var card=document.getElementById('nhieCard');
+  var actions=document.getElementById('nhieCardActions');
+  var textEl=document.getElementById('text');
+  if(!card||!textEl)return;
+  new MutationObserver(function(){
+    var txt=(textEl.textContent||'').trim();
+    if(txt&&txt.indexOf('Tap to start')<0){populateCard();}
+  }).observe(textEl,{childList:true,characterData:true,subtree:true});
+  function populateCard(){
+    var txt=(textEl.textContent||'').trim();
+    var modeEl=document.querySelector('#modes .on');
+    var modeName=(modeEl?modeEl.textContent:'Clean').trim();
+    document.getElementById('scNhieStmt').textContent=txt;
+    var cta=document.getElementById('scNhieCta');
+    if(cta)cta.textContent=modeName.toLowerCase().indexOf('spicy')>=0?'Confession time 🔥':'Who has? 🙊';
+    card.hidden=false;actions.hidden=false;
+  }
+  document.getElementById('scNhieDownload').addEventListener('click',function(){
+    var btn=this;btn.textContent='⏳ Generating…';btn.disabled=true;
+    function capture(){
+      html2canvas(card,{backgroundColor:'#0f0f28',scale:2,useCORS:true,allowTaint:false,logging:false})
+        .then(function(canvas){
+          var a=document.createElement('a');
+          a.download='pickly-nhie-'+Date.now()+'.png';
+          a.href=canvas.toDataURL('image/png');a.click();
+          btn.textContent='✅ Saved!';
+          setTimeout(function(){btn.textContent='📸 Save image';btn.disabled=false;},2200);
+        }).catch(function(){
+          btn.textContent='📱 Screenshot it!';
+          setTimeout(function(){btn.textContent='📸 Save image';btn.disabled=false;},2200);
+        });
+    }
+    if(window.html2canvas){capture();return;}
+    var s=document.createElement('script');
+    s.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+    s.onload=capture;s.onerror=function(){btn.textContent='📱 Screenshot it!';btn.disabled=false;};
+    document.head.appendChild(s);
   });
-}
-mk();
+  document.getElementById('scNhieCopy').addEventListener('click',function(){
+    var btn=this;
+    var stmt=document.getElementById('scNhieStmt').textContent;
+    var txt='Never Have I Ever… '+stmt+' 🙊 Your turn → picklytools.com/neverhaveiever';
+    navigator.clipboard&&navigator.clipboard.writeText(txt).then(function(){
+      btn.textContent='✓ Copied!';setTimeout(function(){btn.textContent='🔗 Copy link';},1600);
+    });
+  });
+  document.getElementById('scNhieShare').addEventListener('click',function(){
+    var stmt=document.getElementById('scNhieStmt').textContent;
+    var txt='Never Have I Ever… '+stmt+' 🙊';
+    var url='https://picklytools.com/neverhaveiever/';
+    if(navigator.share){navigator.share({title:'Never Have I Ever',text:txt,url:url}).catch(function(){});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(txt+' '+url);}
+  });
 })();</script>
 <!-- PK-SHARE-END -->
 

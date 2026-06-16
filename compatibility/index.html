@@ -7,7 +7,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Compatibility Calculator — Name & Birthday Match | Pickly</title>
+<title>Are You Compatible? — Name & Birthday Match | Pickly</title>
 <!-- Google AdSense -->
 <meta name="google-adsense-account" content="ca-pub-7937234001453997">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7937234001453997" crossorigin="anonymous"></script>
@@ -120,6 +120,25 @@ input[type="date"]{color-scheme:dark;background:var(--sf,rgba(255,255,255,.05));
   transition:border-color .15s}
 input[type="date"]:focus{border-color:var(--cy,#00E5FF)}
 
+
+/* === Share card (pk-share-card) === */
+.pk-share-card{max-width:440px;margin:22px auto 0;background:linear-gradient(160deg,#1a1040,#0f0f28);border:1.5px solid rgba(255,255,255,.13);border-radius:20px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.55)}
+.pksc-stripe{height:4px;background:linear-gradient(90deg,#FF2060,#FF8C00,#FFD600,#B061FF)}
+.pksc-inner{padding:20px 22px 18px}
+.pksc-head{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+.pksc-logo{width:26px;height:26px;flex-shrink:0}
+.pksc-tool{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:15px;color:#f4f4fb;letter-spacing:-.3px}
+.pksc-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.08);padding-top:11px}
+.pksc-url{font-size:11px;font-weight:800;color:#9a9ab5;letter-spacing:.3px}
+.pksc-brand{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:14px;background:linear-gradient(135deg,#FF2060,#FF8C00,#FFD600);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.pk-share-actions{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+/* Compatibility card specifics */
+.pksc-compat-names{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-size:20px;font-weight:700;color:#f4f4fb;text-align:center;margin-bottom:10px;letter-spacing:-.3px}
+.pksc-compat-score{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-size:52px;font-weight:700;text-align:center;background:linear-gradient(135deg,#FF2060,#FF8C00,#FFD600);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;line-height:1.1;margin-bottom:4px}
+.pksc-compat-bar{height:6px;background:rgba(255,255,255,.08);border-radius:100px;overflow:hidden;margin:6px 0 12px}
+.pksc-compat-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,#FF2060,#FF8C00,#FFD600);transition:width .4s ease}
+.pksc-compat-label{font-size:15px;font-weight:700;color:#f4f4fb;text-align:center;margin-bottom:8px}
+.pksc-compat-proof{font-size:12px;font-weight:700;color:#9a9ab5;text-align:center;margin-bottom:16px}
 </style>
 </head>
 <body>
@@ -140,7 +159,7 @@ input[type="date"]:focus{border-color:var(--cy,#00E5FF)}
 </div>
 <main>
 <header class="head">
-  <h1>Compatibility Calculator</h1>
+  <h1>Are you actually compatible?</h1>
   <p>Enter two names and see how compatible you are — just for fun.</p>
 </header>
 <div class="wrap">
@@ -167,6 +186,35 @@ input[type="date"]:focus{border-color:var(--cy,#00E5FF)}
   <div id="compatSign" style="margin-top:16px;padding:14px;background:var(--sf);border-radius:14px;font-size:14px;font-weight:600;color:var(--mt);line-height:1.6"></div>
   <div style="margin-top:12px;font-size:12px;text-align:center;color:var(--mt);font-weight:600">🎭 This is purely for entertainment. Compatibility is not determined by names or birthdays.</div>
 </div>
+
+<div id="compatCard" class="pk-share-card" hidden>
+  <div class="pksc-stripe"></div>
+  <div class="pksc-inner">
+    <div class="pksc-head">
+      <svg class="pksc-logo" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="pccomp" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FF2060"/><stop offset="50%" stop-color="#FF8C00"/><stop offset="100%" stop-color="#FFD600"/></linearGradient></defs>
+        <rect width="36" height="36" rx="9" fill="url(#pccomp)"/>
+        <text x="18" y="26" font-family="Fredoka,sans-serif" font-size="22" font-weight="700" fill="#fff" text-anchor="middle">P</text>
+      </svg>
+      <span class="pksc-tool">Pickly — Compatibility</span>
+    </div>
+    <div id="scCompatNames" class="pksc-compat-names">Name1 ❤️ Name2</div>
+    <div id="scCompatScore" class="pksc-compat-score">—</div>
+    <div class="pksc-compat-bar"><div id="scCompatFill" class="pksc-compat-fill" style="width:0%"></div></div>
+    <div id="scCompatLabel" class="pksc-compat-label"></div>
+    <div id="scCompatProof" class="pksc-compat-proof"></div>
+    <div class="pksc-foot">
+      <span class="pksc-url">picklytools.com/compatibility</span>
+      <span class="pksc-brand">Pickly</span>
+    </div>
+  </div>
+</div>
+<div class="pk-share-actions" id="compatCardActions" hidden>
+  <button class="mini" id="scCompatDownload">📸 Save image</button>
+  <button class="mini" id="scCompatCopy">🔗 Copy</button>
+  <button class="mini" id="scCompatShare">💌 Send to crush</button>
+</div>
+
 <script>
 const SIGNS=[
   {name:"Aries",sym:"♈",from:[3,21],to:[4,19]},
@@ -320,27 +368,73 @@ function calcCompat(){
 <script>document.getElementById("yr").textContent=(new Date).getFullYear();</script>
 <!-- PK-SHARE-START -->
 <script>(function(){
-function mk(){
-  if(document.getElementById('pkShareBtn'))return;
-  var b=document.createElement('button');b.id='pkShareBtn';b.type='button';b.textContent='\ud83d\udd17 Share result';
-  b.style.cssText="display:inline-flex;align-items:center;gap:7px;cursor:pointer;font:700 14px 'Nunito','Nunito Fallback',sans-serif;color:#f4f4fb;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:100px;padding:10px 18px;transition:background .15s";
-  b.onmouseover=function(){b.style.background='rgba(255,255,255,.11)'};b.onmouseout=function(){b.style.background='rgba(255,255,255,.06)'};
-  var w=document.createElement('div');w.style.cssText="text-align:center;margin:16px auto 0";w.appendChild(b);
-  var a=document.getElementById('compatResult');
-  if(a&&a.parentNode)a.parentNode.insertBefore(w,a.nextSibling);else (document.querySelector('main')||document.body).appendChild(w);
-  b.addEventListener('click',function(){
-    var s=((document.getElementById('compatScore')||{}).textContent||'').trim(),
-        n1=((document.getElementById('name1')||{}).value||'').trim(),
-        n2=((document.getElementById('name2')||{}).value||'').trim(),
-        val=(s.indexOf('%')>=0)?s:'';
-    if(!val){b.textContent='Calculate a match first!';setTimeout(function(){b.textContent='\ud83d\udd17 Share result'},1500);return;}
-    var msg=(n1&&n2?n1+' \u2764\ufe0f '+n2+' = ':'My match score: ')+s+'! \ud83d\udc95 Find your compatibility',
-        url='https://picklytools.com/compatibility/';
-    if(navigator.share){navigator.share({title:'Compatibility Calculator',text:msg,url:url}).catch(function(){});}
-    else if(navigator.clipboard){navigator.clipboard.writeText(msg+' '+url).then(function(){b.textContent='\u2713 Copied!';setTimeout(function(){b.textContent='\ud83d\udd17 Share result'},1600);});}
+  var card=document.getElementById('compatCard');
+  var actions=document.getElementById('compatCardActions');
+  var scoreEl=document.getElementById('compatScore');
+  if(!card||!scoreEl)return;
+  new MutationObserver(function(){
+    var score=(scoreEl.textContent||'').trim();
+    if(score&&score.indexOf('%')>=0){populateCard();}
+    else{card.hidden=true;actions.hidden=true;}
+  }).observe(scoreEl,{childList:true,characterData:true,subtree:true});
+  function populateCard(){
+    var score=(scoreEl.textContent||'').trim();
+    var label=((document.getElementById('compatLabel')||{}).textContent||'').trim();
+    var n1=((document.getElementById('name1')||{}).value||'').trim()||'Name 1';
+    var n2=((document.getElementById('name2')||{}).value||'').trim()||'Name 2';
+    var pct=parseInt(score)||0;
+    document.getElementById('scCompatNames').textContent=n1+' ❤️ '+n2;
+    document.getElementById('scCompatScore').textContent=score;
+    document.getElementById('scCompatFill').style.width=pct+'%';
+    document.getElementById('scCompatLabel').textContent=label;
+    var proof=pct>=80?'Top '+(100-Math.round((pct-80)*2))+'% of all matches — rare 🔥':
+              pct>=60?'Most couples score 60–75% 👀':'Honesty is valid too 🫲';
+    document.getElementById('scCompatProof').textContent=proof;
+    var shareBtn=document.getElementById('scCompatShare');
+    if(shareBtn&&n2!=='Name 2')shareBtn.textContent='💌 Send to '+n2.split(' ')[0];
+    card.hidden=false;actions.hidden=false;
+  }
+  document.getElementById('scCompatDownload').addEventListener('click',function(){
+    var btn=this;btn.textContent='⏳ Generating…';btn.disabled=true;
+    function capture(){
+      html2canvas(card,{backgroundColor:'#0f0f28',scale:2,useCORS:true,allowTaint:false,logging:false})
+        .then(function(canvas){
+          var a=document.createElement('a');
+          a.download='pickly-compat-'+Date.now()+'.png';
+          a.href=canvas.toDataURL('image/png');a.click();
+          btn.textContent='✅ Saved!';
+          setTimeout(function(){btn.textContent='📸 Save image';btn.disabled=false;},2200);
+        }).catch(function(){
+          btn.textContent='📱 Screenshot it!';
+          setTimeout(function(){btn.textContent='📸 Save image';btn.disabled=false;},2200);
+        });
+    }
+    if(window.html2canvas){capture();return;}
+    var s=document.createElement('script');
+    s.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+    s.onload=capture;s.onerror=function(){btn.textContent='📱 Screenshot it!';btn.disabled=false;};
+    document.head.appendChild(s);
   });
-}
-mk();
+  document.getElementById('scCompatCopy').addEventListener('click',function(){
+    var btn=this;
+    var n1=((document.getElementById('name1')||{}).value||'').trim();
+    var n2=((document.getElementById('name2')||{}).value||'').trim();
+    var score=document.getElementById('scCompatScore').textContent;
+    var label=document.getElementById('scCompatLabel').textContent;
+    var txt=(n1&&n2?n1+' + '+n2:'💕')+' = '+score+' compatible! '+label+' → picklytools.com/compatibility';
+    navigator.clipboard&&navigator.clipboard.writeText(txt).then(function(){
+      btn.textContent='✓ Copied!';setTimeout(function(){btn.textContent='🔗 Copy';},1600);
+    });
+  });
+  document.getElementById('scCompatShare').addEventListener('click',function(){
+    var n1=((document.getElementById('name1')||{}).value||'').trim();
+    var n2=((document.getElementById('name2')||{}).value||'').trim();
+    var score=document.getElementById('scCompatScore').textContent;
+    var txt=(n1&&n2?n1+' + '+n2+' = '+score+' 💕':'My compatibility score: '+score+' 💕');
+    var url='https://picklytools.com/compatibility/';
+    if(navigator.share){navigator.share({title:'Compatibility',text:txt,url:url}).catch(function(){});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(txt+' '+url);}
+  });
 })();</script>
 <!-- PK-SHARE-END -->
 
