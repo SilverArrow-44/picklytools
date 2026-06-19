@@ -1,0 +1,188 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   PICKLY — PREMIUM THEME  ·  pickly-theme.css   (v1)
+   ─────────────────────────────────────────────────────────────────────
+   A single, self-contained drop-in stylesheet that restyles the existing
+   Pickly markup (same classes, same IDs, same JS) with a modern, premium,
+   Gen-Z visual layer: richer mesh background, true glassmorphism, springy
+   micro-interactions, sharper type, and a unified accent-glow system.
+
+   HOW TO USE
+     Link this file LAST in <head> on every page — after the page's own
+     inline <style>. Equal-specificity rules then win by cascade order, so
+     this theme supersedes the originals with no !important needed:
+
+       <style> … existing page styles … </style>
+       <link rel="stylesheet" href="/pickly-theme.css">
+
+   SAFE TO CHANGE: everything here is visual only. No layout structure,
+   element IDs, or class names the JS depends on are touched.
+═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Design tokens (self-contained — overrides the inline :root) ──────── */
+:root{
+  /* canvas */
+  --pk-void:#07071A; --bg:#0A0A1F; --bg2:#11112E; --bg3:#16163A;
+  /* glass */
+  --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09); --sfh2:rgba(255,255,255,.13);
+  --bd:rgba(255,255,255,.10); --bdh:rgba(255,255,255,.22); --hair:rgba(255,255,255,.08);
+  /* text */
+  --tx:#F4F4FB; --mt:#9A9AB5; --ft:#6B6B85;
+  /* neons */
+  --pk:#FF2060; --or:#FF8C00; --yl:#FFD600; --cy:#00E5FF; --pu:#B061FF; --gr:#00E676;
+  /* gradients */
+  --grad-sunset:linear-gradient(135deg,#FF2060 0%,#FF8C00 55%,#FFD600 100%);
+  --grad-cosmic:linear-gradient(115deg,#00E5FF 0%,#B061FF 100%);
+  --grad-spectrum:linear-gradient(115deg,#FF2060 0%,#FF8C00 38%,#FFD600 62%,#00E5FF 100%);
+  --grad-candy:linear-gradient(135deg,#FF2060 0%,#B061FF 100%);
+  /* radii */
+  --rs:16px; --rl:24px; --r-xl:28px; --r-pill:100px;
+  /* shadows + glows */
+  --sh-md:0 10px 30px rgba(0,0,0,.40);
+  --sh-lg:0 18px 50px rgba(0,0,0,.45);
+  --sh-glass:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06);
+  --sh-glass-lg:0 18px 50px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08);
+  --glow-pk:0 8px 32px rgba(255,32,96,.45);
+  --glow-pk-lg:0 14px 42px rgba(255,32,96,.60);
+  --glow-cy:0 10px 30px rgba(0,229,255,.30);
+  /* motion */
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --fast:.15s; --dur:.25s;
+  /* fonts */
+  --fdisplay:'Fredoka','Fredoka Fallback',system-ui,sans-serif;
+  --fbody:'Nunito','Nunito Fallback',system-ui,sans-serif;
+}
+
+/* ── Page canvas: deepen + add a soft floor vignette ─────────────────── */
+body{background:var(--bg);color:var(--tx);-webkit-font-smoothing:antialiased}
+body::after{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(120% 80% at 50% 120%,rgba(176,97,255,.10),transparent 60%);
+}
+
+/* Richer animated mesh (landing uses .bg-fx; tool pages use body::before) */
+.bg-fx::before{
+  background:
+    radial-gradient(38% 48% at 14% 10%,rgba(176,97,255,.26),transparent 70%),
+    radial-gradient(44% 54% at 86% 16%,rgba(255,32,96,.24),transparent 70%),
+    radial-gradient(50% 50% at 50% 96%,rgba(0,229,255,.18),transparent 70%);
+}
+
+/* ── Sticky nav / topbar: stronger glass + lit hairline ──────────────── */
+nav,.topbar{
+  backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);
+  background:rgba(10,10,31,.72);border-bottom:1px solid var(--bd);
+  box-shadow:0 1px 0 rgba(255,255,255,.04);
+}
+.brand-name{
+  font-family:var(--fdisplay);font-weight:700;letter-spacing:-.5px;line-height:1.15;padding-bottom:2px;
+  background:var(--grad-sunset);background-clip:text;-webkit-background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+}
+.brand-mark{filter:drop-shadow(0 3px 10px rgba(255,32,96,.35))}
+.nav-links a{transition:color var(--fast)}
+.back{transition:background var(--fast),color var(--fast),transform var(--fast)}
+.back:hover{transform:translateY(-1px)}
+
+/* ── Eyebrow pill: pulsing neon dot ──────────────────────────────────── */
+.eyebrow{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r-pill);backdrop-filter:blur(6px)}
+.eyebrow .dot{box-shadow:0 0 10px var(--gr);animation:pk-pulse 2.4s ease-in-out infinite}
+@keyframes pk-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ── Hero display type ───────────────────────────────────────────────── */
+.hero h1,.head h1{font-family:var(--fdisplay);letter-spacing:-1.5px}
+.hero h1 .grad,.head h1 .g,.cycle{
+  background:var(--grad-spectrum);background-clip:text;-webkit-background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+}
+.head h1 .g{background:var(--grad-cosmic);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+/* ── Buttons: pill, spring lift, press-shrink, refined glow ──────────── */
+.btn{font-family:var(--fdisplay);border-radius:var(--r-pill);
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),background var(--fast)}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--grad-sunset);color:#fff;box-shadow:var(--glow-pk)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:var(--glow-pk-lg)}
+.btn-ghost{background:var(--sf);color:var(--tx);border:1.5px solid var(--bd)}
+.btn-ghost:hover{background:var(--sfh);transform:translateY(-3px);border-color:var(--bdh)}
+
+/* tool-page primary uses a cosmic gradient; mini buttons get spring */
+.next-row .btn-primary,.btn.btn-primary.cosmic{background:var(--grad-cosmic);box-shadow:var(--glow-cy)}
+.mini{border-radius:var(--r-pill);transition:background var(--fast),transform var(--fast),border-color var(--fast)}
+.mini:hover{background:var(--sfh);transform:translateY(-2px);border-color:var(--bdh)}
+
+/* ── Chips: hero-chip, recent-chip, cat, mode, pk-pill ───────────────── */
+.hero-chip,.recent-chip,.cat,.mode,.pk-pill{
+  border-radius:var(--r-pill);
+  transition:background var(--fast),color var(--fast),border-color var(--fast),transform var(--fast);
+}
+.hero-chip:hover,.recent-chip:hover,.cat:hover,.mode:hover,.pk-pill:hover{transform:translateY(-2px)}
+.cat.on,.mode.on{
+  background:linear-gradient(135deg,rgba(255,32,96,.22),rgba(0,229,255,.20));
+  border-color:var(--pk);color:#fff;
+}
+
+/* ── Stats: glass with lit edge ──────────────────────────────────────── */
+.stat{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);box-shadow:var(--sh-glass)}
+.stat .n{font-family:var(--fdisplay);background:var(--grad-sunset);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+/* ── Section headers ─────────────────────────────────────────────────── */
+.sec-head h2{font-family:var(--fdisplay);letter-spacing:-1px}
+
+/* ── Tool cards: bigger radius, lift -6, accent glow, animated arrow ─── */
+.tool{
+  border-radius:var(--r-xl);border:1px solid var(--bd);
+  background:linear-gradient(160deg,var(--bg2),rgba(17,17,46,.40));
+  box-shadow:var(--sh-glass);
+  transition:transform var(--dur) var(--ease),border-color var(--dur),box-shadow var(--dur);
+}
+.tool:hover{transform:translateY(-6px);border-color:var(--edge);box-shadow:var(--sh-lg)}
+.tool:hover::before{opacity:.18}
+.tool-ic{border-radius:var(--rs);box-shadow:inset 0 1px 0 rgba(255,255,255,.10)}
+.tool h3{font-family:var(--fdisplay)}
+.tool .go{transition:gap var(--fast)}
+.tool:hover .go{gap:11px}
+
+/* ── Would You Rather vote options ───────────────────────────────────── */
+.opt{border-radius:var(--rl);border:2px solid var(--bd);background:var(--bg2);
+  transition:transform var(--fast),border-color var(--fast),box-shadow var(--fast)}
+.opt:hover{transform:translateY(-3px)}
+.opt .fill{transition:height .8s var(--ease)}
+.opt.chosen{box-shadow:0 0 0 3px currentColor}
+
+/* ── Truth or Dare big buttons + card flip badge ─────────────────────── */
+.big-btn{font-family:var(--fdisplay);border-radius:var(--r-pill);
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.big-btn:active{transform:scale(.97)}
+.big-btn.truth{box-shadow:var(--glow-cy)}
+.big-btn.dare{box-shadow:var(--glow-pk)}
+.badge{font-family:var(--fdisplay);border-radius:8px}
+
+/* ── FAQ accordions ──────────────────────────────────────────────────── */
+.qa{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);transition:border-color var(--fast)}
+.qa[open]{border-color:var(--bdh)}
+.qa summary{font-family:var(--fdisplay)}
+
+/* ── Feature blocks / CTA banner ─────────────────────────────────────── */
+.cta-banner{border-radius:var(--r-xl);border:1px solid var(--bd);
+  background:linear-gradient(135deg,rgba(255,32,96,.16),rgba(176,97,255,.16));box-shadow:var(--sh-glass)}
+.cta-banner h2{font-family:var(--fdisplay);letter-spacing:-1px}
+
+/* ── Related-tools & explore strip ───────────────────────────────────── */
+.related-tools,.pk-explore-wrap{border-radius:var(--rl);box-shadow:var(--sh-glass)}
+.related-card{border-radius:12px;transition:background var(--fast),transform var(--fast)}
+.related-card:hover{transform:translateY(-2px)}
+
+/* ── Viral share card ────────────────────────────────────────────────── */
+.pk-share-card{
+  border:1.5px solid var(--sfh2);border-radius:20px;
+  box-shadow:0 24px 70px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.pksc-stripe{background:var(--grad-spectrum)}
+.pksc-brand{font-family:var(--fdisplay);background:var(--grad-sunset);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+/* ── Reduced motion ──────────────────────────────────────────────────── */
+@media(prefers-reduced-motion:reduce){
+  .eyebrow .dot{animation:none}
+  .tool,.btn,.opt,.big-btn,.hero-chip,.cat,.mode{transition:none}
+}
