@@ -187,6 +187,7 @@ footer{margin-top:40px;border-top:1px solid var(--bd);padding:40px 0 20px;color:
       <button class="btn" onclick="shareResult()">Share score 📲</button>
       <button class="btn ghost" onclick="restart()">Retake</button>
     </div>
+    <button class="btn ghost" style="margin-top:10px" onclick="saveImage(this)">📸 Save as image</button>
     <button class="btn ghost" style="margin-top:10px" onclick="dareSomeone()">😈 Dare your situationship to test theirs</button>
     <p class="small" id="copyMsg"></p>
   </div>
@@ -450,6 +451,35 @@ function copyText(t){
     try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta);
     $('copyMsg').textContent='Copied! Paste it anywhere 📋';
   });
+}
+// 📸 Save result card as PNG — lazy-loads html2canvas only on click
+function saveImage(btn){
+  var card=$('rcard'); if(!card)return;
+  var orig=btn.textContent; btn.textContent='⏳ Generating…'; btn.disabled=true;
+  function capture(){
+    html2canvas(card,{backgroundColor:'#0a0a1f',scale:2,useCORS:true,allowTaint:false,logging:false,
+      onclone:function(doc){
+        // gradient-clipped score renders as transparent in html2canvas — force solid for the capture
+        var s=doc.getElementById('rScore');
+        if(s){s.style.background='none';s.style.webkitTextFillColor='#fff';s.style.color='#fff';}
+      }})
+      .then(function(canvas){
+        var a=document.createElement('a');
+        a.download='pickly-toxic-'+Date.now()+'.png';
+        a.href=canvas.toDataURL('image/png'); a.click();
+        btn.textContent='✅ Saved!';
+        setTimeout(function(){btn.textContent=orig;btn.disabled=false;},2200);
+      }).catch(function(){
+        btn.textContent='📱 Screenshot it!';
+        setTimeout(function(){btn.textContent=orig;btn.disabled=false;},2200);
+      });
+  }
+  if(window.html2canvas){capture();return;}
+  var s=document.createElement('script');
+  s.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+  s.onload=capture;
+  s.onerror=function(){btn.textContent='📱 Screenshot it!';btn.disabled=false;};
+  document.head.appendChild(s);
 }
 </script>
 <script>try{var _pr=JSON.parse(localStorage.getItem("pickly_recent")||"[]").filter(function(x){return x!=="toxicometer"});_pr.unshift("toxicometer");localStorage.setItem("pickly_recent",JSON.stringify(_pr.slice(0,6)))}catch(e){}</script>
