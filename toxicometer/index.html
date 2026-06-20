@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PRMM0HXRCG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-PRMM0HXRCG");</script>
+<script>document.documentElement.className='js';</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a1f">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
+<title>Am I Toxic? ☢️ Toxicity Test — Toxic-o-Meter | Pickly</title>
+<!-- Google AdSense -->
+<meta name="google-adsense-account" content="ca-pub-7937234001453997">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7937234001453997" crossorigin="anonymous"></script>
+<meta name="description" content="The viral Toxic-o-Meter. 12 brutally honest questions give you a toxicity score out of 100 — from Certified Green Flag to Certified Biohazard. Free, no sign-up.">
+<meta name="keywords" content="am i toxic, toxic test, toxicity quiz, toxic partner quiz, toxic relationship quiz, toxic-o-meter, relationship health quiz">
+<link rel="canonical" href="https://picklytools.com/toxicometer/">
+<meta property="og:title" content="Am I Toxic? ☢️ Toxic-o-Meter | Pickly">
+<meta property="og:description" content="12 honest questions → your toxicity % out of 100. Green Flag or Certified Biohazard? Find out — then dare your situationship.">
+<meta property="og:url" content="https://picklytools.com/toxicometer/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Am I Toxic? ☢️ Toxic-o-Meter | Pickly">
+<meta name="twitter:description" content="Score your relationship toxicity. 100+ questions, 12 per round. Free, instant.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Toxic-o-Meter","url":"https://picklytools.com/toxicometer/","applicationCategory":"EntertainmentApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Relationship toxicity quiz — 12 weighted questions from a 100+ pool yield a score from 0–100% and a tier from Green Flag to Certified Biohazard."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Toxic-o-Meter","item":"https://picklytools.com/toxicometer/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&family=nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
+  --bd:rgba(255,255,255,.1); --bdh:rgba(255,255,255,.22); --tx:#f4f4fb; --mt:#9a9ab5;
+  --pk:#FF2060; --or:#FF8C00; --yl:#FFD600; --cy:#00E5FF; --pu:#B061FF; --gr:#00E676;
+  --rs:14px; --rl:22px;
+  /* quiz-specific */
+  --card:#15201a; --card2:#1c2e22; --line:rgba(255,255,255,.1);
+  --green:#22c55e; --amber:#facc15; --red:#ef4444;
+  --grad:linear-gradient(90deg,#22c55e 0%,#a3e635 35%,#facc15 60%,#fb923c 80%,#ef4444 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito','Nunito Fallback',system-ui,sans-serif;background:
+  radial-gradient(1200px 600px at 50% -10%,rgba(34,197,94,.12) 0,transparent 60%),var(--bg);
+  color:var(--tx);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 50% at 88% 92%,rgba(239,68,68,.08),transparent 60%)}
+
+/* ── Topbar ── */
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,10,31,.72);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:760px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:center;position:relative}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:34px;height:34px}
+.brand-name{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);position:absolute;right:20px;transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+
+/* ── Quiz wrap ── */
+.quiz-wrap{width:100%;max-width:480px;margin:0 auto;padding:16px 16px 40px;display:flex;flex-direction:column;min-height:80vh;position:relative;z-index:2}
+
+/* Ad slots */
+.ad{margin:12px 0;min-height:90px}
+
+/* Progress */
+.progress{height:8px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden;margin:14px 2px 18px}
+.pbar{height:100%;width:0;background:var(--grad);transition:width .35s ease}
+
+/* Cards */
+.card{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);
+  border-radius:22px;padding:24px 20px;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.screen{animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:none}}
+h1{font-size:30px;line-height:1.1;text-align:center;margin-bottom:10px;font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700}
+h1 .em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--mt);text-align:center;font-size:15px;line-height:1.5;margin-bottom:18px}
+.qnum{color:var(--green);font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;text-align:center;margin-bottom:8px;font-family:'Nunito','Nunito Fallback',sans-serif}
+.q{font-size:21px;font-weight:700;line-height:1.25;text-align:center;margin-bottom:20px;font-family:'Fredoka','Fredoka Fallback',sans-serif}
+.opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.04);border:1.5px solid var(--line);
+  color:var(--tx);font-size:16px;padding:15px 16px;border-radius:15px;margin-bottom:11px;cursor:pointer;
+  transition:transform .12s ease,border-color .2s,background .2s;font-weight:600;font-family:'Nunito','Nunito Fallback',sans-serif}
+.opt:hover{border-color:var(--green);background:rgba(34,197,94,.08)}
+.opt:active{transform:scale(.985)}
+.opt .e{margin-right:9px}
+.btn{display:block;width:100%;border:0;border-radius:15px;padding:16px;font-size:17px;font-weight:800;
+  color:#06210f;background:var(--grad);cursor:pointer;letter-spacing:.3px;box-shadow:0 10px 24px rgba(34,197,94,.3);margin-top:4px;
+  font-family:'Nunito','Nunito Fallback',sans-serif;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(34,197,94,.5)}
+.btn:active{transform:scale(.99)}
+.btn.ghost{background:rgba(255,255,255,.05);border:1.5px solid var(--bd);box-shadow:none;color:var(--tx)}
+.btn.ghost:hover{background:var(--sfh);transform:translateY(-2px)}
+.small{font-size:12px;color:var(--mt);text-align:center;margin-top:14px}
+
+/* Result */
+.resultCard{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);
+  border-radius:24px;padding:26px 20px;text-align:center}
+.rScore{font-size:72px;font-weight:900;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-family:'Fredoka','Fredoka Fallback',sans-serif}
+.scoreLbl{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--mt);margin-top:2px;font-weight:700}
+.gauge{height:16px;border-radius:99px;background:var(--grad);position:relative;margin:18px 4px 6px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.needle{position:absolute;top:-7px;width:6px;height:30px;background:#fff;border-radius:6px;box-shadow:0 0 0 2px rgba(0,0,0,.4);transform:translateX(-50%);left:0;transition:left 1.1s cubic-bezier(.2,.8,.2,1)}
+.gscale{display:flex;justify-content:space-between;font-size:10px;color:var(--mt);margin:0 4px 14px;font-weight:700}
+.tierEmoji{font-size:58px;filter:drop-shadow(0 4px 10px rgba(0,0,0,.3))}
+.tierName{font-size:26px;font-weight:900;margin:4px 0 2px;font-family:'Fredoka','Fredoka Fallback',sans-serif}
+.tierDesc{color:var(--mt);font-size:15px;line-height:1.5;margin-top:10px}
+.watermark{margin-top:16px;font-size:12px;color:var(--mt);font-weight:700;letter-spacing:.5px}
+.share-row{display:flex;gap:10px;margin-top:14px}
+.share-row .btn{margin-top:0}
+.hidden{display:none}
+
+/* Footer */
+.wrap{position:relative;z-index:2;max-width:760px;margin:0 auto;padding:0 20px}
+footer{margin-top:40px;border-top:1px solid var(--bd);padding:40px 0 20px;color:var(--mt);font-size:13px;font-weight:600;position:relative;z-index:2}
+.foot-in{display:flex;flex-wrap:wrap;gap:32px;margin-bottom:28px}
+.foot-col{display:flex;flex-direction:column;gap:8px}
+.foot-col a{color:var(--mt);text-decoration:none;transition:color .15s}
+.foot-col a:hover{color:var(--tx)}
+.foot-brand{flex:1;min-width:160px;gap:10px}
+.foot-brand p{font-size:13px;color:var(--mt);margin-top:4px;line-height:1.5}
+.foot-h5{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:14px;color:var(--tx);margin-bottom:2px}
+.copy{text-align:center;color:var(--mt);font-size:12px;padding-top:16px;border-top:1px solid var(--bd)}
+
+@media(max-width:520px){.quiz-wrap{padding:12px 12px 32px}.back{display:none}}
+</style>
+  <link rel="stylesheet" href="/pickly-theme.css">
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF2060"/><stop offset="55%" stop-color="#FF8C00"/><stop offset="100%" stop-color="#FFD600"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/">← All tools</a>
+  </div>
+</div>
+
+<div class="quiz-wrap">
+  <div class="progress"><div class="pbar" id="pbar"></div></div>
+
+  <!-- TOP AD -->
+  <div class="ad" id="ad-top"><!-- AdSense in-content unit goes here after approval --></div>
+
+  <!-- INTRO -->
+  <div class="card screen" id="intro">
+    <h1>Am I <span class="em">Toxic?</span> ☢️</h1>
+    <p class="sub">12 brutally honest questions. Get your toxicity score out of 100 — then dare your situationship to find out theirs.</p>
+    <button class="btn" onclick="start()">Test my toxicity →</button>
+    <p class="small">Be honest. The meter knows. 100+ questions, fresh 12 every time.</p>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="card screen hidden" id="quiz">
+    <div class="qnum" id="qnum"></div>
+    <div class="q" id="qtext"></div>
+    <div id="opts"></div>
+  </div>
+
+  <!-- MID AD -->
+  <div class="ad hidden" id="midad"><!-- AdSense in-content unit goes here after approval --></div>
+
+  <!-- RESULT -->
+  <div class="screen hidden" id="result">
+    <div class="resultCard" id="rcard">
+      <div class="rScore" id="rScore">0%</div>
+      <div class="scoreLbl">Toxicity level</div>
+      <div class="gauge"><div class="needle" id="needle"></div></div>
+      <div class="gscale"><span>🟢 0</span><span>⚠️ 50</span><span>☢️ 100</span></div>
+      <div class="tierEmoji" id="rEmoji">🟢</div>
+      <div class="tierName" id="rName"></div>
+      <div class="tierDesc" id="rDesc"></div>
+      <div class="watermark">picklytools.com/toxicometer ☢️</div>
+    </div>
+    <div class="share-row">
+      <button class="btn" onclick="shareResult()">Share score 📲</button>
+      <button class="btn ghost" onclick="restart()">Retake</button>
+    </div>
+    <button class="btn ghost" style="margin-top:10px" onclick="dareSomeone()">😈 Dare your situationship to test theirs</button>
+    <p class="small" id="copyMsg"></p>
+  </div>
+
+  <!-- BOTTOM AD -->
+  <div class="ad"><!-- AdSense in-content unit goes here after approval --></div>
+</div>
+
+<!-- Explore more tools -->
+<!-- PK-EXPLORE-START -->
+<style id="pk-explore-css">
+.pk-explore{position:relative;z-index:2;max-width:880px;margin:10px auto 0;padding:26px 20px 6px;font-family:'Nunito','Nunito Fallback',sans-serif;box-sizing:border-box}
+.pk-explore *{box-sizing:border-box}
+.pk-explore-wrap{background:linear-gradient(160deg,#11112e,rgba(17,17,46,.45));border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:24px 22px}
+.pk-explore-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.pk-explore-h{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;color:#f4f4fb;margin:0}
+.pk-explore-link{font-weight:800;font-size:14px;text-decoration:none;background:linear-gradient(135deg,#FF2060,#FF8C00);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.pk-explore-sub{color:#9a9ab5;font-size:14px;font-weight:600;margin:7px 0 18px}
+.pk-explore-grid{display:flex;flex-wrap:wrap;gap:9px}
+.pk-pill{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:#f4f4fb;font-weight:700;font-size:13.5px;padding:9px 14px;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:background .15s,border-color .15s,transform .15s}
+.pk-pill:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.22);transform:translateY(-2px)}
+.pk-pill-ic{font-size:15px;line-height:1}
+@media(max-width:520px){.pk-explore-h{font-size:19px}.pk-explore{padding-left:14px;padding-right:14px}}
+</style>
+<section class="pk-explore" aria-label="Explore more Pickly tools">
+  <div class="pk-explore-wrap">
+    <div class="pk-explore-top">
+      <h2 class="pk-explore-h">More free tools</h2>
+      <a class="pk-explore-link" href="/">All tools →</a>
+    </div>
+    <p class="pk-explore-sub">No sign-up, no downloads — every Pickly tool opens instantly.</p>
+    <div class="pk-explore-grid">
+      <a class="pk-pill" href="/redflagquiz/"><span class="pk-pill-ic">🚩</span>Red Flag Quiz</a>
+      <a class="pk-pill" href="/wouldyourather/"><span class="pk-pill-ic">🤔</span>Would You Rather</a>
+      <a class="pk-pill" href="/truthordare/"><span class="pk-pill-ic">🎭</span>Truth or Dare</a>
+      <a class="pk-pill" href="/neverhaveiever/"><span class="pk-pill-ic">🙊</span>Never Have I Ever</a>
+      <a class="pk-pill" href="/compatibility/"><span class="pk-pill-ic">💕</span>Compatibility</a>
+      <a class="pk-pill" href="/magic8ball/"><span class="pk-pill-ic">🎱</span>Magic 8 Ball</a>
+      <a class="pk-pill" href="/spinit/"><span class="pk-pill-ic">🎡</span>Decision Spinner</a>
+      <a class="pk-pill" href="/coinflip/"><span class="pk-pill-ic">🪙</span>Coin Flip</a>
+    </div>
+  </div>
+</section>
+<!-- PK-EXPLORE-END -->
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-col foot-brand">
+      <a class="brand" href="/">
+        <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+          <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="79,21 79,41 63,31" fill="#fff"/>
+          <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+        </svg>
+        <span class="brand-name">Pickly</span>
+      </a>
+      <p>Free, fun online tools to help you decide anything.</p>
+    </div>
+    <div class="foot-col"><p class="foot-h5">Games</p><a href="/wouldyourather/">Would You Rather</a><a href="/truthordare/">Truth or Dare</a><a href="/neverhaveiever/">Never Have I Ever</a><a href="/compatibility/">Compatibility</a><a href="/redflagquiz/">Red Flag Quiz</a><a href="/toxicometer/">Toxic-o-Meter</a></div>
+    <div class="foot-col"><p class="foot-h5">Tools</p><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/magic8ball/">Magic 8 Ball</a><a href="/randomnumber/">Random Number</a></div>
+    <div class="foot-col"><p class="foot-h5">Legal</p><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+  </div>
+  <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved. · For entertainment only.</div></div>
+</footer>
+
+<script>
+document.getElementById("yr").textContent=(new Date).getFullYear();
+
+// ---------- tiers ----------
+const TIERS=[
+ {max:20,emoji:"🟢",name:"Certified Green Flag",desc:"Genuinely healthy — secure, respectful, low drama. Honestly? Screenshot this and flex, because this is rare."},
+ {max:40,emoji:"🌱",name:"Mostly Harmless",desc:"A couple of habits to keep an eye on, but you're solid and self-aware enough to fix the small stuff."},
+ {max:60,emoji:"⚠️",name:"Mildly Toxic",desc:"Some controlling or insecure streaks are sneaking in. Not a villain — but this is your sign to check yourself."},
+ {max:80,emoji:"☢️",name:"Hazardous Material",desc:"Jealousy, score-keeping, boundary-pushing… this is the part where your friends gently stage an intervention."},
+ {max:101,emoji:"🧪",name:"Certified Biohazard",desc:"Handle with gloves. The toxic one in the group chat is calling from inside the house. (Self-awareness is step one!)"}
+];
+
+// ---------- weighted pool (0=healthy … 3=toxic) ----------
+const POOL=[
+ {q:"Partner's out with friends. You:",a:[["💚","Have a great night yourself",0],["🙂","Text once to say hi",1],["⏰","Text every hour for updates",2],["📍","Track location + double-call",3]]},
+ {q:"They disagree with you. You:",a:[["👂","Hear them out",0],["😅","Get a little defensive",1],["📚","Bring up their past mistakes",2],["🤐","Silent treatment for days",3]]},
+ {q:"Reading their texts?",a:[["🚫","Never — it's private",0],["😬","Tempted but don't",1],["👀","Peek sometimes",2],["🕵️","Routinely, fully",3]]},
+ {q:"They want a night alone. You feel:",a:[["😌","Totally fine",0],["🤔","Slightly off but okay",1],["🥺","Hurt, need reassurance",2],["😠","Like they're hiding something",3]]},
+ {q:"Apologies from you come:",a:[["🙏","Sincerely, when wrong",0],["🕐","Eventually",1],["🏳️","Only to end the fight",2],["🚫","Never — I'm never wrong",3]]},
+ {q:"Their opposite-sex friend:",a:[["👍","No problem at all",0],["🤷","Mild curiosity",1],["🙅","I'd prefer they stop",2],["⛔","Banned, obviously",3]]},
+ {q:"Winning an argument means:",a:[["🤝","Understanding each other",0],["🗣️","Being heard",1],["☝️","Them admitting I'm right",2],["😭","Them crying / giving up",3]]},
+ {q:"When jealous, you:",a:[["💬","Talk about the feeling",0],["🤫","Sit with it quietly",1],["🙄","Get passive-aggressive",2],["🔍","Accuse and snoop",3]]},
+ {q:"Their phone password:",a:[["🤷","Don't know, don't need it",0],["🔐","Know it, never use it",1],["👀","Check occasionally",2],["📲","Demand it as proof of love",3]]},
+ {q:"They succeed at something. You:",a:[["🥳","Genuinely thrilled",0],["🙂","Happy, a bit envious",1],["😒","Downplay it",2],["😤","Feel threatened, compete",3]]},
+ {q:"Bringing up an issue, you say:",a:[["💚","'I felt…' calmly",0],["😐","A bit bluntly",1],["🗯️","'You always…'",2],["💥","Scream / throw things",3]]},
+ {q:"They make weekend plans without you:",a:[["😊","Cool, have fun",0],["🥲","Wish I was invited",1],["😔","Guilt-trip them",2],["🧨","Sabotage the plans",3]]},
+ {q:"Your exes would say you were:",a:[["🫶","Respectful",0],["😬","A bit much sometimes",1],["🎛️","Controlling",2],["🦹","Their villain origin",3]]},
+ {q:"They check their phone at dinner:",a:[["🤷","No biggie",0],["💬","Mention it lightly",1],["🧊","Cold shoulder",2],["✋","Grab the phone",3]]},
+ {q:"Trust in your relationship is:",a:[["💪","Strong and mutual",0],["🙂","Generally good",1],["⚖️","Conditional",2],["🔬","Earned via monitoring",3]]},
+ {q:"After a fight you:",a:[["🤗","Repair and reconnect",0],["🚶","Need a little space",1],["🧮","Keep score",2],["❄️","Punish with coldness",3]]},
+ {q:"Their goals that don't involve you:",a:[["🌟","Support fully",0],["👏","Encourage mostly",1],["😕","Feel left out",2],["🚧","Discourage them",3]]},
+ {q:"Compromise to you is:",a:[["🤝","Meeting in the middle",0],["🔄","Taking turns",1],["🙇","Them giving in",2],["💪","A sign of weakness",3]]},
+ {q:"Someone compliments them. You:",a:[["😊","Proud of them",0],["🙂","Fine",1],["😟","A bit insecure",2],["🔎","Interrogate who it was",3]]},
+ {q:"When they're slow to reply, you:",a:[["😌","Stay patient",0],["🙂","'Hey, all good?'",1],["📩","Multiple, escalating",2],["😡","'Wow, ignoring me?'",3]]},
+ {q:"They suggest couples therapy:",a:[["💚","Great idea, let's go",0],["🙂","Open to it",1],["🙅","'We don't need that'",2],["😤","'So now I'm the problem?'",3]]},
+ {q:"Their boundaries are:",a:[["🛡️","Respected fully",0],["🙂","Mostly respected",1],["🤏","Negotiable",2],["🚪","Tested constantly",3]]},
+ {q:"You vent about them to friends:",a:[["🤐","Rarely, kindly",0],["💬","Sometimes",1],["🗣️","Often, harshly",2],["📢","Trash them publicly",3]]},
+ {q:"They cry during a fight. You:",a:[["🫂","Soften, comfort them",0],["⏸️","Pause",1],["🙄","'Here we go again'",2],["🎭","Call it manipulation",3]]},
+ {q:"Your idea of space is:",a:[["💚","Healthy and normal",0],["👌","Okay in doses",1],["😰","Makes me anxious",2],["⛔","Not allowed",3]]},
+ {q:"They make a mistake. You:",a:[["🕊️","Forgive and move on",0],["💬","Talk it through",1],["📅","Remind them for weeks",2],["♾️","Hold it forever",3]]},
+ {q:"Posting your relationship online:",a:[["🙂","When it feels right",0],["📸","Occasionally",1],["🚩","To mark territory",2],["📋","Mandatory loyalty proof",3]]},
+ {q:"They have an old flirty pic with an ex:",a:[["🕊️","It's the past, fine",0],["🤷","Eh, whatever",1],["🗑️","Ask them to delete it",2],["🌀","Spiral and accuse",3]]},
+ {q:"Saying sorry first:",a:[["🙏","I can do it",0],["🙂","Sometimes",1],["😬","Rarely",2],["🚫","Never, on principle",3]]},
+ {q:"Their friends think you're:",a:[["💚","Great for them",0],["😎","Pretty cool",1],["😬","A bit intense",2],["🚩","A red flag",3]]},
+ {q:"Plans change last minute. You:",a:[["🌊","Go with the flow",0],["😐","Mildly annoyed",1],["😔","Make them feel guilty",2],["💢","Blow up",3]]},
+ {q:"They need reassurance. You:",a:[["🥰","Give it warmly",0],["🙂","Provide it",1],["🙄","Find it needy",2],["🪤","Use it against them",3]]},
+ {q:"Control over shared money/time:",a:[["⚖️","Shared decisions",0],["🙂","Mostly balanced",1],["🎚️","I lead a lot",2],["👑","I decide, period",3]]},
+ {q:"They want friend-time without you:",a:[["👏","Encourage it",0],["🙂","Fine",1],["😤","Sulk",2],["⛔","Forbid it",3]]},
+ {q:"'We need to talk' — you:",a:[["🪑","Okay, let's talk",0],["😅","Nervous but open",1],["🛡️","Get defensive",2],["⚔️","Attack first",3]]},
+ {q:"When you're wrong, you:",a:[["✅","Own it",0],["🕐","Admit eventually",1],["↪️","Deflect",2],["🔄","Flip it on them",3]]},
+ {q:"They set a boundary you dislike:",a:[["🤝","Respect it",0],["💬","Discuss it",1],["💪","Push back hard",2],["🙈","Ignore it entirely",3]]},
+ {q:"You check their socials:",a:[["🙂","Normal amount",0],["📱","Sometimes",1],["🔁","Daily deep-dives",2],["🧮","Monitor likes/follows",3]]},
+ {q:"They're sad and want space:",a:[["🫶","Give it, stay available",0],["💬","Check in gently",1],["😔","Take it personally",2],["📣","Demand attention anyway",3]]},
+ {q:"Your fights usually end with:",a:[["🤗","Resolution + hug",0],["🌬️","Cooling off",1],["🏆","One of us 'winning'",2],["🧊","Days of silence",3]]},
+ {q:"They want a private hobby:",a:[["💚","Totally fine",0],["🙂","Curious but respect it",1],["🤨","Suspicious",2],["🔓","Demand access",3]]},
+ {q:"Saying 'I was wrong' feels:",a:[["🌱","Healthy",0],["😅","Hard but doable",1],["📉","Like losing",2],["🚫","Impossible",3]]},
+ {q:"When they need help, you:",a:[["🙌","Show up",0],["🙂","Usually help",1],["🤷","If it suits me",2],["🧾","Keep a tally for later",3]]},
+ {q:"Ultimatums in your relationship:",a:[["🕊️","Never use them",0],["🙂","Rarely",1],["😬","Sometimes",2],["🔨","My main tool",3]]},
+ {q:"They forget something small. You:",a:[["🤷","No big deal",0],["💬","Remind kindly",1],["😞","Make them feel bad",2],["💢","Rage about respect",3]]},
+ {q:"They look amazing for a night out (not w/ you):",a:[["😍","Hype them up",0],["🙂","Compliment them",1],["🤔","'For who, though?'",2],["🚫","Tell them to change",3]]},
+ {q:"Last one — be honest, you're:",a:[["💚","A safe, secure partner",0],["🌱","Working on myself",1],["🌀","A handful sometimes",2],["🧪","…probably the toxic one",3]]},
+ {q:"Your texting tone when annoyed:",a:[["🙂","Still kind",0],["😐","Clipped",1],["🔪","Sharp + sarcastic",2],["🤬","Cruel on purpose",3]]},
+ {q:"Old fights you've 'won' get:",a:[["🕊️","Left in the past",0],["💭","Rarely mentioned",1],["📂","Filed for reuse",2],["♻️","Brought up every time",3]]},
+ {q:"When overwhelmed in a fight you:",a:[["⏸️","Ask for a pause",0],["🚶","Step away briefly",1],["🧱","Stonewall completely",2],["🧊","Freeze them out for days",3]]},
+ {q:"Your volume during conflict:",a:[["🗣️","Calm voice",0],["📢","Gets loud sometimes",1],["🔊","Yelling",2],["💥","Screaming matches",3]]},
+ {q:"Name-calling in arguments:",a:[["🚫","Never",0],["😬","Slipped once, regretted it",1],["🗯️","Sometimes",2],["🔁","Regularly",3]]},
+ {q:"Sarcasm with them is:",a:[["😄","Playful only",0],["🙂","Mostly harmless",1],["🌶️","A bit cutting",2],["🗡️","A weapon",3]]},
+ {q:"In a fight you recruit:",a:[["🚫","No one, it's between us",0],["👯","Rarely a friend's take",1],["📞","Friends to take my side",2],["👨‍👩‍👧","Their whole family",3]]},
+ {q:"Threatening to leave to win:",a:[["🚫","Never",0],["😬","Said it once in anger",1],["🚪","Sometimes",2],["🔨","My go-to move",3]]},
+ {q:"Walking off mid-conversation:",a:[["🤝","I stay and finish",0],["🚶","Only if I need air",1],["🙄","When I'm done listening",2],["💨","Constantly",3]]},
+ {q:"After you overreact, they:",a:[["💚","Get my apology",0],["🤷","Get an 'eh, sorry'",1],["😔","End up apologizing to me",2],["🔄","Always take the blame",3]]},
+ {q:"Their outfit for a night out:",a:[["😍","Hype them up",0],["🙂","No opinion",1],["🤔","Suggest 'covering up'",2],["🚫","Tell them to change",3]]},
+ {q:"Who they follow on socials:",a:[["🤷","None of my business",0],["👀","I glance",1],["📋","I audit it",2],["⛔","I make them unfollow",3]]},
+ {q:"They go out without telling you:",a:[["👍","Totally fine",0],["💬","Wish they'd mention it",1],["😤","Interrogate later",2],["📍","Track them down",3]]},
+ {q:"Their work friends:",a:[["🙂","Glad they have them",0],["🤏","Mildly curious",1],["🧐","Suspicious of a few",2],["🚫","Want them cut off",3]]},
+ {q:"Checking their location/receipts:",a:[["🚫","Never",0],["😬","Once, felt gross",1],["👀","Sometimes",2],["🔁","Daily routine",3]]},
+ {q:"Their passwords:",a:[["🔐","Theirs to keep",0],["🤝","Shared if they want",1],["👀","I want them",2],["📲","I require them",3]]},
+ {q:"Their friend time:",a:[["🙌","Encourage it",0],["🙂","Fine",1],["😒","Resent it",2],["⛔","Limit it",3]]},
+ {q:"Reading over their shoulder:",a:[["🚫","Never",0],["😅","Accidental glance",1],["👀","Lean in to read",2],["🔍","Demand to see",3]]},
+ {q:"They laugh at their phone. You:",a:[["😄","Ask what's funny, smile",0],["🙂","Curious",1],["🤨","'Who's that?'",2],["😠","Accuse them",3]]},
+ {q:"Comparing them to your ex:",a:[["🚫","Never",0],["😬","Slipped once",1],["⚖️","Sometimes",2],["🔁","Often",3]]},
+ {q:"If you snoop, it's because:",a:[["🚫","I don't snoop",0],["😟","One-time insecurity",1],["🛡️","'Protecting myself'",2],["👑","'My right to know'",3]]},
+ {q:"White lies to them:",a:[["💯","I'm honest",0],["🤏","Tiny, rare ones",1],["🎭","Regularly",2],["🕸️","A constant web",3]]},
+ {q:"Hiding your own messages:",a:[["🙂","Nothing to hide",0],["📱","Private, not secretive",1],["🙈","Face-down, careful",2],["🔒","Locked, deleted, hidden",3]]},
+ {q:"Setting 'tests' for them:",a:[["🚫","Never test people",0],["😬","Tempted once",1],["🧪","Sometimes",2],["🪤","Frequent traps",3]]},
+ {q:"Screenshots of their words:",a:[["🗑️","I don't keep them",0],["🤷","Rarely",1],["📂","A small folder",2],["🗄️","A whole archive",3]]},
+ {q:"'I never said that' — is that you?",a:[["🚫","No, I own my words",0],["😅","Once, by mistake",1],["🌀","Sometimes",2],["🔁","My reflex",3]]},
+ {q:"Twisting their words in a fight:",a:[["🚫","I listen fairly",0],["😬","Occasionally misread",1],["🔧","Reframe to win",2],["🪢","Always",3]]},
+ {q:"Playing the victim:",a:[["🚫","I own my part",0],["🙂","Rarely",1],["🥹","When convenient",2],["🎭","It's my main role",3]]},
+ {q:"Guilt-tripping them:",a:[["🚫","Never",0],["😬","Sometimes slips out",1],["😔","A known tactic",2],["🪤","Daily",3]]},
+ {q:"After a bad fight you:",a:[["🤝","Repair honestly",0],["🌬️","Cool off then talk",1],["🎁","Love-bomb to reset",2],["💣","Bomb then repeat",3]]},
+ {q:"Your moods land on them:",a:[["🙂","I self-regulate",0],["😅","Sometimes leaks",1],["🌩️","They walk on eggshells",2],["🌪️","Always their problem",3]]},
+ {q:"Withholding affection to punish:",a:[["🚫","Never",0],["😬","Once",1],["🧊","Sometimes",2],["❄️","Standard tactic",3]]},
+ {q:"Their insecurities in a fight:",a:[["🛡️","Off limits",0],["🙂","I avoid them",1],["🎯","Sometimes used",2],["🗡️","Fair game",3]]},
+ {q:"Criticizing them in public:",a:[["🚫","Never",0],["😬","Rarely, regret it",1],["🙄","Sometimes",2],["📢","Openly",3]]},
+ {q:"Their hobbies/interests:",a:[["🤩","I celebrate them",0],["🙂","Support them",1],["😏","Mock them lightly",2],["🙅","Belittle them",3]]},
+ {q:"When they share a feeling:",a:[["🫶","I validate it",0],["👂","I listen",1],["🙄","I minimize it",2],["🚫","I dismiss it",3]]},
+ {q:"'You're too sensitive' is:",a:[["🚫","Not something I say",0],["😬","Said once",1],["💬","Sometimes",2],["🔁","My go-to",3]]},
+ {q:"Their wins vs your ego:",a:[["🥳","Pure joy for them",0],["🙂","Happy",1],["😒","Quietly competitive",2],["😤","Can't handle it",3]]},
+ {q:"Favors you do are:",a:[["💝","Freely given",0],["🙂","Mostly free",1],["🧾","Tallied",2],["💳","Owed back with interest",3]]},
+ {q:"Being right matters:",a:[["🤝","Less than being kind",0],["🙂","A normal amount",1],["☝️","A lot",2],["👑","Above everything",3]]},
+ {q:"Their alone time is:",a:[["💚","Healthy and needed",0],["🙂","Fine",1],["😟","Threatening",2],["⛔","Not allowed",3]]},
+ {q:"Their big career goal:",a:[["🚀","I cheer it on",0],["👏","Support it",1],["😕","Feel insecure",2],["🚧","Subtly block it",3]]},
+ {q:"Their close family bond:",a:[["❤️","Love it",0],["🙂","Fine",1],["🙄","Jealous of it",2],["⚔️","Compete with it",3]]},
+ {q:"Their personal growth:",a:[["🌱","I root for it",0],["🙂","Support it",1],["😬","Feel left behind",2],["🪤","Hold them back",3]]},
+ {q:"Their need for friends:",a:[["🤗","Encourage it",0],["🙂","Fine",1],["😒","'Why so much?'",2],["🚫","'I'm enough'",3]]},
+ {q:"Their phone boundary:",a:[["🔐","Respect it fully",0],["🙂","Mostly",1],["🤏","Push it",2],["📲","Violate it",3]]},
+ {q:"Honesty about your own plans:",a:[["💯","Always upfront",0],["🙂","Usually",1],["🌫️","Vague on purpose",2],["🕳️","Hidden",3]]},
+ {q:"A decision of theirs you dislike:",a:[["🤝","Respect their call",0],["💬","Voice it, let go",1],["😤","Pressure them",2],["🚫","Override it",3]]},
+ {q:"Their appearance choices:",a:[["😍","Their body, their call",0],["🙂","No notes",1],["🤔","I 'suggest' changes",2],["🎚️","I control them",3]]},
+ {q:"Find My, the way you use it:",a:[["🤷","Don't, or mutual + chill",0],["📍","Mutual, glance rarely",1],["👀","Check them often",2],["🛰️","Live surveillance",3]]},
+ {q:"Their 'last active' on apps:",a:[["🤷","Never look",0],["🙂","Noticed once",1],["⏱️","Monitor it",2],["📊","Track patterns",3]]},
+ {q:"Who likes their posts:",a:[["🤷","Don't care",0],["👀","Glance",1],["🧐","Audit suspicious ones",2],["🚨","Confront them",3]]},
+ {q:"They liked a song/post you dislike:",a:[["🙂","Different taste, fine",0],["🤨","Curious",1],["😒","Bring it up pointedly",2],["💥","Make it a fight",3]]},
+ {q:"Going through their Snap/BeReal:",a:[["🚫","Never",0],["😬","Once",1],["👀","Sometimes",2],["🔁","Habit",3]]},
+ {q:"Subtweeting/posting about them:",a:[["🚫","Never",0],["😬","Once, deleted it",1],["🎵","Cryptic lyrics sometimes",2],["📢","Regularly",3]]},
+ {q:"'We need to talk' — you use it to:",a:[["💬","Open honest convos",0],["🙂","Flag real issues",1],["😨","Scare them a bit",2],["🔪","Threaten/punish",3]]},
+ {q:"Recording fights 'for evidence':",a:[["🚫","Never",0],["🤔","Thought about it",1],["🎙️","Sometimes",2],["📹","Always",3]]},
+ {q:"Following their followers to watch:",a:[["🤷","Why would I",0],["🙂","Followed a couple",1],["👀","Quietly monitoring",2],["🕵️","A surveillance net",3]]},
+ {q:"Saying sorry comes:",a:[["🙏","Easily when wrong",0],["🕐","Eventually",1],["😬","Painfully",2],["🚫","Basically never",3]]},
+ {q:"Admitting fault feels:",a:[["🌱","Healthy",0],["😅","Doable",1],["📉","Like losing",2],["💀","Impossible",3]]},
+ {q:"After honest feedback you:",a:[["🔧","Actually change",0],["🙂","Try",1],["🙄","Get defensive",2],["🔁","Do it more",3]]},
+ {q:"Responsibility for your moods:",a:[["💪","All mine",0],["🙂","Mostly mine",1],["🤷","Shared… ish",2],["👉","Theirs",3]]},
+ {q:"Your apologies contain a '…but':",a:[["🚫","No, full ownership",0],["😬","Sometimes",1],["🔁","Usually",2],["♾️","Always a 'but'",3]]},
+ {q:"Letting them be right:",a:[["🤝","Easy",0],["🙂","Usually",1],["😬","Hard",2],["🚫","Never",3]]},
+ {q:"Holding grudges:",a:[["🕊️","I let go",0],["🙂","Briefly",1],["📌","A while",2],["🗿","Forever",3]]},
+ {q:"Repairing after conflict:",a:[["🤗","I reach out",0],["🙂","We meet halfway",1],["⏳","I wait them out",2],["🧊","I make them grovel",3]]},
+ {q:"Owning your part in problems:",a:[["💯","Fully",0],["🙂","Mostly",1],["🤏","A little",2],["🚫","It's always them",3]]},
+ {q:"Their friends don't like you. You:",a:[["🤔","Reflect on why",0],["🙂","Try to win them over",1],["😤","Decide they're haters",2],["⛔","Cut them off from friends",3]]},
+ {q:"They ask for a break. You:",a:[["💚","Respect it, reflect",0],["😔","Hurt but allow it",1],["📵","Blow up their phone",2],["🚫","Refuse to accept it",3]]},
+ {q:"They set a phone-free dinner. You:",a:[["🍽️","Love it",0],["🙂","Fine",1],["😬","Sneak glances",2],["📵","Can't, must check",3]]},
+ {q:"Honestly, in conflict you aim to:",a:[["🤝","Understand them",0],["🗣️","Be heard",1],["🏆","Win",2],["💥","Destroy",3]]}
+];
+
+const QUIZ_LEN=12;
+let Q=[], qi=0, total=0, maxTotal=0;
+const $=id=>document.getElementById(id);
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function pickQuestions(){ return shuffle(POOL).slice(0,QUIZ_LEN).map(it=>({q:it.q,a:shuffle(it.a)})); }
+
+function start(){ qi=0; total=0; Q=pickQuestions(); maxTotal=Q.length*3; $('intro').classList.add('hidden'); $('quiz').classList.remove('hidden'); render(); }
+
+function render(){
+  const item=Q[qi];
+  $('qnum').textContent=`Question ${qi+1} of ${Q.length}`;
+  $('qtext').textContent=item.q;
+  $('pbar').style.width=(qi/Q.length*100)+'%';
+  const box=$('opts'); box.innerHTML='';
+  item.a.forEach(([e,label,w])=>{
+    const b=document.createElement('button');
+    b.className='opt'; b.innerHTML=`<span class="e">${e}</span>${label}`;
+    b.onclick=()=>choose(w);
+    box.appendChild(b);
+  });
+  $('midad').classList.toggle('hidden', qi!==Math.floor(Q.length/2));
+  $('quiz').classList.remove('screen'); void $('quiz').offsetWidth; $('quiz').classList.add('screen');
+}
+
+function choose(w){ total+=w; qi++; if(qi>=Q.length){ finish(); } else { render(); } }
+
+function finish(){
+  $('pbar').style.width='100%';
+  $('quiz').classList.add('hidden'); $('midad').classList.add('hidden');
+  const pct=Math.round(total/maxTotal*100);
+  const tier=TIERS.find(t=>pct<t.max)||TIERS[TIERS.length-1];
+  $('rEmoji').textContent=tier.emoji;
+  $('rName').textContent=tier.name;
+  $('rDesc').textContent=tier.desc;
+  window._score=pct; window._tier=tier.name;
+  $('result').classList.remove('hidden');
+  $('result').scrollIntoView({behavior:'smooth',block:'start'});
+  // animate count-up + needle
+  let cur=0; const step=Math.max(1,Math.round(pct/30));
+  const tick=setInterval(()=>{ cur=Math.min(pct,cur+step); $('rScore').textContent=cur+'%'; if(cur>=pct)clearInterval(tick); },28);
+  setTimeout(()=>{ $('needle').style.left=pct+'%'; },120);
+}
+
+function restart(){ $('result').classList.add('hidden'); $('intro').classList.remove('hidden'); $('pbar').style.width='0%'; $('needle').style.left='0%'; window.scrollTo({top:0,behavior:'smooth'}); }
+
+function shareResult(){
+  const txt=`I'm ${window._score}% toxic 😭 — "${window._tier}". What's YOUR score?`;
+  const url='https://picklytools.com/toxicometer/';
+  if(navigator.share){ navigator.share({title:"Am I Toxic? Toxic-o-Meter",text:txt+' Take the Toxic-o-Meter: '+url}).catch(()=>{}); }
+  else { copyText(`${txt} Take the Toxic-o-Meter: ${url}`); }
+}
+function dareSomeone(){
+  const txt=`I got ${window._score}% on the Toxic-o-Meter 😈 bet you score higher. Prove it:`;
+  const url='https://picklytools.com/toxicometer/';
+  if(navigator.share){ navigator.share({title:"Toxic-o-Meter dare",text:txt+' '+url}).catch(()=>{}); }
+  else { copyText(`${txt} ${url}`); }
+}
+function copyText(t){
+  navigator.clipboard&&navigator.clipboard.writeText(t).then(()=>{ $('copyMsg').textContent='Copied! Paste it anywhere 📋'; }).catch(()=>{
+    const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select();
+    try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta);
+    $('copyMsg').textContent='Copied! Paste it anywhere 📋';
+  });
+}
+</script>
+<script>try{var _pr=JSON.parse(localStorage.getItem("pickly_recent")||"[]").filter(function(x){return x!=="toxicometer"});_pr.unshift("toxicometer");localStorage.setItem("pickly_recent",JSON.stringify(_pr.slice(0,6)))}catch(e){}</script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+</body>
+</html>

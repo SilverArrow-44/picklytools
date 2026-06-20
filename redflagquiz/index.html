@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PRMM0HXRCG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-PRMM0HXRCG");</script>
+<script>document.documentElement.className='js';</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a1f">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
+<title>What's Your Red Flag? 🚩 Quiz — Find Out Now | Pickly</title>
+<!-- Google AdSense -->
+<meta name="google-adsense-account" content="ca-pub-7937234001453997">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7937234001453997" crossorigin="anonymous"></script>
+<meta name="description" content="Take the viral Red Flag Quiz. 12 random questions from a pool of 100+ — find out which red flag you actually are. Then dare your situationship to take it.">
+<meta name="keywords" content="red flag quiz, red flag test, dating red flags, what's my red flag, toxic quiz, relationship quiz, love bomber, ghoster">
+<link rel="canonical" href="https://picklytools.com/redflagquiz/">
+<meta property="og:title" content="What's Your Red Flag? 🚩 Quiz | Pickly">
+<meta property="og:description" content="12 questions to expose your dating red flag. Love Bomber? Ghoster? Phone Snake? Find out — then dare your situationship.">
+<meta property="og:url" content="https://picklytools.com/redflagquiz/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What's Your Red Flag? 🚩 Quiz | Pickly">
+<meta name="twitter:description" content="100+ questions, 12 served per play. Find your red flag archetype. Free, no sign-up.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Red Flag Quiz","url":"https://picklytools.com/redflagquiz/","applicationCategory":"EntertainmentApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Viral dating red flag personality quiz — 12 questions from a 100+ pool reveal your red flag archetype."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pickly","item":"https://picklytools.com/"},{"@type":"ListItem","position":2,"name":"Red Flag Quiz","item":"https://picklytools.com/redflagquiz/"}]}
+</script>
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&family=nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a1f; --bg2:#11112e; --sf:rgba(255,255,255,.05); --sfh:rgba(255,255,255,.09);
+  --bd:rgba(255,255,255,.1); --bdh:rgba(255,255,255,.22); --tx:#f4f4fb; --mt:#9a9ab5;
+  --pk:#FF2060; --or:#FF8C00; --yl:#FFD600; --cy:#00E5FF; --pu:#B061FF; --gr:#00E676;
+  --rs:14px; --rl:22px;
+  /* quiz-specific */
+  --card:#1b1430; --card2:#241a40; --line:rgba(255,255,255,.1);
+  --red:#FF2060; --pink:#FF4D8D; --accent:#FFD600;
+  --grad:linear-gradient(135deg,#FF2060,#FF4D8D 55%,#FF8C00);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito','Nunito Fallback',system-ui,sans-serif;background:
+  radial-gradient(1200px 600px at 50% -10%,rgba(176,97,255,.18) 0,transparent 60%),var(--bg);
+  color:var(--tx);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 50% at 88% 92%,rgba(255,32,96,.10),transparent 60%)}
+
+/* ── Topbar ── */
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,10,31,.72);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:760px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:center;position:relative}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:34px;height:34px}
+.brand-name{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,var(--pk),var(--or) 55%,var(--yl));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.back{color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);position:absolute;right:20px;transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+
+/* ── Quiz wrap ── */
+.quiz-wrap{width:100%;max-width:480px;margin:0 auto;padding:16px 16px 40px;display:flex;flex-direction:column;min-height:80vh;position:relative;z-index:2}
+
+/* Ad slots — invisible containers ready for AdSense */
+.ad{margin:12px 0;min-height:90px}
+
+/* Progress */
+.progress{height:8px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden;margin:14px 2px 18px}
+.bar{height:100%;width:0;background:var(--grad);transition:width .35s ease}
+
+/* Cards */
+.card{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);
+  border-radius:22px;padding:24px 20px;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.screen{animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:none}}
+h1{font-size:30px;line-height:1.1;text-align:center;margin-bottom:10px;font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700}
+h1 .em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--mt);text-align:center;font-size:15px;line-height:1.5;margin-bottom:18px}
+.qnum{color:var(--accent);font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;text-align:center;margin-bottom:8px;font-family:'Nunito','Nunito Fallback',sans-serif}
+.q{font-size:21px;font-weight:700;line-height:1.25;text-align:center;margin-bottom:20px;font-family:'Fredoka','Fredoka Fallback',sans-serif}
+.opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.04);border:1.5px solid var(--line);
+  color:var(--tx);font-size:16px;padding:15px 16px;border-radius:15px;margin-bottom:11px;cursor:pointer;
+  transition:transform .12s ease,border-color .2s,background .2s;font-weight:600;font-family:'Nunito','Nunito Fallback',sans-serif}
+.opt:hover{border-color:var(--pink);background:rgba(255,77,141,.08)}
+.opt:active{transform:scale(.985)}
+.opt .e{margin-right:9px}
+.btn{display:block;width:100%;border:0;border-radius:15px;padding:16px;font-size:17px;font-weight:800;
+  color:#fff;background:var(--grad);cursor:pointer;letter-spacing:.3px;box-shadow:0 10px 24px rgba(255,32,96,.35);margin-top:4px;
+  font-family:'Nunito','Nunito Fallback',sans-serif;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(255,32,96,.5)}
+.btn:active{transform:scale(.99)}
+.btn.ghost{background:rgba(255,255,255,.05);border:1.5px solid var(--bd);box-shadow:none;color:var(--tx)}
+.btn.ghost:hover{background:var(--sfh);transform:translateY(-2px)}
+.small{font-size:12px;color:var(--mt);text-align:center;margin-top:14px}
+
+/* Result */
+.resultCard{background:var(--grad);border-radius:24px;padding:26px 20px;text-align:center;position:relative;overflow:hidden}
+.resultCard::after{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at 50% 0,rgba(255,255,255,.25),transparent 70%)}
+.flagEmoji{font-size:64px;filter:drop-shadow(0 6px 12px rgba(0,0,0,.3))}
+.flagName{font-size:28px;font-weight:900;margin:6px 0 2px;color:#fff;line-height:1.05;font-family:'Fredoka','Fredoka Fallback',sans-serif}
+.flagTag{display:inline-block;background:rgba(0,0,0,.28);color:#fff;font-weight:700;font-size:13px;padding:6px 12px;border-radius:99px;margin-top:8px}
+.flagDesc{color:#fff;opacity:.96;font-size:15px;line-height:1.5;margin-top:14px}
+.meter{display:flex;gap:6px;justify-content:center;margin:16px 0 2px}
+.meter span{font-size:22px;opacity:.35}
+.meter span.on{opacity:1}
+.share-row{display:flex;gap:10px;margin-top:14px}
+.share-row .btn{margin-top:0}
+.watermark{margin-top:16px;font-size:12px;color:rgba(255,255,255,.85);font-weight:700;letter-spacing:.5px}
+.hidden{display:none}
+
+/* Footer */
+.wrap{position:relative;z-index:2;max-width:760px;margin:0 auto;padding:0 20px}
+footer{margin-top:40px;border-top:1px solid var(--bd);padding:40px 0 20px;color:var(--mt);font-size:13px;font-weight:600;position:relative;z-index:2}
+.foot-in{display:flex;flex-wrap:wrap;gap:32px;margin-bottom:28px}
+.foot-col{display:flex;flex-direction:column;gap:8px}
+.foot-col a{color:var(--mt);text-decoration:none;transition:color .15s}
+.foot-col a:hover{color:var(--tx)}
+.foot-brand{flex:1;min-width:160px;gap:10px}
+.foot-brand p{font-size:13px;color:var(--mt);margin-top:4px;line-height:1.5}
+.foot-h5{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:14px;color:var(--tx);margin-bottom:2px}
+.copy{text-align:center;color:var(--mt);font-size:12px;padding-top:16px;border-top:1px solid var(--bd)}
+
+@media(max-width:520px){.quiz-wrap{padding:12px 12px 32px}.back{display:none}}
+</style>
+  <link rel="stylesheet" href="/pickly-theme.css">
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF2060"/><stop offset="55%" stop-color="#FF8C00"/><stop offset="100%" stop-color="#FFD600"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/">← All tools</a>
+  </div>
+</div>
+
+<div class="quiz-wrap">
+  <div class="progress"><div class="bar" id="bar"></div></div>
+
+  <!-- TOP AD -->
+  <div class="ad" id="ad-top"><!-- AdSense in-content unit goes here after approval --></div>
+
+  <!-- INTRO -->
+  <div class="card screen" id="intro">
+    <h1>What's Your <span class="em">Red Flag?</span> 🚩</h1>
+    <p class="sub">Everyone's got one. 12 quick questions to expose yours — then dare your situationship to find out theirs.</p>
+    <button class="btn" onclick="start()">Start the test →</button>
+    <p class="small">100+ questions, fresh 12 every time. No sign-up needed.</p>
+  </div>
+
+  <!-- QUESTION -->
+  <div class="card screen hidden" id="quiz">
+    <div class="qnum" id="qnum"></div>
+    <div class="q" id="qtext"></div>
+    <div id="opts"></div>
+  </div>
+
+  <!-- MID AD -->
+  <div class="ad hidden" id="midad"><!-- AdSense in-content unit goes here after approval --></div>
+
+  <!-- RESULT -->
+  <div class="screen hidden" id="result">
+    <div class="resultCard" id="rcard">
+      <div class="flagEmoji" id="rEmoji">🚩</div>
+      <div class="flagName" id="rName"></div>
+      <div class="flagTag" id="rTag"></div>
+      <div class="meter" id="rMeter"></div>
+      <div class="flagDesc" id="rDesc"></div>
+      <div class="watermark">picklytools.com/redflagquiz 🚩</div>
+    </div>
+    <div class="share-row">
+      <button class="btn" onclick="shareResult()">Share result 📲</button>
+      <button class="btn ghost" onclick="restart()">Retake</button>
+    </div>
+    <button class="btn ghost" style="margin-top:10px" onclick="dareSomeone()">😈 Dare your situationship to take it</button>
+    <p class="small" id="copyMsg"></p>
+  </div>
+
+  <!-- BOTTOM AD -->
+  <div class="ad"><!-- AdSense in-content unit goes here after approval --></div>
+</div>
+
+<!-- Explore more tools -->
+<!-- PK-EXPLORE-START -->
+<style id="pk-explore-css">
+.pk-explore{position:relative;z-index:2;max-width:880px;margin:10px auto 0;padding:26px 20px 6px;font-family:'Nunito','Nunito Fallback',sans-serif;box-sizing:border-box}
+.pk-explore *{box-sizing:border-box}
+.pk-explore-wrap{background:linear-gradient(160deg,#11112e,rgba(17,17,46,.45));border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:24px 22px}
+.pk-explore-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.pk-explore-h{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;color:#f4f4fb;margin:0}
+.pk-explore-link{font-weight:800;font-size:14px;text-decoration:none;background:linear-gradient(135deg,#FF2060,#FF8C00);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.pk-explore-sub{color:#9a9ab5;font-size:14px;font-weight:600;margin:7px 0 18px}
+.pk-explore-grid{display:flex;flex-wrap:wrap;gap:9px}
+.pk-pill{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:#f4f4fb;font-weight:700;font-size:13.5px;padding:9px 14px;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:background .15s,border-color .15s,transform .15s}
+.pk-pill:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.22);transform:translateY(-2px)}
+.pk-pill-ic{font-size:15px;line-height:1}
+@media(max-width:520px){.pk-explore-h{font-size:19px}.pk-explore{padding-left:14px;padding-right:14px}}
+</style>
+<section class="pk-explore" aria-label="Explore more Pickly tools">
+  <div class="pk-explore-wrap">
+    <div class="pk-explore-top">
+      <h2 class="pk-explore-h">More free tools</h2>
+      <a class="pk-explore-link" href="/">All tools →</a>
+    </div>
+    <p class="pk-explore-sub">No sign-up, no downloads — every Pickly tool opens instantly.</p>
+    <div class="pk-explore-grid">
+      <a class="pk-pill" href="/toxicometer/"><span class="pk-pill-ic">☢️</span>Toxic-o-Meter</a>
+      <a class="pk-pill" href="/wouldyourather/"><span class="pk-pill-ic">🤔</span>Would You Rather</a>
+      <a class="pk-pill" href="/truthordare/"><span class="pk-pill-ic">🎭</span>Truth or Dare</a>
+      <a class="pk-pill" href="/neverhaveiever/"><span class="pk-pill-ic">🙊</span>Never Have I Ever</a>
+      <a class="pk-pill" href="/compatibility/"><span class="pk-pill-ic">💕</span>Compatibility</a>
+      <a class="pk-pill" href="/magic8ball/"><span class="pk-pill-ic">🎱</span>Magic 8 Ball</a>
+      <a class="pk-pill" href="/spinit/"><span class="pk-pill-ic">🎡</span>Decision Spinner</a>
+      <a class="pk-pill" href="/coinflip/"><span class="pk-pill-ic">🪙</span>Coin Flip</a>
+    </div>
+  </div>
+</section>
+<!-- PK-EXPLORE-END -->
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-col foot-brand">
+      <a class="brand" href="/">
+        <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+          <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="79,21 79,41 63,31" fill="#fff"/>
+          <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+        </svg>
+        <span class="brand-name">Pickly</span>
+      </a>
+      <p>Free, fun online tools to help you decide anything.</p>
+    </div>
+    <div class="foot-col"><p class="foot-h5">Games</p><a href="/wouldyourather/">Would You Rather</a><a href="/truthordare/">Truth or Dare</a><a href="/neverhaveiever/">Never Have I Ever</a><a href="/compatibility/">Compatibility</a><a href="/redflagquiz/">Red Flag Quiz</a><a href="/toxicometer/">Toxic-o-Meter</a></div>
+    <div class="foot-col"><p class="foot-h5">Tools</p><a href="/spinit/">Decision Spinner</a><a href="/coinflip/">Coin Flip</a><a href="/magic8ball/">Magic 8 Ball</a><a href="/randomnumber/">Random Number</a></div>
+    <div class="foot-col"><p class="foot-h5">Legal</p><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/contact/">Contact</a></div>
+  </div>
+  <div class="wrap"><div class="copy">© <span id="yr"></span> Pickly. All rights reserved. · For entertainment only.</div></div>
+</footer>
+
+<script>
+document.getElementById("yr").textContent=(new Date).getFullYear();
+
+// ---------- archetypes ----------
+const FLAGS = {
+  lovebomb:{emoji:"💣",name:"The Love Bomber",tag:"Too much, too fast 🚩🚩🚩",
+    desc:"You said 'I love you' before the second date and already named the dog. Intense isn't a personality. Slow. Down."},
+  ghost:{emoji:"👻",name:"The Ghoster",tag:"Now you see them, now you don't",
+    desc:"Conflict? You vanish like the WiFi at a festival. Your exes are still left on read three months later."},
+  ice:{emoji:"🧊",name:"The Emotionally Unavailable",tag:"'I'm just not ready for labels'",
+    desc:"You've been 'figuring yourself out' since 2019. Commitment-phobic and proud. The walls are tall, king/queen."},
+  phone:{emoji:"📱",name:"The Phone Snake",tag:"Who keeps texting you?? 👀",
+    desc:"Notifications face-down, replies cryptic, three chats open at once. Keeping your options 'open' is a lifestyle."},
+  main:{emoji:"🎭",name:"The Main Character",tag:"It's giving... all about you",
+    desc:"Every story circles back to you. You'd interrupt your own funeral. Charming, exhausting, slightly terrifying."},
+  green:{emoji:"🟢",name:"The Green Flag",tag:"Rare. Suspiciously healthy.",
+    desc:"Communicates, texts back, no games. Honestly we're a little concerned — what are you hiding? (Nothing. That's the point.) Screenshot this and flex."}
+};
+
+// ---------- question pool (100+) — a fresh random 12 are served each play ----------
+const POOL = [
+ {q:"Your crush takes 3 hours to text back. You:",a:[
+   ["😤","Triple-text + 'you up?' at 1am","lovebomb"],
+   ["🙃","Leave them on read for 4 hours to 'win'","phone"],
+   ["🤷","Honestly forgot I texted them","ice"],
+   ["💬","Just reply normally when they do","green"]]},
+ {q:"Define the relationship?",a:[
+   ["💍","We're basically married (it's week 2)","lovebomb"],
+   ["🌫️","Let's not put pressure with labels","ice"],
+   ["🏃","New phone who dis","ghost"],
+   ["🗣️","Have an actual convo about it","green"]]},
+ {q:"Your ex texts 'I miss you.' You:",a:[
+   ["📖","Tell my entire FYP the saga","main"],
+   ["👀","Reply but don't tell who I'm seeing now","phone"],
+   ["🚪","Block. No closure needed (for them)","ghost"],
+   ["🧊","Read it, feel nothing, move on","ice"]]},
+ {q:"First date energy:",a:[
+   ["🎤","I talk for 90 minutes straight","main"],
+   ["🥀","Already planning our wedding hashtag","lovebomb"],
+   ["📲","Texting someone else under the table","phone"],
+   ["👂","Actually ask them questions","green"]]},
+ {q:"They leave their phone unlocked. You:",a:[
+   ["🕵️","Full FBI investigation, obviously","phone"],
+   ["😇","Don't touch it, not my business","green"],
+   ["🪞","Check if they posted about ME","main"],
+   ["🤔","Wouldn't notice, I'm emotionally elsewhere","ice"]]},
+ {q:"How do you handle an argument?",a:[
+   ["💨","Disappear for 3 business days","ghost"],
+   ["📢","Make it everyone's problem online","main"],
+   ["❄️","Go cold and shut down","ice"],
+   ["🛠️","Talk it out like an adult","green"]]},
+ {q:"Pick your toxic trait:",a:[
+   ["🥵","I love-bomb then panic","lovebomb"],
+   ["📵","I keep 4 talking stages alive","phone"],
+   ["🫥","I emotionally check out","ice"],
+   ["✨","Genuinely... I think I'm fine?","green"]]},
+ {q:"Your camera roll is 90%:",a:[
+   ["🤳","Me. All me. Selfies for days","main"],
+   ["📸","Screenshots of their texts as evidence","phone"],
+   ["❤️","Pics of someone I've known 6 days","lovebomb"],
+   ["🌅","Random stuff, dogs, sunsets","green"]]},
+ {q:"They want to meet your friends. You:",a:[
+   ["🎉","Already introduced them as 'the one'","lovebomb"],
+   ["😬","'Let's not rush things' (it's been a year)","ice"],
+   ["🫥","Suddenly very busy forever","ghost"],
+   ["🍻","Sure, set it up","green"]]},
+ {q:"Your love language is:",a:[
+   ["📱","Quality time (with my phone)","phone"],
+   ["🎭","Words of affirmation (about me)","main"],
+   ["🎁","Grand gestures on day one","lovebomb"],
+   ["🤝","Whatever actually works for us","green"]]},
+ {q:"Situationship status:",a:[
+   ["🔁","I have several, thank you","phone"],
+   ["⏳","Undefined and I like it that way","ice"],
+   ["💔","I ended it by just... stopping","ghost"],
+   ["📍","We talked, we're clear","green"]]},
+ {q:"Be honest — your exes would call you:",a:[
+   ["💣","Intense","lovebomb"],
+   ["👻","MIA","ghost"],
+   ["🧊","Distant","ice"],
+   ["🟢","...weirdly normal?","green"]]},
+ {q:"Your phone's at 2%. The text you MUST send first:",a:[
+   ["🥹","'Goodnight, already miss you 🥺'","lovebomb"],
+   ["📵","'gtg phone dying' (it isn't)","phone"],
+   ["🤐","Nothing. They'll survive.","ice"],
+   ["🔋","'Charging, talk in a bit'","green"]]},
+ {q:"They post a thirst trap. You:",a:[
+   ["💬","Comment 5 fire emojis in 0.2s","lovebomb"],
+   ["👀","Screenshot it to the group chat","main"],
+   ["🧊","Don't react. Unbothered.","ice"],
+   ["❤️","Like it and move on","green"]]},
+ {q:"Your idea of 'taking it slow':",a:[
+   ["📅","Meeting their parents by week 3","lovebomb"],
+   ["🌫️","Never defining anything, ever","ice"],
+   ["🏃","Slow = I vanish between dates","ghost"],
+   ["🐢","Actually pacing things out","green"]]},
+ {q:"Someone says 'we need to talk.' Your gut:",a:[
+   ["😱","Spiral + overshare for an hour","lovebomb"],
+   ["🚪","Pre-emptively block them","ghost"],
+   ["🧊","Brace to feel absolutely nothing","ice"],
+   ["🪑","Okay — sit down and listen","green"]]},
+ {q:"Your dating apps right now:",a:[
+   ["🔥","Still active 'just in case'","phone"],
+   ["🗑️","Deleted, I'm all in (again)","lovebomb"],
+   ["📂","Open but I never reply","ice"],
+   ["✅","Deleted — I'm seeing someone","green"]]},
+ {q:"They cook you dinner. You:",a:[
+   ["📸","Film it for content first","main"],
+   ["💍","Decide this is THE person","lovebomb"],
+   ["📲","Eat while texting someone else","phone"],
+   ["🍝","Say thanks and enjoy it","green"]]},
+ {q:"Your texting style:",a:[
+   ["📜","Instant paragraphs. Many.","lovebomb"],
+   ["🕐","One word, three hours later","phone"],
+   ["🥶","Dry. Extremely dry.","ice"],
+   ["💬","Normal, responsive, clear","green"]]},
+ {q:"They ask to be exclusive. You:",a:[
+   ["🔓","Said yes on day one","lovebomb"],
+   ["🔒","'Let's not rush titles'","ice"],
+   ["📶","I'm connected to 3 networks","phone"],
+   ["🤝","Sure — let's both commit","green"]]},
+ {q:"Friends describe your love life as:",a:[
+   ["🎢","A rollercoaster they didn't board","lovebomb"],
+   ["📺","A weekly drama series","main"],
+   ["🌵","An emotional desert","ice"],
+   ["☕","Stable, kinda boring honestly","green"]]},
+ {q:"You catch feelings. First move:",a:[
+   ["💌","Confess everything immediately","lovebomb"],
+   ["🙈","Deny, deflect, disappear","ghost"],
+   ["🧊","Suppress it until it dies","ice"],
+   ["🗣️","Say it when the time's right","green"]]},
+ {q:"A date's going badly. You:",a:[
+   ["🚽","'Bathroom' → never return","ghost"],
+   ["🎭","Save it as my origin story","main"],
+   ["📱","Start replying to other chats","phone"],
+   ["🙂","Politely wrap it up","green"]]},
+ {q:"They get a big promotion. You:",a:[
+   ["🎉","Throw a party — for the photos","main"],
+   ["😟","Worry they'll outgrow me","lovebomb"],
+   ["🧊","'Cool' (feel nothing)","ice"],
+   ["🥳","Genuinely celebrate them","green"]]},
+ {q:"They want a night alone. You feel:",a:[
+   ["🥺","Hurt and immediately spiral","lovebomb"],
+   ["😠","Like they're hiding something","phone"],
+   ["😌","Totally fine","green"],
+   ["🧊","Eh, less work for me","ice"]]},
+ {q:"Your 3am text reads:",a:[
+   ["🥹","'You awake? I miss you so much'","lovebomb"],
+   ["👀","'wyd' to three people","phone"],
+   ["🚫","I send nothing, ever","ice"],
+   ["😴","I'm asleep, like a normal person","green"]]},
+ {q:"Their ex likes their photo. You:",a:[
+   ["🕵️","Stalk the ex's whole profile","phone"],
+   ["💥","Demand they block them now","lovebomb"],
+   ["🧊","Pretend not to care (I do)","ice"],
+   ["🙂","Trust them, let it go","green"]]},
+ {q:"You catch the ick. You:",a:[
+   ["👻","Vanish, no explanation","ghost"],
+   ["📵","Keep them as a backup anyway","phone"],
+   ["🧊","Go cold instantly","ice"],
+   ["🙂","Be honest it's not a match","green"]]},
+ {q:"Your current red-flag era is:",a:[
+   ["💣","Love-bomb-and-spiral era","lovebomb"],
+   ["👻","Disappearing-act era","ghost"],
+   ["📱","Keeping-options era","phone"],
+   ["🟢","…healing era, actually","green"]]},
+ {q:"'Where do you see us in 5 years?'",a:[
+   ["🏡","Married, 3 kids, names picked","lovebomb"],
+   ["🌫️","Can we not do the future thing","ice"],
+   ["📱","Depends who I'm talking to then","phone"],
+   ["🧭","A real, hopeful answer","green"]]},
+ {q:"They say 'I need some space.' You:",a:[
+   ["😱","Send 14 paragraphs immediately","lovebomb"],
+   ["🚪","Give them space (forever)","ghost"],
+   ["🧊","Go colder than them","ice"],
+   ["🫶","Respect it, check in later","green"]]},
+ {q:"Your exes have a group chat. Its title:",a:[
+   ["🏃","'Survivors of the Vanishing'","ghost"],
+   ["💣","'Moved Too Fast Anonymous'","lovebomb"],
+   ["🧊","'The Cold Cases'","ice"],
+   ["🤷","'Honestly They Were Fine'","green"]]},
+ {q:"What usually ends your relationships?",a:[
+   ["🏃","I vanish","ghost"],
+   ["💣","I burn too hot, too fast","lovebomb"],
+   ["🧊","I freeze them out","ice"],
+   ["🤝","Normal stuff, amicably","green"]]},
+ {q:"After a fight you post:",a:[
+   ["🎵","Cryptic sad lyrics","main"],
+   ["🥹","A paragraph about loving hard","lovebomb"],
+   ["📵","A thirst trap (let them see)","phone"],
+   ["🚫","Nothing — I talk to them","green"]]},
+ {q:"You use therapy-speak to:",a:[
+   ["🛡️","Win fights ('that's a boundary')","main"],
+   ["🚪","Justify ghosting ('protecting peace')","ghost"],
+   ["🧊","Explain why I can't get close","ice"],
+   ["💬","Actually communicate better","green"]]},
+ {q:"Last one — pick your fate:",a:[
+   ["💣","Love hard, crash harder","lovebomb"],
+   ["👻","Vanish into the night","ghost"],
+   ["📱","Keep all options forever","phone"],
+   ["🟢","…just be normal and happy","green"]]}
+];
+
+const QUIZ_LEN=12;
+let Q=[], qi=0, scores={};
+const $=id=>document.getElementById(id);
+
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function pickQuestions(){ return shuffle(POOL).slice(0,QUIZ_LEN).map(it=>({q:it.q,a:shuffle(it.a)})); }
+
+function start(){ qi=0; scores={}; for(const k in FLAGS) scores[k]=0; Q=pickQuestions(); $('intro').classList.add('hidden'); $('quiz').classList.remove('hidden'); render(); }
+
+function render(){
+  const item=Q[qi];
+  $('qnum').textContent=`Question ${qi+1} of ${Q.length}`;
+  $('qtext').textContent=item.q;
+  $('bar').style.width=((qi)/Q.length*100)+'%';
+  const box=$('opts'); box.innerHTML='';
+  item.a.forEach(([e,label,flag])=>{
+    const b=document.createElement('button');
+    b.className='opt'; b.innerHTML=`<span class="e">${e}</span>${label}`;
+    b.onclick=()=>choose(flag);
+    box.appendChild(b);
+  });
+  $('midad').classList.toggle('hidden', qi!==Math.floor(Q.length/2));
+  $('quiz').classList.remove('screen'); void $('quiz').offsetWidth; $('quiz').classList.add('screen');
+}
+
+function choose(flag){
+  scores[flag]=(scores[flag]||0)+1;
+  qi++;
+  if(qi>=Q.length){ finish(); } else { render(); }
+}
+
+function finish(){
+  $('bar').style.width='100%';
+  $('quiz').classList.add('hidden'); $('midad').classList.add('hidden');
+  let win=Object.keys(scores).reduce((a,b)=>scores[b]>scores[a]?b:a,'green');
+  if(win==='green' && scores.green < Math.ceil(Q.length*0.6)){
+    const noGreen={...scores}; delete noGreen.green;
+    win=Object.keys(noGreen).reduce((a,b)=>noGreen[b]>noGreen[a]?b:a,'phone');
+  }
+  const f=FLAGS[win];
+  $('rEmoji').textContent=f.emoji;
+  $('rName').textContent=f.name;
+  $('rTag').textContent=f.tag;
+  $('rDesc').textContent=f.desc;
+  const intensity = win==='green'?1:Math.min(5, 2+Math.round(scores[win]/Q.length*5));
+  $('rMeter').innerHTML=Array.from({length:5},(_,i)=>`<span class="${i<intensity?'on':''}">${win==='green'?'🟢':'🚩'}</span>`).join('');
+  window._result=f.name;
+  $('result').classList.remove('hidden');
+  $('result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function restart(){ $('result').classList.add('hidden'); $('intro').classList.remove('hidden'); $('bar').style.width='0%'; window.scrollTo({top:0,behavior:'smooth'}); }
+
+function shareResult(){
+  const txt=`I'm "${window._result}" 🚩 What's YOUR red flag?`;
+  const url='https://picklytools.com/redflagquiz/';
+  if(navigator.share){ navigator.share({title:"What's Your Red Flag?",text:txt+' Take the test: '+url}).catch(()=>{}); }
+  else { copyText(`${txt} Take the test: ${url}`); }
+}
+function dareSomeone(){
+  const txt=`I dare you to take the Red Flag Quiz 😈🚩 I already got exposed. Bet you can't post yours:`;
+  const url='https://picklytools.com/redflagquiz/';
+  if(navigator.share){ navigator.share({title:"Red Flag Quiz dare",text:txt+' '+url}).catch(()=>{}); }
+  else { copyText(`${txt} ${url}`); }
+}
+function copyText(t){
+  navigator.clipboard&&navigator.clipboard.writeText(t).then(()=>{ $('copyMsg').textContent='Copied! Paste it anywhere 📋'; }).catch(()=>{
+    const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select();
+    try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta);
+    $('copyMsg').textContent='Copied! Paste it anywhere 📋';
+  });
+}
+</script>
+<script>try{var _pr=JSON.parse(localStorage.getItem("pickly_recent")||"[]").filter(function(x){return x!=="redflagquiz"});_pr.unshift("redflagquiz");localStorage.setItem("pickly_recent",JSON.stringify(_pr.slice(0,6)))}catch(e){}</script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+</body>
+</html>
