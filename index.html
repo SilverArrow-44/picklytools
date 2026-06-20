@@ -264,6 +264,9 @@ footer{border-top:1px solid var(--bd);margin-top:70px;padding:48px 0 60px}
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
 .reveal.in{opacity:1;transform:none}
+.tool{scroll-margin-top:96px}
+.tool:target{opacity:1!important;transform:none!important;animation:pkTargetPulse 1.8s ease 1}
+@keyframes pkTargetPulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,0)}25%{box-shadow:0 0 0 3px var(--edge,#FF2060)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
 /* Fail-safe: if JS is disabled/blocked, show everything (also helps crawlers) */
 .no-js .reveal{opacity:1;transform:none}
 /* Respect users who prefer reduced motion */
@@ -374,42 +377,42 @@ footer{border-top:1px solid var(--bd);margin-top:70px;padding:48px 0 60px}
     <div class="grp-head reveal"><h3>🎯 Decision Makers</h3><span class="grp-count">6 tools</span><span class="grp-line"></span></div>
     <div class="tools">
 
-      <a class="tool reveal" href="/spinit/" style="--glow:#FF2060;--edge:#FF6B8A;--icbg:linear-gradient(135deg,rgba(255,32,96,.25),rgba(255,140,0,.2))">
+      <a id="t-spinit" class="tool reveal" href="/spinit/" style="--glow:#FF2060;--edge:#FF6B8A;--icbg:linear-gradient(135deg,rgba(255,32,96,.25),rgba(255,140,0,.2))">
         <div class="tool-ic">🎡</div>
         <h3>SpinIt — Decision Spinner</h3>
         <p>Spin a colorful wheel to pick a winner, choose what to eat, or settle who goes first. Add your own options or use ready-made categories.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/coinflip/" style="--glow:#FFD600;--edge:#FFD600;--icbg:linear-gradient(135deg,rgba(255,214,0,.22),rgba(255,140,0,.2))">
+      <a id="t-coinflip" class="tool reveal" href="/coinflip/" style="--glow:#FFD600;--edge:#FFD600;--icbg:linear-gradient(135deg,rgba(255,214,0,.22),rgba(255,140,0,.2))">
         <div class="tool-ic">🪙</div>
         <h3>Coin Flip</h3>
         <p>Heads or tails, instantly. Flip one coin, a whole handful at once, or run a best-of series — with a satisfying animated toss.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/randomnumber/" style="--glow:#B061FF;--edge:#B061FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.22),rgba(255,32,96,.16))">
+      <a id="t-randomnumber" class="tool reveal" href="/randomnumber/" style="--glow:#B061FF;--edge:#B061FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.22),rgba(255,32,96,.16))">
         <div class="tool-ic">🔢</div>
         <h3>Random Number Generator</h3>
         <p>Pick a number in any range, draw several with no repeats, or roll dice. Great for raffles, games, and quick draws.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/teampicker/" style="--glow:#FFD600;--edge:#FFD600;--icbg:linear-gradient(135deg,rgba(255,214,0,.2),rgba(255,140,0,.18))">
+      <a id="t-teampicker" class="tool reveal" href="/teampicker/" style="--glow:#FFD600;--edge:#FFD600;--icbg:linear-gradient(135deg,rgba(255,214,0,.2),rgba(255,140,0,.18))">
         <div class="tool-ic">👥</div>
         <h3>Team Picker</h3>
         <p>Drop in a list of names and split them into fair, random teams in one tap — perfect for sports, projects, and games.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/whattoeat/" style="--glow:#FF8C00;--edge:#FF8C00;--icbg:linear-gradient(135deg,rgba(255,140,0,.2),rgba(255,214,0,.18))">
+      <a id="t-whattoeat" class="tool reveal" href="/whattoeat/" style="--glow:#FF8C00;--edge:#FF8C00;--icbg:linear-gradient(135deg,rgba(255,140,0,.2),rgba(255,214,0,.18))">
         <div class="tool-ic">🍽️</div>
         <h3>What Should I Eat?</h3>
         <p>Can't pick a meal? Set your mood — cuisine, effort, diet — and get a tasty suggestion in seconds, or just hit surprise me.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/magic8ball/" style="--glow:#B061FF;--edge:#B061FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.22),rgba(0,229,255,.16))">
+      <a id="t-magic8ball" class="tool reveal" href="/magic8ball/" style="--glow:#B061FF;--edge:#B061FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.22),rgba(0,229,255,.16))">
         <div class="tool-ic">🎱</div>
         <h3>Magic 8 Ball</h3>
         <p>Ask any yes/no question and shake the ball for a classic fortune. All 20 original answers, fully animated.</p>
@@ -420,35 +423,35 @@ footer{border-top:1px solid var(--bd);margin-top:70px;padding:48px 0 60px}
     <div class="grp-head reveal"><h3>🎉 Party &amp; Games</h3><span class="grp-count">5 tools</span><span class="grp-line"></span></div>
     <div class="tools">
 
-      <a class="tool reveal" href="/wouldyourather/" style="--glow:#FF2060;--edge:#FF2060;--icbg:linear-gradient(135deg,rgba(255,32,96,.22),rgba(0,229,255,.16))">
+      <a id="t-wouldyourather" class="tool reveal" href="/wouldyourather/" style="--glow:#FF2060;--edge:#FF2060;--icbg:linear-gradient(135deg,rgba(255,32,96,.22),rgba(0,229,255,.16))">
         <div class="tool-ic">🤔</div>
         <h3>Would You Rather</h3>
         <p>Hundreds of impossible choices across funny, hard, and gross categories. Pick a side and see how you compare.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/truthordare/" style="--glow:#B061FF;--edge:#B061FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.22),rgba(255,32,96,.16))">
+      <a id="t-truthordare" class="tool reveal" href="/truthordare/" style="--glow:#B061FF;--edge:#B061FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.22),rgba(255,32,96,.16))">
         <div class="tool-ic">🎭</div>
         <h3>Truth or Dare</h3>
         <p>The ultimate party game — family, friends, and spicy modes with hundreds of truths and dares, plus a card-flip reveal.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/neverhaveiever/" style="--glow:#00E5FF;--edge:#00E5FF;--icbg:linear-gradient(135deg,rgba(0,229,255,.2),rgba(176,97,255,.18))">
+      <a id="t-neverhaveiever" class="tool reveal" href="/neverhaveiever/" style="--glow:#00E5FF;--edge:#00E5FF;--icbg:linear-gradient(135deg,rgba(0,229,255,.2),rgba(176,97,255,.18))">
         <div class="tool-ic">🙊</div>
         <h3>Never Have I Ever</h3>
         <p>Hundreds of confession prompts across clean, party, and spicy modes — one tap for the next. Perfect with friends.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/rockpaperscissors/" style="--glow:#00E5FF;--edge:#00E5FF;--icbg:linear-gradient(135deg,rgba(0,229,255,.2),rgba(255,140,0,.16))">
+      <a id="t-rockpaperscissors" class="tool reveal" href="/rockpaperscissors/" style="--glow:#00E5FF;--edge:#00E5FF;--icbg:linear-gradient(135deg,rgba(0,229,255,.2),rgba(255,140,0,.16))">
         <div class="tool-ic">✊</div>
         <h3>Rock Paper Scissors</h3>
         <p>Take on the computer in single rounds or best-of-3 and best-of-5 matches, with score tracking and animations.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/slotmachine/" style="--glow:#FFD600;--edge:#FFD600;--icbg:linear-gradient(135deg,rgba(255,214,0,.22),rgba(255,32,96,.16))">
+      <a id="t-slotmachine" class="tool reveal" href="/slotmachine/" style="--glow:#FFD600;--edge:#FFD600;--icbg:linear-gradient(135deg,rgba(255,214,0,.22),rgba(255,32,96,.16))">
         <div class="tool-ic">🎰</div>
         <h3>Slot Machine</h3>
         <p>Spin three fruit reels and win virtual coins, with confetti on the big wins. Pure fun — no real money, ever.</p>
@@ -459,63 +462,63 @@ footer{border-top:1px solid var(--bd);margin-top:70px;padding:48px 0 60px}
     <div class="grp-head reveal"><h3>🧮 Calculators &amp; Planners</h3><span class="grp-count">7 tools</span><span class="grp-line"></span></div>
     <div class="tools">
 
-      <a class="tool reveal" href="/agecalculator/" style="--glow:#00E5FF;--edge:#40EFFF;--icbg:linear-gradient(135deg,rgba(0,229,255,.25),rgba(176,97,255,.2))">
+      <a id="t-agecalculator" class="tool reveal" href="/agecalculator/" style="--glow:#00E5FF;--edge:#40EFFF;--icbg:linear-gradient(135deg,rgba(0,229,255,.25),rgba(176,97,255,.2))">
         <div class="tool-ic">🎂</div>
         <h3>Age Calculator</h3>
         <p>Find your exact age in years, months, days, and hours. See your next birthday countdown and what day you were born.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/datecalculator/" style="--glow:#FFD600;--edge:#FFE040;--icbg:linear-gradient(135deg,rgba(255,214,0,.25),rgba(255,140,0,.2))">
+      <a id="t-datecalculator" class="tool reveal" href="/datecalculator/" style="--glow:#FFD600;--edge:#FFE040;--icbg:linear-gradient(135deg,rgba(255,214,0,.25),rgba(255,140,0,.2))">
         <div class="tool-ic">📅</div>
         <h3>Date Calculator</h3>
         <p>Count days between two dates, or add and subtract days, weeks, months and years from any date.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/bmi/" style="--glow:#00E676;--edge:#40FF90;--icbg:linear-gradient(135deg,rgba(0,230,118,.25),rgba(0,229,255,.2))">
+      <a id="t-bmi" class="tool reveal" href="/bmi/" style="--glow:#00E676;--edge:#40FF90;--icbg:linear-gradient(135deg,rgba(0,230,118,.25),rgba(0,229,255,.2))">
         <div class="tool-ic">⚖️</div>
         <h3>BMI Calculator</h3>
         <p>Calculate your Body Mass Index in metric or imperial. Shows your BMI category and healthy weight range.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/discount/" style="--glow:#FF8C00;--edge:#FFA040;--icbg:linear-gradient(135deg,rgba(255,140,0,.25),rgba(255,32,96,.2))">
+      <a id="t-discount" class="tool reveal" href="/discount/" style="--glow:#FF8C00;--edge:#FFA040;--icbg:linear-gradient(135deg,rgba(255,140,0,.25),rgba(255,32,96,.2))">
         <div class="tool-ic">🏷️</div>
         <h3>Discount Calculator</h3>
         <p>Six discount modes: percent off, amount off, BOGO, stacked discounts, reverse price finder, and cashback.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/mortgage/" style="--glow:#B061FF;--edge:#C480FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.25),rgba(0,229,255,.2))">
+      <a id="t-mortgage" class="tool reveal" href="/mortgage/" style="--glow:#B061FF;--edge:#C480FF;--icbg:linear-gradient(135deg,rgba(176,97,255,.25),rgba(0,229,255,.2))">
         <div class="tool-ic">🏠</div>
         <h3>Mortgage Calculator</h3>
         <p>Full monthly home cost including P&I, tax, insurance, HOA, PMI, maintenance, and utilities. Color breakdown included.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/compatibility/" style="--glow:#FF2060;--edge:#FF6B8A;--icbg:linear-gradient(135deg,rgba(255,32,96,.25),rgba(255,214,0,.2))">
+      <a id="t-compatibility" class="tool reveal" href="/compatibility/" style="--glow:#FF2060;--edge:#FF6B8A;--icbg:linear-gradient(135deg,rgba(255,32,96,.25),rgba(255,214,0,.2))">
         <div class="tool-ic">💕</div>
         <h3>Compatibility Calculator</h3>
         <p>Enter two names and birthdays for a fun compatibility score. Star signs, percentage breakdown — 100% entertainment.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/timezones/" style="--glow:#00E5FF;--edge:#00E5FF;--icbg:linear-gradient(135deg,rgba(0,229,255,.22),rgba(108,99,255,.2))">
+      <a id="t-timezones" class="tool reveal" href="/timezones/" style="--glow:#00E5FF;--edge:#00E5FF;--icbg:linear-gradient(135deg,rgba(0,229,255,.22),rgba(108,99,255,.2))">
         <div class="tool-ic">🌍</div>
         <h3>Timezone Overlap Finder</h3>
         <p>Find meeting times that work across every time zone. Enter your team's working hours and see the overlap — plus a fast time converter.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/redflagquiz/" style="--glow:#FF2060;--edge:#FF4D8D;--icbg:linear-gradient(135deg,rgba(255,32,96,.25),rgba(255,140,0,.18))">
+      <a id="t-redflagquiz" class="tool reveal" href="/redflagquiz/" style="--glow:#FF2060;--edge:#FF4D8D;--icbg:linear-gradient(135deg,rgba(255,32,96,.25),rgba(255,140,0,.18))">
         <div class="tool-ic">🚩</div>
         <h3>Red Flag Quiz</h3>
         <p>What's your dating red flag? 12 random questions from 100+ expose your archetype — Love Bomber, Ghoster, Phone Snake, or rare Green Flag.</p>
         <span class="go">Open tool →</span>
       </a>
 
-      <a class="tool reveal" href="/toxicometer/" style="--glow:#22c55e;--edge:#4ade80;--icbg:linear-gradient(135deg,rgba(34,197,94,.2),rgba(239,68,68,.15))">
+      <a id="t-toxicometer" class="tool reveal" href="/toxicometer/" style="--glow:#22c55e;--edge:#4ade80;--icbg:linear-gradient(135deg,rgba(34,197,94,.2),rgba(239,68,68,.15))">
         <div class="tool-ic">☢️</div>
         <h3>Toxic-o-Meter</h3>
         <p>How toxic are you, actually? 12 weighted questions score you 0–100% with an animated needle gauge. From Certified Green Flag to Biohazard.</p>
