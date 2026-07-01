@@ -146,37 +146,53 @@ footer a:hover{color:var(--tx)}
 <div class="result" id="brResult"><div id="brOut"></div></div>
 <script>
 function shuffleB(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+var BR=null, BW={};
+function injectBrCss(){ if(document.getElementById('br-css'))return; var st=document.createElement('style'); st.id='br-css'; st.textContent=".brp{display:block;width:100%;text-align:left;background:rgba(255,255,255,.04);border:1.5px solid var(--bd);color:var(--tx);font-weight:800;font-size:14px;padding:10px 12px;border-radius:10px;cursor:pointer;font-family:inherit;transition:all .12s}.brp:hover:not(:disabled){border-color:var(--cy);background:rgba(0,229,255,.08)}.brp:disabled{opacity:.45;cursor:default}.brp.win{border-color:var(--gr);background:rgba(0,230,118,.18);color:#fff}.brvs{text-align:center;color:var(--mt);font-size:11px;margin:2px 0}"; document.head.appendChild(st); }
 function genBracket(){
  var names=document.getElementById('brNames').value.split('\n').map(function(x){return x.trim();}).filter(Boolean);
  var msg=document.getElementById('brMsg');var r=document.getElementById('brResult');
  if(names.length<3||names.length>32){msg.textContent='Enter between 3 and 32 participants.';r.classList.remove('show');return;}
  if(document.getElementById('brSeed').value==='shuffle')shuffleB(names);
  var size=Math.pow(2,Math.ceil(Math.log2(names.length)));
- var byes=size-names.length;
- var n=names.length,i,mno=0;
- // Round 1: top `byes` seeds get a bye (auto-advance), the rest are paired
- var rounds=[],r1=[];
- for(i=0;i<byes;i++){mno++;r1.push({a:names[i],b:'BYE',win:names[i],bye:true,no:mno});}
- for(i=byes;i<n;i+=2){mno++;r1.push({a:names[i],b:names[i+1],win:'Winner M'+mno,bye:false,no:mno});}
- rounds.push(r1);
- // Subsequent rounds: each match is fed by two winners from the previous round
- var prev=r1;
- while(prev.length>1){
-   var cur=[];
-   for(i=0;i<prev.length;i+=2){mno++;cur.push({a:prev[i].win,b:prev[i+1].win,win:'Winner M'+mno,bye:false,no:mno});}
-   rounds.push(cur);prev=cur;
- }
+ var byes=size-names.length, n=names.length, i, mno=0;
+ var rounds=[], r1=[];
+ for(i=0;i<byes;i++){mno++; r1.push({no:mno, seedA:names[i], seedB:'BYE', feeders:null});}
+ for(i=byes;i<n;i+=2){mno++; r1.push({no:mno, seedA:names[i], seedB:names[i+1], feeders:null});}
+ rounds.push(r1); var prev=r1;
+ while(prev.length>1){var cur=[];for(i=0;i<prev.length;i+=2){mno++;cur.push({no:mno, seedA:null, seedB:null, feeders:[prev[i].no, prev[i+1].no]});}rounds.push(cur);prev=cur;}
+ BR={names:names,size:size,byes:byes,rounds:rounds,matchCount:mno};
+ BW={};
+ r1.forEach(function(m){ if(m.seedB==='BYE') BW[m.no]=m.seedA; });
+ injectBrCss();
+ msg.textContent=n+' players \u00b7 size '+size+' \u00b7 '+byes+' bye'+(byes===1?'':'s')+' \u00b7 tap a name to advance them';
+ r.classList.add('show');
+ renderBracket();
+}
+function brPartsOf(m){ return m.feeders ? [BW[m.feeders[0]]||null, BW[m.feeders[1]]||null] : [m.seedA, m.seedB]; }
+function brMatch(no){ for(var r=0;r<BR.rounds.length;r++)for(var i=0;i<BR.rounds[r].length;i++)if(BR.rounds[r][i].no===no)return BR.rounds[r][i]; return null; }
+function pickWinner(no,side){ var m=brMatch(no); if(!m)return; var p=brPartsOf(m); var c=p[side]; if(c==null||c==='BYE')return; BW[no]=c; renderBracket(); }
+function renderBracket(){
+ // top-down prune: drop any stored winner no longer valid, keep byes resolved
+ BR.rounds.forEach(function(rd){ rd.forEach(function(m){ var p=brPartsOf(m); if(BW[m.no]!=null && p.indexOf(BW[m.no])===-1) delete BW[m.no]; if(m.seedB==='BYE') BW[m.no]=m.seedA; }); });
  function roundName(len){return len===1?'Final':len===2?'Semifinals':len===4?'Quarterfinals':len===8?'Round of 16':'Round of '+(len*2);}
  var html='';
- rounds.forEach(function(rd,idx){
+ BR.rounds.forEach(function(rd,idx){
    html+='<div class="section-title" style="margin-top:'+(idx?'18px':'0')+'">'+roundName(rd.length)+'</div>';
    rd.forEach(function(m){
-     html+='<div class="stat" style="margin-bottom:8px;text-align:left"><span style="color:var(--mt);font-size:11px;font-weight:800">M'+m.no+'</span>&nbsp; <span style="font-weight:800">'+m.a+'</span> <span style="color:var(--mt)">vs</span> <span style="font-weight:800">'+m.b+'</span>'+(m.bye?' <span style="color:var(--gr)">&mdash; '+m.win+' advances</span>':'')+'</div>';
+     var p=brPartsOf(m), w=BW[m.no]||null;
+     html+='<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><div style="color:var(--mt);font-size:11px;font-weight:800;width:26px;flex:none">M'+m.no+'</div><div style="flex:1">';
+     [0,1].forEach(function(side){
+       var name=p[side], isBye=(name==='BYE'), known=(name!=null&&!isBye);
+       var cls='brp'+(w!=null&&name===w?' win':''), label=(name==null?'\u2014':name), dis=known?'':' disabled';
+       html+='<button class="'+cls+'"'+dis+' onclick="pickWinner('+m.no+','+side+')">'+label+'</button>';
+       if(side===0) html+='<div class="brvs">vs</div>';
+     });
+     html+='</div></div>';
    });
  });
+ var fin=BR.rounds[BR.rounds.length-1][0], champ=BW[fin.no];
+ if(champ){ html+='<div style="margin-top:16px;text-align:center;background:linear-gradient(135deg,rgba(255,214,0,.18),rgba(255,140,0,.12));border:1px solid rgba(255,214,0,.4);border-radius:16px;padding:18px"><div style="font-size:34px">\ud83c\udfc6</div><div style="font-family:\'Fredoka\',\'Fredoka Fallback\',sans-serif;font-weight:700;font-size:22px;color:#FFD600">Champion: '+champ+'</div></div>'; }
  document.getElementById('brOut').innerHTML=html;
- msg.textContent=n+' players \u00b7 bracket size '+size+' \u00b7 '+byes+' bye'+(byes===1?'':'s')+' \u00b7 '+mno+' matches';
- r.classList.add('show');
 }
 </script>
 <div class="related">

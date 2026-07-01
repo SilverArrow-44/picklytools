@@ -1,8 +1,9 @@
-// Pickly Service Worker — v1
+// Pickly Service Worker — v2 (2026-06-30)
 // Caches the shell + all tool pages for offline play.
 // Strategy: Cache-first for assets, network-first for HTML.
+// Bump CACHE on every release so returning visitors get fresh pages.
 
-const CACHE = 'pickly-v1';
+const CACHE = 'pickly-v2-20260630';
 
 const SHELL = [
   '/',
@@ -27,6 +28,14 @@ const SHELL = [
   '/datecalculator/',
   '/discount/',
   '/mortgage/',
+  '/redflagquiz/',
+  '/toxicometer/',
+  '/tipcalculator/',
+  '/salestax/',
+  '/businessdays/',
+  '/secretsanta/',
+  '/bracketgenerator/',
+  '/timezoneoverlap/',
 ];
 
 // Install: cache the shell
