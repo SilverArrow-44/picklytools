@@ -153,18 +153,29 @@ function genBracket(){
  if(document.getElementById('brSeed').value==='shuffle')shuffleB(names);
  var size=Math.pow(2,Math.ceil(Math.log2(names.length)));
  var byes=size-names.length;
- var html='<div class="section-title">Round 1</div>';
- var i;
- for(i=0;i<byes;i++){
-   html+='<div class="stat" style="margin-bottom:8px;text-align:left"><span style="font-weight:800">'+names[i]+'</span> <span style="color:var(--mt)">vs</span> <span style="font-weight:800">BYE</span> <span style="color:var(--gr)">&mdash; '+names[i]+' advances</span></div>';
+ var n=names.length,i,mno=0;
+ // Round 1: top `byes` seeds get a bye (auto-advance), the rest are paired
+ var rounds=[],r1=[];
+ for(i=0;i<byes;i++){mno++;r1.push({a:names[i],b:'BYE',win:names[i],bye:true,no:mno});}
+ for(i=byes;i<n;i+=2){mno++;r1.push({a:names[i],b:names[i+1],win:'Winner M'+mno,bye:false,no:mno});}
+ rounds.push(r1);
+ // Subsequent rounds: each match is fed by two winners from the previous round
+ var prev=r1;
+ while(prev.length>1){
+   var cur=[];
+   for(i=0;i<prev.length;i+=2){mno++;cur.push({a:prev[i].win,b:prev[i+1].win,win:'Winner M'+mno,bye:false,no:mno});}
+   rounds.push(cur);prev=cur;
  }
- for(i=byes;i<names.length;i+=2){
-   html+='<div class="stat" style="margin-bottom:8px;text-align:left"><span style="font-weight:800">'+names[i]+'</span> <span style="color:var(--mt)">vs</span> <span style="font-weight:800">'+names[i+1]+'</span></div>';
- }
- var remaining=size/4,rn=2;
- while(remaining>=1){var label=remaining===1?'Final':(remaining===2?'Semifinals':(remaining===4?'Quarterfinals':'Round '+rn));html+='<div class="section-title" style="margin-top:16px">'+label+'</div><div class="stat" style="text-align:left;color:var(--mt)">'+remaining+' match'+(remaining>1?'es':'')+' &mdash; winners advance</div>';if(remaining===1)break;remaining/=2;rn++;}
+ function roundName(len){return len===1?'Final':len===2?'Semifinals':len===4?'Quarterfinals':len===8?'Round of 16':'Round of '+(len*2);}
+ var html='';
+ rounds.forEach(function(rd,idx){
+   html+='<div class="section-title" style="margin-top:'+(idx?'18px':'0')+'">'+roundName(rd.length)+'</div>';
+   rd.forEach(function(m){
+     html+='<div class="stat" style="margin-bottom:8px;text-align:left"><span style="color:var(--mt);font-size:11px;font-weight:800">M'+m.no+'</span>&nbsp; <span style="font-weight:800">'+m.a+'</span> <span style="color:var(--mt)">vs</span> <span style="font-weight:800">'+m.b+'</span>'+(m.bye?' <span style="color:var(--gr)">&mdash; '+m.win+' advances</span>':'')+'</div>';
+   });
+ });
  document.getElementById('brOut').innerHTML=html;
- msg.textContent=names.length+' players \u00b7 bracket size '+size+' \u00b7 '+byes+' bye'+(byes===1?'':'s');
+ msg.textContent=n+' players \u00b7 bracket size '+size+' \u00b7 '+byes+' bye'+(byes===1?'':'s')+' \u00b7 '+mno+' matches';
  r.classList.add('show');
 }
 </script>
