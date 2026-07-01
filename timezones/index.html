@@ -423,6 +423,17 @@ footer.ft a:hover{color:var(--tx)}
 </div>
 </main>
 
+<!-- PK-RELATED -->
+<section style="max-width:640px;margin:6px auto 0;padding:0 16px">
+  <h2 style="font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;text-align:center;margin:24px 0 12px;color:#f4f4fb">Related tools</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">
+    <a href="/datecalculator/" style="display:inline-block;text-decoration:none;font-weight:800;font-size:13.5px;color:#f4f4fb;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:9px 15px">Date Calculator</a>
+    <a href="/agecalculator/" style="display:inline-block;text-decoration:none;font-weight:800;font-size:13.5px;color:#f4f4fb;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:9px 15px">Age Calculator</a>
+    <a href="/teampicker/" style="display:inline-block;text-decoration:none;font-weight:800;font-size:13.5px;color:#f4f4fb;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:9px 15px">Team Generator</a>
+    <a href="/spinit/" style="display:inline-block;text-decoration:none;font-weight:800;font-size:13.5px;color:#f4f4fb;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:9px 15px">Spin the Wheel</a>
+    </div>
+</section>
+<!-- PK-UPDATED --><p style="text-align:center;color:#9a9ab5;font-size:13px;font-weight:600;margin:26px 0 2px">Last updated: June 2026</p>
 <!-- PK-EXPLORE-START -->
 <style id="pk-explore-css">
 .pk-explore{position:relative;z-index:2;max-width:880px;margin:10px auto 0;padding:26px 20px 6px;font-family:'Nunito','Nunito Fallback',sans-serif;box-sizing:border-box}
@@ -442,7 +453,7 @@ footer.ft a:hover{color:var(--tx)}
   <div class="pk-explore-wrap">
     <div class="pk-explore-top">
       <h2 class="pk-explore-h">Explore more free tools</h2>
-      <a class="pk-explore-link" href="/">All 18 tools &rarr;</a>
+      <a class="pk-explore-link" href="/">All tools &rarr;</a>
     </div>
     <p class="pk-explore-sub">No sign-up, no downloads &mdash; every Pickly tool opens instantly in your browser.</p>
     <div class="pk-explore-grid">
@@ -1244,5 +1255,6 @@ setInterval(renderTimeline,60000);
 </script>
 <script>try{var _pr=JSON.parse(localStorage.getItem("pickly_recent")||"[]").filter(function(x){return x!=="timezones"});_pr.unshift("timezones");localStorage.setItem("pickly_recent",JSON.stringify(_pr.slice(0,6)))}catch(e){}</script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+<script src="/pk-analytics.js" defer></script>
 </body>
 </html>

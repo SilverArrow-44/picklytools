@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PRMM0HXRCG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-PRMM0HXRCG");</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Time Zone Overlap Planner — Best Meeting Time | Pickly</title>
+<!-- Google AdSense -->
+<meta name="google-adsense-account" content="ca-pub-7937234001453997">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7937234001453997" crossorigin="anonymous"></script>
+<meta name="description" content="Free time zone overlap planner. Pick two or three zones and see the hours that fall within everyone's working day — ideal for scheduling remote meetings across the world.">
+<link rel="canonical" href="https://picklytools.com/timezoneoverlap/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Time Zone Overlap Planner — Best Meeting Time | Pickly">
+<meta property="og:description" content="Free time zone overlap planner. Pick two or three zones and see the hours that fall within everyone's working day — ideal for scheduling remote meetings across the world.">
+<meta property="og:url" content="https://picklytools.com/timezoneoverlap/">
+<meta property="og:image" content="https://picklytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://picklytools.com/og-image.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap"></noscript>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "Time Zone Overlap Planner — Best Meeting Time", "url": "https://picklytools.com/timezoneoverlap/", "description": "Free time zone overlap planner. Pick two or three zones and see the hours that fall within everyone's working day — ideal for scheduling remote meetings across the world.", "applicationCategory": "UtilityApplication", "operatingSystem": "Any", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Pickly", "item": "https://picklytools.com/"}, {"@type": "ListItem", "position": 2, "name": "Time Zone Overlap Planner", "item": "https://picklytools.com/timezoneoverlap/"}]}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does the time zone overlap planner work?", "acceptedAnswer": {"@type": "Answer", "text": "Pick two or three zones and your preferred working hours. The tool finds the hours that fall within everyone's working window and shows the shared slot in each local time."}}, {"@type": "Question", "name": "Does it handle daylight saving time?", "acceptedAnswer": {"@type": "Answer", "text": "It uses standard UTC offsets and does not automatically adjust for daylight saving, so double-check your window around DST changeovers."}}, {"@type": "Question", "name": "What if there's no overlap?", "acceptedAnswer": {"@type": "Answer", "text": "Some zones are too far apart for a 9-to-5 overlap. Try widening the working hours, or plan a call slightly outside standard times for one side."}}, {"@type": "Question", "name": "Is it free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes &mdash; free, no sign-up, and it works in any browser."}}]}
+</script>
+<style>
+@font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
+@font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a1f;--bg2:#11112e;--sf:rgba(255,255,255,.05);--sfh:rgba(255,255,255,.09);--bd:rgba(255,255,255,.1);--tx:#f4f4fb;--mt:#9a9ab5;--pk:#FF2060;--or:#FF8C00;--yl:#FFD600;--cy:#00E5FF;--pu:#B061FF;--gr:#00E676;--rl:16px}
+body{font-family:'Nunito','Nunito Fallback',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+h1,h2,h3{font-family:'Fredoka','Fredoka Fallback',sans-serif}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(10,10,31,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:800px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:center;position:relative}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--tx)}
+.brand-mark{width:28px;height:28px}
+.brand-name{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:20px;background:linear-gradient(90deg,#FF2D6E,#FF8C00);background-clip:text;color:transparent}
+.back{position:absolute;right:20px;color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+.wrap{max-width:800px;margin:0 auto;padding:0 20px}
+.head{padding:40px 20px 24px;text-align:center}
+.head h1{font-size:clamp(28px,5vw,44px);font-weight:700;margin-bottom:10px}
+.head p{color:var(--mt);font-size:16px;font-weight:600;max-width:540px;margin:0 auto}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:24px}
+.card+.card{margin-top:16px}
+label{display:block;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--mt);margin-bottom:6px}
+input,select{width:100%;background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:13px 16px;color:var(--tx);font-size:16px;font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:700;outline:none;transition:border .15s}
+input:focus,select:focus{border-color:var(--cy)}
+input[type=number]{-moz-appearance:textfield}
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+select option{background:var(--bg2);color:var(--tx)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:560px){.row,.row3{grid-template-columns:1fr}}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;border:none;border-radius:14px;font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:20px;cursor:pointer;transition:all .15s;margin-top:16px}
+.btn-pk{background:linear-gradient(135deg,var(--pk),var(--or));color:#fff}
+.btn-pk:hover{transform:scale(1.02);box-shadow:0 6px 24px rgba(255,32,96,.3)}
+.btn-cy{background:linear-gradient(135deg,#0af,var(--cy));color:#0a0a1f}
+.btn-gr{background:linear-gradient(135deg,#00c85a,var(--gr));color:#0a0a1f}
+.result{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:28px;margin-top:16px;display:none}
+.result.show{display:block}
+.result-main{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-size:clamp(36px,6vw,60px);font-weight:700;text-align:center;margin-bottom:8px}
+.result-sub{text-align:center;color:var(--mt);font-weight:600;margin-bottom:20px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.stat{background:var(--sf);border-radius:14px;padding:14px;text-align:center}
+.stat-val{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-size:26px;font-weight:700}
+.stat-lbl{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--mt)}
+.divider{height:1px;background:var(--bd);margin:20px 0}
+.toggle-row{display:flex;gap:8px;background:var(--sf);border-radius:12px;padding:4px}
+.toggle-btn{flex:1;padding:10px;border:none;border-radius:9px;background:none;color:var(--mt);font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:15px;cursor:pointer;transition:all .15s}
+.toggle-btn.on{background:var(--bg2);color:var(--tx);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.section-title{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-size:18px;font-weight:600;margin-bottom:16px;color:var(--cy)}
+.article{max-width:800px;margin:40px auto 0;padding:0 20px}
+.article h2{font-size:24px;margin:28px 0 10px;color:var(--tx)}
+.article h3{font-size:18px;margin:20px 0 8px;color:var(--cy)}
+.article p{color:var(--mt);font-weight:600;margin-bottom:12px;font-size:15px}
+details.qa{background:var(--sf);border:1px solid var(--bd);border-radius:12px;margin-bottom:8px}
+details.qa summary{padding:14px 18px;cursor:pointer;font-weight:800;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.qa summary::after{content:"﹢";color:var(--mt);font-size:18px}
+details.qa[open] summary::after{content:"－"}
+.a{padding:0 18px 14px;color:var(--mt);font-size:14px;font-weight:600;line-height:1.6}
+footer{border-top:1px solid var(--bd);margin-top:60px;padding:24px 20px;text-align:center}
+footer p{font-size:13px;color:var(--mt);font-weight:600}
+footer a{color:var(--mt);text-decoration:none;margin:0 10px}
+footer a:hover{color:var(--tx)}
+.related{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:20px;margin:32px 0}
+.related h3{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:18px;margin-bottom:12px}
+.related-grid{display:flex;gap:10px;flex-wrap:wrap}
+.related-card{flex:1;min-width:140px;text-decoration:none;padding:12px 14px;border-radius:12px;background:var(--sf);border:1px solid var(--bd);transition:background .15s}
+.related-card:hover{background:var(--sfh)}
+.rc-title{font-weight:800;font-size:13px;color:var(--tx);display:block;margin-bottom:2px}
+.rc-desc{font-size:11px;color:var(--mt);font-weight:600}
+.badge{display:inline-block;padding:4px 10px;border-radius:100px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.badge-gr{background:rgba(0,230,118,.15);color:var(--gr)}
+.badge-yl{background:rgba(255,214,0,.15);color:var(--yl)}
+.badge-pk{background:rgba(255,32,96,.15);color:var(--pk)}
+.badge-cy{background:rgba(0,229,255,.15);color:var(--cy)}
+
+
+
+</style>
+  <link rel="stylesheet" href="/pickly-theme.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/#t-timezoneoverlap">&larr; All tools</a>
+  </div>
+</div>
+<main>
+<header class="head">
+  <h1>Time Zone Overlap Planner</h1>
+  <p>Find the working hours two or three time zones share.</p>
+</header>
+<div class="wrap">
+<div class="card">
+  <div class="row3">
+    <div><label>Zone A</label><select id="tzA" onchange="calcTz()"></select></div>
+    <div><label>Zone B</label><select id="tzB" onchange="calcTz()"></select></div>
+    <div><label>Zone C (optional)</label><select id="tzC" onchange="calcTz()"><option value="none">&mdash;</option></select></div>
+  </div>
+  <div class="row" style="margin-top:12px">
+    <div><label>Working hours (local)</label><select id="tzWin" onchange="calcTz()"><option value="9-17">9am &ndash; 5pm</option><option value="8-18">8am &ndash; 6pm</option><option value="10-16">10am &ndash; 4pm</option></select></div>
+  </div>
+</div>
+<div class="result" id="tzResult"><div id="tzOut"></div></div>
+<script>
+var TZ=[["UTC-8 Los Angeles",-8],["UTC-6 Chicago",-6],["UTC-5 New York",-5],["UTC+0 London",0],["UTC+1 Paris/Berlin",1],["UTC+2 Cairo",2],["UTC+3 Moscow",3],["UTC+4 Dubai",4],["UTC+5.5 India",5.5],["UTC+7 Bangkok",7],["UTC+8 Singapore/Beijing",8],["UTC+9 Tokyo",9],["UTC+10 Sydney",10],["UTC+12 Auckland",12]];
+function fillTz(sel,def){var s=document.getElementById(sel);TZ.forEach(function(z,i){var o=document.createElement('option');o.value=i;o.textContent=z[0];s.appendChild(o);});if(def!=null)s.value=def;}
+fillTz('tzA',0);fillTz('tzB',10);fillTz('tzC',null);
+function h12(h){var hh=(((h%24)+24)%24);var ap=hh<12?'am':'pm';var d=hh%12;if(d===0)d=12;var m=(hh%1)?':30':'';return d+m+ap;}
+function calcTz(){
+ var A=TZ[+document.getElementById('tzA').value][1];var B=TZ[+document.getElementById('tzB').value][1];
+ var offs=[A,B];var cv=document.getElementById('tzC').value;if(cv!=='none')offs.push(TZ[+cv][1]);
+ var win=document.getElementById('tzWin').value.split('-');var ws=+win[0],we=+win[1];
+ var hits=[];for(var u=0;u<24;u++){var ok=offs.every(function(o){var loc=((((u+o)%24)+24)%24);return loc>=ws&&loc<we;});if(ok)hits.push(u);}
+ var r=document.getElementById('tzResult');var out=document.getElementById('tzOut');
+ if(!hits.length){out.innerHTML='<div class="stat" style="text-align:center"><div class="stat-val" style="color:var(--pk);font-size:22px">No overlap</div><div class="stat-lbl">No shared '+ws+':00&ndash;'+we+':00 window. Try wider hours, or schedule a call outside standard times for one side.</div></div>';r.classList.add('show');return;}
+ var startU=hits[0],endU=hits[hits.length-1]+1;
+ var zones=[['tzA',A],['tzB',B]];if(cv!=='none')zones.push(['tzC',TZ[+cv][1]]);
+ var rows='';zones.forEach(function(z){var name=TZ[+document.getElementById(z[0]).value][0];rows+='<div class="stat" style="text-align:left;margin-bottom:8px"><div class="stat-lbl">'+name+'</div><div class="stat-val" style="font-size:20px;color:var(--gr)">'+h12(startU+z[1])+' &ndash; '+h12(endU+z[1])+'</div></div>';});
+ out.innerHTML='<div class="section-title">Overlapping window ('+hits.length+'h)</div>'+rows;
+ r.classList.add('show');
+}
+calcTz();
+</script>
+<div class="related">
+  <h3>&#128279; Try these next</h3>
+  <div class="related-grid"><a class="related-card" href="/timezones/"><span class="rc-title">🌍 Timezone Finder</span><span class="rc-desc">Convert times</span></a>
+<a class="related-card" href="/datecalculator/"><span class="rc-title">📅 Date Calculator</span><span class="rc-desc">Days between dates</span></a>
+<a class="related-card" href="/businessdays/"><span class="rc-title">📆 Business Days</span><span class="rc-desc">Working days count</span></a>
+</div>
+</div>
+</div>
+<article class="article">
+<style id="pk-content-css">
+.pk-content{max-width:760px;margin:8px auto 24px;padding:0 4px;font-family:'Nunito','Nunito Fallback',sans-serif;color:#c8c8da;line-height:1.72}
+.pk-content h2{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:clamp(21px,4vw,28px);color:#f4f4fb;letter-spacing:-.5px;margin:30px 0 12px}
+.pk-content h3{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:18px;color:#f4f4fb;margin:22px 0 8px}
+.pk-content p{margin:0 0 13px;font-size:15.5px;font-weight:500}
+.pk-content strong{color:#f4f4fb}
+</style><section class="pk-content">
+  <h2>Find a meeting time that works for everyone</h2>
+  <p>Choose two or three time zones and your preferred working hours, and Pickly highlights the block of time that falls inside <strong>everyone&rsquo;s</strong> working day &mdash; shown in each person&rsquo;s local time so there&rsquo;s no mental conversion.</p>
+  <h3>When there&rsquo;s no overlap</h3>
+  <p>Some zones are simply too far apart for a standard 9-to-5 overlap &mdash; the US West Coast and India, for example. Widen the working hours, or accept an early/late call for one side. The planner tells you immediately when no shared window exists.</p>
+  <h3>A note on daylight saving</h3>
+  <p>This tool uses standard UTC offsets and does not automatically adjust for daylight saving time, so double-check your window around DST changeovers in spring and autumn.</p>
+</section>
+<!-- PK-NOTE --><p style="text-align:center;color:#9a9ab5;font-size:13px;font-weight:600;max-width:540px;margin:18px auto 0;line-height:1.5">Times use standard UTC offsets and don't auto-adjust for daylight saving &mdash; verify around DST changes.</p>
+<details class="qa"><summary>How does the time zone overlap planner work?</summary><div class="a">Pick two or three zones and your preferred working hours. The tool finds the hours that fall within everyone's working window and shows the shared slot in each local time.</div></details>
+<details class="qa"><summary>Does it handle daylight saving time?</summary><div class="a">It uses standard UTC offsets and does not automatically adjust for daylight saving, so double-check your window around DST changeovers.</div></details>
+<details class="qa"><summary>What if there's no overlap?</summary><div class="a">Some zones are too far apart for a 9-to-5 overlap. Try widening the working hours, or plan a call slightly outside standard times for one side.</div></details>
+<details class="qa"><summary>Is it free?</summary><div class="a">Yes &mdash; free, no sign-up, and it works in any browser.</div></details>
+
+</article>
+<!-- PK-UPDATED --><p style="text-align:center;color:#9a9ab5;font-size:13px;font-weight:600;margin:26px 0 2px">Last updated: June 2026</p>
+<!-- PK-EXPLORE-START -->
+<style id="pk-explore-css">
+.pk-explore{position:relative;z-index:2;max-width:880px;margin:10px auto 0;padding:26px 20px 6px;font-family:'Nunito','Nunito Fallback',sans-serif;box-sizing:border-box}
+.pk-explore *{box-sizing:border-box}
+.pk-explore-wrap{background:linear-gradient(160deg,#11112e,rgba(17,17,46,.45));border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:24px 22px}
+.pk-explore-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.pk-explore-h{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;color:#f4f4fb;margin:0}
+.pk-explore-link{font-weight:800;font-size:14px;text-decoration:none;background:linear-gradient(135deg,#FF2060,#FF8C00);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.pk-explore-sub{color:#9a9ab5;font-size:14px;font-weight:600;margin:7px 0 18px}
+.pk-explore-grid{display:flex;flex-wrap:wrap;gap:9px}
+.pk-pill{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:#f4f4fb;font-weight:700;font-size:13.5px;padding:9px 14px;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:background .15s,border-color .15s,transform .15s}
+.pk-pill:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.22);transform:translateY(-2px)}
+.pk-pill-ic{font-size:15px;line-height:1}
+@media(max-width:520px){.pk-explore-h{font-size:19px}.pk-explore{padding-left:14px;padding-right:14px}}
+</style>
+<section class="pk-explore" aria-label="Explore more Pickly tools">
+  <div class="pk-explore-wrap">
+    <div class="pk-explore-top">
+      <h2 class="pk-explore-h">Explore more free tools</h2>
+      <a class="pk-explore-link" href="/">All tools &rarr;</a>
+    </div>
+    <p class="pk-explore-sub">No sign-up, no downloads &mdash; every Pickly tool opens instantly in your browser.</p>
+    <div class="pk-explore-grid">
+        <a class="pk-pill" href="/spinit/"><span class="pk-pill-ic">&#127905;</span>Decision Spinner</a>
+        <a class="pk-pill" href="/coinflip/"><span class="pk-pill-ic">&#129689;</span>Coin Flip</a>
+        <a class="pk-pill" href="/randomnumber/"><span class="pk-pill-ic">&#128290;</span>Random Number</a>
+        <a class="pk-pill" href="/teampicker/"><span class="pk-pill-ic">&#128101;</span>Team Picker</a>
+        <a class="pk-pill" href="/whattoeat/"><span class="pk-pill-ic">&#127869;</span>What to Eat</a>
+        <a class="pk-pill" href="/magic8ball/"><span class="pk-pill-ic">&#127921;</span>Magic 8 Ball</a>
+        <a class="pk-pill" href="/wouldyourather/"><span class="pk-pill-ic">&#129300;</span>Would You Rather</a>
+        <a class="pk-pill" href="/truthordare/"><span class="pk-pill-ic">&#127917;</span>Truth or Dare</a>
+        <a class="pk-pill" href="/tipcalculator/"><span class="pk-pill-ic">&#128176;</span>Tip Calculator</a>
+        <a class="pk-pill" href="/salestax/"><span class="pk-pill-ic">&#129534;</span>Sales Tax</a>
+        <a class="pk-pill" href="/agecalculator/"><span class="pk-pill-ic">&#127874;</span>Age Calculator</a>
+        <a class="pk-pill" href="/datecalculator/"><span class="pk-pill-ic">&#128197;</span>Date Calculator</a>
+        <a class="pk-pill" href="/bmi/"><span class="pk-pill-ic">&#9878;</span>BMI Calculator</a>
+        <a class="pk-pill" href="/mortgage/"><span class="pk-pill-ic">&#127968;</span>Mortgage Calculator</a>
+        <a class="pk-pill" href="/timezones/"><span class="pk-pill-ic">&#127757;</span>Timezone Finder</a>
+    </div>
+  </div>
+</section>
+<!-- PK-EXPLORE-END -->
+<footer>
+  <p>&copy; <span id="yr"></span> Pickly &middot; <a href="/privacy/">Privacy</a> <a href="/terms/">Terms</a> <a href="/contact/">Contact</a></p>
+</footer>
+  <!-- AdSense in-content unit goes here after approval -->
+  </main>
+<script>document.getElementById("yr").textContent=(new Date).getFullYear();</script>
+<script>try{var _pr=JSON.parse(localStorage.getItem("pickly_recent")||"[]").filter(function(x){return x!=="timezoneoverlap"});_pr.unshift("timezoneoverlap");localStorage.setItem("pickly_recent",JSON.stringify(_pr.slice(0,6)))}catch(e){}</script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+<script src="/pk-analytics.js" defer></script>
+</body>
+</html>

@@ -280,6 +280,27 @@ function calcMortgage(){
 <details class="qa"><summary>How much does a 1% difference in interest rate matter?</summary><div class="a">On a $300,000 30-year mortgage, a 1% higher interest rate adds roughly $170–180 to the monthly payment and about $60,000+ in total interest over the loan term. Even a 0.5% difference is significant — always shop multiple lenders before committing.</div></details>
 <details class="qa"><summary>What is an amortisation schedule?</summary><div class="a">An amortisation schedule shows how each monthly payment is split between paying down the principal and paying interest. In early years most of your payment is interest; over time the balance shifts toward principal. This is why extra payments in the first few years of a mortgage save the most interest.</div></details>
 </article>
+<!-- PK-HOWITWORKS -->
+<section style="max-width:640px;margin:6px auto 0;padding:0 16px">
+  <h2 style="font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;text-align:center;margin:24px 0 10px;color:#f4f4fb">How this mortgage estimate works</h2>
+  <p style="color:#9a9ab5;font-size:14.5px;font-weight:600;line-height:1.6;text-align:center;max-width:540px;margin:0 auto">Your monthly principal and interest use the standard amortization formula based on loan amount, interest rate, and term. Optional fields — property tax, insurance, PMI, HOA, and maintenance — are added on top to show your all-in monthly cost. Every figure is an estimate for planning, not a loan offer.</p>
+</section>
+<!-- PK-EXAMPLES -->
+<section style="max-width:640px;margin:6px auto 0;padding:0 16px">
+  <h2 style="font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;text-align:center;margin:24px 0 10px;color:#f4f4fb">Example</h2>
+  <p style="color:#9a9ab5;font-size:14.5px;font-weight:600;line-height:1.6;text-align:center;max-width:540px;margin:0 auto">A $300,000 loan at 6.5% over 30 years works out to roughly $1,896 a month in principal and interest — before property tax, insurance, and PMI are added.</p>
+</section>
+<!-- PK-RELATED -->
+<section style="max-width:640px;margin:6px auto 0;padding:0 16px">
+  <h2 style="font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;text-align:center;margin:24px 0 12px;color:#f4f4fb">Related tools</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">
+    <a href="/discount/" style="display:inline-block;text-decoration:none;font-weight:800;font-size:13.5px;color:#f4f4fb;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:9px 15px">Discount Calculator</a>
+    <a href="/datecalculator/" style="display:inline-block;text-decoration:none;font-weight:800;font-size:13.5px;color:#f4f4fb;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:9px 15px">Date Calculator</a>
+    <a href="/agecalculator/" style="display:inline-block;text-decoration:none;font-weight:800;font-size:13.5px;color:#f4f4fb;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:9px 15px">Age Calculator</a>
+    <a href="/bmi/" style="display:inline-block;text-decoration:none;font-weight:800;font-size:13.5px;color:#f4f4fb;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:9px 15px">BMI Calculator</a>
+    </div>
+</section>
+<!-- PK-UPDATED --><p style="text-align:center;color:#9a9ab5;font-size:13px;font-weight:600;margin:26px 0 2px">Last updated: June 2026</p>
 <!-- PK-EXPLORE-START -->
 <style id="pk-explore-css">
 .pk-explore{position:relative;z-index:2;max-width:880px;margin:10px auto 0;padding:26px 20px 6px;font-family:'Nunito','Nunito Fallback',sans-serif;box-sizing:border-box}
@@ -299,7 +320,7 @@ function calcMortgage(){
   <div class="pk-explore-wrap">
     <div class="pk-explore-top">
       <h2 class="pk-explore-h">Explore more free tools</h2>
-      <a class="pk-explore-link" href="/">All 18 tools →</a>
+      <a class="pk-explore-link" href="/">All tools →</a>
     </div>
     <p class="pk-explore-sub">No sign-up, no downloads — every Pickly tool opens instantly in your browser.</p>
     <div class="pk-explore-grid">
@@ -334,5 +355,6 @@ function calcMortgage(){
 <script>document.getElementById("yr").textContent=(new Date).getFullYear();</script>
 <script>try{var _pr=JSON.parse(localStorage.getItem("pickly_recent")||"[]").filter(function(x){return x!=="mortgage"});_pr.unshift("mortgage");localStorage.setItem("pickly_recent",JSON.stringify(_pr.slice(0,6)))}catch(e){}</script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+<script src="/pk-analytics.js" defer></script>
 </body>
 </html>

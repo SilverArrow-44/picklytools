@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PRMM0HXRCG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-PRMM0HXRCG");</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tournament Bracket Generator — Single Elimination | Pickly</title>
+<!-- Google AdSense -->
+<meta name="google-adsense-account" content="ca-pub-7937234001453997">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7937234001453997" crossorigin="anonymous"></script>
+<meta name="description" content="Free tournament bracket generator. Enter 3 to 32 players or teams, shuffle the seeding, and get a single-elimination bracket with automatic byes. No sign-up.">
+<link rel="canonical" href="https://picklytools.com/bracketgenerator/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tournament Bracket Generator — Single Elimination | Pickly">
+<meta property="og:description" content="Free tournament bracket generator. Enter 3 to 32 players or teams, shuffle the seeding, and get a single-elimination bracket with automatic byes. No sign-up.">
+<meta property="og:url" content="https://picklytools.com/bracketgenerator/">
+<meta property="og:image" content="https://picklytools.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://picklytools.com/og-image.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.bunny.net/css?family=fredoka:wght@400;600;700&nunito:wght@400;700;800&display=swap"></noscript>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "Tournament Bracket Generator — Single Elimination", "url": "https://picklytools.com/bracketgenerator/", "description": "Free tournament bracket generator. Enter 3 to 32 players or teams, shuffle the seeding, and get a single-elimination bracket with automatic byes. No sign-up.", "applicationCategory": "UtilityApplication", "operatingSystem": "Any", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Pickly", "item": "https://picklytools.com/"}, {"@type": "ListItem", "position": 2, "name": "Tournament Bracket Generator", "item": "https://picklytools.com/bracketgenerator/"}]}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many players can I add?", "acceptedAnswer": {"@type": "Answer", "text": "Between 3 and 32. If your count isn't a power of two, the generator adds byes so the top seeds advance automatically in round one."}}, {"@type": "Question", "name": "What is a bye?", "acceptedAnswer": {"@type": "Answer", "text": "A bye is a free pass to the next round, given when there aren't enough players to fill every first-round match. It keeps the bracket balanced."}}, {"@type": "Question", "name": "Can I randomize the matchups?", "acceptedAnswer": {"@type": "Answer", "text": "Yes &mdash; choose 'Random' seeding to shuffle players, or 'As entered' to keep your order for manual seeding."}}, {"@type": "Question", "name": "Is this single or double elimination?", "acceptedAnswer": {"@type": "Answer", "text": "This generator creates a single-elimination bracket, where one loss knocks a player out."}}]}
+</script>
+<style>
+@font-face{font-family:'Fredoka Fallback';src:local('Arial');ascent-override:90%;descent-override:20%;line-gap-override:0%;size-adjust:105%}
+@font-face{font-family:'Nunito Fallback';src:local('Arial');ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:100%}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a1f;--bg2:#11112e;--sf:rgba(255,255,255,.05);--sfh:rgba(255,255,255,.09);--bd:rgba(255,255,255,.1);--tx:#f4f4fb;--mt:#9a9ab5;--pk:#FF2060;--or:#FF8C00;--yl:#FFD600;--cy:#00E5FF;--pu:#B061FF;--gr:#00E676;--rl:16px}
+body{font-family:'Nunito','Nunito Fallback',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+h1,h2,h3{font-family:'Fredoka','Fredoka Fallback',sans-serif}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(10,10,31,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+.topbar-in{max-width:800px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:center;position:relative}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--tx)}
+.brand-mark{width:28px;height:28px}
+.brand-name{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:20px;background:linear-gradient(90deg,#FF2D6E,#FF8C00);background-clip:text;color:transparent}
+.back{position:absolute;right:20px;color:var(--mt);text-decoration:none;font-weight:800;font-size:13px;padding:8px 14px;border:1px solid var(--bd);border-radius:100px;background:var(--sf);transition:all .15s}
+.back:hover{color:var(--tx);background:var(--sfh)}
+.wrap{max-width:800px;margin:0 auto;padding:0 20px}
+.head{padding:40px 20px 24px;text-align:center}
+.head h1{font-size:clamp(28px,5vw,44px);font-weight:700;margin-bottom:10px}
+.head p{color:var(--mt);font-size:16px;font-weight:600;max-width:540px;margin:0 auto}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:24px}
+.card+.card{margin-top:16px}
+label{display:block;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--mt);margin-bottom:6px}
+input,select{width:100%;background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:13px 16px;color:var(--tx);font-size:16px;font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:700;outline:none;transition:border .15s}
+input:focus,select:focus{border-color:var(--cy)}
+input[type=number]{-moz-appearance:textfield}
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+select option{background:var(--bg2);color:var(--tx)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:560px){.row,.row3{grid-template-columns:1fr}}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;border:none;border-radius:14px;font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:20px;cursor:pointer;transition:all .15s;margin-top:16px}
+.btn-pk{background:linear-gradient(135deg,var(--pk),var(--or));color:#fff}
+.btn-pk:hover{transform:scale(1.02);box-shadow:0 6px 24px rgba(255,32,96,.3)}
+.btn-cy{background:linear-gradient(135deg,#0af,var(--cy));color:#0a0a1f}
+.btn-gr{background:linear-gradient(135deg,#00c85a,var(--gr));color:#0a0a1f}
+.result{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:28px;margin-top:16px;display:none}
+.result.show{display:block}
+.result-main{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-size:clamp(36px,6vw,60px);font-weight:700;text-align:center;margin-bottom:8px}
+.result-sub{text-align:center;color:var(--mt);font-weight:600;margin-bottom:20px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.stat{background:var(--sf);border-radius:14px;padding:14px;text-align:center}
+.stat-val{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-size:26px;font-weight:700}
+.stat-lbl{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--mt)}
+.divider{height:1px;background:var(--bd);margin:20px 0}
+.toggle-row{display:flex;gap:8px;background:var(--sf);border-radius:12px;padding:4px}
+.toggle-btn{flex:1;padding:10px;border:none;border-radius:9px;background:none;color:var(--mt);font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:15px;cursor:pointer;transition:all .15s}
+.toggle-btn.on{background:var(--bg2);color:var(--tx);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.section-title{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-size:18px;font-weight:600;margin-bottom:16px;color:var(--cy)}
+.article{max-width:800px;margin:40px auto 0;padding:0 20px}
+.article h2{font-size:24px;margin:28px 0 10px;color:var(--tx)}
+.article h3{font-size:18px;margin:20px 0 8px;color:var(--cy)}
+.article p{color:var(--mt);font-weight:600;margin-bottom:12px;font-size:15px}
+details.qa{background:var(--sf);border:1px solid var(--bd);border-radius:12px;margin-bottom:8px}
+details.qa summary{padding:14px 18px;cursor:pointer;font-weight:800;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.qa summary::after{content:"﹢";color:var(--mt);font-size:18px}
+details.qa[open] summary::after{content:"－"}
+.a{padding:0 18px 14px;color:var(--mt);font-size:14px;font-weight:600;line-height:1.6}
+footer{border-top:1px solid var(--bd);margin-top:60px;padding:24px 20px;text-align:center}
+footer p{font-size:13px;color:var(--mt);font-weight:600}
+footer a{color:var(--mt);text-decoration:none;margin:0 10px}
+footer a:hover{color:var(--tx)}
+.related{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;padding:20px;margin:32px 0}
+.related h3{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:18px;margin-bottom:12px}
+.related-grid{display:flex;gap:10px;flex-wrap:wrap}
+.related-card{flex:1;min-width:140px;text-decoration:none;padding:12px 14px;border-radius:12px;background:var(--sf);border:1px solid var(--bd);transition:background .15s}
+.related-card:hover{background:var(--sfh)}
+.rc-title{font-weight:800;font-size:13px;color:var(--tx);display:block;margin-bottom:2px}
+.rc-desc{font-size:11px;color:var(--mt);font-weight:600}
+.badge{display:inline-block;padding:4px 10px;border-radius:100px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.badge-gr{background:rgba(0,230,118,.15);color:var(--gr)}
+.badge-yl{background:rgba(255,214,0,.15);color:var(--yl)}
+.badge-pk{background:rgba(255,32,96,.15);color:var(--pk)}
+.badge-cy{background:rgba(0,229,255,.15);color:var(--cy)}
+
+
+
+</style>
+  <link rel="stylesheet" href="/pickly-theme.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF2D6E"/><stop offset="52%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#FFC628"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bm)"/>
+        <path d="M71 33 A26 26 0 1 0 76 52" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="79,21 79,41 63,31" fill="#fff"/>
+        <path d="M50 40 L52.4 47.6 L60 50 L52.4 52.4 L50 60 L47.6 52.4 L40 50 L47.6 47.6 Z" fill="#fff"/>
+      </svg>
+      <span class="brand-name">Pickly</span>
+    </a>
+    <a class="back" href="/#t-bracketgenerator">&larr; All tools</a>
+  </div>
+</div>
+<main>
+<header class="head">
+  <h1>Tournament Bracket Generator</h1>
+  <p>Enter players or teams and generate a single-elimination bracket with byes.</p>
+</header>
+<div class="wrap">
+<div class="card">
+  <label>Participants (one per line, 3&ndash;32)</label>
+  <textarea id="brNames" rows="6" placeholder="Team A&#10;Team B&#10;Team C&#10;Team D" style="width:100%;background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:13px 16px;color:var(--tx);font-size:16px;font-family:'Nunito','Nunito Fallback',sans-serif;font-weight:700;outline:none;resize:vertical"></textarea>
+  <div class="row" style="margin-top:12px">
+    <div><label>Seeding</label><select id="brSeed"><option value="shuffle">Random</option><option value="order">As entered</option></select></div>
+  </div>
+  <button class="btn btn-pk" onclick="genBracket()">&#127942; Generate bracket</button>
+  <p id="brMsg" style="color:var(--mt);font-size:13px;font-weight:600;text-align:center;margin-top:10px"></p>
+</div>
+<div class="result" id="brResult"><div id="brOut"></div></div>
+<script>
+function shuffleB(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function genBracket(){
+ var names=document.getElementById('brNames').value.split('\n').map(function(x){return x.trim();}).filter(Boolean);
+ var msg=document.getElementById('brMsg');var r=document.getElementById('brResult');
+ if(names.length<3||names.length>32){msg.textContent='Enter between 3 and 32 participants.';r.classList.remove('show');return;}
+ if(document.getElementById('brSeed').value==='shuffle')shuffleB(names);
+ var size=Math.pow(2,Math.ceil(Math.log2(names.length)));
+ var byes=size-names.length;
+ var slots=names.slice();while(slots.length<size)slots.push('BYE');
+ var html='<div class="section-title">Round 1</div>';
+ for(var i=0;i<size;i+=2){
+   var a=slots[i],b=slots[i+1];
+   var auto=(b==='BYE')?a:(a==='BYE'?b:null);
+   html+='<div class="stat" style="margin-bottom:8px;text-align:left"><span style="font-weight:800">'+a+'</span> <span style="color:var(--mt)">vs</span> <span style="font-weight:800">'+b+'</span>'+(auto?' <span style="color:var(--gr)">&mdash; '+auto+' advances</span>':'')+'</div>';
+ }
+ var remaining=size/2,rn=2;
+ while(remaining>=1){var label=remaining===1?'Final':(remaining===2?'Semifinals':(remaining===4?'Quarterfinals':'Round '+rn));html+='<div class="section-title" style="margin-top:16px">'+label+'</div><div class="stat" style="text-align:left;color:var(--mt)">'+remaining+' match'+(remaining>1?'es':'')+' &mdash; winners advance</div>';if(remaining===1)break;remaining/=2;rn++;}
+ document.getElementById('brOut').innerHTML=html;
+ msg.textContent=names.length+' players \u00b7 bracket size '+size+' \u00b7 '+byes+' bye'+(byes===1?'':'s');
+ r.classList.add('show');
+}
+</script>
+<div class="related">
+  <h3>&#128279; Try these next</h3>
+  <div class="related-grid"><a class="related-card" href="/teampicker/"><span class="rc-title">👥 Team Generator</span><span class="rc-desc">Make fair teams</span></a>
+<a class="related-card" href="/spinit/"><span class="rc-title">🎡 Spin the Wheel</span><span class="rc-desc">Random picker</span></a>
+<a class="related-card" href="/secretsanta/"><span class="rc-title">🎁 Secret Santa</span><span class="rc-desc">Draw gift names</span></a>
+</div>
+</div>
+</div>
+<article class="article">
+<style id="pk-content-css">
+.pk-content{max-width:760px;margin:8px auto 24px;padding:0 4px;font-family:'Nunito','Nunito Fallback',sans-serif;color:#c8c8da;line-height:1.72}
+.pk-content h2{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:clamp(21px,4vw,28px);color:#f4f4fb;letter-spacing:-.5px;margin:30px 0 12px}
+.pk-content h3{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:600;font-size:18px;color:#f4f4fb;margin:22px 0 8px}
+.pk-content p{margin:0 0 13px;font-size:15.5px;font-weight:500}
+.pk-content strong{color:#f4f4fb}
+</style><section class="pk-content">
+  <h2>Build a tournament bracket in seconds</h2>
+  <p>Enter your players or teams, choose random or manual seeding, and Pickly lays out a <strong>single-elimination bracket</strong>. If your count isn&rsquo;t a power of two, it automatically adds byes so the top seeds skip round one and the bracket stays balanced.</p>
+  <h3>Random or manual seeding</h3>
+  <p>Pick <strong>Random</strong> to shuffle everyone into fresh matchups, or <strong>As entered</strong> to keep your order &mdash; useful when you want to seed by rank so the strongest players don&rsquo;t meet too early.</p>
+  <h3>What is a bye?</h3>
+  <p>A bye is a free pass to the next round. When there aren&rsquo;t enough players to fill every first-round match, the highest slots advance automatically. Great for game nights, office competitions, esports, and sports leagues.</p>
+</section>
+<details class="qa"><summary>How many players can I add?</summary><div class="a">Between 3 and 32. If your count isn't a power of two, the generator adds byes so the top seeds advance automatically in round one.</div></details>
+<details class="qa"><summary>What is a bye?</summary><div class="a">A bye is a free pass to the next round, given when there aren't enough players to fill every first-round match. It keeps the bracket balanced.</div></details>
+<details class="qa"><summary>Can I randomize the matchups?</summary><div class="a">Yes &mdash; choose 'Random' seeding to shuffle players, or 'As entered' to keep your order for manual seeding.</div></details>
+<details class="qa"><summary>Is this single or double elimination?</summary><div class="a">This generator creates a single-elimination bracket, where one loss knocks a player out.</div></details>
+
+</article>
+<!-- PK-UPDATED --><p style="text-align:center;color:#9a9ab5;font-size:13px;font-weight:600;margin:26px 0 2px">Last updated: June 2026</p>
+<!-- PK-EXPLORE-START -->
+<style id="pk-explore-css">
+.pk-explore{position:relative;z-index:2;max-width:880px;margin:10px auto 0;padding:26px 20px 6px;font-family:'Nunito','Nunito Fallback',sans-serif;box-sizing:border-box}
+.pk-explore *{box-sizing:border-box}
+.pk-explore-wrap{background:linear-gradient(160deg,#11112e,rgba(17,17,46,.45));border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:24px 22px}
+.pk-explore-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.pk-explore-h{font-family:'Fredoka','Fredoka Fallback',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;color:#f4f4fb;margin:0}
+.pk-explore-link{font-weight:800;font-size:14px;text-decoration:none;background:linear-gradient(135deg,#FF2060,#FF8C00);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.pk-explore-sub{color:#9a9ab5;font-size:14px;font-weight:600;margin:7px 0 18px}
+.pk-explore-grid{display:flex;flex-wrap:wrap;gap:9px}
+.pk-pill{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:#f4f4fb;font-weight:700;font-size:13.5px;padding:9px 14px;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:background .15s,border-color .15s,transform .15s}
+.pk-pill:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.22);transform:translateY(-2px)}
+.pk-pill-ic{font-size:15px;line-height:1}
+@media(max-width:520px){.pk-explore-h{font-size:19px}.pk-explore{padding-left:14px;padding-right:14px}}
+</style>
+<section class="pk-explore" aria-label="Explore more Pickly tools">
+  <div class="pk-explore-wrap">
+    <div class="pk-explore-top">
+      <h2 class="pk-explore-h">Explore more free tools</h2>
+      <a class="pk-explore-link" href="/">All tools &rarr;</a>
+    </div>
+    <p class="pk-explore-sub">No sign-up, no downloads &mdash; every Pickly tool opens instantly in your browser.</p>
+    <div class="pk-explore-grid">
+        <a class="pk-pill" href="/spinit/"><span class="pk-pill-ic">&#127905;</span>Decision Spinner</a>
+        <a class="pk-pill" href="/coinflip/"><span class="pk-pill-ic">&#129689;</span>Coin Flip</a>
+        <a class="pk-pill" href="/randomnumber/"><span class="pk-pill-ic">&#128290;</span>Random Number</a>
+        <a class="pk-pill" href="/teampicker/"><span class="pk-pill-ic">&#128101;</span>Team Picker</a>
+        <a class="pk-pill" href="/whattoeat/"><span class="pk-pill-ic">&#127869;</span>What to Eat</a>
+        <a class="pk-pill" href="/magic8ball/"><span class="pk-pill-ic">&#127921;</span>Magic 8 Ball</a>
+        <a class="pk-pill" href="/wouldyourather/"><span class="pk-pill-ic">&#129300;</span>Would You Rather</a>
+        <a class="pk-pill" href="/truthordare/"><span class="pk-pill-ic">&#127917;</span>Truth or Dare</a>
+        <a class="pk-pill" href="/tipcalculator/"><span class="pk-pill-ic">&#128176;</span>Tip Calculator</a>
+        <a class="pk-pill" href="/salestax/"><span class="pk-pill-ic">&#129534;</span>Sales Tax</a>
+        <a class="pk-pill" href="/agecalculator/"><span class="pk-pill-ic">&#127874;</span>Age Calculator</a>
+        <a class="pk-pill" href="/datecalculator/"><span class="pk-pill-ic">&#128197;</span>Date Calculator</a>
+        <a class="pk-pill" href="/bmi/"><span class="pk-pill-ic">&#9878;</span>BMI Calculator</a>
+        <a class="pk-pill" href="/mortgage/"><span class="pk-pill-ic">&#127968;</span>Mortgage Calculator</a>
+        <a class="pk-pill" href="/timezones/"><span class="pk-pill-ic">&#127757;</span>Timezone Finder</a>
+    </div>
+  </div>
+</section>
+<!-- PK-EXPLORE-END -->
+<footer>
+  <p>&copy; <span id="yr"></span> Pickly &middot; <a href="/privacy/">Privacy</a> <a href="/terms/">Terms</a> <a href="/contact/">Contact</a></p>
+</footer>
+  <!-- AdSense in-content unit goes here after approval -->
+  </main>
+<script>document.getElementById("yr").textContent=(new Date).getFullYear();</script>
+<script>try{var _pr=JSON.parse(localStorage.getItem("pickly_recent")||"[]").filter(function(x){return x!=="bracketgenerator"});_pr.unshift("bracketgenerator");localStorage.setItem("pickly_recent",JSON.stringify(_pr.slice(0,6)))}catch(e){}</script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+<script src="/pk-analytics.js" defer></script>
+</body>
+</html>
